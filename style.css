@@ -49,3 +49,35 @@ nav li {
   height: 100vh;
   background: url('hero.jpg') center/cover no-repeat;
 }
+.news {
+  background: #f5f5f5;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.news h2 {
+  font-size: 28px;
+  margin-bottom: 50px;
+}
+
+.news-item {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.date {
+  font-size: 12px;
+  color: gray;
+}
+
+.title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.source {
+  font-size: 14px;
+  color: #555;
+}

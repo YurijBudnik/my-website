@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+.logo span {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* MENU */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav li {
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('hero.jpg') center/cover no-repeat;
+}

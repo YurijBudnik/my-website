@@ -1,7 +1,7 @@
 body {
-  overflow-y: scroll;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  overflow-y: scroll;
 }
 
 /* HEADER */

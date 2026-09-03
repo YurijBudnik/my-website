@@ -17,6 +17,7 @@ body {
   color: black;       /* було white */
   transition: all 0.3s ease;
   box-sizing: border-box; /* щоб padding не ламав ширину */
+  height: 60px;
 }
 
 .header.scrolled {

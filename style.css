@@ -46,7 +46,7 @@ nav li {
 
 /* HERO */
 .hero {
-  height: calc(100vh - 80px); /* віднімаємо висоту шапки */
+  height: calc(100vh - 60px); /* віднімаємо висоту шапки */
   margin-top: 80px; /* зсуваємо вниз */
   background: url('hero.jpg') center/cover no-repeat;
 }

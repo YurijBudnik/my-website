@@ -48,6 +48,30 @@
 
   </div>
 </section>
+  
+<script>
+let currentLang = "en";
 
+function switchLang() {
+  const items = document.querySelectorAll(".nav-link");
+
+  currentLang = currentLang === "en" ? "ua" : "en";
+
+  items.forEach(item => {
+    item.textContent = item.dataset[currentLang];
+  });
+}
+
+// active
+const links = document.querySelectorAll(".nav-link");
+
+links.forEach(link => {
+  link.addEventListener("click", function() {
+    links.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+</script>
+  
 </body>
 </html>

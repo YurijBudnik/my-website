@@ -139,6 +139,7 @@ nav a {
 }
 nav ul {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 

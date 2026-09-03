@@ -64,6 +64,16 @@ function switchLang() {
     item.textContent = item.dataset[currentLang];
   });
 }
+
+// активна вкладка
+const links = document.querySelectorAll(".nav-link");
+
+links.forEach(link => {
+  link.addEventListener("click", function() {
+    links.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
 </script>
 </body>
 </html>

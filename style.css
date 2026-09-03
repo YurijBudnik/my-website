@@ -136,3 +136,7 @@ nav a {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+nav li {
+  min-width: 90px; /* підбери якщо треба */
+  text-align: center;
+}

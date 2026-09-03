@@ -4,7 +4,7 @@ body {
 }
 
 /* HEADER */
-.header {
+.header .container {
   position: fixed;
   width: 100%;
   top: 0;

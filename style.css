@@ -34,8 +34,9 @@ body {
 /* MENU */
 nav ul {
   display: flex;
+  align-items: center;
   list-style: none;
-  gap: 30px; /* трохи більше повітря */
+  gap: 20px; /* трохи більше повітря */
   padding: 0;
   margin: 0;
   flex-wrap: nowrap; /* ВАЖЛИВО */

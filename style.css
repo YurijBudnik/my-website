@@ -153,11 +153,7 @@ nav a {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
+
 
 nav li {
   width: 100px;

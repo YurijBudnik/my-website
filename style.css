@@ -145,9 +145,6 @@ nav a.active::after {
   width: 100%;
 }
 
-nav {
-  margin-left: auto;
-}
 
 nav a {
   font-family: 'Montserrat', sans-serif;

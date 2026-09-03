@@ -159,3 +159,36 @@ nav li {
   font-size: 11px;
   margin-left: 5px;
 }
+
+.bio {
+  margin-top: 60px;
+  padding: 60px 40px;
+}
+
+.bio-container {
+  display: flex;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bio-image {
+  flex: 1;
+  background: url('hero.jpg') center/cover no-repeat;
+  height: 600px;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+.bio-text h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.bio-text p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #444;
+}

@@ -128,3 +128,11 @@ nav a.active::after {
 nav {
   margin-left: auto;
 }
+
+nav a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

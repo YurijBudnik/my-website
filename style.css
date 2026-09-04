@@ -46,7 +46,7 @@ body {
 
 .logo span {
   font-size: 24px;
-  color: #555555;                            /* Світло-чорний (темно-сірий) колір */
+  color: #4a4a4a                            /* Світло-чорний (темно-сірий) колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;
 }

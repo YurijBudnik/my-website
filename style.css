@@ -152,7 +152,7 @@ nav a.active::after {
 
 
 nav a {
-  font-family: 'Cormorant Garamond', 'EB Garamond', Garamond, Georgia, serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 300; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
   font-size: 14px;
@@ -168,6 +168,7 @@ nav li {
 .logo {
   text-decoration: none;
   color: inherit;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: 28px;
   line-height: 1;

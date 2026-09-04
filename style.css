@@ -18,13 +18,13 @@ body {
   color: black;       /* було white */
   transition: all 0.3s ease;
   box-sizing: border-box; /* щоб padding не ламав ширину */
-  height: 60px;
+  height: 80px;
 }
 
 .header .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 60px;
 
   display: flex;
   justify-content: space-between;
@@ -47,7 +47,7 @@ nav {
   display: flex;
   align-items: center; /* щоб меню і кнопка були по центру */
   gap: 20px;
-  margin-left: auto;
+  margin-left: 40px;
 }
 
 nav ul {
@@ -66,8 +66,8 @@ nav li {
 
 /* HERO */
 .hero {
-  height: calc(100vh - 60px); /* віднімаємо висоту шапки */
-  margin-top: 60px; /* зсуваємо вниз */
+  height: calc(100vh - 80px); /* віднімаємо висоту шапки */
+  margin-top: 80px; /* зсуваємо вниз */
   background: url('hero.jpg') center/cover no-repeat;
 }
 .news {
@@ -119,7 +119,8 @@ nav li {
 }
 nav a {
   text-decoration: none;
-  color: inherit;
+  color: #555; /* світло-чорний */
+  transition: color 0.3s ease;
   position: relative;
   padding-bottom: 5px;
 }
@@ -140,6 +141,10 @@ nav a:hover::after {
   width: 100%;
 }
 
+nav a.active {
+  color: black;
+}
+
 /* Активна сторінка */
 nav a.active::after {
   width: 100%;
@@ -151,7 +156,7 @@ nav a {
   font-weight: 300;
   font-size: 14px;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 
@@ -169,7 +174,7 @@ nav li {
 
 
 .bio {
-  margin-top: 60px;
+  margin-top: 80px;
   padding: 60px 40px;
 }
 

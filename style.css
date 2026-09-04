@@ -38,14 +38,14 @@ body {
 }
 
 .logo {
-  font-size: 45px;   /* ← головне */
+  font-size: 64px;   /* ← головне */
   color: #000000;    /* Насичений чорний колір */
   text-transform: capitalize;
   line-height: 1;    /* щоб не розтягувався */
 }
 
 .logo span {
-  font-size: 24px;
+  font-size: 36px;
   color: #4a4a4a                            /* Світло-чорний (темно-сірий) колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;

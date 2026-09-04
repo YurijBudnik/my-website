@@ -37,8 +37,13 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.logo {
+  font-size: 45px;   /* ← головне */
+  line-height: 1;    /* щоб не розтягувався */
+}
+
 .logo span {
-  font-size: 45px;
+  font-size: 24px;
   margin-left: 5px;
 }
 

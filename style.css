@@ -55,14 +55,14 @@ body {
 nav {
   display: flex;
   align-items: center; /* щоб меню і кнопка були по центру */
-  gap: 5px;
+  gap: 1px;
 }
 
 nav ul {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 5px; /* трохи більше повітря */
+  gap: 1px; /* трохи більше повітря */
   padding: 0;
   margin: 0;
   flex-wrap: nowrap; /* ВАЖЛИВО */

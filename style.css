@@ -38,15 +38,19 @@ body {
 }
 
 .logo {
-  font-size: 36px;   /* ← головне */
-  color: #4a4a4a                            /* Світло-чорний (темно-сірий) колір */
+  text-decoration: none;
+  color: #000000;
   text-transform: capitalize;
-  line-height: 1;    /* щоб не розтягувався */
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
 }
 
+
 .logo span {
-  font-size: 72px;
-  color: #000000;    /* Насичений чорний колір */
+  font-size: 36px;
+  color: #4a4a4a;    /* Насичений чорний колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;
 }
@@ -161,7 +165,7 @@ nav a.active::after {
 
 nav a {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300; /* Товщина літер */
+  font-weight: 400; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
   font-size: 14px;
   text-transform: capitalize;
@@ -171,15 +175,6 @@ nav a {
 nav li {
   width: 100px;
   text-align: center;
-}
-
-.logo {
-  text-decoration: none;
-  color: inherit;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1;
 }
 
 

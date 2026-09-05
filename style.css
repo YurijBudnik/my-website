@@ -83,7 +83,7 @@ nav a {
   color: #45494E; /* світло-чорний */
   font-family: 'Cormorant Garamond', serif;
   transition: color 0.3s ease;
-  position: relative;
+  position: static;
   padding-bottom: 5px;
 }
 

@@ -78,6 +78,48 @@ nav li {
   text-align: center;
 }
 
+nav a {
+  text-decoration: none;
+  color: #555; /* світло-чорний */
+  font-family: 'Cormorant Garamond', serif;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+/* Лінія при наведенні */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: black;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: black;
+}
+
+/* Активна сторінка */
+nav a.active::after {
+  width: 100%;
+}
+
+
+nav a {
+  font-weight: 300; /* Товщина літер */
+  letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
 /* HERO */
 .hero {
   height: calc(100vh - 80px); /* віднімаємо висоту шапки */
@@ -130,47 +172,6 @@ nav li {
   height: 1px;
   background: #999;
   margin: 10px auto 0;
-}
-nav a {
-  text-decoration: none;
-  color: #555; /* світло-чорний */
-  font-family: 'Cormorant Garamond', serif;
-  transition: color 0.3s ease;
-  position: relative;
-  padding-bottom: 5px;
-}
-
-/* Лінія при наведенні */
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 1px;
-  background: black;
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-nav a.active {
-  color: black;
-}
-
-/* Активна сторінка */
-nav a.active::after {
-  width: 100%;
-}
-
-
-nav a {
-  font-weight: 300; /* Товщина літер */
-  letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
-  font-size: 18px;
-  text-transform: capitalize;
 }
 
 

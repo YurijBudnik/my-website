@@ -66,7 +66,7 @@ nav ul {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 1px; /* трохи більше повітря */
+  gap: 5px; /* трохи більше повітря */
   padding: 0;
   margin: 0;
   flex-wrap: nowrap; /* ВАЖЛИВО */

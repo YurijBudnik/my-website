@@ -43,13 +43,13 @@ body {
   text-transform: capitalize;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 1;
 }
 
 
 .logo span {
-  font-size: 36px;
+  font-size: 28px;
   color: #4a4a4a;    /* Насичений чорний колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;

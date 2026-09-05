@@ -59,7 +59,6 @@ body {
 nav {
   display: flex;
   align-items: center; /* щоб меню і кнопка були по центру */
-  font-family: 'Cormorant Garamond', serif;
   gap: 1px;
 }
 
@@ -165,7 +164,7 @@ nav a.active::after {
 
 
 nav a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
   font-size: 14px;

@@ -66,7 +66,7 @@ nav ul {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 5px; /* трохи більше повітря */
+  gap: 20px; /* трохи більше повітря */
   padding: 0;
   margin: 0;
   flex-wrap: nowrap; /* ВАЖЛИВО */
@@ -74,7 +74,7 @@ nav ul {
 
 nav li {
   cursor: pointer;
-  width: 70px;
+  width: auto;
   text-align: center;
 }
 
@@ -83,7 +83,9 @@ nav a {
   color: #45494E; /* світло-чорний */
   font-family: 'Cormorant Garamond', serif;
   transition: color 0.3s ease;
-  position: static;
+  position: relative; /* Додайте це для правильного позиціонування лінії */
+  display: inline-block;
+  margin: 0;             /* Скидає некоректні відступи */
   padding-bottom: 5px;
 }
 

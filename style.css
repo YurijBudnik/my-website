@@ -59,7 +59,7 @@ body {
 nav {
   display: flex;
   align-items: center; /* щоб меню і кнопка були по центру */
-  gap: 12px;
+  gap: 20px;
 }
 
 nav ul {

@@ -122,6 +122,32 @@ nav a {
   text-transform: capitalize;
 }
 
+/* Контейнер для правого блоку (вертикальне розташування) */
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Вирівнює вміст по правому краю */
+  gap: 6px;              /* Відстань між мовою та кнопками меню */
+}
+
+/* Стиль для перемикача мов */
+.lang-switch {
+  font-size: 13px;
+  font-family: 'Cormorant Garamond', serif;
+  color: #777;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a {
+  color: #777;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.lang-switch a:hover {
+  color: #000;
+}
+
 /* HERO */
 .hero {
   height: calc(100vh - 80px); /* віднімаємо висоту шапки */

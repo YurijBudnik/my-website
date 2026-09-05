@@ -118,7 +118,7 @@ nav a.active::after {
 nav a {
   font-weight: 200; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
-  font-size: 19px;
+  font-size: 20px;
   text-transform: capitalize;
 }
 

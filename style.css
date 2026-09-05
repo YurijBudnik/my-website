@@ -50,7 +50,7 @@ body {
 
 .logo span {
   font-size: 28px;
-  color: #4a4a4a;    /* Насичений чорний колір */
+  color: #2f2f2f;    /* Насичений чорний колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;
 }

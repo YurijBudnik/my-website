@@ -42,7 +42,7 @@ body {
   color: #000000;
   text-transform: capitalize;
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 100;
+  font-weight: 50;
   font-size: 48px;
   line-height: 1;
 }
@@ -114,7 +114,7 @@ nav a.active::after {
 
 
 nav a {
-  font-weight: 300; /* Товщина літер */
+  font-weight: 250; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
   font-size: 21px;
   text-transform: capitalize;

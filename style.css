@@ -25,7 +25,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 80px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -185,7 +184,6 @@ nav a {
 
 .bio-container {
   display: flex;
-  gap: 60px;
   max-width: 1200px;
   margin: 0 auto;
 }

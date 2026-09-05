@@ -74,6 +74,8 @@ nav ul {
 
 nav li {
   cursor: pointer;
+  width: 50px;
+  text-align: center;
 }
 
 /* HERO */

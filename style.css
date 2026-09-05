@@ -216,3 +216,10 @@ nav a {
   margin: 0 auto;
   padding: 0 40px;
 }
+
+/* При масштабуванні (або на менших екранах) приховуємо .logo span */
+@media (max-width: 1150px) {
+  .logo span {
+    display: none;
+  }
+}

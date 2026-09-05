@@ -132,6 +132,7 @@ nav li {
 nav a {
   text-decoration: none;
   color: #555; /* світло-чорний */
+  font-family: 'Cormorant Garamond', serif;
   transition: color 0.3s ease;
   position: relative;
   padding-bottom: 5px;
@@ -164,7 +165,6 @@ nav a.active::after {
 
 
 nav a {
-  font-family: 'Cormorant Garamond', serif;
   font-weight: 400; /* Товщина літер */
   letter-spacing: 0.05em; /* Легкий міжлітерний інтервал для витонченого вигляду */
   font-size: 14px;

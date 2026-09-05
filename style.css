@@ -42,14 +42,14 @@ body {
   color: #000000;
   text-transform: capitalize;
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-weight: 250;
   font-size: 48px;
   line-height: 1;
 }
 
 
 .logo span {
-  font-size: 28px;
+  font-size: 30px;
   color: #2f2f2f;    /* Насичений чорний колір */
   text-transform: capitalize;               /* Слово з великої літери */
   margin-left: 5px;

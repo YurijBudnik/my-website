@@ -24,7 +24,8 @@
       
       <!-- Мова у верхній лінії -->
       <div class="lang-switch">
-        <a href="#">UA</a> / <a href="#">EN</a>
+        <a href="#" onclick="setLang(event, 'ua')">UA</a> /
+        <a href="#" onclick="setLang(event, 'en')">EN</a>
       </div>
     
   <nav>
@@ -39,6 +40,18 @@
 
 </nav>
 
+<script>
+function setLang(event, lang) {
+  event.preventDefault();
+
+  const items = document.querySelectorAll(".nav-link");
+
+  items.forEach(item => {
+    item.textContent = item.dataset[lang];
+  });
+}
+</script>
+    
 </header>
 
 <section class="hero">

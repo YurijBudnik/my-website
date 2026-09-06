@@ -58,7 +58,7 @@ body {
 nav {
   display: flex;
   align-items: center; /* щоб меню і кнопка були по центру */
-  gap: 30px;
+  gap: 40px;
   margin-left: 20px; /* <--- Відштовхує все меню та кнопку UA/EN у крайній правий кут */
 }
 

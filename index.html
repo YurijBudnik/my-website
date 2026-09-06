@@ -40,17 +40,6 @@
 
 </nav>
 
-<script>
-function setLang(event, lang) {
-  event.preventDefault();
-
-  const items = document.querySelectorAll(".nav-link");
-
-  items.forEach(item => {
-    item.textContent = item.dataset[lang];
-  });
-}
-</script>
     
 </header>
 
@@ -102,6 +91,19 @@ links.forEach(link => {
   });
 });
 </script>
+
+  <script>
+function setLang(event, lang) {
+  event.preventDefault();
+
+  const items = document.querySelectorAll(".nav-link");
+
+  items.forEach(item => {
+    item.textContent = item.dataset[lang];
+  });
+}
+</script>
+  
 </body>
 </html>
 

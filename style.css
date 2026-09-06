@@ -346,6 +346,32 @@ nav a {
   cursor: pointer;
 }
 
+@media (min-width: 900px) {
+
+  .burger {
+    display: none;
+  }
+
+  .nav-wrapper {
+    position: static;
+    height: auto;
+    transform: none;
+
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  nav a {
+    font-size: clamp(12px, 1vw, 16px);
+  }
+}
+
 /* ХОВАЄМО МЕНЮ */
 .nav-wrapper {
   position: fixed;

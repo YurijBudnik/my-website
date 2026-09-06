@@ -261,13 +261,12 @@ nav a {
 @media (max-width: 980px) {
   .logo {
   /* Мінімальний розмір 32px, адаптивний 3vw, максимальний 48px */
-  font-size: clamp(32px, 3vw, 48px);
+  font-size: clamp(28px, 3vw, 32px);
 }
 
 nav a {
   /* Мінімальний розмір 15px, адаптивний 1.2vw, максимальний 19px */
-  font-size: clamp(15px, 1.2vw, 19px);
-}
+  font-size: clamp(12px, 1.2vw, 15px);
   }
 }
 
@@ -275,10 +274,12 @@ nav a {
 @media (max-width: 800px) {
   .logo {
   /* Мінімальний розмір 32px, адаптивний 3vw, максимальний 48px */
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(24px, 3vw, 28px);
+  }
 }
 
 nav a {
   /* Мінімальний розмір 15px, адаптивний 1.2vw, максимальний 19px */
-  font-size: clamp(10px, 1.2vw, 15px);
+  font-size: clamp(8px, 1.2vw, 10px);
+  }
 }

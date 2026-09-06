@@ -135,7 +135,16 @@ nav a {
   font-size: 13px;
   font-family: 'Cormorant Garamond', serif;
   color: #777;
+  position: relative;
+  z-index: 10; /* Піднімає кнопку над іншими елементами, щоб вона клікалась */
+  user-select: none;
   letter-spacing: 0.05em;
+}
+
+/* Активна мова (яка зараз обрана) */
+.lang-switch .lang-link.active {
+  color: #000;
+  font-weight: 600;
 }
 
 .lang-switch a {

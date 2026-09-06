@@ -1,13 +1,31 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <title>Yurij Budnik</title>
+<header class="header">
 
-  <link rel="stylesheet" href="style.css">
+  <a href="index.html" class="logo">
+    Yurij Budnik <span>Accordionist</span>
+  </a>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
+  <button class="burger" onclick="toggleMenu()">☰</button>
+
+  <div class="nav-wrapper" id="menu">
+
+    <div class="lang-switch">
+      <a href="#" onclick="setLang(event,'ua')">UA</a> /
+      <a href="#" onclick="setLang(event,'en')">EN</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="biography.html" class="nav-link">Biography</a></li>
+        <li><a href="#" class="nav-link">Concerts</a></li>
+        <li><a href="#" class="nav-link">Media</a></li>
+        <li><a href="#" class="nav-link">Albums</a></li>
+        <li><a href="#" class="nav-link">News</a></li>
+        <li><a href="#" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
 
 <body>
 

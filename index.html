@@ -14,28 +14,37 @@
 <body>
 
 <header class="header">
-  <!-- Логотип -->
-  <a href="index.html" class="logo">
-    Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
-  </a> 
+  <div class="header-container">
+    <!-- Логотип -->
+    <a href="index.html" class="logo">
+      Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
+    </a> 
 
-  <!-- Блок навігації та перемикача мов -->
-  <div class="nav-wrapper">
-    <div class="lang-switch">
-      <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> /
-      <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a>
+    <!-- Кнопка Бургер-меню (видно лише на мобільних) -->
+    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Блок навігації та перемикача мов -->
+    <div class="nav-wrapper" id="navWrapper">
+      <div class="lang-switch">
+        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> /
+        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a>
+      </div>
+      
+      <nav>
+        <ul>
+          <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li>
+          <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li>
+          <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li>
+          <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li>
+          <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li>
+          <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    
-    <nav>
-      <ul>
-        <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li>
-        <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li>
-        <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li>
-        <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li>
-        <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li>
-        <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li>
-      </ul>
-    </nav>
   </div>
 </header>
 
@@ -63,6 +72,51 @@
   </div>
 </section>
 
+<script>
+// 1. Відкриття / Закриття бургер-меню
+const burgerBtn = document.getElementById('burgerBtn');
+const navWrapper = document.getElementById('navWrapper');
+
+burgerBtn.addEventListener('click', () => {
+  burgerBtn.classList.toggle('active');
+  navWrapper.classList.toggle('active');
+});
+
+// Закриття меню при кліку на будь-який пункт
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    burgerBtn.classList.remove('active');
+    navWrapper.classList.remove('active');
+  });
+});
+
+// 2. Перемикання мови
+function setLang(event, lang) {
+  if (event) event.preventDefault();
+
+  const translatableElements = document.querySelectorAll("[data-en][data-ua]");
+  translatableElements.forEach(el => {
+    if (el.dataset[lang]) {
+      el.textContent = el.dataset[lang];
+    }
+  });
+
+  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+}
+
+// 3. Активна вкладка меню
+const links = document.querySelectorAll(".nav-link");
+links.forEach(link => {
+  link.addEventListener("click", function() {
+    links.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>
 <script>
 // Перемикання мови для всього сайту
 function setLang(event, lang) {

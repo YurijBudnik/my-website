@@ -15,7 +15,7 @@
 
 <header class="header">
   <div class="header-container">
-    <!-- Логотип з атрибутами перекладу -->
+    <!-- Логотип -->
     <a href="index.html" class="logo">
       Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
     </a> 
@@ -94,6 +94,7 @@ burgerBtn.addEventListener('click', () => {
   navWrapper.classList.toggle('active');
 });
 
+// Закриття меню при клику на пункт
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     burgerBtn.classList.remove('active');
@@ -101,11 +102,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// 2. Універсальна функція перекладу ВСІЄЇ сторінки
+// 2. Універсальна функція перекладу сторінки
 function setLang(event, lang) {
   if (event) event.preventDefault();
 
-  // Знаходимо ВСІ елементи, у яких є атрибути data-en та data-ua
   const elements = document.querySelectorAll('[data-en][data-ua]');
 
   elements.forEach(el => {
@@ -114,56 +114,21 @@ function setLang(event, lang) {
     }
   });
 
-  // Оновлюємо стилі активної кнопки мови
+  // Оновлення активних кнопок
   document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
   document.getElementById("btn-en").classList.toggle("active", lang === "en");
+
+  // Збереження обраної мови
+  localStorage.setItem("selectedLang", lang);
 }
 
-// 3. Підсвічування активного пункту меню
-const links = document.querySelectorAll(".nav-link");
-links.forEach(link => {
-  link.addEventListener("click", function() {
-    links.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
-</script>
-
-
-<script>
-// 1. Відкриття / Закриття бургер-меню
-const burgerBtn = document.getElementById('burgerBtn');
-const navWrapper = document.getElementById('navWrapper');
-
-burgerBtn.addEventListener('click', () => {
-  burgerBtn.classList.toggle('active');
-  navWrapper.classList.toggle('active');
+// 3. Відновлення мови при завантаженні сторінки
+window.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem("selectedLang") || "en";
+  setLang(null, savedLang);
 });
 
-// Закриття меню при кліку на будь-який пункт
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    burgerBtn.classList.remove('active');
-    navWrapper.classList.remove('active');
-  });
-});
-
-// 2. Перемикання мови
-function setLang(event, lang) {
-  if (event) event.preventDefault();
-
-  const translatableElements = document.querySelectorAll("[data-en][data-ua]");
-  translatableElements.forEach(el => {
-    if (el.dataset[lang]) {
-      el.textContent = el.dataset[lang];
-    }
-  });
-
-  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
-  document.getElementById("btn-en").classList.toggle("active", lang === "en");
-}
-
-// 3. Активна вкладка меню
+// 4. Підсвічування активного пункту меню
 const links = document.querySelectorAll(".nav-link");
 links.forEach(link => {
   link.addEventListener("click", function() {
@@ -175,103 +140,3 @@ links.forEach(link => {
 
 </body>
 </html>
-<script>
-// Перемикання мови для всього сайту
-function setLang(event, lang) {
-  if (event) event.preventDefault();
-
-  // 1. Знаходимо всі елементи з атрибутами data-en та data-ua
-  const translatableElements = document.querySelectorAll("[data-en][data-ua]");
-
-  translatableElements.forEach(el => {
-    if (el.dataset[lang]) {
-      el.textContent = el.dataset[lang];
-    }
-  });
-
-  // 2. Оновлюємо підсвічування кнопок UA / EN
-  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
-  document.getElementById("btn-en").classList.toggle("active", lang === "en");
-}
-
-// Активна вкладка меню при кліку
-const links = document.querySelectorAll(".nav-link");
-links.forEach(link => {
-  link.addEventListener("click", function() {
-    links.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
-</script>
-
-</body>
-
-
-<script>
-function setLang(event, lang) {
-  event.preventDefault();
-
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.innerHTML = el.dataset[lang];
-  });
-
-  localStorage.setItem("lang", lang);
-}
-
-window.onload = () => {
-  const savedLang = localStorage.getItem("lang") || "en";
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.innerHTML = el.dataset[savedLang];
-  });
-};
-</script>
-
-</body>
-
-
-let currentLang = "en";
-
-function switchLang() {
-  const items = document.querySelectorAll(".nav-link");
-
-  currentLang = currentLang === "en" ? "ua" : "en";
-
-  items.forEach(item => {
-    item.textContent = item.dataset[currentLang];
-  });
-}
-
-// активна вкладка
-const links = document.querySelectorAll(".nav-link");
-
-links.forEach(link => {
-  link.addEventListener("click", function() {
-    links.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
-</script>
-
-  <script>
-function setLang(event, lang) {
-  event.preventDefault();
-
-  const items = document.querySelectorAll(".nav-link");
-
-  items.forEach(item => {
-    item.textContent = item.dataset[lang];
-  });
-}
-</script>
-
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("open");
-}
-</script>
-
-  
-</body>
-</html>
-
-

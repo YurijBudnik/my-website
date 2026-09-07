@@ -56,7 +56,7 @@ body {
 }
 
 /* При масштабуванні / зменшенні робочої ширини приховуємо span */
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .logo span {
     display: none;
   }

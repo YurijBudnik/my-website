@@ -15,19 +15,19 @@
 
 <header class="header">
   <div class="header-container">
-    <!-- Логотип -->
+    <!-- Логотип з атрибутами перекладу -->
     <a href="index.html" class="logo">
       Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
     </a> 
 
-    <!-- Кнопка Бургер-меню (видно лише на мобільних) -->
+    <!-- Кнопка Бургер-меню -->
     <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <!-- Блок навігації та перемикача мов -->
+    <!-- Навігація та Перемикач Мови -->
     <div class="nav-wrapper" id="navWrapper">
       <div class="lang-switch">
         <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> /
@@ -63,6 +63,62 @@
     <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p>
     <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p>
     <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
+  </div>
+
+  <div class="news-item">
+    <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p>
+    <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p>
+    <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p>
+  </div>
+</section>
+
+<script>
+// 1. Бургер-меню
+const burgerBtn = document.getElementById('burgerBtn');
+const navWrapper = document.getElementById('navWrapper');
+
+burgerBtn.addEventListener('click', () => {
+  burgerBtn.classList.toggle('active');
+  navWrapper.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    burgerBtn.classList.remove('active');
+    navWrapper.classList.remove('active');
+  });
+});
+
+// 2. Універсальна функція перекладу ВСІЄЇ сторінки
+function setLang(event, lang) {
+  if (event) event.preventDefault();
+
+  // Знаходимо ВСІ елементи, у яких є атрибути data-en та data-ua
+  const elements = document.querySelectorAll('[data-en][data-ua]');
+
+  elements.forEach(el => {
+    if (el.dataset[lang]) {
+      el.textContent = el.dataset[lang];
+    }
+  });
+
+  // Оновлюємо стилі активної кнопки мови
+  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+}
+
+// 3. Підсвічування активного пункту меню
+const links = document.querySelectorAll(".nav-link");
+links.forEach(link => {
+  link.addEventListener("click", function() {
+    links.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
   </div>
 
   <div class="news-item">

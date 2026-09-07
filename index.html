@@ -1,47 +1,31 @@
-<header class="header">
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurij Budnik</title>
 
-  <a href="index.html" class="logo">
-    Yurij Budnik <span>Accordionist</span>
-  </a>
+  <link rel="stylesheet" href="style.css">
 
-  <button class="burger" onclick="toggleMenu()">☰</button>
-
-  <div class="nav-wrapper" id="menu">
-
-    <div class="lang-switch">
-      <a href="#" onclick="setLang(event,'ua')">UA</a> /
-      <a href="#" onclick="setLang(event,'en')">EN</a>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="biography.html" class="nav-link">Biography</a></li>
-        <li><a href="#" class="nav-link">Concerts</a></li>
-        <li><a href="#" class="nav-link">Media</a></li>
-        <li><a href="#" class="nav-link">Albums</a></li>
-        <li><a href="#" class="nav-link">News</a></li>
-        <li><a href="#" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-
-  </div>
-</header>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
 <body>
 
 <header class="header">
-
-  <a href="index.html" class="logo" data-en="Yurij Budnik" data-ua="Юрій Будник">
+  <!-- Логотип -->
+  <a href="index.html" class="logo">
     Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
-  </a>
+  </a> 
 
+  <!-- Блок навігації та перемикача мов -->
   <div class="nav-wrapper">
-
     <div class="lang-switch">
-      <a href="#" onclick="setLang(event,'ua')">UA</a> /
-      <a href="#" onclick="setLang(event,'en')">EN</a>
+      <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> /
+      <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a>
     </div>
-
+    
     <nav>
       <ul>
         <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li>
@@ -52,17 +36,64 @@
         <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li>
       </ul>
     </nav>
-
   </div>
 </header>
 
 <section class="hero"></section>
-
+  
 <section class="news">
   <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2>
 
   <div class="news-item">
-    <p class="date">April 18, 2026</p>
+    <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p>
+    <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"The Chopin winning pianist had me under his spell"</p>
+    <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p>
+  </div>
+
+  <div class="news-item">
+    <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p>
+    <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p>
+    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
+  </div>
+
+  <div class="news-item">
+    <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p>
+    <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p>
+    <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p>
+  </div>
+</section>
+
+<script>
+// Перемикання мови для всього сайту
+function setLang(event, lang) {
+  if (event) event.preventDefault();
+
+  // 1. Знаходимо всі елементи з атрибутами data-en та data-ua
+  const translatableElements = document.querySelectorAll("[data-en][data-ua]");
+
+  translatableElements.forEach(el => {
+    if (el.dataset[lang]) {
+      el.textContent = el.dataset[lang];
+    }
+  });
+
+  // 2. Оновлюємо підсвічування кнопок UA / EN
+  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+}
+
+// Активна вкладка меню при кліку
+const links = document.querySelectorAll(".nav-link");
+links.forEach(link => {
+  link.addEventListener("click", function() {
+    links.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>    <p class="date">April 18, 2026</p>
     <p class="title" data-en="The Chopin winning pianist had me under his spell"
        data-ua="Переможець конкурсу Шопена зачарував мене">
        The Chopin winning pianist had me under his spell

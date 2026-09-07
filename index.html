@@ -1,68 +1,86 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yurij Budnik</title>
+<!DOCTYPE html> <!-- Оголошує документ як HTML5 -->
+<html lang="uk"> <!-- Вказує мову сторінки -->
+<head> <!-- Початок блоку метаданих -->
+  <meta charset="UTF-8"> <!-- Встановлює кодування UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Налаштовує адаптивність для мобільних -->
+  <title>Yurij Budnik</title> <!-- Заголовок вкладки браузера -->
+  <link rel="stylesheet" href="style.css"> <!-- Підключає файл стилів CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Прискорює з'єднання з Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Дозволяє завантаження шрифтів з зовнішнього домену -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"> <!-- Підключає шрифт Cormorant Garamond -->
+</head> <!-- Кінець блоку метаданих -->
+<body> <!-- Початок відображуваного вмісту сторінки -->
 
-  <link rel="stylesheet" href="style.css">
+<header class="header"> <!-- Фіксована шапка сайту -->
+  <div class="header-container"> <!-- Контейнер для центрування елементів шапки -->
+    <a href="index.html" class="logo">Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span></a> <!-- Логотип з текстом та підписом -->
+    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button> <!-- Кнопка мобільного меню з трьома смужками -->
+    <div class="nav-wrapper" id="navWrapper"> <!-- Обгортка навігації та мовного перемикача -->
+      <div class="lang-switch"> <!-- Блок перемикання мови -->
+        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> / <!-- Кнопка переключення на українську -->
+        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a> <!-- Кнопка переключення на англійську -->
+      </div> <!-- Кінець блоку мов -->
+      <nav> <!-- Блок навігаційного меню -->
+        <ul> <!-- Список пунктів меню -->
+          <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li> <!-- Пункт Біографія -->
+          <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li> <!-- Пункт Концерти -->
+          <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li> <!-- Пункт Медіа -->
+          <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li> <!-- Пункт Альбоми -->
+          <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li> <!-- Пункт Новини -->
+          <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li> <!-- Пункт Контакти -->
+        </ul> <!-- Кінець списку пунктів -->
+      </nav> <!-- Кінець навігації -->
+    </div> <!-- Кінець обгортки навігації -->
+  </div> <!-- Кінець контейнера шапки -->
+</header> <!-- Кінець шапки -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
+<section class="hero"></section> <!-- Секція з головним фоновим зображенням без проміжків -->
 
-<header class="header">
-  <div class="header-container">
-    <!-- Логотип -->
-    <a href="index.html" class="logo">
-      Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
-    </a> 
+<section class="news"> <!-- Секція блоку новин -->
+  <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2> <!-- Заголовок секції новин -->
 
-    <!-- Кнопка Бургер-меню -->
-    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <div class="news-item"> <!-- Картка першої новини -->
+    <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p> <!-- Дата новини -->
+    <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"The Chopin winning pianist had me under his spell"</p> <!-- Назва новини -->
+    <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p> <!-- Джерело новини -->
+  </div> <!-- Кінець першої новини -->
 
-    <!-- Навігація та Перемикач Мови -->
-    <div class="nav-wrapper" id="navWrapper">
-      <div class="lang-switch">
-        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> /
-        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a>
-      </div>
-      
-      <nav>
-        <ul>
-          <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li>
-          <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li>
-          <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li>
-          <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li>
-          <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li>
-          <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+  <div class="news-item"> <!-- Картка другої новини -->
+    <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p> <!-- Дата новини -->
+    <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p> <!-- Назва новини -->
+    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p> <!-- Джерело новини -->
+  </div> <!-- Кінець другої новини -->
 
-<section class="hero"></section>
-  
-<section class="news">
-  <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2>
+  <div class="news-item"> <!-- Картка третьої новини -->
+    <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p> <!-- Дата новини -->
+    <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p> <!-- Назва новини -->
+    <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p> <!-- Джерело новини -->
+  </div> <!-- Кінець третьої новини -->
+</section> <!-- Кінець секції новин -->
 
-  <div class="news-item">
-    <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p>
-    <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"The Chopin winning pianist had me under his spell"</p>
-    <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p>
-  </div>
+<script> <!-- Початок скрипта JavaScript -->
+  const burgerBtn = document.getElementById('burgerBtn'); <!-- Знаходить кнопку бургер-меню -->
+  const navWrapper = document.getElementById('navWrapper'); <!-- Знаходить блок навігації -->
 
-  <div class="news-item">
-    <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p>
-    <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p>
-    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
+  burgerBtn.addEventListener('click', () => { burgerBtn.classList.toggle('active'); navWrapper.classList.toggle('active'); }); <!-- Обробляє клік по бургеру -->
+
+  document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { burgerBtn.classList.remove('active'); navWrapper.classList.remove('active'); }); }); <!-- Закриває меню при виборі пункту -->
+
+  function setLang(event, lang) { <!-- Функція для зміни мови всієї сторінки -->
+    if (event) event.preventDefault(); <!-- Скасовує стандартну дію посилання -->
+    document.querySelectorAll('[data-en][data-ua]').forEach(el => { if (el.dataset[lang]) el.textContent = el.dataset[lang]; }); <!-- Перекладає всі елементи з атрибутами -->
+    document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль кнопки UA -->
+    document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль кнопки EN -->
+    localStorage.setItem("selectedLang", lang); <!-- Зберігає мову у пам'яті браузера -->
+  } <!-- Кінець функції перекладу -->
+
+  window.addEventListener('DOMContentLoaded', () => { const savedLang = localStorage.getItem("selectedLang") || "en"; setLang(null, savedLang); }); <!-- Відновлює обрану мову при завантаженні -->
+
+  document.querySelectorAll(".nav-link").forEach(link => { link.addEventListener("click", function() { document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active")); this.classList.add("active"); }); }); <!-- Підсвічує активний пункт меню -->
+</script> <!-- Кінець блоку JavaScript -->
+
+</body> <!-- Кінець тіла сторінки -->
+</html> <!-- Закриваючий тег HTML -->    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
   </div>
 
   <div class="news-item">

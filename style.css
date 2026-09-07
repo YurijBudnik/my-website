@@ -19,15 +19,16 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  height: auto;
+  min-height: 70px;
   background: #ffffff;
   z-index: 1000;
   border-bottom: 1px solid #eee;
+  padding: 10px 0;
 }
 
 .header-container {
   max-width: 1200px;
-  height: 100%;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
@@ -35,20 +36,30 @@ body {
   justify-content: space-between;
 }
 
-/* LOGO */
+/* LOGO: Базовий розмір 48px для мобільного, 
+   але адаптивний (зменшується при зумі/звуженні) */
 .logo {
   text-decoration: none;
   color: #000000;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-size: clamp(24px, 8vw, 48px); /* Динамічно зменшується від 48px до 24px при збільшенні зуму */
   line-height: 1;
+  transition: all 0.3s ease;
 }
 
 .logo span {
-  font-size: 15px;
+  font-size: clamp(14px, 3.5vw, 22px);
   color: #2f2f2f;
   font-weight: 300;
-  margin-left: 4px;
+  margin-left: 6px;
+  display: inline-block;
+}
+
+/* При масштабуванні / зменшенні робочої ширини приховуємо span */
+@media (max-width: 500px) {
+  .logo span {
+    display: none;
+  }
 }
 
 /* Кнопка Гамбургер */
@@ -63,6 +74,174 @@ body {
   cursor: pointer;
   padding: 0;
   z-index: 1001;
+}
+
+.burger-menu span {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+.burger-menu.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger-menu.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Випадаюче вертикальне меню на мобільному */
+.nav-wrapper {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 20px 0 30px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.nav-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #45494E;
+  font-size: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+nav a.active, nav a:hover {
+  color: #000;
+}
+
+.lang-switch {
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch .lang-link {
+  color: #777;
+  text-decoration: none;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.lang-switch .lang-link.active {
+  color: #000;
+  font-weight: 600;
+}
+
+/* HERO & NEWS */
+.hero {
+  height: 60vh;
+  margin-top: 80px;
+  background: url('hero.jpg') center/cover no-repeat;
+}
+
+.news {
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.news h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.news-item {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.date { font-size: 12px; color: gray; }
+.title { font-size: 17px; margin: 8px 0; }
+.source { font-size: 14px; color: #555; }
+
+/* ==========================================
+   2. Десктопна версія (від 768px і вище)
+   ========================================== */
+
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+    padding: 0;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .logo {
+    font-size: 48px;
+  }
+
+  .logo span {
+    font-size: 26px;
+    display: inline-block !important;
+  }
+
+  .nav-wrapper {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  nav a {
+    font-size: 19px;
+  }
+
+  .lang-switch {
+    font-size: 13px;
+  }
+
+  .hero {
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+  }
+}  z-index: 1001;
 }
 
 .burger-menu span {

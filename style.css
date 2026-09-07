@@ -10,7 +10,7 @@ body { margin: 0; font-family: 'Cormorant Garamond', serif; overflow-y: scroll; 
 
 .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; } /* Центрує та вирівнює елементи шапки */
 
-.logo { text-decoration: none; color: #000000; font-family: 'Cormorant Garamond', serif; font-size: 48px; line-height: 1; transition: all 0.3s ease; } /* Встановлює розмір логотипу 48px за замовчуванням */
+.logo { text-decoration: none; color: #000000; font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; transition: all 0.3s ease; } /* Встановлює розмір логотипу 48px за замовчуванням */
 
 .logo span { font-size: 22px; color: #2f2f2f; font-weight: 300; margin-left: 6px; display: inline-block; } /* Налаштовує вигляд та відображення підпису Accordionist */
 

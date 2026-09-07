@@ -1,68 +1,288 @@
+/* ==========================================
+   1. БАЗОВІ СТИЛІ (MOBILE-FIRST)
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+  overflow-y: scroll;
+  color: #000;
+  background: #fff;
 }
 
-/* HEADER */
+/* HEADER (Мобільна версія) */
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  height: 70px;
-  padding: 0 20px;
+  height: auto;
+  min-height: 70px;
+  padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* На мобільних логотип зверху, меню знизу */
   align-items: center;
-  background: white;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #000000;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+.header.scrolled {
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* LOGO */
 .logo {
-  font-size: clamp(18px, 2vw, 32px);
   text-decoration: none;
-  color: black;
+  color: #000000;
+  text-transform: capitalize;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .logo span {
-  display: none;
+  display: block; /* На мобільному підпис з нового рядка */
+  font-size: 14px;
+  color: #2f2f2f;
+  font-weight: 300;
 }
 
-/* NAV WRAPPER */
+/* NAV WRAPPER & LANG SWITCH */
 .nav-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
 }
 
-/* LANG */
 .lang-switch {
   font-size: 12px;
+  font-family: 'Cormorant Garamond', serif;
   color: #777;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+  letter-spacing: 0.05em;
 }
 
-/* MENU */
+.lang-switch .lang-link {
+  color: #777;
+  text-decoration: none;
+  padding: 2px 4px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.lang-switch .lang-link:hover,
+.lang-switch .lang-link.active {
+  color: #000000;
+  font-weight: 600;
+}
+
+/* NAVIGATION */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 nav ul {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  justify-content: center;
   list-style: none;
+  gap: 12px;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap; /* Дозволяє кнопкам переноситися на мобільному */
+}
+
+nav li {
+  cursor: pointer;
+  width: auto;
+  text-align: center;
 }
 
 nav a {
   text-decoration: none;
-  color: #555;
-  font-size: 12px;
+  color: #45494E;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
 }
 
-nav a:hover {
-  color: black;
+/* Лінія при наведенні */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: #000000;
+  transition: width 0.3s ease;
 }
 
-/* HERO */
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: #000000;
+}
+
+/* HERO SECTION */
 .hero {
   height: 60vh;
-  margin-top: 70px;
+  margin-top: 110px; /* Зсув під мобільну шапку */
+  background: url('hero.jpg') center/cover no-repeat;
+}
+
+/* NEWS SECTION */
+.news {
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.news h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.news h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #999;
+  margin: 10px auto 30px;
+}
+
+.news-item {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.date {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 17px;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.source {
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+}
+
+
+/* ==========================================
+   2. АДАПТИВНІСТЬ (TABLETS & DESKTOPS)
+   ========================================== */
+
+/* Планшети (від 768px) */
+@media (min-width: 768px) {
+  .header {
+    height: 80px;
+    padding: 0 40px;
+    flex-direction: row; /* Повертаємо рядкове розташування */
+    justify-content: space-between;
+  }
+
+  .logo {
+    text-align: left;
+    font-size: 32px;
+  }
+
+  .logo span {
+    display: inline-block; /* Повертаємо в один рядок з іменем */
+    font-size: 22px;
+    margin-left: 6px;
+  }
+
+  .nav-wrapper {
+    width: auto;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  nav ul {
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+
+  .hero {
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+  }
+
+  .news {
+    padding: 100px 20px;
+  }
+
+  .news h2 {
+    font-size: 28px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+}
+
+/* Великі монітори та десктопи (від 1024px) */
+@media (min-width: 1024px) {
+  .logo {
+    font-size: 40px;
+  }
+
+  .logo span {
+    font-size: 26px;
+  }
+
+  nav ul {
+    gap: 30px;
+  }
+
+  nav a {
+    font-size: 19px;
+  }
+}  margin-top: 70px;
   background: url('hero.jpg') center/cover no-repeat;
 }
 

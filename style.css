@@ -1,74 +1,254 @@
-* { box-sizing: border-box; } /* Враховує внутрішні відступи та рамки в загальну ширину елементів */
+* {
+  box-sizing: border-box;                              /* Враховує відступи й рамки в загальну ширину */
+}
 
-body { margin: 0; font-family: 'Cormorant Garamond', serif; overflow-y: scroll; color: #000; background: #fff; } /* Задає базові стилі для тіла сторінки */
+body {
+  margin: 0;                                           /* Скидає стандартні зовнішні відступи */
+  font-family: 'Cormorant Garamond', serif;            /* Основний шрифт для всієї сторінки */
+  overflow-y: scroll;                                  /* Залишає вертикальну смугу прокручування */
+  color: #000;                                         /* Основний колір тексту */
+  background: #fff;                                    /* Фоновий колір сторінки */
+}
 
 /* ==========================================
    1. Мобільна версія (Mobile-First)
    ========================================== */
 
-.header { position: fixed; top: 0; left: 0; width: 100%; min-height: 70px; background: #ffffff; z-index: 1000; border-bottom: 1px solid #eee; padding: 10px 0; } /* Фіксує шапку вгорі сторінки */
-
-.header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; } /* Центрує та вирівнює елементи шапки */
-
-.logo { text-decoration: none; color: #000000; font-family: 'Cormorant Garamond', serif; font-size: 48px; line-height: 1; transition: all 0.3s ease; } /* Встановлює розмір логотипу 48px за замовчуванням */
-
-.logo span { font-size: 22px; color: #2f2f2f; font-weight: 300; margin-left: 6px; display: inline-block; } /* Налаштовує вигляд та відображення підпису Accordionist */
-
-/* Зменшення логотипу та приховування span ТІЛЬКИ при сильному зумі / дуже вузькому екрані (< 360px) */
-@media (max-width: 360px) {
-  .logo { font-size: 32px; } /* Зменшує розмір шрифту логотипу для надмалих екранів */
-  .logo span { display: none; } /* Приховує span Accordionist при бракi місця */
+.header {
+  position: fixed;                                     /* Фіксує шапку вгорі при скролі */
+  top: 0;                                              /* Прикріплює шапку до верхнього краю */
+  left: 0;                                             /* Прикріплює шапку до лівого краю */
+  width: 100%;                                         /* Розтягує шапку на всю ширину */
+  background: #ffffff;                                 /* Білий фон для шапки */
+  z-index: 1000;                                       /* Шапка завжди поверх решти контенту */
+  border-bottom: 1px solid #eee;                       /* Тонка нижня рамка */
+  padding: 10px 0;                                     /* Внутрішній вертикальний відступ */
+  transition: all 0.3s ease;                           /* Плавний перехід зміни висоти шапки */
 }
 
-.burger-menu { display: flex; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } /* Стилізує кнопку гамбургера */
+.header-container {
+  max-width: 1200px;                                   /* Обмежує максимальну ширину */
+  margin: 0 auto;                                      /* Центрує контейнер по горизонталі */
+  padding: 0 20px;                                     /* Внутрішні відступи з боків */
+  display: flex;                                       /* Вмикає Flexbox для вирівнювання */
+  align-items: center;                                 /* Вирівнює елементи по вертикалі */
+  justify-content: space-between;                      /* Розподіляє елементи по краях */
+  flex-wrap: wrap;                                     /* Дозволяє меню переноситися на новий рядок */
+}
 
-.burger-menu span { width: 100%; height: 2px; background-color: #000; transition: all 0.3s ease; } /* Створює лінії всередині кнопки бургера */
+.logo {
+  text-decoration: none;                               /* Прибирає підкреслення посилання */
+  color: #000000;                                      /* Чорний колір тексту логотипу */
+  font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
+  font-size: 48px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
+  line-height: 1;                                      /* Висота рядка */
+  transition: all 0.3s ease;                           /* Плавна анімація змін */
+}
 
-.burger-menu.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); } /* Повертає верхню лінію при відкритті */
-.burger-menu.active span:nth-child(2) { opacity: 0; } /* Приховує середню лінію при відкритті */
-.burger-menu.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } /* Повертає нижню лінію при відкритті */
+.logo span {
+  font-size: 22px;                                     /* Розмір шрифту підпису Accordionist */
+  color: #2f2f2f;                                      /* Темно-сірий колір для span */
+  font-weight: 300;                                    /* Полегшена товщина шрифту */
+  margin-left: 6px;                                    /* Відступ ліворуч від імені */
+  display: inline-block;                               /* Відображається поруч з текстом */
+}
 
-.nav-wrapper { position: absolute; top: 100%; left: 0; width: 100%; background: #ffffff; padding: 20px 0 30px; display: flex; flex-direction: column-reverse; align-items: center; gap: 20px; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; } /* Налаштовує випадаюче мобільне меню */
+/* Зменшення при дуже вузькому екрані або сильному зумі (< 360px) */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 32px;                                   /* Зменшує розмір логотипу при бракi місця */
+  }
+  .logo span {
+    display: none;                                     /* Приховує span при екстремальному зумі */
+  }
+}
 
-.nav-wrapper.active { opacity: 1; visibility: visible; transform: translateY(0); } /* Відображає мобільне меню при активації */
+.burger-menu {
+  display: flex;                                       /* Флекс-контейнер для смужок */
+  flex-direction: column;                              /* Розміщує смужки одну під одною */
+  justify-content: space-between;                      /* Рівномірний інтервал між смужками */
+  width: 26px;                                         /* Ширина кнопки бургера */
+  height: 18px;                                        /* Висота кнопки бургера */
+  background: transparent;                             /* Прозорий фон */
+  border: none;                                        /* Без рамки */
+  cursor: pointer;                                     /* Вказівник миші при наведенні */
+  padding: 0;                                          /* Скидає відступи */
+  z-index: 1001;                                       /* Кнопка завжди поверх меню */
+}
 
-nav ul { display: flex; flex-direction: column; align-items: center; list-style: none; gap: 15px; padding: 0; margin: 0; } /* Вирівнює список посилань навігації */
+.burger-menu span {
+  width: 100%;                                         /* Ширина кожної смужки */
+  height: 2px;                                         /* Товщина смужки */
+  background-color: #000;                              /* Чорний колір смужок */
+  transition: all 0.3s ease;                           /* Плавне перетворення на хрестик */
+}
 
-nav a { text-decoration: none; color: #45494E; font-size: 18px; font-family: 'Cormorant Garamond', serif; transition: color 0.3s ease; position: relative; } /* Стилізує посилання меню */
+.burger-menu.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);            /* Повертає верхню лінію */
+}
 
-nav a.active, nav a:hover { color: #000; } /* Підсвічує активне або наведене посилання */
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;                                          /* Приховує середню лінію */
+}
 
-.lang-switch { font-size: 14px; letter-spacing: 0.05em; } /* Стилізує блок перемикання мов */
+.burger-menu.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);           /* Повертає нижню лінію */
+}
 
-.lang-switch .lang-link { color: #777; text-decoration: none; padding: 2px 6px; cursor: pointer; } /* Налаштовує вигляд кнопок UA/EN */
+.nav-wrapper {
+  width: 100%;                                         /* Меню займає всю ширину шапки */
+  background: #ffffff;                                 /* Білий фон меню */
+  display: flex;                                       /* Вмикає Flexbox */
+  flex-direction: column-reverse;                      /* Розміщує мови під навігацією */
+  align-items: center;                                 /* Центрує пункти по горизонталі */
+  gap: 20px;                                           /* Відстань між елементами */
+  max-height: 0;                                       /* Меню закрите за замовчуванням */
+  overflow: hidden;                                    /* Приховує контент у закритому стані */
+  opacity: 0;                                          /* Повна прозорість у закритому стані */
+  transition: all 0.4s ease;                           /* Плавне відкриття та розгортання */
+}
 
-.lang-switch .lang-link.active { color: #000; font-weight: 600; } /* Виділяє активну мову */
+/* Стан меню при відкритті (активується через JS) */
+.nav-wrapper.active {
+  max-height: 400px;                                   /* Розгортає шапку під висоту меню */
+  opacity: 1;                                          /* Робить меню повністю видимим */
+  padding-top: 20px;                                   /* Внутрішній відступ зверху */
+  padding-bottom: 10px;                                /* Внутрішній відступ знизу */
+}
 
-/* HERO: Прибрано margin-top, щоб прибрати білу смугу між шапкою та фоном */
-.hero { height: 60vh; padding-top: 70px; background: url('hero.jpg') center/cover no-repeat; margin: 0; } /* Задає фон без відступів від шапки */
+nav ul {
+  display: flex;                                       /* Флекс-контейнер для пунктів */
+  flex-direction: column;                              /* Пункти розміщуються вертикально */
+  align-items: center;                                 /* Центрування пунктів */
+  list-style: none;                                    /* Прибирає маркери списку */
+  gap: 15px;                                           /* Відстань між пунктами меню */
+  padding: 0;                                          /* Скидає внутрішні відступи */
+  margin: 0;                                           /* Скидає зовнішні відступи */
+}
 
-.news { background: #f5f5f5; padding: 60px 20px; text-align: center; } /* Оформлює блок новин */
+nav a {
+  text-decoration: none;                               /* Прибирає підкреслення посилань */
+  color: #45494E;                                      /* Темно-сірий колір посилань */
+  font-size: 18px;                                     /* Розмір шрифту пунктів меню */
+  font-family: 'Cormorant Garamond', serif;            /* Шрифт посилань */
+  transition: color 0.3s ease;                         /* Плавна зміна кольору */
+}
 
-.news h2 { font-size: 24px; margin-bottom: 20px; } /* Задає розмір заголовка новин */
+nav a.active, 
+nav a:hover {
+  color: #000;                                         /* Чорний колір для активного/наведеного пункту */
+}
 
-.news-item { max-width: 600px; margin: 0 auto 30px; border-bottom: 1px solid #ccc; padding-bottom: 20px; } /* Оформлює окрему картку новини */
+.lang-switch {
+  font-size: 14px;                                     /* Розмір шрифту для кнопок мови */
+  letter-spacing: 0.05em;                              /* Міжлітерний інтервал */
+}
 
-.date { font-size: 12px; color: gray; } /* Задає вигляд дати новини */
-.title { font-size: 17px; margin: 8px 0; } /* Задає вигляд заголовка новини */
-.source { font-size: 14px; color: #555; } /* Задає вигляд джерела новини */
+.lang-switch .lang-link {
+  color: #777;                                         /* Сірий колір неактивної мови */
+  text-decoration: none;                               /* Без підкреслення */
+  padding: 2px 6px;                                    /* Внутрішній відступ кнопок */
+  cursor: pointer;                                     /* Клікабельний курсор */
+}
+
+.lang-switch .lang-link.active {
+  color: #000;                                         /* Чорний колір активної мови */
+  font-weight: 600;                                    /* Напівжирний шрифт */
+}
+
+/* HERO: Динамічно підлаштовується під висоту шапки */
+.hero {
+  height: 60vh;                                        /* Висота фонового блоку */
+  background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
+  margin-top: 68px;                                    /* Початковий відступ під висоту закритої шапки */
+  transition: margin-top 0.4s ease;                   /* Плавний зсув фону слідом за розгортанням шапки */
+}
+
+.news {
+  background: #f5f5f5;                                 /* Світло-сірий фон для новин */
+  padding: 60px 20px;                                  /* Внутрішні відступи секції */
+  text-align: center;                                  /* Центрування тексту */
+}
+
+.news h2 {
+  font-size: 24px;                                     /* Розмір заголовка */
+  margin-bottom: 20px;                                 /* Відступ знизу від заголовка */
+}
+
+.news-item {
+  max-width: 600px;                                   /* Обмеження ширини новини */
+  margin: 0 auto 30px;                                 /* Центрування та відступ між новинами */
+  border-bottom: 1px solid #ccc;                       /* Нижній розділювач */
+  padding-bottom: 20px;                                /* Відступ до розділювача */
+}
+
+.date { 
+  font-size: 12px;                                     /* Малий розмір для дати */
+  color: gray;                                         /* Сірий колір дати */
+}
+
+.title { 
+  font-size: 17px;                                     /* Розмір заголовка новини */
+  margin: 8px 0;                                       /* Вертикальні відступи */
+}
+
+.source { 
+  font-size: 14px;                                     /* Розмір шрифту джерела */
+  color: #555;                                         /* Темно-сірий колір */
+}
 
 /* ==========================================
    2. Десктопна версія (від 768px)
    ========================================== */
 
 @media (min-width: 768px) {
-  .header { height: 80px; padding: 0; } /* Збільшує висоту шапки для ПК */
-  .burger-menu { display: none; } /* Приховує бургер-кнопку на десктопі */
-  .logo { font-size: 48px; } /* Фіксує розмір логотипу на десктопі */
-  .logo span { font-size: 26px; display: inline-block !important; } /* Показує span на десктопі */
-  .nav-wrapper { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; padding: 0; width: auto; flex-direction: column; align-items: flex-end; gap: 6px; } /* Перетворює меню на десктопний вигляд */
-  nav ul { flex-direction: row; gap: 25px; } /* Розміщує пункти меню в один рядок */
-  nav a { font-size: 19px; } /* Збільшує шрифт посилань для ПК */
-  .lang-switch { font-size: 13px; } /* Налаштовує розмір перемикача мов */
-  .hero { height: 100vh; padding-top: 80px; } /* Задає висоту головного фону на повний екран ПК */
+  .header {
+    padding: 15px 0;                                   /* Фіксовані відступи шапки на ПК */
+  }
+
+  .header-container {
+    flex-wrap: nowrap;                                 /* Забороняє перенос елементів */
+  }
+
+  .burger-menu {
+    display: none;                                     /* Приховує бургер на десктопі */
+  }
+
+  .logo {
+    font-size: 48px;                                   /* Розмір логотипу для ПК */
+  }
+
+  .logo span {
+    font-size: 26px;                                   /* Розмір span для ПК */
+    display: inline-block !important;                  /* Завжди показує span на ПК */
+  }
+
+  .nav-wrapper {
+    max-height: none !important;                       /* Скасовує обмеження висоти */
+    opacity: 1 !important;                             /* Завжди видиме меню */
+    overflow: visible;                                 /* Показує весь контент */
+    width: auto;                                       /* Авто-ширина */
+    padding: 0 !important;                             /* Скидає відступи */
+    flex-direction: column;                            /* Мови зверху, навігація знизу */
+    align-items: flex-end;                             /* Вирівнювання по правому краю */
+    gap: 6px;                                          /* Відстань між елементами */
+  }
+
+  nav ul {
+    flex-direction: row;                               /* Пункти в один рядок */
+    gap: 25px;                                         /* Відстань між пунктами */
+  }
+
+  nav a {
+    font-size: 19px;                                   /* Збільшений шрифт посилань */
+  }
+
+  .lang-switch {
+    font-size: 13px;                                   /* Розмір шрифту мов */
+  }
+
+  .hero {
+    height: calc(100vh - 80px);                        /* Висота фону на весь екран ПК */
+    margin-top: 80px !important;                       /* Фіксований відступ під шапку ПК */
+  }
 }

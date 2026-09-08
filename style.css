@@ -272,16 +272,16 @@ nav a:hover {
   }
 
   .nav-wrapper {
-    max-height: none !important;                       /* Скасовуємо обмеження висоти */
-    opacity: 1 !important;                             /* Меню завжди видиме */
-    display: flex;
-    overflow: visible;                                 /* Показуємо весь контент */
-    width: auto;                                       /* Авто-ширина */
-    padding: 0 !important;                             /* Скидаємо внутрішні відступи */
-    flex-direction: column;                            /* Мови зверху, навігація знизу */
-    align-items: flex-end;                             /* Вирівнювання по правому краю */
-    gap: 4px;                                          /* Зменшений відступ між мовами та меню */
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;
     margin-left: auto;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    width: auto;
+    padding: 0 !important;
+    gap: 4px;
     background: transparent;
   }
 
@@ -307,14 +307,14 @@ nav a:hover {
   }
 
   .lang-switch {
-    font-size: 12px;                                   /* Зменшений шрифт перемикача мов */
     display: flex;
     justify-content: flex-end;
+    font-size: 12px;                                   /* Зменшений шрифт перемикача мов */
   }
 
   .hero {
-    height: calc(100vh - 65px);                        /* Висота фону з урахуванням компактнішої шапки */
-    margin-top: 65px !important;                       /* Зменшений відступ під шапку планшета */
+    height: calc(100vh - 80px);                        /* Висота фону з урахуванням компактнішої шапки */
+    margin-top: 80px !important;                       /* Зменшений відступ під шапку планшета */
   }
 
   .burger-menu {

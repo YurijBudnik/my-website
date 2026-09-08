@@ -105,8 +105,8 @@
   // Закриття меню при клику на будь-який пункт
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-      burgerBtn.classList.remove('active');             <!-- Скидає анімацію хрестика -->
-      navWrapper.classList.remove('active');            <!-- Згортає меню -->
+      if (burgerBtn) burgerBtn.classList.remove('active');  <!-- Скидає анімацію хрестика -->
+      if (navWrapper) navWrapper.classList.remove('active');   <!-- Згортає меню -->
       updateHeroMargin();                               <!-- Повертає початковий відступ фону -->
     });
   });

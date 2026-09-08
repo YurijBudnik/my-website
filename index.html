@@ -73,67 +73,29 @@
 </section>
 
 <script>                                                <!-- Початок JavaScript-коду -->
-  const burgerBtn = document.getElementById('burgerBtn');  <!-- Отримує елемент кнопки бургер-меню -->
-  const navWrapper = document.getElementById('navWrapper');<!-- Отримує елемент випадаючого меню -->
-  const header = document.getElementById('header');        <!-- Отримує елемент шапки -->
-  const hero = document.getElementById('hero');            <!-- Отримує елемент головного фону -->
-
-  if (!header || !hero) {
-    // Виправлена помилка 'return;s'
-  } else {
-
-  // Обробка натискання на бургер-меню
-  // Оновлений обробник бургера (без setTimeout)
-if (burgerBtn) {
-  burgerBtn.addEventListener('click', () => {
-    burgerBtn.classList.toggle('active');
-    navWrapper.classList.toggle('active');
-
-    if (window.innerWidth < 768 && hero && header) {
-      // За запитом кадру зчитуємо реальну висоту із вмістом
-      requestAnimationFrame(() => {
-        if (navWrapper.classList.contains('active')) {
-          hero.style.marginTop = header.scrollHeight + 'px';
-        } else {
-          hero.style.marginTop = '65px'; // Повертаємо базову висоту закритої шапки
-        }
-      });
-    }
-  });
-}
-
-  // Закриття меню при клику на будь-який пункт
-  document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    if (burgerBtn) burgerBtn.classList.remove('active');
-    if (navWrapper) navWrapper.classList.remove('active');
-    if (window.innerWidth < 768 && hero) {
-      hero.style.marginTop = '65px';
-    }
-  });
-});
-
-  // Перерахунок відступу при зміні розміру вікна
-  window.addEventListener('resize', updateHeroMargin);
-  window.addEventListener('orientationchange', updateHeroMargin);
+  <script>
+  // Отримуємо необхідні елементи
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navWrapper = document.getElementById('navWrapper');
+  const header = document.getElementById('header');
+  const hero = document.getElementById('hero');
 
   // Універсальна функція перекладу всієї сторінки
   window.setLang = function(event, lang) {
-    if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
-    
-    document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-     const newText = el.dataset[lang];
-     if (!newText) return;
+    if (event) event.preventDefault();
 
-    // Якщо всередині елемента є span (підпис Accordionist)
-     const childSpan = el.querySelector('.logo-subtitle');
-     if (childSpan) {
-      // Змінюємо тільки текст ім'я, залишаючи span недоторканим
-      el.childNodes[0].nodeValue = newText + ' ';
-     } else {
-       el.textContent = newText;
-     }
-   });
+    document.querySelectorAll('[data-en][data-ua]').forEach(el => {
+      const newText = el.dataset[lang];
+      if (!newText) return;
+
+      // Якщо всередині елемента є span підпису Accordionist
+      const childSpan = el.querySelector('.logo-subtitle');
+      if (childSpan) {
+        el.childNodes[0].nodeValue = newText + ' ';
+      } else {
+        el.textContent = newText;
+      }
+    });
 
     const btnUa = document.getElementById("btn-ua");
     const btnEn = document.getElementById("btn-en");
@@ -143,20 +105,55 @@ if (burgerBtn) {
     localStorage.setItem("selectedLang", lang);
   };
 
+  // Обробка натискання на бургер-меню
+  if (burgerBtn) {
+    burgerBtn.addEventListener('click', () => {
+      burgerBtn.classList.toggle('active');
+      navWrapper.classList.toggle('active');
 
-  // Завантаження збереженої мови та встановлення відступів при старті
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") || "en"; <!-- Зчитує збережену мову або ставить 'en' -->
-    setLang(null, savedLang);                           <!-- Перекладає сторінку -->
-    updateHeroMargin();                                 <!-- Встановлює правильний початковий відступ фону -->
+      if (window.innerWidth < 768 && hero && header) {
+        requestAnimationFrame(() => {
+          if (navWrapper.classList.contains('active')) {
+            hero.style.marginTop = header.scrollHeight + 'px';
+          } else {
+            hero.style.marginTop = '65px';
+          }
+        });
+      }
+    });
+  }
+
+  // Закриття меню при кліку на пункт навігації
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      // Прибираємо активний клас з інших пунктів і додаємо до поточного
+      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+      this.classList.add("active");
+
+      // Закриваємо мобільне меню
+      if (burgerBtn) burgerBtn.classList.remove('active');
+      if (navWrapper) navWrapper.classList.remove('active');
+      if (window.innerWidth < 768 && hero) {
+        hero.style.marginTop = '65px';
+      }
+    });
   });
 
-  // Підсвічування активного пункту меню
-  document.querySelectorAll(".nav-link").forEach(link => {
-    link.addEventListener("click", function() {
-      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active")); <!-- Скидає активні класи -->
-      this.classList.add("active");                     <!-- Додає клас активного пункту -->
-    });
+  // Автоматичне скидання марджину при зміні розміру вікна
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && hero) {
+      hero.style.marginTop = '';
+    }
+  });
+
+  // Завантаження збереженої мови та стартового відступу
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem("selectedLang") || "en";
+    setLang(null, savedLang);
+
+    if (window.innerWidth < 768 && hero) {
+      hero.style.marginTop = '65px';
+    }
   });
 </script>                                               <!-- Кінець JavaScript-коду -->
    

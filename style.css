@@ -59,7 +59,7 @@ body {
     font-size: 32px;                                   /* Зменшує розмір логотипу при бракi місця */
   }
   .logo span {
-    display: none;                                     /* Приховує span при екстремальному зумі */
+    display: none; !important;                         /* Приховує span при екстремальному зумі */
   }
 }
 

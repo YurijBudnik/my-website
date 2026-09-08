@@ -64,49 +64,9 @@ body {
 /* Підпис (span: Accordionist / Акордеоніст) */
 .logo .logo-subtitle {
   display: none !important;                          /* Приховано на мобільних та планшетах (до 1023px) */
-  font-weight: 300;
+  font-weight: 200;
   color: #2f2f2f;
   margin-left: 8px;
-}
-
-/* Зменшення при дуже вузькому екрані або сильному зумі (< 360px) */
-@media (max-width: 360px) {
-  .logo {
-    font-size: 32px;                                   /* Зменшує розмір логотипу при бракi місця */
-  }
-  .logo span {
-    display: none !important;                         /* Приховує span при екстремальному зумі */
-  }
-}
-
-@media (max-width: 767px) {  
-  .logo {
-    /* 
-       clamp(мінімальний_розмір, бажаний_розмір_від_в'юпорта, максимальний_розмір)
-       При зумі шрифт не виходитиме за рамки й пропорційно зменшуватиметься
-    */
-    font-size: clamp(10px, 6vw, 32px); 
-    line-height: 1.1;  
-  }
-
-  .nav-wrapper.active {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;                             /* Текст мобільного меню притиснутий праворуч */
-    text-align: right;
-  } 
- } 
- @media (max-width: 1023px) {
-  /* Забезпечуємо правильний фоновий блок hero */
-  .hero {
-    transition: margin-top 0.3s ease;
-  }   
-
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
 }
 
 .burger-menu {
@@ -241,6 +201,46 @@ nav a:hover {
 .source { 
   font-size: 14px;                                     /* Розмір шрифту джерела */
   color: #555;                                         /* Темно-сірий колір */
+}
+
+/* Зменшення при дуже вузькому екрані або сильному зумі (< 360px) */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 32px;                                   /* Зменшує розмір логотипу при бракi місця */
+  }
+  .logo span {
+    display: none !important;                         /* Приховує span при екстремальному зумі */
+  }
+}
+
+@media (max-width: 767px) {  
+  .logo {
+    /* 
+       clamp(мінімальний_розмір, бажаний_розмір_від_в'юпорта, максимальний_розмір)
+       При зумі шрифт не виходитиме за рамки й пропорційно зменшуватиметься
+    */
+    font-size: clamp(10px, 6vw, 32px); 
+    line-height: 1.1;  
+  }
+
+  .nav-wrapper.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;                             /* Текст мобільного меню притиснутий праворуч */
+    text-align: right;
+  } 
+ } 
+ @media (max-width: 1023px) {
+  /* Забезпечуємо правильний фоновий блок hero */
+  .hero {
+    transition: margin-top 0.3s ease;
+  }   
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
 
 /* ==========================================

@@ -117,21 +117,21 @@
 
   // Універсальна функція перекладу всієї сторінки
   window.setLang = function(event, lang) {
-      if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
+    if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
     
     document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-    const newText = el.dataset[lang];
-    if (!newText) return;
+     const newText = el.dataset[lang];
+     if (!newText) return;
 
     // Якщо всередині елемента є span (підпис Accordionist)
-    const childSpan = el.querySelector('.logo-subtitle');
-    if (childSpan) {
+     const childSpan = el.querySelector('.logo-subtitle');
+     if (childSpan) {
       // Змінюємо тільки текст ім'я, залишаючи span недоторканим
       el.childNodes[0].nodeValue = newText + ' ';
-    } else {
-      el.textContent = newText;
-    }
-  });
+     } else {
+       el.textContent = newText;
+     }
+   });
 
     const btnUa = document.getElementById("btn-ua");
     const btnEn = document.getElementById("btn-en");

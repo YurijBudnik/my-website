@@ -90,7 +90,7 @@ body {
 }
 
 .burger-menu.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);            /* Повертає верхню лінію */
+  transform: translateY(5px) rotate(45deg);            /* Повертає верхню лінію */
 }
 
 .burger-menu.active span:nth-child(2) {

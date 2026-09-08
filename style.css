@@ -40,7 +40,7 @@ body {
   text-decoration: none;                               /* Прибирає підкреслення посилання */
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
-  font-weight: 300;
+  font-weight: 200;
   font-size: 43px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
   line-height: 1;                                      /* Висота рядка */
   display: inline-flex;

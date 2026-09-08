@@ -139,5 +139,16 @@
   });
 </script>                                               <!-- Кінець JavaScript-коду -->
 
+  // Оновлена функція розрахунку відступу фону
+  function updateHeroMargin() {
+    if (window.innerWidth < 768) {                      /* Мобільні пристрої (до 768px) */
+      setTimeout(() => {                                
+        hero.style.marginTop = header.offsetHeight + 'px'; /* Динамічна висота при відкритті бургера */
+      }, 50);
+    } else {
+      hero.style.marginTop = '';                        /* Скидаємо стиль, щоб працювали CSS-правила планшета та ПК */
+    }
+  }
+
 </body>                                                 <!-- Закриває тіло сторінки -->
 </html>                                                 <!-- Закриває документ HTML -->

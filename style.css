@@ -40,17 +40,28 @@ body {
   text-decoration: none;                               /* Прибирає підкреслення посилання */
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
+  font-weight: 300;
   font-size: 43px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
   line-height: 1;                                      /* Висота рядка */
+  display: inline-flex;
+  align-items: baseline;
   transition: all 0.3s ease;                           /* Плавна анімація змін */
 }
 
 .logo span {
   font-size: 22px;                                     /* Розмір шрифту підпису Accordionist */
   color: #2f2f2f;                                      /* Темно-сірий колір для span */
-  font-weight: 300;                                    /* Полегшена товщина шрифту */
+  font-weight: 200;                                    /* Полегшена товщина шрифту */
   margin-left: 6px;                                    /* Відступ ліворуч від імені */
   display: inline-block;                               /* Відображається поруч з текстом */
+}
+
+/* Підпис (span: Accordionist / Акордеоніст) */
+.logo .logo-subtitle {
+  display: none !important;                          /* Приховано на мобільних та планшетах (до 1023px) */
+  font-weight: 300;
+  color: #2f2f2f;
+  margin-left: 8px;
 }
 
 /* Зменшення при дуже вузькому екрані або сильному зумі (< 360px) */
@@ -295,6 +306,11 @@ nav a:hover {
 
   .logo {
     font-size: 48px;                                   /* Повнорозмірний логотип */
+  }
+
+  .logo .logo-subtitle {
+    display: inline-block !important;                  /* З'являється лише на ПК */
+    font-size: 26px;                                   /* Менший розмір підпису, ніж у головного ім'я */
   }
 
   .logo span {

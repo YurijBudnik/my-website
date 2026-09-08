@@ -84,7 +84,7 @@ body {
 
 .burger-menu span {
   width: 100%;                                         /* Ширина кожної смужки */
-  height: 1.5px;                                         /* Товщина смужки */
+  height: 1px;                                         /* Товщина смужки */
   background-color: #000;                              /* Чорний колір смужок */
   transition: all 0.3s ease;                           /* Плавне перетворення на хрестик */
 }

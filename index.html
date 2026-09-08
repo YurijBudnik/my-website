@@ -113,10 +113,18 @@
     if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
     
     document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-      if (el.dataset[lang]) {
-        el.textContent = el.dataset[lang];              <!-- Підставляє потрібний текст відповідно до мови -->
-      }
-    });
+    const newText = el.dataset[lang];
+    if (!newText) return;
+
+    // Якщо всередині елемента є span (підпис Accordionist)
+    const childSpan = el.querySelector('.logo-subtitle');
+    if (childSpan) {
+      // Змінюємо тільки текст ім'я, залишаючи span недоторканим
+      el.childNodes[0].nodeValue = newText + ' ';
+    } else {
+      el.textContent = newText;
+    }
+  });
 
     document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль активної кнопки UA -->
     document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль активної кнопки EN -->
@@ -138,17 +146,6 @@
     });
   });
 </script>                                               <!-- Кінець JavaScript-коду -->
-
-  // Оновлена функція розрахунку відступу фону
-  function updateHeroMargin() {
-    if (window.innerWidth < 768) {                      /* Мобільні пристрої (до 768px) */
-      setTimeout(() => {                                
-        hero.style.marginTop = header.offsetHeight + 'px'; /* Динамічна висота при відкритті бургера */
-      }, 50);
-    } else {
-      hero.style.marginTop = '';                        /* Скидаємо стиль, щоб працювали CSS-правила планшета та ПК */
-    }
-  }
-
+   
 </body>                                                 <!-- Закриває тіло сторінки -->
 </html>                                                 <!-- Закриває документ HTML -->

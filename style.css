@@ -63,6 +63,21 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+  .nav-wrapper.active {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;                             /* Текст мобільного меню притиснутий праворуч */
+    text-align: right;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
 .burger-menu {
   display: flex;                                       /* Флекс-контейнер для смужок */
   flex-direction: column;                              /* Розміщує смужки одну під одною */
@@ -225,16 +240,23 @@ nav a:hover {
   .nav-wrapper {
     max-height: none !important;                       /* Скасовуємо обмеження висоти */
     opacity: 1 !important;                             /* Меню завжди видиме */
+    display: flex;
     overflow: visible;                                 /* Показуємо весь контент */
     width: auto;                                       /* Авто-ширина */
     padding: 0 !important;                             /* Скидаємо внутрішні відступи */
     flex-direction: column;                            /* Мови зверху, навігація знизу */
     align-items: flex-end;                             /* Вирівнювання по правому краю */
-    gap: 4px;                                          /* Зменшений відступ між мовами та меню */
+    gap: 6px;                                          /* Зменшений відступ між мовами та меню */
+    margin-left: auto;
   }
 
   nav ul {
+    display: flex;
     flex-direction: row;                               /* Пункти в один рядок */
+    justify-content: flex-end;                         /* Притискає самі пункти <li> до правого краю */
+    list-style: none;
+    margin: 0;
+    padding: 0;
     gap: 16px;                                         /* Зменшена відстань між пунктами меню */
   }
 
@@ -244,6 +266,8 @@ nav a:hover {
 
   .lang-switch {
     font-size: 12px;                                   /* Зменшений шрифт перемикача мов */
+    display: flex;
+    justify-content: flex-end;
   }
 
   .hero {
@@ -279,18 +303,25 @@ nav a:hover {
   }
 
   .nav-wrapper {
+    display: flex;
+    flex-direction: column;                            /* Мови зверху, меню знизу */
+    align-items: flex-end;                             /* Притискає вміст блоку до правого краю */
+    margin-left: auto;
     max-height: none !important;                       
     opacity: 1 !important;                             
     overflow: visible;                                 
     width: auto;                                       
-    padding: 0 !important;                             
-    flex-direction: column;                            
-    align-items: flex-end;                             
+    padding: 0 !important;                                                                                      
     gap: 6px;                                          
   }
 
   nav ul {
-    flex-direction: row;                               
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;                         /* Притискає самі пункти <li> до правого краю */
+    list-style: none;
+    margin: 0;
+    padding: 0;                               
     gap: 25px;                                         /* Стандартні відступи для ПК */
   }
 
@@ -298,8 +329,10 @@ nav a:hover {
     font-size: 19px;                                   /* Стандартний шрифт пунктів меню */
   }
 
-  .lang-switch {
-    font-size: 13px;                                   
+  .lang-switch { 
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
   }
 
   .hero {

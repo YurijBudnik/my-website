@@ -94,11 +94,13 @@
   }
 
   // Обробка натискання на бургер-меню
-  burgerBtn.addEventListener('click', () => {
-    burgerBtn.classList.toggle('active');               <!-- Анімує кнопку на хрестик -->
-    navWrapper.classList.toggle('active');              <!-- Розгортає або згортає меню -->
-    updateHeroMargin();                                 <!-- Плавно зміщує блок hero вслід за шапкою -->
-  });
+  if (burgerBtn) {
+   burgerBtn.addEventListener('click', () => {
+     burgerBtn.classList.toggle('active');               <!-- Анімує кнопку на хрестик -->
+     navWrapper.classList.toggle('active');              <!-- Розгортає або згортає меню -->
+     updateHeroMargin();                                 <!-- Плавно зміщує блок hero вслід за шапкою -->
+   });
+}
 
   // Закриття меню при клику на будь-який пункт
   document.querySelectorAll('.nav-link').forEach(link => {

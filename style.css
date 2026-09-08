@@ -253,6 +253,7 @@ nav a:hover {
 
   .header-container {
     flex-wrap: nowrap;                                 /* Елементи в один рядок */
+    justify-content: space-between;
   }
 
   .burger-menu {
@@ -260,11 +261,15 @@ nav a:hover {
   }
 
   .logo {
-    font-size: 36px;                                   /* Зменшений шрифт логотипу (замість 48px) */
+    font-size: 32px;                                   /* Зменшений шрифт логотипу (замість 48px) */
   }
 
   .logo span {
     display: none !important;                          /* Приховуємо span (Accordionist) */
+  }
+
+  .logo .logo-subtitle {
+    display: none !important;
   }
 
   .nav-wrapper {
@@ -276,7 +281,7 @@ nav a:hover {
     padding: 0 !important;                             /* Скидаємо внутрішні відступи */
     flex-direction: column;                            /* Мови зверху, навігація знизу */
     align-items: flex-end;                             /* Вирівнювання по правому краю */
-    gap: 6px;                                          /* Зменшений відступ між мовами та меню */
+    gap: 4px;                                          /* Зменшений відступ між мовами та меню */
     margin-left: auto;
   }
 
@@ -303,6 +308,10 @@ nav a:hover {
   .hero {
     height: calc(100vh - 65px);                        /* Висота фону з урахуванням компактнішої шапки */
     margin-top: 65px !important;                       /* Зменшений відступ під шапку планшета */
+  }
+
+  .burger-menu {
+    display: none !important;
   }
 }
 

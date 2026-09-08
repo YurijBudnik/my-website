@@ -116,8 +116,8 @@
   window.addEventListener('orientationchange', updateHeroMargin);
 
   // Універсальна функція перекладу всієї сторінки
-  function setLang(event, lang) {
-    if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
+  window.setLang = function(event, lang) {
+      if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
     
     document.querySelectorAll('[data-en][data-ua]').forEach(el => {
     const newText = el.dataset[lang];
@@ -132,6 +132,14 @@
       el.textContent = newText;
     }
   });
+
+    const btnUa = document.getElementById("btn-ua");
+    const btnEn = document.getElementById("btn-en");
+
+    if (btnUa) btnUa.classList.toggle("active", lang === "ua");
+    if (btnEn) btnEn.classList.toggle("active", lang === "en");
+    localStorage.setItem("selectedLang", lang);
+  };
 
     document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль активної кнопки UA -->
     document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль активної кнопки EN -->

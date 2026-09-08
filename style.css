@@ -73,7 +73,7 @@ body {
   display: flex;                                       /* Флекс-контейнер для смужок */
   flex-direction: column;                              /* Розміщує смужки одну під одною */
   justify-content: space-between;                      /* Рівномірний інтервал між смужками */
-  width: 21px;                                         /* Ширина кнопки бургера */
+  width: 19px;                                         /* Ширина кнопки бургера */
   height: 15px;                                        /* Висота кнопки бургера */
   background: transparent;                             /* Прозорий фон */
   border: none;                                        /* Без рамки */

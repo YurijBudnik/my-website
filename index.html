@@ -1,160 +1,143 @@
-<!DOCTYPE html> <!-- Оголошує документ як HTML5 -->
-<html lang="uk"> <!-- Вказує мову сторінки -->
-<head> <!-- Початок блоку метаданих -->
-  <meta charset="UTF-8"> <!-- Встановлює кодування UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Налаштовує адаптивність для мобільних -->
-  <title>Yurij Budnik</title> <!-- Заголовок вкладки браузера -->
-  <link rel="stylesheet" href="style.css"> <!-- Підключає файл стилів CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Прискорює з'єднання з Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Дозволяє завантаження шрифтів з зовнішнього домену -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"> <!-- Підключає шрифт Cormorant Garamond -->
-</head> <!-- Кінець блоку метаданих -->
-<body> <!-- Початок відображуваного вмісту сторінки -->
+<!DOCTYPE html>                                         <!-- Оголошення типу документа HTML5 -->
+<html lang="uk">                                        <!-- Основна мова сторінки -->
+<head>                                                  <!-- Початок службово-метаданого блоку -->
+  <meta charset="UTF-8">                                <!-- Кодування сторінки UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Налаштування для мобільних пристроїв -->
+  <title>Yurij Budnik</title>                          <!-- Назва вкладки браузера -->
 
-<header class="header"> <!-- Фіксована шапка сайту -->
-  <div class="header-container"> <!-- Контейнер для центрування елементів шапки -->
-    <a href="index.html" class="logo">Yurij Budnik <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span></a> <!-- Логотип з текстом та підписом -->
-    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button> <!-- Кнопка мобільного меню з трьома смужками -->
-    <div class="nav-wrapper" id="navWrapper"> <!-- Обгортка навігації та мовного перемикача -->
-      <div class="lang-switch"> <!-- Блок перемикання мови -->
-        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> / <!-- Кнопка переключення на українську -->
-        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a> <!-- Кнопка переключення на англійську -->
-      </div> <!-- Кінець блоку мов -->
-      <nav> <!-- Блок навігаційного меню -->
-        <ul> <!-- Список пунктів меню -->
+  <link rel="stylesheet" href="style.css">              <!-- Підключення файлу CSS-стилів -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Оптимізація підключення шрифтів -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Оптимізація крос-доменного завантаження -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"> <!-- Підключення шрифту -->
+</head>                                                 <!-- Кінець службового блоку -->
+<body>                                                  <!-- Початок відображуваного контенту -->
+
+<header class="header" id="header">                      <!-- Шапка сайту з ID для керування через JS -->
+  <div class="header-container">                        <!-- Обмежувальний контейнер шапки -->
+    
+    <a href="index.html" class="logo">                  <!-- Посилання-логотип -->
+      Yurij Budnik                                      <!-- Основне ім'я логотипу -->
+      <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span> <!-- Підпис з атрибутами перекладу -->
+    </a> 
+
+    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu"> <!-- Кнопка відкриття мобільного меню -->
+      <span></span>                                     <!-- Верхня смужка гамбурга -->
+      <span></span>                                     <!-- Середня смужка гамбурга -->
+      <span></span>                                     <!-- Нижня смужка гамбурга -->
+    </button>
+
+    <div class="nav-wrapper" id="navWrapper">           <!-- Розгортальна обгортка навігації -->
+      <div class="lang-switch">                         <!-- Блок перемикання мов -->
+        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> / <!-- Перемикач на UA -->
+        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a> <!-- Перемикач на EN -->
+      </div>
+      
+      <nav>                                             <!-- Блок навігаційного меню -->
+        <ul>                                            <!-- Список пунктів -->
           <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li> <!-- Пункт Біографія -->
           <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li> <!-- Пункт Концерти -->
           <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li> <!-- Пункт Медіа -->
           <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li> <!-- Пункт Альбоми -->
           <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li> <!-- Пункт Новини -->
           <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li> <!-- Пункт Контакти -->
-        </ul> <!-- Кінець списку пунктів -->
-      </nav> <!-- Кінець навігації -->
-    </div> <!-- Кінець обгортки навігації -->
-  </div> <!-- Кінець контейнера шапки -->
-</header> <!-- Кінець шапки -->
+        </ul>
+      </nav>
+    </div>
 
-<section class="hero"></section> <!-- Секція з головним фоновим зображенням без проміжків -->
+  </div>
+</header>
 
-<section class="news"> <!-- Секція блоку новин -->
-  <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2> <!-- Заголовок секції новин -->
+<section class="hero" id="hero"></section>               <!-- Головний фоновий блок з ID для зсуву -->
+  
+<section class="news">                                  <!-- Секція блоку новин -->
+  <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2> <!-- Заголовок новин -->
 
-  <div class="news-item"> <!-- Картка першої новини -->
+  <div class="news-item">                               <!-- Перша новина -->
     <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p> <!-- Дата новини -->
     <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"The Chopin winning pianist had me under his spell"</p> <!-- Назва новини -->
-    <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p> <!-- Джерело новини -->
-  </div> <!-- Кінець першої новини -->
+    <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p> <!-- Джерело -->
+  </div>
 
-  <div class="news-item"> <!-- Картка другої новини -->
-    <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p> <!-- Дата новини -->
-    <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p> <!-- Назва новини -->
-    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p> <!-- Джерело новини -->
-  </div> <!-- Кінець другої новини -->
+  <div class="news-item">                               <!-- Друга новина -->
+    <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p>
+    <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p>
+    <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
+  </div>
 
-  <div class="news-item"> <!-- Картка третьої новини -->
-    <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p> <!-- Дата новини -->
-    <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p> <!-- Назва новини -->
-    <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p> <!-- Джерело новини -->
-  </div> <!-- Кінець третьої новини -->
-
-  <div class="news-item">
+  <div class="news-item">                               <!-- Третя новина -->
     <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p>
     <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p>
     <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p>
   </div>
-
-  <div class="news-item">
-    <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p>
-    <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p>
-    <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p>
-  </div>
-
-  <div class="news-item">
-    <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p>
-    <p class="title" data-en="The Chopin winning pianist had me under his spell" data-ua="Переможець конкурсу Шопена зачарував мене">The Chopin winning pianist had me under his spell</p>
-  </div>
-
 </section>
-</section> <!-- Кінець секції новин -->
 
-<script> <!-- Початок скрипта JavaScript -->
-  const burgerBtn = document.getElementById('burgerBtn'); <!-- Знаходить кнопку бургер-меню -->
-  const navWrapper = document.getElementById('navWrapper'); <!-- Знаходить блок навігації -->
+<script>                                                <!-- Початок JavaScript-коду -->
+  const burgerBtn = document.getElementById('burgerBtn');  <!-- Отримує елемент кнопки бургер-меню -->
+  const navWrapper = document.getElementById('navWrapper');<!-- Отримує елемент випадаючого меню -->
+  const header = document.getElementById('header');        <!-- Отримує елемент шапки -->
+  const hero = document.getElementById('hero');            <!-- Отримує елемент головного фону -->
 
-  burgerBtn.addEventListener('click', () => { burgerBtn.classList.toggle('active'); navWrapper.classList.toggle('active'); }); <!-- Обробляє клік по бургеру -->
-
-  document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { burgerBtn.classList.remove('active'); navWrapper.classList.remove('active'); }); }); <!-- Закриває меню при виборі пункту -->
-
-  function setLang(event, lang) { <!-- Функція для зміни мови всієї сторінки -->
-    if (event) event.preventDefault(); <!-- Скасовує стандартну дію посилання -->
-    document.querySelectorAll('[data-en][data-ua]').forEach(el => { if (el.dataset[lang]) el.textContent = el.dataset[lang]; }); <!-- Перекладає всі елементи з атрибутами -->
-    document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль кнопки UA -->
-    document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль кнопки EN -->
-    localStorage.setItem("selectedLang", lang); <!-- Зберігає мову у пам'яті браузера -->
-  } <!-- Кінець функції перекладу -->
-
-  window.addEventListener('DOMContentLoaded', () => { const savedLang = localStorage.getItem("selectedLang") || "en"; setLang(null, savedLang); }); <!-- Відновлює обрану мову при завантаженні -->
-
-  document.querySelectorAll(".nav-link").forEach(link => { link.addEventListener("click", function() { document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active")); this.classList.add("active"); }); }); <!-- Підсвічує активний пункт меню -->
-</script> <!-- Кінець блоку JavaScript -->
-
-</body> <!-- Кінець тіла сторінки -->
-
-  
-
-<script>
-// 1. Бургер-меню
-const burgerBtn = document.getElementById('burgerBtn');
-const navWrapper = document.getElementById('navWrapper');
-
-burgerBtn.addEventListener('click', () => {
-  burgerBtn.classList.toggle('active');
-  navWrapper.classList.toggle('active');
-});
-
-// Закриття меню при клику на пункт
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    burgerBtn.classList.remove('active');
-    navWrapper.classList.remove('active');
-  });
-});
-
-// 2. Універсальна функція перекладу сторінки
-function setLang(event, lang) {
-  if (event) event.preventDefault();
-
-  const elements = document.querySelectorAll('[data-en][data-ua]');
-
-  elements.forEach(el => {
-    if (el.dataset[lang]) {
-      el.textContent = el.dataset[lang];
+  // Функція для оновлення висоти відступу фону під шапку
+  function updateHeroMargin() {
+    if (window.innerWidth < 768) {                      <!-- Перевіряє, чи це мобільний пристрій -->
+      setTimeout(() => {                                <!-- Невелика затримка для точного розрахунку висоти -->
+        hero.style.marginTop = header.offsetHeight + 'px'; <!-- Встановлює margin-top фону рівним поточній висоті шапки -->
+      }, 50);
+    } else {
+      hero.style.marginTop = '';                        <!-- Скидає інлайн-стиль для десктопної версії -->
     }
+  }
+
+  // Обробка натискання на бургер-меню
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('active');               <!-- Анімує кнопку на хрестик -->
+    navWrapper.classList.toggle('active');              <!-- Розгортає або згортає меню -->
+    updateHeroMargin();                                 <!-- Плавно зміщує блок hero вслід за шапкою -->
   });
 
-  // Оновлення активних кнопок
-  document.getElementById("btn-ua").classList.toggle("active", lang === "ua");
-  document.getElementById("btn-en").classList.toggle("active", lang === "en");
-
-  // Збереження обраної мови
-  localStorage.setItem("selectedLang", lang);
-}
-
-// 3. Відновлення мови при завантаженні сторінки
-window.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem("selectedLang") || "en";
-  setLang(null, savedLang);
-});
-
-// 4. Підсвічування активного пункту меню
-const links = document.querySelectorAll(".nav-link");
-links.forEach(link => {
-  link.addEventListener("click", function() {
-    links.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
+  // Закриття меню при клику на будь-який пункт
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      burgerBtn.classList.remove('active');             <!-- Скидає анімацію хрестика -->
+      navWrapper.classList.remove('active');            <!-- Згортає меню -->
+      updateHeroMargin();                               <!-- Повертає початковий відступ фону -->
+    });
   });
-});
-</script>
 
-</body>
-</html>
+  // Перерахунок відступу при зміні розміру вікна
+  window.addEventListener('resize', updateHeroMargin);
+
+  // Універсальна функція перекладу всієї сторінки
+  function setLang(event, lang) {
+    if (event) event.preventDefault();                  <!-- Скасовує стандартну дію посилання -->
+    
+    document.querySelectorAll('[data-en][data-ua]').forEach(el => {
+      if (el.dataset[lang]) {
+        el.textContent = el.dataset[lang];              <!-- Підставляє потрібний текст відповідно до мови -->
+      }
+    });
+
+    document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль активної кнопки UA -->
+    document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль активної кнопки EN -->
+    localStorage.setItem("selectedLang", lang);        <!-- Зберігає мову у пам'яті браузера -->
+  }
+
+  // Завантаження збереженої мови та встановлення відступів при старті
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem("selectedLang") || "en"; <!-- Зчитує збережену мову або ставить 'en' -->
+    setLang(null, savedLang);                           <!-- Перекладає сторінку -->
+    updateHeroMargin();                                 <!-- Встановлює правильний початковий відступ фону -->
+  });
+
+  // Підсвічування активного пункту меню
+  document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function() {
+      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active")); <!-- Скидає активні класи -->
+      this.classList.add("active");                     <!-- Додає клас активного пункту -->
+    });
+  });
+</script>                                               <!-- Кінець JavaScript-коду -->
+
+</body>                                                 <!-- Закриває тіло сторінки -->
+</html>                                                 <!-- Закриває документ HTML -->

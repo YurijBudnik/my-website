@@ -73,8 +73,8 @@ body {
   display: flex;                                       /* Флекс-контейнер для смужок */
   flex-direction: column;                              /* Розміщує смужки одну під одною */
   justify-content: space-between;                      /* Рівномірний інтервал між смужками */
-  width: 23px;                                         /* Ширина кнопки бургера */
-  height: 17px;                                        /* Висота кнопки бургера */
+  width: 20px;                                         /* Ширина кнопки бургера */
+  height: 15px;                                        /* Висота кнопки бургера */
   background: transparent;                             /* Прозорий фон */
   border: none;                                        /* Без рамки */
   cursor: pointer;                                     /* Вказівник миші при наведенні */
@@ -84,7 +84,7 @@ body {
 
 .burger-menu span {
   width: 100%;                                         /* Ширина кожної смужки */
-  height: 2px;                                         /* Товщина смужки */
+  height: 1.5px;                                         /* Товщина смужки */
   background-color: #000;                              /* Чорний колір смужок */
   transition: all 0.3s ease;                           /* Плавне перетворення на хрестик */
 }

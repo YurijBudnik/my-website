@@ -198,6 +198,117 @@ nav a:hover {
 }
 
 /* ==========================================
+   2. Планшетна версія (від 768px до 1023px)
+   ========================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    padding: 10px 0;                                   /* Зменшені вертикальні відступи шапки */
+  }
+
+  .header-container {
+    flex-wrap: nowrap;                                 /* Елементи в один рядок */
+  }
+
+  .burger-menu {
+    display: none;                                     /* Приховуємо бургер-меню */
+  }
+
+  .logo {
+    font-size: 36px;                                   /* Зменшений шрифт логотипу (замість 48px) */
+  }
+
+  .logo span {
+    display: none !important;                          /* Приховуємо span (Accordionist) */
+  }
+
+  .nav-wrapper {
+    max-height: none !important;                       /* Скасовуємо обмеження висоти */
+    opacity: 1 !important;                             /* Меню завжди видиме */
+    overflow: visible;                                 /* Показуємо весь контент */
+    width: auto;                                       /* Авто-ширина */
+    padding: 0 !important;                             /* Скидаємо внутрішні відступи */
+    flex-direction: column;                            /* Мови зверху, навігація знизу */
+    align-items: flex-end;                             /* Вирівнювання по правому краю */
+    gap: 4px;                                          /* Зменшений відступ між мовами та меню */
+  }
+
+  nav ul {
+    flex-direction: row;                               /* Пункти в один рядок */
+    gap: 16px;                                         /* Зменшена відстань між пунктами меню */
+  }
+
+  nav a {
+    font-size: 16px;                                   /* Зменшений шрифт пунктів меню (замість 19px) */
+  }
+
+  .lang-switch {
+    font-size: 12px;                                   /* Зменшений шрифт перемикача мов */
+  }
+
+  .hero {
+    height: calc(100vh - 65px);                        /* Висота фону з урахуванням компактнішої шапки */
+    margin-top: 65px !important;                       /* Зменшений відступ під шапку планшета */
+  }
+}
+
+/* ==========================================
+   3. Десктопна версія (від 1024px)
+   ========================================== */
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 15px 0;                                   /* Повнорозмірні відступи шапки */
+  }
+
+  .header-container {
+    flex-wrap: nowrap;                                 
+  }
+
+  .burger-menu {
+    display: none;                                     
+  }
+
+  .logo {
+    font-size: 48px;                                   /* Повнорозмірний логотип */
+  }
+
+  .logo span {
+    font-size: 26px;                                   /* Відображаємо span (Accordionist) */
+    display: inline-block !important;                  
+  }
+
+  .nav-wrapper {
+    max-height: none !important;                       
+    opacity: 1 !important;                             
+    overflow: visible;                                 
+    width: auto;                                       
+    padding: 0 !important;                             
+    flex-direction: column;                            
+    align-items: flex-end;                             
+    gap: 6px;                                          
+  }
+
+  nav ul {
+    flex-direction: row;                               
+    gap: 25px;                                         /* Стандартні відступи для ПК */
+  }
+
+  nav a {
+    font-size: 19px;                                   /* Стандартний шрифт пунктів меню */
+  }
+
+  .lang-switch {
+    font-size: 13px;                                   
+  }
+
+  .hero {
+    height: calc(100vh - 80px);                        
+    margin-top: 80px !important;                       
+  }
+}
+
+/* ==========================================
    2. Десктопна версія (від 768px)
    ========================================== */
 

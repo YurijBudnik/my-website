@@ -167,7 +167,7 @@ nav a:hover {
   height: 60vh;                                        /* Висота фонового блоку */
   background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
   margin-top: 68px;                                    /* Початковий відступ під висоту закритої шапки */
-  transition: margin-top 0.4s ease;                   /* Плавний зсув фону слідом за розгортанням шапки */
+  transition: margin-top 0.3s ease-in-out;                   /* Плавний зсув фону слідом за розгортанням шапки */
 }
 
 .news {

@@ -265,12 +265,10 @@ nav a:hover {
     font-size: 32px;                                   /* Зменшений шрифт логотипу (замість 48px) */
   }
 
-  .logo span {
-    display: none !important;                          /* Приховуємо span (Accordionist) */
-  }
-
+  .logo span,
   .logo .logo-subtitle {
-    display: none !important;
+    font-size: 20px;
+    display: inline-block !important;
   }
 
   .nav-wrapper {

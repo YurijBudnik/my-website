@@ -44,11 +44,6 @@ body {
   transition: padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Скидаємо інлайн margin-top з hero, якщо він там був */
-.hero {
-  margin-top: 0 !important;
-}
-
 .logo {
   text-decoration: none;                               /* Прибирає підкреслення посилання */
   color: #000000;                                      /* Чорний колір тексту логотипу */

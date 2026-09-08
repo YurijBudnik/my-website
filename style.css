@@ -41,7 +41,7 @@ body {
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
   font-weight: 200;
-  font-size: 43px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
+  font-size: 48px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
   line-height: 1;                                      /* Висота рядка */
   display: inline-flex;
   align-items: baseline;
@@ -54,7 +54,7 @@ body {
 }
 
 .logo span {
-  font-size: 22px;                                     /* Розмір шрифту підпису Accordionist */
+  font-size: 28px;                                     /* Розмір шрифту підпису Accordionist */
   color: #2f2f2f;                                      /* Темно-сірий колір для span */
   font-weight: 200;                                    /* Полегшена товщина шрифту */
   margin-left: 6px;                                    /* Відступ ліворуч від імені */
@@ -135,7 +135,7 @@ nav ul {
 nav a {
   text-decoration: none;                               /* Прибирає підкреслення посилань */
   color: #45494E;                                      /* Темно-сірий колір посилань */
-  font-size: 18px;                                     /* Розмір шрифту пунктів меню */
+  font-size: 19px;                                     /* Розмір шрифту пунктів меню */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт посилань */
   transition: color 0.3s ease;                         /* Плавна зміна кольору */
 }
@@ -262,12 +262,12 @@ nav a:hover {
   }
 
   .logo {
-    font-size: 32px;                                   /* Зменшений шрифт логотипу (замість 48px) */
+    font-size: 28px;                                   /* Зменшений шрифт логотипу (замість 48px) */
   }
 
   .logo span,
   .logo .logo-subtitle {
-    font-size: 20px;
+    font-size: 16px;
     display: inline-block !important;
   }
 
@@ -309,7 +309,7 @@ nav a:hover {
   .lang-switch {
     display: flex;
     justify-content: flex-end;
-    font-size: 12px;                                   /* Зменшений шрифт перемикача мов */
+    font-size: 10px;                                   /* Зменшений шрифт перемикача мов */
   }
 
   .hero {

@@ -104,10 +104,10 @@ if (burgerBtn) {
 
   // Закриття меню при клику на будь-який пункт
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      if (burgerBtn) burgerBtn.classList.remove('active');  <!-- Скидає анімацію хрестика -->
-      if (navWrapper) navWrapper.classList.remove('active');   <!-- Згортає меню -->
-      if (window.innerWidth < 768 && hero) {
+  link.addEventListener('click', () => {
+    if (burgerBtn) burgerBtn.classList.remove('active');
+    if (navWrapper) navWrapper.classList.remove('active');
+    if (window.innerWidth < 768 && hero) {
       hero.style.marginTop = '65px';
     }
   });
@@ -143,10 +143,6 @@ if (burgerBtn) {
     localStorage.setItem("selectedLang", lang);
   };
 
-    document.getElementById("btn-ua").classList.toggle("active", lang === "ua"); <!-- Оновлює стиль активної кнопки UA -->
-    document.getElementById("btn-en").classList.toggle("active", lang === "en"); <!-- Оновлює стиль активної кнопки EN -->
-    localStorage.setItem("selectedLang", lang);        <!-- Зберігає мову у пам'яті браузера -->
-  }
 
   // Завантаження збереженої мови та встановлення відступів при старті
   window.addEventListener('DOMContentLoaded', () => {

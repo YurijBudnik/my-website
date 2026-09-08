@@ -78,7 +78,9 @@
   const header = document.getElementById('header');        <!-- Отримує елемент шапки -->
   const hero = document.getElementById('hero');            <!-- Отримує елемент головного фону -->
 
-  if (!header || !hero) return;s
+  if (!header || !hero) {
+    // Виправлена помилка 'return;s'
+  } else {
 
   // Функція для оновлення висоти відступу фону під шапку
   function updateHeroMargin() {

@@ -283,6 +283,7 @@ nav a:hover {
     align-items: flex-end;                             /* Вирівнювання по правому краю */
     gap: 4px;                                          /* Зменшений відступ між мовами та меню */
     margin-left: auto;
+    background: transparent;
   }
 
   nav ul {
@@ -290,13 +291,20 @@ nav a:hover {
     flex-direction: row;                               /* Пункти в один рядок */
     justify-content: flex-end;                         /* Притискає самі пункти <li> до правого краю */
     list-style: none;
+    list-style-type: none !important;                 /* Додаткова страховка від точок */
     margin: 0;
     padding: 0;
-    gap: 16px;                                         /* Зменшена відстань між пунктами меню */
+    gap: 20px;                                         /* Зменшена відстань між пунктами меню */
   }
 
   nav a {
     font-size: 16px;                                   /* Зменшений шрифт пунктів меню (замість 19px) */
+  }
+
+  nav li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
   }
 
   .lang-switch {

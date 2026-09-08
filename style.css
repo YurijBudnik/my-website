@@ -97,7 +97,7 @@ body {
 }
 
 .burger-menu.active span:nth-child(3) {
-  transform: translateY(-4px) rotate(-45deg);           /* Повертає нижню лінію */
+  transform: translateY(-5px) rotate(-45deg);           /* Повертає нижню лінію */
 }
 
 .nav-wrapper {

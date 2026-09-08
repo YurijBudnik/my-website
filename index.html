@@ -78,6 +78,8 @@
   const header = document.getElementById('header');        <!-- Отримує елемент шапки -->
   const hero = document.getElementById('hero');            <!-- Отримує елемент головного фону -->
 
+  if (!header || !hero) return;s
+
   // Функція для оновлення висоти відступу фону під шапку
   function updateHeroMargin() {
     if (window.innerWidth < 768) {                      <!-- Перевіряє, чи це мобільний пристрій -->
@@ -107,6 +109,7 @@
 
   // Перерахунок відступу при зміні розміру вікна
   window.addEventListener('resize', updateHeroMargin);
+  window.addEventListener('orientationchange', updateHeroMargin);
 
   // Універсальна функція перекладу всієї сторінки
   function setLang(event, lang) {

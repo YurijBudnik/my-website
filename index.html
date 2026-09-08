@@ -82,24 +82,24 @@
     // Виправлена помилка 'return;s'
   } else {
 
-  // Функція для оновлення висоти відступу фону під шапку
-  function updateHeroMargin() {
-    if (window.innerWidth < 768) {                      <!-- Перевіряє, чи це мобільний пристрій -->
-      setTimeout(() => {                                <!-- Невелика затримка для точного розрахунку висоти -->
-        hero.style.marginTop = header.offsetHeight + 'px'; <!-- Встановлює margin-top фону рівним поточній висоті шапки -->
-      }, 10);
-    } else {
-      hero.style.marginTop = '';                        <!-- Скидає інлайн-стиль для десктопної версії -->
-    }
-  }
-
   // Обробка натискання на бургер-меню
-  if (burgerBtn) {
-   burgerBtn.addEventListener('click', () => {
-     burgerBtn.classList.toggle('active');               <!-- Анімує кнопку на хрестик -->
-     navWrapper.classList.toggle('active');              <!-- Розгортає або згортає меню -->
-     updateHeroMargin();                                 <!-- Плавно зміщує блок hero вслід за шапкою -->
-   });
+  // Оновлений обробник бургера (без setTimeout)
+if (burgerBtn) {
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('active');
+    navWrapper.classList.toggle('active');
+
+    if (window.innerWidth < 768 && hero && header) {
+      // За запитом кадру зчитуємо реальну висоту із вмістом
+      requestAnimationFrame(() => {
+        if (navWrapper.classList.contains('active')) {
+          hero.style.marginTop = header.scrollHeight + 'px';
+        } else {
+          hero.style.marginTop = '65px'; // Повертаємо базову висоту закритої шапки
+        }
+      });
+    }
+  });
 }
 
   // Закриття меню при клику на будь-який пункт
@@ -107,9 +107,11 @@
     link.addEventListener('click', () => {
       if (burgerBtn) burgerBtn.classList.remove('active');  <!-- Скидає анімацію хрестика -->
       if (navWrapper) navWrapper.classList.remove('active');   <!-- Згортає меню -->
-      updateHeroMargin();                               <!-- Повертає початковий відступ фону -->
-    });
+      if (window.innerWidth < 768 && hero) {
+      hero.style.marginTop = '65px';
+    }
   });
+});
 
   // Перерахунок відступу при зміні розміру вікна
   window.addEventListener('resize', updateHeroMargin);

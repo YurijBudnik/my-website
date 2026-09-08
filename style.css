@@ -95,6 +95,12 @@ body {
     line-height: 1.1;  
   }
 
+ @media (max-width: 1023px) {
+  /* Забезпечуємо правильний фоновий блок hero */
+  .hero {
+    transition: margin-top 0.3s ease;
+  }   
+
   nav ul {
     display: flex;
     flex-direction: column;

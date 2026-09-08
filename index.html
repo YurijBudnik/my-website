@@ -48,6 +48,15 @@
   </div>
 </header>
 
+<!-- Огортаємо увесь контент сторінки в main -->
+<main id="mainContent">
+  <section class="hero" id="hero"></section>
+  <section class="news">
+    <!-- Секція новин -->
+  </section>
+</main>
+  
+
 <section class="hero" id="hero"></section>               <!-- Головний фоновий блок з ID для зсуву -->
   
 <section class="news">                                  <!-- Секція блоку новин -->
@@ -73,13 +82,12 @@
 </section>
 
 <script>
-  // Отримуємо необхідні елементи
   const burgerBtn = document.getElementById('burgerBtn');
   const navWrapper = document.getElementById('navWrapper');
   const header = document.getElementById('header');
-  const hero = document.getElementById('hero');
+  const mainContent = document.getElementById('mainContent');
 
-  // Універсальна функція перекладу всієї сторінки
+  // Переклад мов
   window.setLang = function(event, lang) {
     if (event) event.preventDefault();
 
@@ -87,7 +95,6 @@
       const newText = el.dataset[lang];
       if (!newText) return;
 
-      // Якщо всередині елемента є span підпису Accordionist
       const childSpan = el.querySelector('.logo-subtitle');
       if (childSpan) {
         el.childNodes[0].nodeValue = newText + ' ';
@@ -104,55 +111,52 @@
     localStorage.setItem("selectedLang", lang);
   };
 
-  // Обробка натискання на бургер-меню
+  // Функція плавного зсуву ВСІЄЇ сторінки
+  function updatePagePadding() {
+    if (window.innerWidth < 768 && mainContent && header) {
+      requestAnimationFrame(() => {
+        if (navWrapper.classList.contains('active')) {
+          // Зсуває увесь контент вниз на повну висоту розгорнутої шапки
+          mainContent.style.paddingTop = header.scrollHeight + 'px';
+        } else {
+          // Повертає базовий відступ за закритої шапки
+          mainContent.style.paddingTop = '65px';
+        }
+      });
+    } else if (mainContent) {
+      mainContent.style.paddingTop = '';
+    }
+  }
+
+  // Обробка натискання на бургер
   if (burgerBtn) {
     burgerBtn.addEventListener('click', () => {
       burgerBtn.classList.toggle('active');
       navWrapper.classList.toggle('active');
-
-      if (window.innerWidth < 768 && hero && header) {
-        requestAnimationFrame(() => {
-          if (navWrapper.classList.contains('active')) {
-            hero.style.marginTop = header.scrollHeight + 'px';
-          } else {
-            hero.style.marginTop = '65px';
-          }
-        });
-      }
+      updatePagePadding();
     });
   }
 
   // Закриття меню при кліку на пункт навігації
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function() {
-      // Прибираємо активний клас з інших пунктів і додаємо до поточного
       document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
       this.classList.add("active");
 
-      // Закриваємо мобільне меню
       if (burgerBtn) burgerBtn.classList.remove('active');
       if (navWrapper) navWrapper.classList.remove('active');
-      if (window.innerWidth < 768 && hero) {
-        hero.style.marginTop = '65px';
-      }
+      updatePagePadding();
     });
   });
 
-  // Автоматичне скидання марджину при зміні розміру вікна
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768 && hero) {
-      hero.style.marginTop = '';
-    }
-  });
+  // Автоматичний скид при зміні розміру вікна
+  window.addEventListener('resize', updatePagePadding);
 
-  // Завантаження збереженої мови та стартового відступу
+  // Старт сторінки
   window.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem("selectedLang") || "en";
     setLang(null, savedLang);
-
-    if (window.innerWidth < 768 && hero) {
-      hero.style.marginTop = '65px';
-    }
+    updatePagePadding();
   });
 </script>                                               <!-- Кінець JavaScript-коду -->
    

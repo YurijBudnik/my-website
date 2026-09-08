@@ -46,6 +46,11 @@ body {
   display: inline-flex;
   align-items: baseline;
   transition: all 0.3s ease;                           /* Плавна анімація змін */
+  max-width: 70%;
+  word-break: break-word;                              /* Захист від випадання тексту */
+  white-space: nowrap;                                 /* Забігає розриву імені на 2 рядки */
+  overflow: hidden;
+  text-overflow: ellipsis;                             /* Додає три крапки, якщо екран зовсім крихітний */
 }
 
 .logo span {

@@ -79,8 +79,6 @@
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
   const navWrapper = document.getElementById('navWrapper');
-  const header = document.getElementById('header');
-  const mainContent = document.getElementById('mainContent');
 
   // Переклад мов
   window.setLang = function(event, lang) {
@@ -106,23 +104,6 @@
     localStorage.setItem("selectedLang", lang);
   };
 
-  // Функція плавного зсуву ВСІЄЇ сторінки
-  function updatePagePadding() {
-    if (window.innerWidth < 768 && mainContent && header) {
-      requestAnimationFrame(() => {
-        if (navWrapper.classList.contains('active')) {
-          // Зсуває увесь контент вниз на повну висоту розгорнутої шапки
-          mainContent.style.paddingTop = header.scrollHeight + 'px';
-        } else {
-          // Повертає базовий відступ за закритої шапки
-          mainContent.style.paddingTop = '65px';
-        }
-      });
-    } else if (mainContent) {
-      mainContent.style.paddingTop = '';
-    }
-  }
-
   // Обробка натискання на бургер
   if (burgerBtn) {
     burgerBtn.addEventListener('click', () => {
@@ -144,14 +125,10 @@
     });
   });
 
-  // Автоматичний скид при зміні розміру вікна
-  window.addEventListener('resize', updatePagePadding);
-
   // Старт сторінки
   window.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem("selectedLang") || "en";
     setLang(null, savedLang);
-    updatePagePadding();
   });
 </script>                                               <!-- Кінець JavaScript-коду -->
    

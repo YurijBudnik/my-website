@@ -21,7 +21,7 @@
     Yurij Budnik <span>Accordionist</span>
   </a>
 
-  <button id="mobile-menu-btn" aria-label="Toggle Menu" class="burger p-2 text-gray-700 hover:text-gray-900 focus:outline-none">
+  <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none">
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
   </svg>
@@ -77,54 +77,54 @@
 
   <!-- JavaScript -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-      // Перемикання мобільного меню
-      if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
+    // Обробка кліку по кнопці
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         mobileMenu.classList.toggle('hidden');
-        });
-      }
+      });
+    }
 
-      // Переклади мов
-      window.setLang = function(event, lang) {
-        if (event) event.preventDefault();
+    // Закриття меню при кліку на посилання
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+      });
+    });
 
-        document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-          const newText = el.dataset[lang];
-          if (!newText) return;
+    // Переклад мов
+    window.setLang = function(event, lang) {
+      if (event) event.preventDefault();
 
-          const childSpan = el.querySelector('span');
-          if (childSpan && !el.classList.contains('nav-link')) {
-            el.childNodes[0].nodeValue = newText + ' ';
-          } else if (childSpan && el.classList.contains('nav-link')) {
-            childSpan.textContent = newText;
-          } else {
-            el.textContent = newText;
-          }
-        });
+      document.querySelectorAll('[data-en][data-ua]').forEach(el => {
+        const newText = el.dataset[lang];
+        if (!newText) return;
 
-        const btnUa = document.getElementById("btn-ua");
-        const btnEn = document.getElementById("btn-en");
-
-        if (btnUa) btnUa.classList.toggle("active", lang === "ua");
-        if (btnEn) btnEn.classList.toggle("active", lang === "en");
-        localStorage.setItem("selectedLang", lang);
-      };
-
-      // Закриття мобільного меню при кліку на посилання
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function() {
-          if (mobileMenu) mobileMenu.classList.add('hidden');
-        });
+        const childSpan = el.querySelector('span');
+        if (childSpan && !el.classList.contains('nav-link')) {
+          el.childNodes[0].nodeValue = newText + ' ';
+        } else if (childSpan && el.classList.contains('nav-link')) {
+          childSpan.textContent = newText;
+        } else {
+          el.textContent = newText;
+        }
       });
 
-      // Ініціалізація мови при завантаженні
-      const savedLang = localStorage.getItem("selectedLang") || "ua";
-      setLang(null, savedLang);
-    });
-  </script>
+      const btnUa = document.getElementById("btn-ua");
+      const btnEn = document.getElementById("btn-en");
+
+      if (btnUa) btnUa.classList.toggle("active", lang === "ua");
+      if (btnEn) btnEn.classList.toggle("active", lang === "en");
+      localStorage.setItem("selectedLang", lang);
+    };
+
+    const savedLang = localStorage.getItem("selectedLang") || "ua";
+    setLang(null, savedLang);
+  });
+</script>
 </body>
 </html>

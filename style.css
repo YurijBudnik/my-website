@@ -349,7 +349,7 @@ nav a:hover {
 
 @media (min-width: 1024px) {
   .header {
-    padding: 15px 0;                                   /* Повнорозмірні відступи шапки */
+    padding: 12px 0;                                   /* Повнорозмірні відступи шапки */
   }
 
   .header-container {
@@ -376,15 +376,16 @@ nav a:hover {
 
   .nav-wrapper {
     display: flex;
-    flex-direction: column;                            /* Мови зверху, меню знизу */
-    align-items: flex-end;                             /* Притискає вміст блоку до правого краю */
+    flex-direction: row-reverse;                       /* Мова праворуч, меню ліворуч */
+    align-items: center;
     margin-left: auto;
     max-height: none !important;                       
     opacity: 1 !important;                             
     overflow: visible;                                 
     width: auto;                                       
     padding: 0 !important;                                                                                      
-    gap: 6px;                                          
+    gap: 6px;
+    background: transparent;
   }
 
   nav ul {
@@ -399,6 +400,12 @@ nav a:hover {
 
   nav a {
     font-size: 19px;                                   /* Стандартний шрифт пунктів меню */
+  }
+
+  /* Вирівнюємо висоту рядка посилань, щоб вони не роздували шапку */
+  .nav-link, .lang-link {
+    line-height: 1;
+    padding: 5px 0;
   }
 
   .lang-switch { 

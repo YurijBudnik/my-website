@@ -33,7 +33,7 @@ body {
   display: flex;                                       /* Вмикає Flexbox для вирівнювання */
   align-items: center;                                 /* Вирівнює елементи по вертикалі */
   justify-content: space-between;                      /* Розподіляє елементи по краях */
-  flex-wrap: nowrap;                                     /* не Дозволяє меню переноситися на новий рядок */
+  flex-wrap: wrap;                                     /* не Дозволяє меню переноситися на новий рядок */
 }
 
 #mainContent {

@@ -117,22 +117,60 @@
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Обробка кліку по кнопці
+    // Лінії SVG для анімації в хрестик
+    const lineTop = document.getElementById('line-top');
+    const lineMid = document.getElementById('line-mid');
+    const lineBot = document.getElementById('line-bot');
+
+    let isOpen = false;
+
+    // Відкриття / Закриття вертикального меню та анімація хрестика
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        mobileMenu.classList.toggle('hidden');
+        isOpen = !isOpen;
+
+        if (isOpen) {
+          // Відкрити меню
+          mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+          mobileMenu.classList.add('translate-x-0', 'opacity-100');
+
+          // Трансформація бургера в хрестик
+          if (lineTop && lineMid && lineBot) {
+            lineTop.setAttribute('d', 'M 6 6 L 18 18');
+            lineMid.style.opacity = '0';
+            lineBot.setAttribute('d', 'M 6 18 L 18 6');
+          }
+        } else {
+          // Закрити меню
+          closeMenu();
+        }
       });
+    }
+
+    function closeMenu() {
+      isOpen = false;
+      if (mobileMenu) {
+        mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('translate-x-0', 'opacity-100');
+      }
+
+      // Повернення хрестика в бургер
+      if (lineTop && lineMid && lineBot) {
+        lineTop.setAttribute('d', 'M4 6h16');
+        lineMid.style.opacity = '1';
+        lineBot.setAttribute('d', 'M4 18h16');
+      }
     }
 
     // Закриття меню при кліку на посилання
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        if (mobileMenu) mobileMenu.classList.add('hidden');
+        closeMenu();
       });
     });
 
-    // Переклад мов
+    // Логіка перемикання мови
     window.setLang = function(event, lang) {
       if (event) event.preventDefault();
 
@@ -153,11 +191,19 @@
       const btnUa = document.getElementById("btn-ua");
       const btnEn = document.getElementById("btn-en");
 
-      if (btnUa) btnUa.classList.toggle("active", lang === "ua");
-      if (btnEn) btnEn.classList.toggle("active", lang === "en");
+      if (btnUa) {
+        btnUa.classList.toggle("text-gray-900", lang === "ua");
+        btnUa.classList.toggle("font-bold", lang === "ua");
+      }
+      if (btnEn) {
+        btnEn.classList.toggle("text-gray-900", lang === "en");
+        btnEn.classList.toggle("font-bold", lang === "en");
+      }
+
       localStorage.setItem("selectedLang", lang);
     };
 
+    // Ініціалізація мови
     const savedLang = localStorage.getItem("selectedLang") || "ua";
     setLang(null, savedLang);
   });

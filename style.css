@@ -172,7 +172,6 @@ nav a:hover {
 .hero {
   margin-top: 0 !important;                                    /* Початковий відступ під висоту закритої шапки */
   margin-bottom: 0;
-  height: 60vh;                                        /* Висота фонового блоку */
   background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
   transition: margin-top 0.3s ease-in-out;                   /* Плавний зсув фону слідом за розгортанням шапки */
 }

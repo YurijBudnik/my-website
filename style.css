@@ -40,8 +40,6 @@ body {
   /* Базовий відступ для закритої шапки */
   padding-top: 0; 
   margin-top: 0;
-  /* Плавний зсув всього контенту вниз і вгору */
-  transition: padding-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo {

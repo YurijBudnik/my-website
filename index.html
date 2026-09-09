@@ -88,6 +88,12 @@
         });
       }
 
+      function toggleMenu() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    mobileMenu.classList.toggle('hidden');
+  }
+
       // Переклади мов
       window.setLang = function(event, lang) {
         if (event) event.preventDefault();

@@ -1,112 +1,122 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yurij Budnik | Accordionist</title>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Підключення Tailwind CSS через CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
   
-<body>
-  <!-- === HEADER (Шапка та Навігація) === -->
-  <!-- === HEADER (Шапка з білим фоном) === -->
-<!-- === HEADER === -->
-<header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      
-    <!-- Брендинг / Логотип -->
-    <a href="#" class="group flex flex-col">
-      <span class="text-2xl font-serif tracking-wider text-gray-900 group-hover:text-amber-600 transition-colors">
-        Yurij Budnik
-      </span>
-      <span class="text-xs font-sans uppercase tracking-[0.2em] text-gray-500 logo-subtitle">
-        Accordionist
-      </span>
-    </a>
-  
-    <!-- Десктопне меню (сховане на мобільних) -->
-    <nav class="hidden md:flex items-center space-x-8">
-      <a href="#biography" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Biography" data-ua="Біографія">
-        <span>Біографія</span>
-        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-      </a>
-      <a href="#concerts" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Concerts" data-ua="Концерти">
-        <span>Концерти</span>
-        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-      </a>
-      <a href="#media" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Media" data-ua="Медіа">
-        <span>Медіа</span>
-        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-      </a>
-      <a href="#contact" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Contact" data-ua="Контакти">
-        <span>Контакти</span>
-        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-      </a>
-    </nav>
-  
-    <!-- Кнопка бургер-меню (прикріплена праворуч, анімується в хрестик) -->
-    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden ml-auto p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50">
-      <svg width="24" height="24" class="w-6 h-6 max-w-full h-auto transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <!-- Лінія 1 (Верхня) -->
-        <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16" />
-        <!-- Лінія 2 (Середня) -->
-        <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16" />
-        <!-- Лінія 3 (Нижня) -->
-        <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 18h16" />
-      </svg>
-    </button>
+<body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
-  </div>
-
-  <!-- Вертикальне висувне меню (прикріплене до правого краю) -->
-  <div id="mobile-menu" class="fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 bg-white/95 backdrop-blur-md border-l border-gray-200 shadow-xl transition-all duration-300 ease-in-out transform translate-x-full opacity-0 pointer-events-none md:hidden flex flex-col justify-between p-6">
+  <!-- === HEADER (Шапка) === -->
+  <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+      <!-- Брендинг / Логотип -->
+      <a href="#" class="group flex flex-col">
+        <span class="text-2xl md:text-3xl font-serif tracking-wider text-gray-900 group-hover:text-amber-600 transition-colors">
+          Yurij Budnik
+        </span>
+        <span class="text-[10px] md:text-xs font-sans uppercase tracking-[0.2em] text-gray-500">
+          Accordionist
+        </span>
+      </a>
     
-    <!-- Пункти меню (вирівняні по правому краю) -->
-    <nav class="flex flex-col space-y-6 text-right">
-      <a href="#biography" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-      <a href="#concerts" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-      <a href="#media" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-      <a href="#contact" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
-    </nav>
+      <!-- Десктопне меню -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#biography" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Biography" data-ua="Біографія">
+          <span>Біографія</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
+        <a href="#concerts" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Concerts" data-ua="Концерти">
+          <span>Концерти</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
+        <a href="#media" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Media" data-ua="Медіа">
+          <span>Медіа</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Contact" data-ua="Контакти">
+          <span>Контакти</span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+        </a>
 
-    <!-- Кнопки перемикання мов у самому низу (світліший колір) -->
-    <div class="pt-6 border-t border-gray-100 flex justify-end space-x-3 text-sm text-gray-400 font-sans">
-      <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors active:font-semibold">UA</button>
-      <span>|</span>
-      <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors active:font-semibold">EN</button>
+        <!-- Мовний перемикач для десктопу -->
+        <div class="ml-4 pl-4 border-l border-gray-200 flex space-x-2 text-xs font-sans text-gray-400">
+          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors">UA</button>
+          <span>|</span>
+          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors">EN</button>
+        </div>
+      </nav>
+    
+      <!-- Кнопка бургер-меню (Анімується в хрестик) -->
+      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50">
+        <svg class="w-6 h-6 w-[5vw] h-[5vw] min-w-[20px] min-h-[20px] max-w-[28px] max-h-[28px] transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16" />
+          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16" />
+          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 18h16" />
+        </svg>
+      </button>
+
     </div>
 
-  </div>
-</header>
+    <!-- Вертикальне висувне мобільне меню -->
+    <div id="mobile-menu" class="fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 bg-white/95 backdrop-blur-md border-l border-gray-200 shadow-2xl transition-all duration-300 ease-in-out transform translate-x-full opacity-0 pointer-events-none md:hidden flex flex-col justify-between p-6 z-40">
+      
+      <!-- Пункти меню (вирівняні по правому краю) -->
+      <nav class="flex flex-col space-y-6 text-right">
+        <a href="#biography" class="nav-link text-xl font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+        <a href="#concerts" class="nav-link text-xl font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+        <a href="#media" class="nav-link text-xl font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+        <a href="#contact" class="nav-link text-xl font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+      </nav>
+
+      <!-- Кнопки перемикання мов у самого низу -->
+      <div class="pt-6 border-t border-gray-100 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
+        <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors">UA</button>
+        <span>|</span>
+        <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors">EN</button>
+      </div>
+
+    </div>
+  </header>
+
   <!-- Головний контент -->
   <main id="mainContent">
-    <section class="hero" id="hero"></section>
+    <section class="h-[60vh] bg-gray-100 bg-cover bg-center" id="hero" style="background-image: url('hero.jpg');"></section>
 
     <!-- Секція новин -->
-    <section class="news">
-      <h2 data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
+    <section class="bg-gray-50 py-16 px-6 text-center">
+      <h2 class="text-2xl font-serif tracking-wide mb-8" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
 
-      <div class="news-item">
-        <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
-        <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
-        <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
-      </div>
+      <div class="max-w-xl mx-auto space-y-8">
+        <div class="border-b border-gray-200 pb-6">
+          <p class="text-xs text-gray-400 font-sans" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
+          <p class="text-lg my-2 font-medium" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
+          <p class="text-sm text-gray-500" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
+        </div>
 
-      <div class="news-item">
-        <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
-        <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
-        <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
-      </div>
+        <div class="border-b border-gray-200 pb-6">
+          <p class="text-xs text-gray-400 font-sans" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
+          <p class="text-lg my-2 font-medium" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
+          <p class="text-sm text-gray-500" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
+        </div>
 
-      <div class="news-item">
-        <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
-        <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
-        <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
+        <div class="border-b border-gray-200 pb-6">
+          <p class="text-xs text-gray-400 font-sans" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
+          <p class="text-lg my-2 font-medium" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
+          <p class="text-sm text-gray-500" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
+        </div>
       </div>
     </section>
   </main>
@@ -117,32 +127,27 @@
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Лінії SVG для анімації в хрестик
     const lineTop = document.getElementById('line-top');
     const lineMid = document.getElementById('line-mid');
     const lineBot = document.getElementById('line-bot');
 
     let isOpen = false;
 
-    // Відкриття / Закриття вертикального меню та анімація хрестика
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', (e) => {
         e.preventDefault();
         isOpen = !isOpen;
 
         if (isOpen) {
-          // Відкрити меню
           mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
           mobileMenu.classList.add('translate-x-0', 'opacity-100');
 
-          // Трансформація бургера в хрестик
           if (lineTop && lineMid && lineBot) {
             lineTop.setAttribute('d', 'M 6 6 L 18 18');
             lineMid.style.opacity = '0';
             lineBot.setAttribute('d', 'M 6 18 L 18 6');
           }
         } else {
-          // Закрити меню
           closeMenu();
         }
       });
@@ -155,7 +160,6 @@
         mobileMenu.classList.remove('translate-x-0', 'opacity-100');
       }
 
-      // Повернення хрестика в бургер
       if (lineTop && lineMid && lineBot) {
         lineTop.setAttribute('d', 'M4 6h16');
         lineMid.style.opacity = '1';
@@ -163,14 +167,12 @@
       }
     }
 
-    // Закриття меню при кліку на посилання
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         closeMenu();
       });
     });
 
-    // Логіка перемикання мови
     window.setLang = function(event, lang) {
       if (event) event.preventDefault();
 
@@ -188,25 +190,29 @@
         }
       });
 
-      const btnUa = document.getElementById("btn-ua");
-      const btnEn = document.getElementById("btn-en");
+      // Перемикач для мобільного та десктопу
+      ['btn-ua', 'desk-btn-ua'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.toggle("text-gray-900", lang === "ua");
+          el.classList.toggle("font-semibold", lang === "ua");
+        }
+      });
 
-      if (btnUa) {
-        btnUa.classList.toggle("text-gray-900", lang === "ua");
-        btnUa.classList.toggle("font-bold", lang === "ua");
-      }
-      if (btnEn) {
-        btnEn.classList.toggle("text-gray-900", lang === "en");
-        btnEn.classList.toggle("font-bold", lang === "en");
-      }
+      ['btn-en', 'desk-btn-en'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.toggle("text-gray-900", lang === "en");
+          el.classList.toggle("font-semibold", lang === "en");
+        }
+      });
 
       localStorage.setItem("selectedLang", lang);
     };
 
-    // Ініціалізація мови
     const savedLang = localStorage.getItem("selectedLang") || "ua";
     setLang(null, savedLang);
   });
-</script>
+  </script>
 </body>
 </html>

@@ -81,15 +81,15 @@
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       
-                        // Відкривання бургер-меню
-      document.getElementById("burger").addEventListener("click", function() {
-  document.getElementById("menu").classList.toggle("open");
-});
+                      // Відкривання бургер-меню
+    document.getElementById("burger").addEventListener("click", function() {
+    document.getElementById("menu").classList.toggle("open");
+   });
 
       // Перемикання мобільного меню
       if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('hidden');
         });
       }
 

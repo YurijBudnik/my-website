@@ -1,3 +1,7 @@
+:root {
+  --header-height: 80px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -23,6 +27,7 @@ body {
   border-bottom: none;
   padding: 10px 0;                                     /* Компактний вертикальний відступ */
   transition: padding 0.3s ease;                       /* Плавний перехід зміни висоти шапки */
+  height: var(--header-height);
 }
 
 .header-container {
@@ -45,7 +50,7 @@ body {
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
   font-weight: 200;
-  font-size: 32px;                                     /* Оптимальний базовий розмір для мобільних */
+  font-size: clamp(22px, 2.5vw, 58px);
   line-height: 1;                                      /* Висота рядка */
   display: inline-flex;
   align-items: baseline;
@@ -60,7 +65,7 @@ body {
 .logo span,
 .logo .logo-subtitle {
   display: none !important;                            /* Приховано на мобільних та планшетах */
-  font-size: 24px;
+  font-size: clamp(14px, 1.2vw, 30px);
   color: #2f2f2f;
   font-weight: 200;
   margin-left: 6px;
@@ -80,8 +85,8 @@ body {
 
   /* SVG */
   .burger svg {
-    width: 28px;
-    height: 28px;
+    width: 34px;
+    height: 34px;
     stroke: black;
   }
 
@@ -163,15 +168,15 @@ nav ul {
 
 nav a {
   text-decoration: none;                               /* Прибирає підкреслення посилань */
-  color: #45494E;                                      /* Темно-сірий колір посилань */
-  font-size: 19px;                                     /* Розмір шрифту пунктів меню */
+  color: #555;                                      /* Темно-сірий колір посилань */
+  font-size: clamp(14px, 1.4vw, 22px);                 /* Розмір шрифту пунктів меню */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт посилань */
   transition: color 0.3s ease;                         /* Плавна зміна кольору */
 }
 
 nav a.active, 
 nav a:hover {
-  color: #000;                                         /* Чорний колір для активного/наведеного пункту */
+  color: black;                                         /* Чорний колір для активного/наведеного пункту */
 }
 
 .lang-switch {
@@ -193,8 +198,8 @@ nav a:hover {
 
 /* HERO: Завжди щільно прилягає до нижнього краю sticky-шапки */
 .hero {
-  margin-top: 0 !important;                            /* Скасовує відступи для sticky */
-  height: 70vh;                                        /* Висота фонового блоку */
+  margin-top: var(--header-height);
+  height: calc(100vh - var(--header-height));
   background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
 }
 
@@ -331,9 +336,6 @@ nav a:hover {
     gap: 25px;                                         /* Стандартні відступи для ПК */
   }
 
-  nav a {
-    font-size: 18px;
-  }
 
   .nav-link, .lang-link {
     line-height: 1;

@@ -15,6 +15,8 @@ body {
    ========================================== */
 
 .header {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   position: sticky;
   top: 0;                                              /* Прикріплює шапку до верхнього краю */
   left: 0;                                             /* Прикріплює шапку до лівого краю */
@@ -171,6 +173,7 @@ nav a:hover {
 /* HERO: Динамічно підлаштовується під висоту шапки */
 .hero {
   margin-top: 0 !important;                                    /* Початковий відступ під висоту закритої шапки */
+  margin-bottom: 0;
   height: 60vh;                                        /* Висота фонового блоку */
   background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
   transition: margin-top 0.3s ease-in-out;                   /* Плавний зсув фону слідом за розгортанням шапки */

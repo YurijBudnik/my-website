@@ -15,8 +15,6 @@ body {
    ========================================== */
 
 .header {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
   position: sticky;
   top: 0;                                              /* Прикріплює шапку до верхнього краю */
   left: 0;                                             /* Прикріплює шапку до лівого краю */
@@ -24,13 +22,9 @@ body {
   background: #ffffff;                                 /* Білий фон для шапки */
   z-index: 1000;                                       /* Шапка завжди поверх решти контенту */
   border-bottom: none;
-  padding: 12px 0;                                     /* Внутрішній вертикальний відступ */
-  transition: all 0.3s ease;                           /* Плавний перехід зміни висоти шапки */
+  padding: 10px 0;                                     /* Компактний вертикальний відступ */
+  transition: padding 0.3s ease;                       /* Плавний перехід зміни висоти шапки */
 }
-#mainContent {
-  padding-top: 0; 
-  margin-top: 0;
-}  
 
 .header-container {
   max-width: 1200px;                                   /* Обмежує максимальну ширину */
@@ -39,7 +33,12 @@ body {
   display: flex;                                       /* Вмикає Flexbox для вирівнювання */
   align-items: center;                                 /* Вирівнює елементи по вертикалі */
   justify-content: space-between;                      /* Розподіляє елементи по краях */
-  flex-wrap: nowrap;                                     /* не Дозволяє меню переноситися на новий рядок */
+  flex-wrap: nowrap;                                   /* Не дозволяє меню переноситися на новий рядок */
+}
+
+#mainContent {
+  padding-top: 0; 
+  margin-top: 0;
 }
 
 .logo {
@@ -47,32 +46,25 @@ body {
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
   font-weight: 200;
-  font-size: 48px;                                     /* Розмір шрифту 48px для мобільних при 100% зумі */
+  font-size: 32px;                                     /* Оптимальний базовий розмір для мобільних */
   line-height: 1;                                      /* Висота рядка */
   display: inline-flex;
   align-items: baseline;
   transition: all 0.3s ease;                           /* Плавна анімація змін */
   max-width: 70%;
   word-break: break-word;                              /* Захист від випадання тексту */
-  white-space: nowrap;                                 /* Забігає розриву імені на 2 рядки */
+  white-space: nowrap;                                 /* Запобігає розриву імені на 2 рядки */
   overflow: hidden;
   text-overflow: ellipsis;                             /* Додає три крапки, якщо екран зовсім крихітний */
 }
 
-.logo span {
-  font-size: 28px;                                     /* Розмір шрифту підпису Accordionist */
-  color: #2f2f2f;                                      /* Темно-сірий колір для span */
-  font-weight: 200;                                    /* Полегшена товщина шрифту */
-  margin-left: 6px;                                    /* Відступ ліворуч від імені */
-  display: inline-block;                               /* Відображається поруч з текстом */
-}
-
-/* Підпис (span: Accordionist / Акордеоніст) */
+.logo span,
 .logo .logo-subtitle {
-  display: none !important;                          /* Приховано на мобільних та планшетах (до 1023px) */
-  font-weight: 200;
+  display: none !important;                            /* Приховано на мобільних та планшетах */
+  font-size: 24px;
   color: #2f2f2f;
-  margin-left: 8px;
+  font-weight: 200;
+  margin-left: 6px;
 }
 
 .burger-menu {
@@ -90,21 +82,21 @@ body {
 
 .burger-menu span {
   width: 100%;                                         /* Ширина кожної смужки */
-  height: 2.1px;                                         /* Товщина смужки */
+  height: 2.1px;                                       /* Товщина смужки */
   background-color: #000;                              /* Чорний колір смужок */
   transition: all 0.3s ease;                           /* Плавне перетворення на хрестик */
 }
 
 .burger-menu.active span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);            /* Повертає верхню лінію */
+  transform: translateY(5.5px) rotate(45deg);
 }
 
 .burger-menu.active span:nth-child(2) {
-  opacity: 0;                                          /* Приховує середню лінію */
+  opacity: 0;
 }
 
 .burger-menu.active span:nth-child(3) {
-  transform: translateY(-4px) rotate(-45deg);           /* Повертає нижню лінію */
+  transform: translateY(-5.5px) rotate(-45deg);
 }
 
 .nav-wrapper {
@@ -117,14 +109,14 @@ body {
   max-height: 0;                                       /* Меню закрите за замовчуванням */
   overflow: hidden;                                    /* Приховує контент у закритому стані */
   opacity: 0;                                          /* Повна прозорість у закритому стані */
-  transition: all 0.4s ease;                           /* Плавне відкриття та розгортання */
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
-/* Стан меню при відкритті (активується через JS) */
+/* Стан меню при відкритті */
 .nav-wrapper.active {
   max-height: 400px;                                   /* Розгортає шапку під висоту меню */
   opacity: 1;                                          /* Робить меню повністю видимим */
-  padding-top: 20px;                                   /* Внутрішній відступ зверху */
+  padding-top: 15px;                                   /* Внутрішній відступ зверху */
   padding-bottom: 10px;                                /* Внутрішній відступ знизу */
 }
 
@@ -168,12 +160,11 @@ nav a:hover {
   font-weight: 600;                                    /* Напівжирний шрифт */
 }
 
-/* HERO: Динамічно підлаштовується під висоту шапки */
+/* HERO: Завжди щільно прилягає до нижнього краю sticky-шапки */
 .hero {
-  margin-top: 0 !important;                                    /* Початковий відступ під висоту закритої шапки */
-  margin-bottom: 0;
+  margin-top: 0 !important;                            /* Скасовує відступи для sticky */
+  height: 70vh;                                        /* Висота фонового блоку */
   background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
-  transition: margin-top 0.3s ease-in-out;                   /* Плавний зсув фону слідом за розгортанням шапки */
 }
 
 .news {
@@ -209,86 +200,26 @@ nav a:hover {
   color: #555;                                         /* Темно-сірий колір */
 }
 
-/* Зменшення при дуже вузькому екрані або сильному зумі (< 360px) */
-@media (max-width: 360px) {
-  .logo {
-    font-size: 32px;                                   /* Зменшує розмір логотипу при бракi місця */
-  }
-  .logo span {
-    display: none !important;                         /* Приховує span при екстремальному зумі */
-  }
-}
-
-@media (max-width: 767px) {  
-  .logo {
-    /* 
-       clamp(мінімальний_розмір, бажаний_розмір_від_в'юпорта, максимальний_розмір)
-       При зумі шрифт не виходитиме за рамки й пропорційно зменшуватиметься
-    */
-    font-size: clamp(10px, 6vw, 32px); 
-    line-height: 1.1;  
-  }
-
-  .nav-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
-  }
-
-  .nav-wrapper.active {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;                             /* Текст мобільного меню притиснутий праворуч */
-    text-align: right;
-    max-height: 500px; /* Достатня висота для розгортання */
-    opacity: 1;
-    padding-top: 15px; /* Невеликий відступ від логотипу до пунктів меню */
-  } 
- } 
- @media (max-width: 1023px) {
-  /* Забезпечуємо правильний фоновий блок hero */
-  .hero {
-    transition: margin-top 0.3s ease;
-  }   
-
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-}
-
 /* ==========================================
    2. Планшетна версія (від 768px до 1023px)
    ========================================== */
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .header {
-    padding: 12px 0;                                   /* Зменшені вертикальні відступи шапки */
-  }
-
-  .header-container {
-    flex-wrap: nowrap;                                 /* Елементи в один рядок */
-    justify-content: space-between;
+    padding: 10px 0;
   }
 
   .burger-menu {
-    display: none;                                     /* Приховуємо бургер-меню */
+    display: none !important;                          /* Приховуємо бургер-меню */
   }
 
   .logo {
-    font-size: 28px;                                   /* Зменшений шрифт логотипу (замість 48px) */
-  }
-
-  .logo span,
-  .logo .logo-subtitle {
-    display: none !important;
+    font-size: 32px;                                   /* Компактний логотип */
   }
 
   .nav-wrapper {
     display: flex !important;
-    flex-direction: row-reverse;       /* Мова праворуч, меню ліворуч */
+    flex-direction: row-reverse;                       /* Мова праворуч, меню ліворуч у один рядок */
     align-items: center;
     margin-left: auto;
     max-height: none !important;
@@ -296,50 +227,30 @@ nav a:hover {
     overflow: visible !important;
     width: auto;
     padding: 0 !important;
-    gap: 4px;
+    gap: 20px;
     background: transparent;
   }
 
   nav ul {
     display: flex;
     flex-direction: row;                               /* Пункти в один рядок */
-    justify-content: flex-end;                         /* Притискає самі пункти <li> до правого краю */
     list-style: none;
-    list-style-type: none !important;                 /* Додаткова страховка від точок */
     margin: 0;
     padding: 0;
-    gap: 20px;                                         /* Зменшена відстань між пунктами меню */
+    gap: 20px;                                         /* Відстань між пунктами меню */
   }
 
   nav a {
-    font-size: 16px;                                   /* Зменшений шрифт пунктів меню (замість 19px) */
+    font-size: 16px;                                   /* Зменшений шрифт пунктів меню */
   }
 
-  nav li {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Вирівнюємо висоту рядка посилань, щоб вони не роздували шапку */
   .nav-link, .lang-link {
     line-height: 1;
     padding: 5px 0;
   }
 
   .lang-switch {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 10px;                                   /* Зменшений шрифт перемикача мов */
-  }
-
-  .hero {
-    height: calc(100vh - 80px);                        /* Висота фону з урахуванням компактнішої шапки */
-    margin-top: 80px !important;                       /* Зменшений відступ під шапку планшета */
-  }
-
-  .burger-menu {
-    display: none !important;
+    font-size: 12px;
   }
 }
 
@@ -349,129 +260,56 @@ nav a:hover {
 
 @media (min-width: 1024px) {
   .header {
-    padding: 12px 0;                                   /* Повнорозмірні відступи шапки */
-  }
-
-  .header-container {
-    flex-wrap: nowrap;                                 
+    padding: 12px 0;
   }
 
   .burger-menu {
-    display: none;                                     
+    display: none !important;
   }
 
   .logo {
-    font-size: 48px;                                   /* Повнорозмірний логотип */
+    font-size: 44px;                                   /* Повнорозмірний логотип */
   }
 
-  .logo .logo-subtitle {
-    display: inline-block !important;                  /* З'являється лише на ПК */
-    font-size: 26px;                                   /* Менший розмір підпису, ніж у головного ім'я */
-  }
-
+  .logo .logo-subtitle,
   .logo span {
-    font-size: 26px;                                   /* Відображаємо span (Accordionist) */
-    display: inline-block !important;                  
+    display: inline-block !important;                  /* З'являється лише на ПК */
+    font-size: 24px;
   }
 
   .nav-wrapper {
-    display: flex;
-    flex-direction: row-reverse;                       /* Мова праворуч, меню ліворуч */
+    display: flex !important;
+    flex-direction: row-reverse;                       /* Всі елементи строго в один рядок */
     align-items: center;
     margin-left: auto;
-    max-height: none !important;                       
-    opacity: 1 !important;                             
-    overflow: visible;                                 
-    width: auto;                                       
-    padding: 0 !important;                                                                                      
-    gap: 6px;
+    max-height: none !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    width: auto;
+    padding: 0 !important;
+    gap: 30px;
     background: transparent;
   }
 
   nav ul {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;                         /* Притискає самі пункти <li> до правого краю */
     list-style: none;
     margin: 0;
-    padding: 0;                               
+    padding: 0;
     gap: 25px;                                         /* Стандартні відступи для ПК */
   }
 
   nav a {
-    font-size: 19px;                                   /* Стандартний шрифт пунктів меню */
+    font-size: 18px;
   }
 
-  /* Вирівнюємо висоту рядка посилань, щоб вони не роздували шапку */
   .nav-link, .lang-link {
     line-height: 1;
     padding: 5px 0;
   }
 
   .lang-switch { 
-    display: flex;
-    justify-content: flex-end;
     font-size: 13px;
-  }
-
-  .hero {
-    height: calc(100vh - 80px);                        
-    margin-top: 80px !important;                       
-  }
-}
-
-/* ==========================================
-   2. Десктопна версія (від 768px)
-   ========================================== */
-
-@media (min-width: 768px) {
-  .header {
-    padding: 15px 0;                                   /* Фіксовані відступи шапки на ПК */
-  }
-
-  .header-container {
-    flex-wrap: nowrap;                                 /* Забороняє перенос елементів */
-  }
-
-  .burger-menu {
-    display: none;                                     /* Приховує бургер на десктопі */
-  }
-
-  .logo {
-    font-size: 48px;                                   /* Розмір логотипу для ПК */
-  }
-
-  .logo span {
-    font-size: 26px;                                   /* Розмір span для ПК */
-    display: inline-block !important;                  /* Завжди показує span на ПК */
-  }
-
-  .nav-wrapper {
-    max-height: none !important;                       /* Скасовує обмеження висоти */
-    opacity: 1 !important;                             /* Завжди видиме меню */
-    overflow: visible;                                 /* Показує весь контент */
-    width: auto;                                       /* Авто-ширина */
-    padding: 0 !important;                             /* Скидає відступи */
-    flex-direction: column;                            /* Мови зверху, навігація знизу */
-    align-items: flex-end;                             /* Вирівнювання по правому краю */
-    gap: 6px;                                          /* Відстань між елементами */
-  }
-
-  nav ul {
-    flex-direction: row;                               /* Пункти в один рядок */
-    gap: 25px;                                         /* Відстань між пунктами */
-  }
-
-  nav a {
-    font-size: 19px;                                   /* Збільшений шрифт посилань */
-  }
-
-  .lang-switch {
-    font-size: 13px;                                   /* Розмір шрифту мов */
-  }
-
-  .hero {
-    height: calc(100vh - 80px);                        /* Висота фону на весь екран ПК */
-    margin-top: 80px !important;                       /* Фіксований відступ під шапку ПК */
   }
 }

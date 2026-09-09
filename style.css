@@ -33,7 +33,7 @@ body {
   display: flex;                                       /* Вмикає Flexbox для вирівнювання */
   align-items: center;                                 /* Вирівнює елементи по вертикалі */
   justify-content: space-between;                      /* Розподіляє елементи по краях */
-  flex-wrap: wrap;                                     /* Дозволяє меню переноситися на новий рядок */
+  flex-wrap: nowrap;                                     /* не Дозволяє меню переноситися на новий рядок */
 }
 
 #mainContent {
@@ -288,8 +288,8 @@ nav a:hover {
 
   .nav-wrapper {
     display: flex !important;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row-reverse;       /* Мова праворуч, меню ліворуч */
+    align-items: center;
     margin-left: auto;
     max-height: none !important;
     opacity: 1 !important;
@@ -319,6 +319,12 @@ nav a:hover {
     display: inline-block;
     margin: 0;
     padding: 0;
+  }
+
+  /* Вирівнюємо висоту рядка посилань, щоб вони не роздували шапку */
+  .nav-link, .lang-link {
+    line-height: 1;
+    padding: 5px 0;
   }
 
   .lang-switch {

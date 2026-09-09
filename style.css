@@ -71,14 +71,33 @@ body {
   position: absolute;
   right: 20px;   /* відступ від правого краю */
   top: 50%;
-  transform: translateY(-50%); /* вирівнювання по центру по висоті */
+  transform: translateY(-50%);   /* вирівнювання по центру по висоті */
 
-  font-size: 26px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1000;
 }
+
+  /* SVG */
+  .burger svg {
+    width: 28px;
+    height: 28px;
+    stroke: black;
+  }
+
+   /* Лінії */
+  .burger path {
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+    /* hover ефект */
+  .burger:hover svg {
+    stroke: #555;
+  }
 
 .burger-menu {
   display: flex;                                       /* Флекс-контейнер для смужок */

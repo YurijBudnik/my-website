@@ -15,35 +15,71 @@
 <body>
   <!-- === HEADER (Шапка та Навігація) === -->
   <!-- === HEADER (Шапка з білим фоном) === -->
-<header class="header">
-
-  <a href="index.html" class="logo">
-    Yurij Budnik <span>Accordionist</span>
-  </a>
-
-  <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-  </svg>
-</button>
-
-  <div class="nav-wrapper" id="menu">
-
-    <div class="lang-switch">
-      <a href="#" onclick="setLang(event,'ua')">UA</a> /
-      <a href="#" onclick="setLang(event,'en')">EN</a>
-    </div>
-
-    <nav>
-      <ul>
-        <li><a href="biography.html" class="nav-link">Biography</a></li>
-        <li><a href="#" class="nav-link">Concerts</a></li>
-        <li><a href="#" class="nav-link">Media</a></li>
-        <li><a href="#" class="nav-link">Albums</a></li>
-        <li><a href="#" class="nav-link">News</a></li>
-        <li><a href="#" class="nav-link">Contact</a></li>
-      </ul>
+<!-- === HEADER === -->
+<header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+    <!-- Брендинг / Логотип -->
+    <a href="#" class="group flex flex-col">
+      <span class="text-2xl font-serif tracking-wider text-gray-900 group-hover:text-amber-600 transition-colors">
+        Yurij Budnik
+      </span>
+      <span class="text-xs font-sans uppercase tracking-[0.2em] text-gray-500 logo-subtitle">
+        Accordionist
+      </span>
+    </a>
+  
+    <!-- Десктопне меню (сховане на мобільних) -->
+    <nav class="hidden md:flex items-center space-x-8">
+      <a href="#biography" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Biography" data-ua="Біографія">
+        <span>Біографія</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#concerts" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Concerts" data-ua="Концерти">
+        <span>Концерти</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#media" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Media" data-ua="Медіа">
+        <span>Медіа</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#contact" class="nav-link group relative py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Contact" data-ua="Контакти">
+        <span>Контакти</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
     </nav>
+  
+    <!-- Кнопка бургер-меню (прикріплена праворуч, анімується в хрестик) -->
+    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden ml-auto p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50">
+      <svg width="24" height="24" class="w-6 h-6 max-w-full h-auto transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Лінія 1 (Верхня) -->
+        <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16" />
+        <!-- Лінія 2 (Середня) -->
+        <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16" />
+        <!-- Лінія 3 (Нижня) -->
+        <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 18h16" />
+      </svg>
+    </button>
+
+  </div>
+
+  <!-- Вертикальне висувне меню (прикріплене до правого краю) -->
+  <div id="mobile-menu" class="fixed top-20 right-0 h-[calc(100vh-5rem)] w-64 bg-white/95 backdrop-blur-md border-l border-gray-200 shadow-xl transition-all duration-300 ease-in-out transform translate-x-full opacity-0 pointer-events-none md:hidden flex flex-col justify-between p-6">
+    
+    <!-- Пункти меню (вирівняні по правому краю) -->
+    <nav class="flex flex-col space-y-6 text-right">
+      <a href="#biography" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+      <a href="#concerts" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+      <a href="#media" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+      <a href="#contact" class="nav-link text-lg font-medium text-gray-800 hover:text-amber-600 transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+    </nav>
+
+    <!-- Кнопки перемикання мов у самому низу (світліший колір) -->
+    <div class="pt-6 border-t border-gray-100 flex justify-end space-x-3 text-sm text-gray-400 font-sans">
+      <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors active:font-semibold">UA</button>
+      <span>|</span>
+      <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors active:font-semibold">EN</button>
+    </div>
 
   </div>
 </header>

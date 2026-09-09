@@ -80,6 +80,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       const menuBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
+      
+                        // Відкривання бургер-меню
+      document.getElementById("burger").addEventListener("click", function() {
+  document.getElementById("menu").classList.toggle("open");
+});
 
       // Перемикання мобільного меню
       if (menuBtn && mobileMenu) {

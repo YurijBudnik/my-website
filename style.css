@@ -1,13 +1,12 @@
 * {
-  box-sizing: border-box;                              /* Враховує відступи й рамки в загальну ширину */
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;                                           /* Скидає стандартні зовнішні відступи */
-  font-family: 'Cormorant Garamond', serif;            /* Основний шрифт для всієї сторінки */
-  overflow-y: scroll;                                  /* Залишає вертикальну смугу прокручування */
-  color: #000;                                         /* Основний колір тексту */
-  background: #fff;                                    /* Фоновий колір сторінки */
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background: #ffffff;
+  color: #000000;
 }
 
 /* ==========================================

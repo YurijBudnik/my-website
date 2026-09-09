@@ -18,23 +18,23 @@
   
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
-  <!-- === HEADER (Шапка, яка плавно змінює висоту) === -->
-  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-500 ease-in-out overflow-hidden">
+  <!-- === HEADER (Шапка без нижньої рамки) === -->
+  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden">
     
     <!-- Верхній рядок: Логотип + Десктопне меню / Мобільний бургер -->
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
-      <!-- Брендинг / Логотип -->
-      <a href="#" class="group flex flex-col">
+      <!-- Брендинг / Логотип (Accordionist в один рядок на десктопі, прихований на мобільних) -->
+      <a href="#" class="group flex items-baseline gap-2 md:gap-3">
         <span class="text-2xl md:text-3xl font-serif tracking-wider text-gray-900 group-hover:text-amber-600 transition-colors">
           Yurij Budnik
         </span>
-        <span class="text-[10px] md:text-xs font-sans uppercase tracking-[0.2em] text-gray-500">
+        <span class="hidden md:inline text-xs font-sans uppercase tracking-[0.2em] text-gray-500">
           Accordionist
         </span>
       </a>
     
-      <!-- Десктопне меню (для ПК) -->
+      <!-- Десктопне меню -->
       <nav class="hidden md:flex items-center space-x-8">
         <a href="#biography" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Biography" data-ua="Біографія">
           <span>Біографія</span>
@@ -61,7 +61,7 @@
         </div>
       </nav>
     
-      <!-- Кнопка бургер-меню (збільшується/зменшується, анімується в хрестик) -->
+      <!-- Кнопка бургер-меню -->
       <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50">
         <svg class="w-[5vw] h-[5vw] min-w-[20px] min-h-[20px] max-w-[28px] max-h-[28px] transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16" />
@@ -72,19 +72,19 @@
 
     </div>
 
-    <!-- Випадаюче меню всередині шапки (Зверху -> Вниз) -->
+    <!-- Випадаюче меню всередині шапки -->
     <div id="mobile-menu" class="max-h-0 opacity-0 transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between px-6 pb-6">
       
-      <!-- Пункти меню (прикріплені до правого краю) -->
-      <nav class="flex flex-col space-y-4 text-right pt-4 border-t border-gray-100">
+      <!-- Пункти меню -->
+      <nav class="flex flex-col space-y-4 text-right pt-2">
         <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
         <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
         <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
         <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
       </nav>
 
-      <!-- Мовні кнопки у самому низу (світліший колір) -->
-      <div class="mt-6 pt-4 border-t border-gray-100 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
+      <!-- Мовні кнопки без лінії зверху -->
+      <div class="mt-6 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
         <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors">UA</button>
         <span>|</span>
         <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors">EN</button>
@@ -93,7 +93,7 @@
     </div>
   </header>
 
-  <!-- Головний контент (Плавно відсувається донизу під час відкривання меню) -->
+  <!-- Головний контент -->
   <main id="mainContent" class="transition-all duration-500 ease-in-out">
     <section class="h-[60vh] bg-gray-100 bg-cover bg-center" id="hero" style="background-image: url('hero.jpg');"></section>
 
@@ -123,7 +123,6 @@
     </section>
   </main>
 
-  <!-- JavaScript -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('mobile-menu-btn');
@@ -141,11 +140,9 @@
         isOpen = !isOpen;
 
         if (isOpen) {
-          // Розгортання меню зверху вниз
           mobileMenu.classList.remove('max-h-0', 'opacity-0');
           mobileMenu.classList.add('max-h-96', 'opacity-100');
 
-          // Трансформація кнопки в хрестик
           if (lineTop && lineMid && lineBot) {
             lineTop.setAttribute('d', 'M 6 6 L 18 18');
             lineMid.style.opacity = '0';
@@ -160,12 +157,10 @@
     function closeMenu() {
       isOpen = false;
       if (mobileMenu) {
-        // Згортання меню назад вгору
         mobileMenu.classList.add('max-h-0', 'opacity-0');
         mobileMenu.classList.remove('max-h-96', 'opacity-100');
       }
 
-      // Повернення хрестика в бургер
       if (lineTop && lineMid && lineBot) {
         lineTop.setAttribute('d', 'M4 6h16');
         lineMid.style.opacity = '1';
@@ -173,14 +168,12 @@
       }
     }
 
-    // Закриття меню при натисканні на пункт
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         closeMenu();
       });
     });
 
-    // Логіка перекладу мов
     window.setLang = function(event, lang) {
       if (event) event.preventDefault();
 

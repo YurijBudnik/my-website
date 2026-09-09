@@ -21,7 +21,11 @@
     Yurij Budnik <span>Accordionist</span>
   </a>
 
-  <button class="burger" onclick="toggleMenu()">☰</button>
+  <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
 
   <div class="nav-wrapper" id="menu">
 

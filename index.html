@@ -18,15 +18,15 @@
   
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
-  <!-- === HEADER (Шапка без нижньої рамки) === -->
+  <!-- === HEADER (Шапка) === -->
   <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md transition-all duration-500 ease-in-out overflow-hidden">
     
     <!-- Верхній рядок: Логотип + Десктопне меню / Мобільний бургер -->
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
-      <!-- Брендинг / Логотип (Accordionist в один рядок на десктопі, прихований на мобільних) -->
-      <a href="#" class="group flex items-baseline gap-2 md:gap-3">
-        <span class="text-2xl md:text-3xl font-serif tracking-wider text-gray-900 group-hover:text-amber-600 transition-colors">
+      <!-- Брендинг / Логотип (без ховер-ефекту) -->
+      <a href="#" class="flex items-baseline gap-2 md:gap-3">
+        <span class="text-2xl md:text-3xl font-serif tracking-wider text-gray-900">
           Yurij Budnik
         </span>
         <span class="hidden md:inline text-xs font-sans uppercase tracking-[0.2em] text-gray-500">
@@ -34,30 +34,30 @@
         </span>
       </a>
     
-      <!-- Десктопне меню -->
+      <!-- Десктопне меню (Ховер-ефект підкреслення і тексту RAL 7024 #474A51) -->
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="#biography" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Biography" data-ua="Біографія">
+        <a href="#biography" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">
           <span>Біографія</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#concerts" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Concerts" data-ua="Концерти">
+        <a href="#concerts" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Concerts" data-ua="Концерти">
           <span>Концерти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#media" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Media" data-ua="Медіа">
+        <a href="#media" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Media" data-ua="Медіа">
           <span>Медіа</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#contact" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors" data-en="Contact" data-ua="Контакти">
+        <a href="#contact" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Contact" data-ua="Контакти">
           <span>Контакти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
 
         <!-- Мовний перемикач для десктопу -->
         <div class="ml-4 pl-4 border-l border-gray-200 flex space-x-2 text-xs font-sans text-gray-400">
-          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors">UA</button>
+          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-[#474A51] transition-colors">UA</button>
           <span>|</span>
-          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors">EN</button>
+          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-[#474A51] transition-colors">EN</button>
         </div>
       </nav>
     
@@ -75,19 +75,19 @@
     <!-- Випадаюче меню всередині шапки -->
     <div id="mobile-menu" class="max-h-0 opacity-0 transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between px-6 pb-6">
       
-      <!-- Пункти меню -->
+      <!-- Пункти меню (Ховер-колір RAL 7024 #474A51) -->
       <nav class="flex flex-col space-y-4 text-right pt-2">
-        <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-        <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-        <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-        <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-amber-600 transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+        <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+        <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+        <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+        <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
       </nav>
 
-      <!-- Мовні кнопки без лінії зверху -->
+      <!-- Мовні кнопки -->
       <div class="mt-6 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
-        <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-amber-600 transition-colors">UA</button>
+        <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-[#474A51] transition-colors">UA</button>
         <span>|</span>
-        <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-amber-600 transition-colors">EN</button>
+        <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-[#474A51] transition-colors">EN</button>
       </div>
 
     </div>

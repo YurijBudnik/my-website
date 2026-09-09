@@ -1,136 +1,63 @@
-<!DOCTYPE html>                                         <!-- Оголошення типу документа HTML5 -->
-<html lang="en">                                        <!-- Основна мова сторінки -->
-<head>                                                  <!-- Початок службово-метаданого блоку -->
-  <meta charset="UTF-8">                                <!-- Кодування сторінки UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Налаштування для мобільних пристроїв -->
-  <title>Yurij Budnik</title>                          <!-- Назва вкладки браузера -->
+<!-- === PRELOADER (Анімація завантаження) === -->
+<div id="preloader" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-950 transition-opacity duration-500">
+  <div class="flex items-center space-x-1 mb-4">
+    <!-- Клавіші анімуються через CSS -->
+    <div class="w-4 h-16 bg-white rounded-b key-white"></div>
+    <div class="w-3 h-10 bg-gray-900 rounded-b -mx-2 z-10 key-black"></div>
+    <div class="w-4 h-16 bg-white rounded-b key-white"></div>
+    <div class="w-3 h-10 bg-gray-900 rounded-b -mx-2 z-10 key-black"></div>
+    <div class="w-4 h-16 bg-white rounded-b key-white"></div>
+  </div>
+  <p class="text-xs uppercase tracking-widest text-gray-400 font-sans">Завантаження...</p>
+</div>
 
-  <link rel="stylesheet" href="style.css">              <!-- Підключення файлу CSS-стилів -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Оптимізація підключення шрифтів -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Оптимізація крос-доменного завантаження -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet"> <!-- Підключення шрифту -->
-</head>                                                 <!-- Кінець службового блоку -->
-<body>                                                  <!-- Початок відображуваного контенту -->
-
-<header class="header" id="header">                      <!-- Шапка сайту з ID для керування через JS -->
-  <div class="header-container">                        <!-- Обмежувальний контейнер шапки -->
+<!-- === HEADER (Шапка та Навігація) === -->
+<header class="sticky top-0 z-40 w-full bg-gray-950/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
     
-    <a href="index.html" class="logo" data-en="Yurij Budnik" data-ua="Юрій Буднік">
-  Yurij Budnik
-  <span class="logo-subtitle" data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
-</a>
+    <!-- Брендинг / Логотип -->
+    <a href="#" class="group flex flex-col">
+      <span class="text-2xl font-serif tracking-wider text-white group-hover:text-amber-200 transition-colors">
+        Yurij Budnik
+      </span>
+      <span class="text-xs font-sans uppercase tracking-[0.2em] text-gray-400">
+        Accordionist
+      </span>
+    </a>
 
-    <button class="burger-menu" id="burgerBtn" aria-label="Toggle menu"> <!-- Кнопка відкриття мобільного меню -->
-      <span></span>                                     <!-- Верхня смужка гамбурга -->
-      <span></span>                                     <!-- Середня смужка гамбурга -->
-      <span></span>                                     <!-- Нижня смужка гамбурга -->
+    <!-- Десктопне меню (З ефектом розгортання лінії при наведенні) -->
+    <nav class="hidden md:flex items-center space-x-8">
+      <a href="#biography" class="group relative py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+        <span>Біографія</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#concerts" class="group relative py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+        <span>Концерти</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#media" class="group relative py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+        <span>Медіа</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+      <a href="#contact" class="group relative py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+        <span>Контакти</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-amber-200 transition-all duration-300 ease-out group-hover:w-full"></span>
+      </a>
+    </nav>
+
+    <!-- Кнопка мобільного меню (Гамбургер) -->
+    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
     </button>
+  </div>
 
-    <div class="nav-wrapper" id="navWrapper">           <!-- Розгортальна обгортка навігації -->
-      <div class="lang-switch">                         <!-- Блок перемикання мов -->
-        <a href="#" id="btn-ua" class="lang-link" onclick="setLang(event, 'ua')">UA</a> / <!-- Перемикач на UA -->
-        <a href="#" id="btn-en" class="lang-link active" onclick="setLang(event, 'en')">EN</a> <!-- Перемикач на EN -->
-      </div>
-      
-      <nav>                                             <!-- Блок навігаційного меню -->
-        <ul>                                            <!-- Список пунктів -->
-          <li><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li> <!-- Пункт Біографія -->
-          <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li> <!-- Пункт Концерти -->
-          <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li> <!-- Пункт Медіа -->
-          <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li> <!-- Пункт Альбоми -->
-          <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li> <!-- Пункт Новини -->
-          <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li> <!-- Пункт Контакти -->
-        </ul>
-      </nav>
-    </div>
-
+  <!-- Мобільне меню (Випадає при кліку) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-white/10 px-6 py-6 space-y-4">
+    <a href="#biography" class="block text-base font-medium text-gray-300 hover:text-amber-200">Біографія</a>
+    <a href="#concerts" class="block text-base font-medium text-gray-300 hover:text-amber-200">Концерти</a>
+    <a href="#media" class="block text-base font-medium text-gray-300 hover:text-amber-200">Медіа</a>
+    <a href="#contact" class="block text-base font-medium text-gray-300 hover:text-amber-200">Контакти</a>
   </div>
 </header>
-
-<!-- Огортаємо увесь контент сторінки в main -->
-<main id="mainContent">
-  <section class="hero" id="hero"></section>  <!-- Головний фоновий блок з ID для зсуву -->
-  <section class="news">         <!-- Секція блоку новин -->
-    <!-- Секція новин -->
-  
-   <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2> <!-- Заголовок новин -->
-
-   <div class="news-item">                               <!-- Перша новина -->
-     <p class="date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">April 18, 2026</p> <!-- Дата новини -->
-     <p class="title" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"The Chopin winning pianist had me under his spell"</p> <!-- Назва новини -->
-     <p class="source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, London Barbican Centre</p> <!-- Джерело -->
-   </div>
-
-   <div class="news-item">                               <!-- Друга новина -->
-     <p class="date" data-en="June 5, 2026" data-ua="5 Червня, 2026">June 5, 2026</p>
-     <p class="title" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Klavier Festival Ruhr</p>
-     <p class="source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Poet am Klavier"</p>
-   </div>
-
-   <div class="news-item">                               <!-- Третя новина -->
-     <p class="date" data-en="May 20, 2026" data-ua="20 Травня, 2026">May 20, 2026</p>
-     <p class="title" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Liederhalle Stuttgart</p>
-     <p class="source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"First-rate debut"</p>
-   </div>
-  </section>
-</main>
-
-<script>
-  const burgerBtn = document.getElementById('burgerBtn');
-  const navWrapper = document.getElementById('navWrapper');
-
-  // Переклад мов
-  window.setLang = function(event, lang) {
-    if (event) event.preventDefault();
-
-    document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-      const newText = el.dataset[lang];
-      if (!newText) return;
-
-      const childSpan = el.querySelector('.logo-subtitle');
-      if (childSpan) {
-        el.childNodes[0].nodeValue = newText + ' ';
-      } else {
-        el.textContent = newText;
-      }
-    });
-
-    const btnUa = document.getElementById("btn-ua");
-    const btnEn = document.getElementById("btn-en");
-
-    if (btnUa) btnUa.classList.toggle("active", lang === "ua");
-    if (btnEn) btnEn.classList.toggle("active", lang === "en");
-    localStorage.setItem("selectedLang", lang);
-  };
-
-  // Обробка натискання на бургер
-  if (burgerBtn) {
-    burgerBtn.addEventListener('click', () => {
-      burgerBtn.classList.toggle('active');
-      navWrapper.classList.toggle('active');
-      updatePagePadding();
-    });
-  }
-
-  // Закриття меню при кліку на пункт навігації
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-      document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
-      this.classList.add("active");
-
-      if (burgerBtn) burgerBtn.classList.remove('active');
-      if (navWrapper) navWrapper.classList.remove('active');
-      updatePagePadding();
-    });
-  });
-
-  // Старт сторінки
-  window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem("selectedLang") || "en";
-    setLang(null, savedLang);
-  });
-</script>                                               <!-- Кінець JavaScript-коду -->
-   
-</body>                                                 <!-- Закриває тіло сторінки -->
-</html>                                                 <!-- Закриває документ HTML -->

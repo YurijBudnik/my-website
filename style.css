@@ -265,7 +265,7 @@ nav a:hover {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .header {
-    padding: 10px 0;                                   /* Зменшені вертикальні відступи шапки */
+    padding: 12px 0;                                   /* Зменшені вертикальні відступи шапки */
   }
 
   .header-container {

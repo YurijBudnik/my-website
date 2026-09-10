@@ -22,11 +22,13 @@ body {
 
 /* Адаптивний шрифт логотипу, який росте разом із висотою шапки */
 .responsive-logo-text {
+  white-space: nowrap;    /* Гарантує, що текст НІКОЛИ не перенесеться на новий рядок */
   font-size: clamp(1.25rem, 3.5vw, 4.5rem);
   transition: font-size 0.3s ease-in-out;
 }
 
 .responsive-sub-text {
+  white-space: nowrap;
   font-size: clamp(0.65rem, 1vw, 1.25rem);
   transition: font-size 0.3s ease-in-out;
 }

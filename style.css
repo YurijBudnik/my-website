@@ -24,7 +24,7 @@ body {
 /* Контейнер для логотипу */
 .logo-container {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.75rem;
   min-width: 0;
 }
@@ -95,7 +95,6 @@ body {
 }
 
 .logo {
-  position: center;
   text-decoration: none;                               /* Прибирає підкреслення посилання */
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
@@ -114,7 +113,6 @@ body {
 
 .logo span,
 .logo .logo-subtitle {
-  position: center;
   display: none !important;                            /* Приховано на мобільних та планшетах */
   font-size: clamp(14px, 1.2vw, 30px);
   color: #2f2f2f;
@@ -143,7 +141,7 @@ body {
 
    /* Лінії */
   .burger path {
-    stroke-width: 1.5;
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: none;

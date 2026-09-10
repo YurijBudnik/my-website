@@ -42,6 +42,7 @@ body {
 
 .responsive-sub-text {
   white-space: nowrap;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 0.75rem;
   line-height: 1;
   font-weight: 300 !important;

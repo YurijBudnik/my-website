@@ -336,7 +336,10 @@ nav a:hover {
     gap: 25px;                                         /* Стандартні відступи для ПК */
   }
 
-
+  nav a {
+    font-size: 18px;                                   /*Стандартний шрифт пунктів меню */
+  }
+  
   .nav-link, .lang-link {
     line-height: 1;
     padding: 5px 0;

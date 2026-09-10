@@ -43,11 +43,23 @@ body {
 .responsive-sub-text {
   white-space: nowrap;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 0.75rem;
+  font-size: 0.58em !important;
   line-height: 1;
   font-weight: 300 !important;
+  letter-spacing: 0.15em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Перша (головна) літера в Accordionist */
+.responsive-sub-text::first-letter {
+  font-size: 1.15em; /* Трішки виділяємо заглавну А відносно її другорядних літер */
+  font-weight: 400;
+}
+
+/* Другорядні літери в Accordionist (маленькі) */
+.responsive-sub-text-lowercase {
+  text-transform: lowercase;
 }
 
 /* Контейнер для плавної анімації мобільного меню */

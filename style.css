@@ -35,12 +35,14 @@ body {
   white-space: nowrap;
   font-size: 1.875rem; /* Стандартний 3xl розмір */
   line-height: 1;
+  font-weight: 200; /* Легка товщина літер */
 }
 
 .responsive-sub-text {
   white-space: nowrap;
   font-size: 0.75rem;
   line-height: 1;
+  font-weight: 200; /* Легка товщина літер */
 }
 
 /* Контейнер для плавної анімації мобільного меню */

@@ -1,5 +1,5 @@
 :root {
-  --header-height: 60px;
+  --header-height: clamp(45px, 12vw, 240px);
 }
 
 * {
@@ -13,6 +13,25 @@ body {
   color: #000000;
 }
 
+.responsive-header-bar {
+  height: var(--header-height);
+  min-height: 45px;
+  max-height: 240px;
+  transition: height 0.3s ease-in-out;
+}
+
+/* Адаптивний шрифт логотипу, який росте разом із висотою шапки */
+.responsive-logo-text {
+  font-size: clamp(1.25rem, 3.5vw, 4.5rem);
+  transition: font-size 0.3s ease-in-out;
+}
+
+.responsive-sub-text {
+  font-size: clamp(0.65rem, 1vw, 1.25rem);
+  transition: font-size 0.3s ease-in-out;
+}
+
+/* Контейнер для плавної анімації мобільного меню */
 .mobile-menu-grid {
   display: grid;
   grid-template-rows: 0fr;
@@ -21,7 +40,7 @@ body {
   visibility: hidden;
 }
 
-/* Стан відкритого меню */
+/* Стан відкритого мобільного меню */
 .mobile-menu-grid.is-open {
   grid-template-rows: 1fr;
   opacity: 1;

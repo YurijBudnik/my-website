@@ -24,7 +24,7 @@
     <!-- Верхній рядок шапки -->
     <div id="header-bar" class="responsive-header-bar max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
         
-      <!-- Брендинг / Логотип (Масштабується у доступних межах) -->
+      <!-- Брендинг / Логотип -->
       <a href="#" id="logo-link" class="logo-container min-w-0 flex-1 py-2">
         <span id="logo-text" class="responsive-logo-text font-serif tracking-wider text-gray-900">
           Yurij Budnik
@@ -137,27 +137,25 @@
 
     let isOpen = false;
 
-    // Контроль розміру логотипу, щоб він ніколи не перекривав кнопку чи меню
+    // Зменшувати шрифт ЛИШЕ якщо текст не влез за стандартного розміру
     function adjustLogoSize() {
       if (!logoLink || !logoText || !headerBar) return;
 
-      // Очищаємо попередні стилі для точного заміру
-      logoText.style.maxHeight = '';
+      // Скинути на дефолтний розмір для перевірки
+      logoText.style.fontSize = '';
       
       const availableWidth = logoLink.clientWidth;
       const textWidth = logoText.scrollWidth;
 
+      // Якщо реальна ширина тексту більша за доступну — пропорційно зменшуємо
       if (textWidth > availableWidth && availableWidth > 0) {
         const scale = availableWidth / textWidth;
-        const currentFontSize = parseFloat(window.getComputedStyle(logoText).fontSize);
-        const newFontSize = Math.max(14, currentFontSize * scale);
+        const defaultFontSize = parseFloat(window.getComputedStyle(logoText).fontSize);
+        const newFontSize = Math.max(12, defaultFontSize * scale);
         logoText.style.fontSize = `${newFontSize}px`;
-      } else {
-        logoText.style.fontSize = '';
       }
     }
 
-    // Стежимо за зміною розміру екрана
     const resizeObserver = new ResizeObserver(() => {
       adjustLogoSize();
     });

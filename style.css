@@ -316,11 +316,11 @@ nav a:hover {
   }
 
   .responsive-logo-text {
-    font-size: 1.6rem; /* Трохи компактніший початковий розмір для планшета */
+    font-size: 2rem; /* Трохи компактніший початковий розмір для планшета */
   }
 
   .responsive-sub-text {
-    font-size: 0.85em !important;
+    font-size: 1em !important;
   }
 
 

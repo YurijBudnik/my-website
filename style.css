@@ -30,19 +30,21 @@ body {
   transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
 }
 
-/* Фіксований стандартний розмір логотипу за замовчуванням */
 .responsive-logo-text {
+  font-family: 'Cormorant Garamond', serif !important;
   white-space: nowrap;
-  font-size: 1.875rem; /* Стандартний 3xl розмір */
+  font-size: 1.875rem;
   line-height: 1;
-  font-weight: 100; /* Легка товщина літер */
+  font-weight: 200 !important; /* Ультратонке накреслення */
+  -webkit-font-smoothing: antialiased; /* Прибирає зайву розмитість/товщину у браузерах Safari/Chrome */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .responsive-sub-text {
   white-space: nowrap;
   font-size: 0.75rem;
   line-height: 1;
-  font-weight: 100; /* Легка товщина літер */
+  font-weight: 300 !important;
 }
 
 /* Контейнер для плавної анімації мобільного меню */

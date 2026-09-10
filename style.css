@@ -35,7 +35,7 @@ body {
   white-space: nowrap;
   font-size: 1.875rem;
   line-height: 1;
-  font-weight: 200 !important; /* Ультратонке накреслення */
+  font-weight: 250 !important; /* Ультратонке накреслення */
   -webkit-font-smoothing: antialiased; /* Прибирає зайву розмитість/товщину у браузерах Safari/Chrome */
   -moz-osx-font-smoothing: grayscale;
 }

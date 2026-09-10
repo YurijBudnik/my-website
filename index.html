@@ -24,7 +24,7 @@
     <!-- Верхній рядок: Логотип + Десктопне меню / Мобільний бургер -->
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         
-      <!-- Брендинг / Логотип (без ховер-ефекту) -->
+      <!-- Брендинг / Логотип (Accordinist в один рядок на десктопі, прихований на мобільних, без підсвічування) -->
       <a href="#" class="flex items-baseline gap-2 md:gap-3">
         <span class="text-2xl md:text-3xl font-serif tracking-wider text-gray-900">
           Yurij Budnik
@@ -34,7 +34,7 @@
         </span>
       </a>
     
-      <!-- Десктопне меню (Ховер-ефект підкреслення і тексту RAL 7024 #474A51) -->
+      <!-- Десктопне меню (Підсвічування RAL 7024 #474A51) -->
       <nav class="hidden md:flex items-center space-x-8">
         <a href="#biography" class="nav-link group relative py-2 text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">
           <span>Біографія</span>
@@ -72,10 +72,10 @@
 
     </div>
 
-    <!-- Випадаюче меню всередині шапки -->
+    <!-- Випадаюче меню всередині шапки (Зверху -> Вниз) -->
     <div id="mobile-menu" class="max-h-0 opacity-0 transition-all duration-500 ease-in-out md:hidden flex flex-col justify-between px-6 pb-6">
       
-      <!-- Пункти меню (Ховер-колір RAL 7024 #474A51) -->
+      <!-- Пункти меню (Підсвічування RAL 7024 #474A51) -->
       <nav class="flex flex-col space-y-4 text-right pt-2">
         <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
         <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
@@ -83,7 +83,7 @@
         <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
       </nav>
 
-      <!-- Мовні кнопки -->
+      <!-- Мовні кнопки без лінії зверху -->
       <div class="mt-6 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
         <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-[#474A51] transition-colors">UA</button>
         <span>|</span>
@@ -93,7 +93,7 @@
     </div>
   </header>
 
-  <!-- Головний контент -->
+  <!-- Головний контент (Плавно відсувається донизу) -->
   <main id="mainContent" class="transition-all duration-500 ease-in-out">
     <section class="h-[60vh] bg-gray-100 bg-cover bg-center" id="hero" style="background-image: url('hero.jpg');"></section>
 

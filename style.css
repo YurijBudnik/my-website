@@ -35,34 +35,34 @@ body {
   white-space: nowrap;
   font-size: 1.875rem;
   line-height: 1;
-  font-weight: 250 !important; /* Ультратонке накреслення */
-  -webkit-font-smoothing: antialiased; /* Прибирає зайву розмитість/товщину у браузерах Safari/Chrome */
+  font-weight: 500 !important; /* Встановлено 500 для виразної товщини */
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .responsive-sub-text {
   white-space: nowrap;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 0.58em !important;
+  font-size: 0.65em !important;
   line-height: 1;
-  font-weight: 300 !important;
+  font-weight: 400 !important; /* Підвищено товщину span */
   letter-spacing: 0.15em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Перша (головна) літера в Accordionist */
-.responsive-sub-text::first-letter {
-  font-size: 1.15em; /* Трішки виділяємо заглавну А відносно її другорядних літер */
-  font-weight: 400;
+.responsive-sub-text .main-letter {
+  font-size: 1.15em;
+  font-weight: 600; /* Додано щільність для літери A */
 }
 
-/* Другорядні літери в Accordionist (маленькі) */
+/* Другорядні літери в Accordionist */
 .responsive-sub-text-lowercase {
   text-transform: lowercase;
 }
 
-/* Контейнер для плавної анімації мобільного меню */
+/* Контейнер для анімації мобільного меню */
 .mobile-menu-grid {
   display: grid;
   grid-template-rows: 0fr;
@@ -88,25 +88,25 @@ body {
 
 .header {
   position: sticky;
-  top: 0;                                              /* Прикріплює шапку до верхнього краю */
-  left: 0;                                             /* Прикріплює шапку до лівого краю */
-  width: 100%;                                         /* Розтягує шапку на всю ширину */
-  background: #ffffff;                                 /* Білий фон для шапки */
-  z-index: 1000;                                       /* Шапка завжди поверх решти контенту */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 1000;
   border-bottom: none;
-  padding: 10px 0;                                     /* Компактний вертикальний відступ */
-  transition: padding 0.3s ease;                       /* Плавний перехід зміни висоти шапки */
+  padding: 10px 0;
+  transition: padding 0.3s ease;
   height: var(--header-height);
 }
 
 .header-container {
-  max-width: 1200px;                                   /* Обмежує максимальну ширину */
-  margin: 0 auto;                                      /* Центрує контейнер по горизонталі */
-  padding: 0 20px;                                     /* Внутрішні відступи з боків */
-  display: flex;                                       /* Вмикає Flexbox для вирівнювання */
-  align-items: center;                                 /* Вирівнює елементи по вертикалі */
-  justify-content: space-between;                      /* Розподіляє елементи по краях */
-  flex-wrap: nowrap;                                   /* Не дозволяє меню переноситися на новий рядок */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 #mainContent {
@@ -115,25 +115,25 @@ body {
 }
 
 .logo {
-  text-decoration: none;                               /* Прибирає підкреслення посилання */
-  color: #000000;                                      /* Чорний колір тексту логотипу */
-  font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
-  font-weight: 100;
+  text-decoration: none;
+  color: #000000;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
   font-size: clamp(22px, 2.5vw, 58px);
-  line-height: 1;                                      /* Висота рядка */
+  line-height: 1;
   display: inline-flex;
   align-items: baseline;
-  transition: all 0.3s ease;                           /* Плавна анімація змін */
+  transition: all 0.3s ease;
   max-width: 70%;
-  word-break: break-word;                              /* Захист від випадання тексту */
-  white-space: nowrap;                                 /* Запобігає розриву імені на 2 рядки */
+  word-break: break-word;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;                             /* Додає три крапки, якщо екран зовсім крихітний */
+  text-overflow: ellipsis;
 }
 
 .logo span,
 .logo .logo-subtitle {
-  display: none !important;                            /* Приховано на мобільних та планшетах */
+  display: none !important;
   font-size: clamp(14px, 1.2vw, 30px);
   font-family: 'Cormorant Garamond', serif;
   color: #2f2f2f;
@@ -143,54 +143,50 @@ body {
 
 .burger {
   position: absolute;
-  right: 20px;   /* відступ від правого краю */
+  right: 20px;
   top: 50%;
-  transform: translateY(-50%);   /* вирівнювання по центру по висоті */
-
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1000;
 }
 
-  /* SVG */
-  .burger svg {
-    width: 34px;
-    height: 34px;
-    stroke: black;
-  }
+.burger svg {
+  width: 34px;
+  height: 34px;
+  stroke: black;
+}
 
-   /* Лінії */
-  .burger path {
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-  }
+.burger path {
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
 
-    /* hover ефект */
-  .burger:hover svg {
-    stroke: #555;
-  }
+.burger:hover svg {
+  stroke: #555;
+}
 
 .burger-menu {
-  display: flex;                                       /* Флекс-контейнер для смужок */
-  flex-direction: column;                              /* Розміщує смужки одну під одною */
-  justify-content: space-between;                      /* Рівномірний інтервал між смужками */
-  width: 17px;                                         /* Ширина кнопки бургера */
-  height: 13px;                                        /* Висота кнопки бургера */
-  background: transparent;                             /* Прозорий фон */
-  border: none;                                        /* Без рамки */
-  cursor: pointer;                                     /* Вказівник миші при наведенні */
-  padding: 0;                                          /* Скидає відступи */
-  z-index: 1001;                                       /* Кнопка завжди поверх меню */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 17px;
+  height: 13px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
 }
 
 .burger-menu span {
-  width: 100%;                                         /* Ширина кожної смужки */
-  height: 3.5px;                                       /* Товщина смужки */
-  background-color: #000;                              /* Чорний колір смужок */
-  transition: all 0.3s ease;                           /* Плавне перетворення на хрестик */
+  width: 100%;
+  height: 3.5px;
+  background-color: #000;
+  transition: all 0.3s ease;
 }
 
 .burger-menu.active span:nth-child(1) {
@@ -206,104 +202,103 @@ body {
 }
 
 .nav-wrapper {
-  width: 100%;                                         /* Меню займає всю ширину шапки */
-  background: #ffffff;                                 /* Білий фон меню */
-  display: flex;                                       /* Вмикає Flexbox */
-  flex-direction: column-reverse;                      /* Розміщує мови під навігацією */
-  align-items: center;                                 /* Центрує пункти по горизонталі */
-  gap: 20px;                                           /* Відстань між елементами */
-  max-height: 0;                                       /* Меню закрите за замовчуванням */
-  overflow: hidden;                                    /* Приховує контент у закритому стані */
-  opacity: 0;                                          /* Повна прозорість у закритому стані */
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
 }
 
-/* Стан меню при відкритті */
 .nav-wrapper.active {
-  max-height: 400px;                                   /* Розгортає шапку під висоту меню */
-  opacity: 1;                                          /* Робить меню повністю видимим */
-  padding-top: 15px;                                   /* Внутрішній відступ зверху */
-  padding-bottom: 10px;                                /* Внутрішній відступ знизу */
+  max-height: 400px;
+  opacity: 1;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 nav ul {
-  display: flex;                                       /* Флекс-контейнер для пунктів */
-  flex-direction: column;                              /* Пункти розміщуються вертикально */
-  align-items: center;                                 /* Центрування пунктів */
-  list-style: none;                                    /* Прибирає маркери списку */
-  gap: 15px;                                           /* Відстань між пунктами меню */
-  padding: 0;                                          /* Скидає внутрішні відступи */
-  margin: 0;                                           /* Скидає зовнішні відступи */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
 nav a {
-  text-decoration: none;                               /* Прибирає підкреслення посилань */
-  color: #555;                                      /* Темно-сірий колір посилань */
-  font-size: clamp(14px, 1.4vw, 22px);                 /* Розмір шрифту пунктів меню */
-  font-family: 'Cormorant Garamond', serif;            /* Шрифт посилань */
-  transition: color 0.3s ease;                         /* Плавна зміна кольору */
+  text-decoration: none;
+  color: #555;
+  font-size: clamp(14px, 1.4vw, 22px);
+  font-family: 'Cormorant Garamond', serif;
+  transition: color 0.3s ease;
 }
 
 nav a.active, 
 nav a:hover {
-  color: black;                                         /* Чорний колір для активного/наведеного пункту */
+  color: black;
 }
 
+/* Зменшений перемикач мов */
 .lang-switch {
-  font-size: 14px;                                     /* Розмір шрифту для кнопок мови */
-  letter-spacing: 0.05em;                              /* Міжлітерний інтервал */
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 .lang-switch .lang-link {
-  color: #777;                                         /* Сірий колір неактивної мови */
-  text-decoration: none;                               /* Без підкреслення */
-  padding: 2px 6px;                                    /* Внутрішній відступ кнопок */
-  cursor: pointer;                                     /* Клікабельний курсор */
+  color: #777;
+  text-decoration: none;
+  padding: 1px 4px;
+  cursor: pointer;
 }
 
 .lang-switch .lang-link.active {
-  color: #000;                                         /* Чорний колір активної мови */
-  font-weight: 600;                                    /* Напівжирний шрифт */
+  color: #000;
+  font-weight: 600;
 }
 
-/* HERO: Завжди щільно прилягає до нижнього краю sticky-шапки */
 .hero {
   margin-top: var(--header-height);
   height: calc(100vh - var(--header-height));
-  background: url('hero.jpg') center/cover no-repeat;  /* Фонове зображення */
+  background: url('hero.jpg') center/cover no-repeat;
 }
 
 .news {
-  background: #f5f5f5;                                 /* Світло-сірий фон для новин */
-  padding: 60px 20px;                                  /* Внутрішні відступи секції */
-  text-align: center;                                  /* Центрування тексту */
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 .news h2 {
-  font-size: 24px;                                     /* Розмір заголовка */
-  margin-bottom: 20px;                                 /* Відступ знизу від заголовка */
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .news-item {
-  max-width: 600px;                                   /* Обмеження ширини новини */
-  margin: 0 auto 30px;                                 /* Центрування та відступ між новинами */
-  border-bottom: 1px solid #ccc;                       /* Нижній розділювач */
-  padding-bottom: 20px;                                /* Відступ до розділювача */
+  max-width: 600px;
+  margin: 0 auto 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
 
 .date { 
-  font-size: 12px;                                     /* Малий розмір для дати */
-  color: gray;                                         /* Сірий колір дати */
+  font-size: 12px;
+  color: gray;
 }
 
 .title { 
-  font-size: 17px;                                     /* Розмір заголовка новини */
-  margin: 8px 0;                                       /* Вертикальні відступи */
+  font-size: 17px;
+  margin: 8px 0;
 }
 
 .source { 
-  font-size: 14px;                                     /* Розмір шрифту джерела */
-  color: #555;                                         /* Темно-сірий колір */
+  font-size: 14px;
+  color: #555;
 }
 
 /* ==========================================
@@ -316,16 +311,16 @@ nav a:hover {
   }
 
   .burger-menu {
-    display: none !important;                          /* Приховуємо бургер-меню */
+    display: none !important;
   }
 
   .logo {
-    font-size: 32px;                                   /* Компактний логотип */
+    font-size: 32px;
   }
 
   .nav-wrapper {
     display: flex !important;
-    flex-direction: row-reverse;                       /* Мова праворуч, меню ліворуч у один рядок */
+    flex-direction: row-reverse;
     align-items: center;
     margin-left: auto;
     max-height: none !important;
@@ -339,15 +334,15 @@ nav a:hover {
 
   nav ul {
     display: flex;
-    flex-direction: row;                               /* Пункти в один рядок */
+    flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 20px;                                         /* Відстань між пунктами меню */
+    gap: 20px;
   }
 
   nav a {
-    font-size: 16px;                                   /* Зменшений шрифт пунктів меню */
+    font-size: 16px;
   }
 
   .nav-link, .lang-link {
@@ -356,7 +351,7 @@ nav a:hover {
   }
 
   .lang-switch {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
@@ -374,18 +369,18 @@ nav a:hover {
   }
 
   .logo {
-    font-size: 44px;                                   /* Повнорозмірний логотип */
+    font-size: 44px;
   }
 
   .logo .logo-subtitle,
   .logo span {
-    display: inline-block !important;                  /* З'являється лише на ПК */
+    display: inline-block !important;
     font-size: 24px;
   }
 
   .nav-wrapper {
     display: flex !important;
-    flex-direction: row-reverse;                       /* Всі елементи строго в один рядок */
+    flex-direction: row-reverse;
     align-items: center;
     margin-left: auto;
     max-height: none !important;
@@ -403,11 +398,11 @@ nav a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 25px;                                         /* Стандартні відступи для ПК */
+    gap: 25px;
   }
 
   nav a {
-    font-size: 18px;                                   /*Стандартний шрифт пунктів меню */
+    font-size: 18px;
   }
   
   .nav-link, .lang-link {
@@ -416,6 +411,6 @@ nav a:hover {
   }
 
   .lang-switch { 
-    font-size: 13px;
+    font-size: 11px;
   }
 }

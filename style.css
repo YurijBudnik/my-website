@@ -120,6 +120,7 @@ body {
 .logo .logo-subtitle {
   display: none !important;                            /* Приховано на мобільних та планшетах */
   font-size: clamp(14px, 1.2vw, 30px);
+  font-family: 'Cormorant Garamond', serif;
   color: #2f2f2f;
   font-weight: 100;
   margin-left: 6px;

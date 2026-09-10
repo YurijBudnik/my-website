@@ -86,6 +86,7 @@ body {
 }
 
 .logo {
+  position: center;
   text-decoration: none;                               /* Прибирає підкреслення посилання */
   color: #000000;                                      /* Чорний колір тексту логотипу */
   font-family: 'Cormorant Garamond', serif;            /* Шрифт логотипу */
@@ -104,6 +105,7 @@ body {
 
 .logo span,
 .logo .logo-subtitle {
+  position: center;
   display: none !important;                            /* Приховано на мобільних та планшетах */
   font-size: clamp(14px, 1.2vw, 30px);
   color: #2f2f2f;

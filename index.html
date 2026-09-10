@@ -138,28 +138,47 @@
 
     let isOpen = false;
 
-    // Виправлена функція коригування розміру логотипу при переповненні
-    function adjustLogoSize() {
-      if (!logoLink || !logoText || !headerBar) return;
+    // Автоматичне зменшення розміру ВСЬОГО логотипу (ім'я + підзаголовок) при недостатній ширині
+function adjustLogoSize() {
+  if (!logoLink || !logoText || !headerBar) return;
 
-      // Скидаємо інлайн-стиль перед розрахунками, щоб при масштабуванні повертатися до стандартного CSS
-      logoText.style.fontSize = '';
+  // 1. Скидаємо розрахований шрифт, щоб отримати чистий базовий розмір із CSS
+  logoText.style.fontSize = '';
 
-      const availableWidth = logoLink.clientWidth;
-      const textWidth = logoText.scrollWidth;
+  const subText = logoLink.querySelector('.responsive-sub-text');
+  
+  // 2. Обчислюємо реальну повну ширину всього контенту всередині логотипу
+  // (враховуємо, чи видимий підзаголовок "Accordionist")
+  const isSubVisible = subText && getComputedStyle(subText).display !== 'none';
+  
+  // Отримуємо ширину тексту імені
+  let totalContentWidth = logoText.scrollWidth;
 
-      if (textWidth > availableWidth && availableWidth > 0) {
-        const scale = availableWidth / textWidth;
-        const defaultFontSize = parseFloat(window.getComputedStyle(logoText).fontSize);
-        const newFontSize = Math.max(12, defaultFontSize * scale);
-        logoText.style.fontSize = `${newFontSize}px`;
-      }
-    }
+  if (isSubVisible) {
+    // Додаємо ширину підзаголовка та gap між ними (~12px)
+    const gap = parseFloat(getComputedStyle(logoLink).gap) || 12;
+    totalContentWidth += subText.scrollWidth + gap;
+  }
 
-    const resizeObserver = new ResizeObserver(() => {
-      adjustLogoSize();
-    });
-    if (headerBar) resizeObserver.observe(headerBar);
+  const availableWidth = logoLink.clientWidth;
+
+  // 3. Якщо повний контент не вміщується в доступну ширину контейнера
+  if (totalContentWidth > availableWidth && availableWidth > 0) {
+    const scale = availableWidth / totalContentWidth;
+    const defaultFontSize = parseFloat(window.getComputedStyle(logoText).fontSize);
+    
+    // Зменшуємо базовий шрифт для logoText (а sub-text підлаштується через `em`)
+    const newFontSize = Math.max(13, defaultFontSize * scale);
+    logoText.style.fontSize = `${newFontSize}px`;
+  }
+}
+
+// Викликаємо функцію не лише при зміні розміру шапки, а й при зміні масштабу вікна
+const resizeObserver = new ResizeObserver(() => {
+  adjustLogoSize();
+});
+if (headerBar) resizeObserver.observe(headerBar);
+window.addEventListener('resize', adjustLogoSize);
 
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', (e) => {

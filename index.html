@@ -21,10 +21,10 @@
   <!-- === HEADER (Шапка) === -->
   <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
     
-    <!-- Верхній рядок шапки: px-4 гарантує фіксований відступ від країв вікна -->
-    <div id="header-bar" class="responsive-header-bar max-w-7xl mx-auto px-2 flex items-center justify-between gap-4">
+    <!-- Верхній рядок шапки -->
+    <div id="header-bar" class="responsive-header-bar max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
         
-      <!-- Брендинг / Логотип (вирівняний строго по центру висоти шапки) -->
+      <!-- Брендинг / Логотип -->
       <a href="#" id="logo-link" class="logo-container min-w-0 flex-1 my-auto">
         <span id="logo-text" class="responsive-logo-text font-serif tracking-wider text-gray-900">
           Yurij Budnik
@@ -34,39 +34,39 @@
         </span>
       </a>
     
-      <!-- Десктопне та планшетне меню -->
+      <!-- Десктопне та планшетне меню (hover:text-black для майже чорного кольору) -->
       <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 lg:space-x-8 flex-shrink-0 my-auto">
-        <a href="#biography" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">
+        <a href="#biography" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">
           <span>Біографія</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#concerts" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Concerts" data-ua="Концерти">
+        <a href="#concerts" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">
           <span>Концерти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#media" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Media" data-ua="Медіа">
+        <a href="#media" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">
           <span>Медіа</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#contact" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-[#474A51] transition-colors" data-en="Contact" data-ua="Контакти">
+        <a href="#contact" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">
           <span>Контакти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-[#474A51] transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
 
-        <!-- Мовний перемикач для десктопу -->
-        <div class="ml-2 pl-4 border-l border-gray-200 flex space-x-2 text-xs font-sans text-gray-400">
-          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-[#474A51] transition-colors">UA</button>
-          <span>|</span>
-          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-[#474A51] transition-colors">EN</button>
+        <!-- Мовний перемикач для десктопу (space-x-1 для мінімального відступу) -->
+        <div class="ml-2 pl-4 border-l border-gray-200 flex items-center space-x-1 text-xs font-sans text-gray-400">
+          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
+          <span class="text-gray-300 select-none scale-90">|</span>
+          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
         </div>
       </nav>
     
-      <!-- Кнопка бургер-меню (stroke-width="2.5" збільшує товщину ліній) -->
-      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-gray-900 focus:outline-none z-50 flex-shrink-0 my-auto">
+      <!-- Кнопка бургер-меню -->
+      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-700 hover:text-black focus:outline-none z-50 flex-shrink-0 my-auto">
         <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
-          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
-          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16" />
+          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16" />
+          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 12h16" />
+          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 18h16" />
         </svg>
       </button>
 
@@ -77,16 +77,17 @@
       <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
         
         <nav class="flex flex-col space-y-4 text-right">
-          <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-          <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-          <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-          <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-[#474A51] transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+          <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+          <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+          <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+          <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
         </nav>
 
-        <div class="mt-6 flex justify-end space-x-3 text-xs text-gray-400 font-sans">
-          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-[#474A51] transition-colors">UA</button>
-          <span>|</span>
-          <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-[#474A51] transition-colors">EN</button>
+        <!-- Мобільний мовний перемикач (space-x-1) -->
+        <div class="mt-6 flex justify-end items-center space-x-1 text-xs text-gray-400 font-sans">
+          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
+          <span class="text-gray-300 select-none scale-90">|</span>
+          <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
         </div>
 
       </div>
@@ -137,7 +138,7 @@
 
     let isOpen = false;
 
-    // Автоматичне зменшення розміру логотипу при бракi вільного місця
+    // Автоматичне зменшення розміру логотипу
     function adjustLogoSize() {
       if (!logoLink || !logoText || !headerBar) return;
 
@@ -167,6 +168,11 @@
         if (isOpen) {
           mobileMenu.classList.add('is-open');
 
+          // Зникання логотипу при відкритті меню
+          if (logoLink) {
+            logoLink.classList.add('opacity-0', 'pointer-events-none');
+          }
+
           if (lineTop && lineMid && lineBot) {
             lineTop.setAttribute('d', 'M 6 6 L 18 18');
             lineMid.style.opacity = '0';
@@ -182,6 +188,11 @@
       isOpen = false;
       if (mobileMenu) {
         mobileMenu.classList.remove('is-open');
+      }
+
+      // Повернення логотипу при закритті меню
+      if (logoLink) {
+        logoLink.classList.remove('opacity-0', 'pointer-events-none');
       }
 
       if (lineTop && lineMid && lineBot) {
@@ -217,7 +228,7 @@
       ['btn-ua', 'desk-btn-ua'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-          el.classList.toggle("text-gray-900", lang === "ua");
+          el.classList.toggle("text-black", lang === "ua");
           el.classList.toggle("font-semibold", lang === "ua");
         }
       });
@@ -225,7 +236,7 @@
       ['btn-en', 'desk-btn-en'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-          el.classList.toggle("text-gray-900", lang === "en");
+          el.classList.toggle("text-black", lang === "en");
           el.classList.toggle("font-semibold", lang === "en");
         }
       });

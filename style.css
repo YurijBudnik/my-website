@@ -31,6 +31,37 @@ body {
   font-size: 1.875rem;
 }
 
+.logo,
+nav a {
+  color: transparent;
+
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.9)
+  );
+
+  background-size: 200% 200%;
+  animation: glassMove 4s linear infinite;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  text-shadow:
+    0 1px 1px rgba(255,255,255,0.6),
+    0 -1px 1px rgba(0,0,0,0.2);
+}
+
+@keyframes glassMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 .responsive-logo-text {
   font-family: 'Cormorant Garamond', serif !important;
   white-space: nowrap;

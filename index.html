@@ -151,7 +151,7 @@ function adjustLogoSize() {
   if (!logoLink || !logoText || !headerBar) return;
 
   // 1. Скидаємо розрахований шрифт, щоб отримати чистий базовий розмір із CSS
-  logoText.style.fontSize = '';
+  logoLink.style.fontSize = '';
 
   const subText = logoLink.querySelector('.responsive-sub-text');
   
@@ -173,11 +173,11 @@ function adjustLogoSize() {
   // 3. Якщо повний контент не вміщується в доступну ширину контейнера
   if (totalContentWidth > availableWidth && availableWidth > 0) {
     const scale = availableWidth / totalContentWidth;
-    const defaultFontSize = parseFloat(window.getComputedStyle(logoText).fontSize);
+    const defaultFontSize = parseFloat(window.getComputedStyle(logoLink).fontSize);
     
     // Зменшуємо базовий шрифт для logoText (а sub-text підлаштується через `em`)
     const newFontSize = Math.max(13, defaultFontSize * scale);
-    logoText.style.fontSize = `${newFontSize}px`;
+    logoLink.style.fontSize = `${newFontSize}px`;
   }
 }
 

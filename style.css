@@ -55,7 +55,7 @@ body {
 
 /* Перша (головна) літера в Accordionist */
 .responsive-sub-text .main-letter {
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 600; /* Додано щільність для літери A */
 }
 

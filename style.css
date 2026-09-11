@@ -44,7 +44,7 @@ body {
   white-space: nowrap;
   font-family: 'Cormorant Garamond', serif !important;
   font-size: 0.6em !important;
-  line-height: 1.15;
+  line-height: 1.25;
   font-weight: 400 !important; /* Підвищено товщину span */
   letter-spacing: 0.15em;
   -webkit-font-smoothing: antialiased;

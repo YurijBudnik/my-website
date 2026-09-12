@@ -129,8 +129,8 @@ body {
   text-decoration: none;
   color: #000000;
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
-  font-size: clamp(22px, 2.5vw, 58px);
+  font-weight: 400;
+  font-size: clamp(25px, 2.5vw, 58px);
   line-height: 1;
   display: inline-flex;
   align-items: baseline;
@@ -145,7 +145,7 @@ body {
 .logo span,
 .logo .logo-subtitle {
   display: none !important;
-  font-size: clamp(14px, 1.2vw, 30px);
+  font-size: clamp(16px, 1.2vw, 30px);
   font-family: 'Cormorant Garamond', serif;
   color: #2f2f2f;
   font-weight: 400;
@@ -332,7 +332,7 @@ nav a:hover {
   }
 
   .logo {
-    font-size: 32px;
+    font-size: 35px;
   }
 
   .nav-wrapper {
@@ -359,7 +359,7 @@ nav a:hover {
   }
 
   nav a {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .nav-link, .lang-link {
@@ -390,13 +390,13 @@ nav a:hover {
   }
 
   .logo {
-    font-size: 44px;
+    font-size: 48px;
   }
 
   .logo .logo-subtitle,
   .logo span {
     display: inline-block !important;
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .nav-wrapper {

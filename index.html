@@ -22,13 +22,13 @@
   <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
     
     <!-- Верхній рядок шапки -->
-    <div id="header-bar" class="responsive-header-bar w-full px-5 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
+    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
         
       <!-- Внутрішній блок для десктопу/планшета з вирівнюванням по базовій лінії літер -->
       <div class="w-full flex items-baseline justify-between gap-4">
 
-        <!-- Брендинг / Логотип (Збільшено розміри без зміни товщини) -->
-        <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-3xl sm:text-3xl md:text-4xl lg:text-5xl">
+        <!-- Брендинг / Логотип -->
+        <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
           <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900 leading-none">
             Yurij Budnik
           </span>
@@ -37,27 +37,27 @@
           </span>
         </a>    
       
-        <!-- Десктопне та планшетне меню (Збільшено розмір шрифту до text-lg lg:text-xl) -->
-        <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-6 lg:space-x-8 flex-shrink-0">
-          <a href="#biography" class="nav-link group relative text-lg lg:text-xl font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
+        <!-- Десктопне та планшетне меню -->
+        <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
+          <a href="#biography" class="nav-link group relative text-base lg:text-lg font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
             <span>Біографія</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
           </a>
-          <a href="#concerts" class="nav-link group relative text-lg lg:text-xl font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
+          <a href="#concerts" class="nav-link group relative text-base lg:text-lg font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
             <span>Концерти</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
           </a>
-          <a href="#media" class="nav-link group relative text-lg lg:text-xl font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
+          <a href="#media" class="nav-link group relative text-base lg:text-lg font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
             <span>Медіа</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
           </a>
-          <a href="#contact" class="nav-link group relative text-lg lg:text-xl font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
+          <a href="#contact" class="nav-link group relative text-base lg:text-lg font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
             <span>Контакти</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
           </a>
 
           <!-- Мовний перемикач -->
-          <div class="ml-2 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[13px] font-sans text-gray-400 leading-none">
+          <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
             <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
             <span class="text-gray-300 select-none scale-75">|</span>
             <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
@@ -67,7 +67,7 @@
       </div>
 
       <!-- Кнопка бургер-меню для мобільних пристроїв -->
-      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
+      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-1.5 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
         <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
           <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
@@ -105,7 +105,7 @@
       id="hero"
       class="w-full bg-cover bg-center bg-no-repeat"
       style="
-        height: calc(100vh - 70px);
+        height: calc(100vh - 58px);
         min-height: 500px;
         background-image: url('hero.jpg');
       ">
@@ -162,7 +162,7 @@
       let totalContentWidth = logoText.scrollWidth;
 
       if (isSubVisible) {
-        const gap = parseFloat(getComputedStyle(logoLink).gap) || 12;
+        const gap = parseFloat(getComputedStyle(logoLink).gap) || 8;
         totalContentWidth += subText.scrollWidth + gap;
       }
 
@@ -172,7 +172,7 @@
         const scale = availableWidth / totalContentWidth;
         const defaultFontSize = parseFloat(window.getComputedStyle(logoLink).fontSize);
         
-        const newFontSize = Math.max(16, defaultFontSize * scale);
+        const newFontSize = Math.max(15, defaultFontSize * scale);
         logoLink.style.fontSize = `${newFontSize}px`;
       }
     }
@@ -229,7 +229,6 @@
       });
     });
 
-    // Оновлений мовний скрипт з кольором text-gray-600 для активної кнопки
     window.setLang = function(event, lang) {
       if (event) event.preventDefault();
 

@@ -44,7 +44,7 @@ body {
   white-space: nowrap;
   font-size: 1em;
   line-height: 1;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -64,7 +64,7 @@ body {
 /* Перша (головна) літера в Accordionist */
 .responsive-sub-text .main-letter {
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Другорядні літери в Accordionist */
@@ -148,7 +148,7 @@ body {
 
 .lang-switch .lang-link.active {
   color: #4b5563;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .hero {

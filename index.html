@@ -19,80 +19,86 @@
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
   <!-- === HEADER (Шапка) === -->
-  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
-    
-    <!-- Верхній рядок шапки -->
-    <div id="header-bar" class="responsive-header-bar w-full px-5 sm:px-6 md:px-8 lg:px-10 flex items-baseline justify-between gap-[3px] sm:gap-4">
-        
+  <!-- === HEADER (Шапка) === -->
+<header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
+  
+  <!-- Верхній рядок шапки: items-center центрує весь вміст по висоті шапки -->
+  <div id="header-bar" class="responsive-header-bar w-full px-5 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
+      
+    <!-- Внутрішній блок для десктопу/планшета з items-baseline (низ літер на одній лінії) -->
+    <div class="w-full flex items-baseline justify-between gap-4">
+
       <!-- Брендинг / Логотип -->
-      <a href="#" id="logo-link" class="logo-container min-w-0 flex-1">
-        <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900">
+      <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2">
+        <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900 leading-none">
           Yurij Budnik
         </span>
-        <span class="responsive-sub-text hidden md:inline text-gray-600">
+        <span class="responsive-sub-text hidden md:inline text-gray-600 leading-none">
           <span class="main-letter">A</span><span class="responsive-sub-text-lowercase">ccordionist</span>
         </span>
-      </a>
+      </a>    
     
       <!-- Десктопне та планшетне меню -->
-      <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-6 lg:space-x-8 flex-shrink-0 self-center">
-        <a href="#biography" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">
+      <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-6 lg:space-x-8 flex-shrink-0">
+        <a href="#biography" class="nav-link group relative text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
           <span>Біографія</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#concerts" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">
+        <a href="#concerts" class="nav-link group relative text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
           <span>Концерти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#media" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">
+        <a href="#media" class="nav-link group relative text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
           <span>Медіа</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
-        <a href="#contact" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">
+        <a href="#contact" class="nav-link group relative text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
           <span>Контакти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
         </a>
 
-        <!-- Мовний перемикач для десктопу -->
-        <div class="ml-2 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400">
+        <!-- Мовний перемикач -->
+        <div class="ml-2 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
           <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
           <span class="text-gray-300 select-none scale-75">|</span>
           <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
         </div>
       </nav>
-    
-      <!-- Кнопка бургер-меню -->
-      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
-        <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
-          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
-          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16" />
-        </svg>
-      </button>
 
     </div>
 
-    <!-- Мобільне випадаюче меню -->
-    <div id="mobile-menu" class="mobile-menu-grid md:hidden">
-      <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
-        
-        <nav class="flex flex-col space-y-4 text-right">
-          <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-          <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-          <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-          <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
-        </nav>
+    <!-- Кнопка бургер-меню для мобільних пристроїв -->
+    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
+      <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
+        <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
+        <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16" />
+      </svg>
+    </button>
 
-        <!-- Мобільний мовний перемикач -->
-        <div class="mt-6 flex justify-end items-center space-x-1 text-[11px] text-gray-400 font-sans">
-          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
-          <span class="text-gray-300 select-none scale-75">|</span>
-          <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
-        </div>
+  </div>
 
+  <!-- Мобільне випадаюче меню -->
+  <div id="mobile-menu" class="mobile-menu-grid md:hidden">
+    <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
+      
+      <nav class="flex flex-col space-y-4 text-right">
+        <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+        <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+        <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+        <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+      </nav>
+
+      <!-- Мобільний мовний перемикач -->
+      <div class="mt-6 flex justify-end items-center space-x-1 text-[11px] text-gray-400 font-sans">
+        <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
+        <span class="text-gray-300 select-none scale-75">|</span>
+        <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
       </div>
+
     </div>
-  </header>
+  </div>
+</header>
 
   <!-- Головний контент -->
   <main id="mainContent">

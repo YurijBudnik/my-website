@@ -1,278 +1,80 @@
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth">
+<html lang="uk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yurij Budnik | Accordionist</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts: додано 400, 500, 600, 700 -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
-  
-<body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
-  <!-- === HEADER (Шапка) === -->
-  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
-    
-    <!-- Верхній рядок шапки -->
-    <div id="header-bar" class="responsive-header-bar w-full px-5 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-[3px] sm:gap-4">
-        
-      <!-- Брендинг / Логотип -->
-      <a href="#" id="logo-link" class="logo-container min-w-0 flex-1 self-center">
-        <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900">
-          Yurij Budnik
-        </span>
-        <span class="responsive-sub-text hidden md:inline text-gray-600">
-          <span class="main-letter">A</span><span class="responsive-sub-text-lowercase">ccordionist</span>
-        </span>
-      </a>    
-    
-      <!-- Десктопне та планшетне меню -->
-      <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 lg:space-x-8 flex-shrink-0 self-center">
-        <a href="#biography" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">
-          <span>Біографія</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
-        </a>
-        <a href="#concerts" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">
-          <span>Концерти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
-        </a>
-        <a href="#media" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">
-          <span>Медіа</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
-        </a>
-        <a href="#contact" class="nav-link group relative py-2 text-sm lg:text-base font-medium text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">
-          <span>Контакти</span>
-          <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-out group-hover:w-full"></span>
-        </a>
+<body>
 
-        <!-- Мовний перемикач для десктопу (зменшено шрифт до text-[11px]) -->
-        <div class="ml-2 pl-3 border-l border-gray-200 flex items-center space-x-1 text-[12px] font-sans text-gray-400">
-          <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
-          <span class="text-gray-300 select-none scale-75">|</span>
-          <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
-        </div>
-      </nav>
-    
-      <!-- Кнопка бургер-меню -->
-      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
-        <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
-          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
-          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16" />
-        </svg>
-      </button>
+<header class="header">
 
+  <!-- ЛОГО -->
+  <a href="index.html" class="logo-container">
+    <span class="logo-main" data-en="Yurij Budnik" data-ua="Юрій Буднік">Yurij Budnik</span>
+    <span class="logo-sub" data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
+  </a>
+
+  <!-- БУРГЕР -->
+  <button id="burger" class="burger">☰</button>
+
+  <!-- МЕНЮ -->
+  <div class="nav-wrapper" id="menu">
+
+    <div class="lang-switch">
+      <button onclick="setLang('ua')">UA</button> /
+      <button onclick="setLang('en')">EN</button>
     </div>
 
-    <!-- Мобільне випадаюче меню -->
-    <div id="mobile-menu" class="mobile-menu-grid md:hidden">
-      <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
-        
-        <nav class="flex flex-col space-y-4 text-right">
-          <a href="#biography" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-          <a href="#concerts" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-          <a href="#media" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-          <a href="#contact" class="nav-link text-lg font-serif text-gray-800 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
-        </nav>
+    <nav>
+      <ul>
+        <li><a href="#" class="nav-link" data-en="Biography" data-ua="Біографія">Biography</a></li>
+        <li><a href="#" class="nav-link" data-en="Concerts" data-ua="Концерти">Concerts</a></li>
+        <li><a href="#" class="nav-link" data-en="Media" data-ua="Медіа">Media</a></li>
+        <li><a href="#" class="nav-link" data-en="Albums" data-ua="Альбоми">Albums</a></li>
+        <li><a href="#" class="nav-link" data-en="News" data-ua="Новини">News</a></li>
+        <li><a href="#" class="nav-link" data-en="Contact" data-ua="Контакти">Contact</a></li>
+      </ul>
+    </nav>
 
-        <!-- Мобільний мовний перемикач (зменшено розмір) -->
-        <div class="mt-6 flex justify-end items-center space-x-1 text-[11px] text-gray-400 font-sans">
-          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-black transition-colors px-0.5">UA</button>
-          <span class="text-gray-300 select-none scale-75">|</span>
-          <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-black transition-colors px-0.5">EN</button>
-        </div>
+  </div>
+</header>
 
-      </div>
-    </div>
-  </header>
+<section class="hero"></section>
 
-  <!-- Головний контент -->
-  <main id="mainContent">
-    <section 
-     id="hero"
-     class="w-full bg-cover bg-center bg-no-repeat"
-     style="
-      height: calc(100vh - 70px);
-      min-height: 500px;
-      background-image: url('hero.jpg');
-     ">
-    </section>
+<section class="news">
+  <h2 data-en="Latest News" data-ua="Останні новини">Latest News</h2>
+</section>
 
-    <section class="bg-gray-50 py-16 px-6 text-center">
-      <h2 class="text-2xl font-serif tracking-wide mb-8" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
+<script>
+const burger = document.getElementById("burger");
+const menu = document.getElementById("menu");
 
-      <div class="max-w-xl mx-auto space-y-8">
-        <div class="border-b border-gray-200 pb-6">
-          <p class="text-xs text-gray-400 font-sans" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
-          <p class="text-lg my-2 font-medium" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
-          <p class="text-sm text-gray-500" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
-        </div>
+burger.addEventListener("click", () => {
+  menu.classList.toggle("open");
+});
 
-        <div class="border-b border-gray-200 pb-6">
-          <p class="text-xs text-gray-400 font-sans" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
-          <p class="text-lg my-2 font-medium" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
-          <p class="text-sm text-gray-500" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
-        </div>
+// Мова
+function setLang(lang) {
+  document.querySelectorAll("[data-en]").forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
 
-        <div class="border-b border-gray-200 pb-6">
-          <p class="text-xs text-gray-400 font-sans" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
-          <p class="text-lg my-2 font-medium" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
-          <p class="text-sm text-gray-500" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    const lineTop = document.getElementById('line-top');
-    const lineMid = document.getElementById('line-mid');
-    const lineBot = document.getElementById('line-bot');
-
-    const logoLink = document.getElementById('logo-link');
-    const logoText = document.getElementById('logo-text');
-    const headerBar = document.getElementById('header-bar');
-
-    let isOpen = false;
-
-    // Автоматичне зменшення розміру ВСЬОГО логотипу (ім'я + підзаголовок) при недостатній ширині
-function adjustLogoSize() {
-  if (!logoLink || !logoText || !headerBar) return;
-
-  // 1. Скидаємо розрахований шрифт, щоб отримати чистий базовий розмір із CSS
-  logoLink.style.fontSize = '';
-
-  const subText = logoLink.querySelector('.responsive-sub-text');
-  
-  // 2. Обчислюємо реальну повну ширину всього контенту всередині логотипу
-  // (враховуємо, чи видимий підзаголовок "Accordionist")
-  const isSubVisible = subText && getComputedStyle(subText).display !== 'none';
-  
-  // Отримуємо ширину тексту імені
-  let totalContentWidth = logoText.scrollWidth;
-
-  if (isSubVisible) {
-    // Додаємо ширину підзаголовка та gap між ними (~12px)
-    const gap = parseFloat(getComputedStyle(logoLink).gap) || 12;
-    totalContentWidth += subText.scrollWidth + gap;
-  }
-
-  const availableWidth = logoLink.clientWidth;
-
-  // 3. Якщо повний контент не вміщується в доступну ширину контейнера
-  if (totalContentWidth > availableWidth && availableWidth > 0) {
-    const scale = availableWidth / totalContentWidth;
-    const defaultFontSize = parseFloat(window.getComputedStyle(logoLink).fontSize);
-    
-    // Зменшуємо базовий шрифт для logoText (а sub-text підлаштується через `em`)
-    const newFontSize = Math.max(13, defaultFontSize * scale);
-    logoLink.style.fontSize = `${newFontSize}px`;
-  }
+  localStorage.setItem("lang", lang);
 }
 
-// Викликаємо функцію не лише при зміні розміру шапки, а й при зміні масштабу вікна
-const resizeObserver = new ResizeObserver(() => {
-  adjustLogoSize();
-});
-if (headerBar) resizeObserver.observe(headerBar);
-window.addEventListener('resize', adjustLogoSize);
+// Завантаження мови
+const savedLang = localStorage.getItem("lang") || "ua";
+setLang(savedLang);
+</script>
 
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        isOpen = !isOpen;
-
-        if (isOpen) {
-          mobileMenu.classList.add('is-open');
-
-          if (logoLink) {
-            logoLink.classList.add('opacity-0', 'pointer-events-none');
-          }
-
-          if (lineTop && lineMid && lineBot) {
-            lineTop.setAttribute('d', 'M 6 6 L 18 18');
-            lineMid.style.opacity = '0';
-            lineBot.setAttribute('d', 'M 6 18 L 18 6');
-          }
-        } else {
-          closeMenu();
-        }
-      });
-    }
-
-    function closeMenu() {
-      isOpen = false;
-      if (mobileMenu) {
-        mobileMenu.classList.remove('is-open');
-      }
-
-      if (logoLink) {
-        logoLink.classList.remove('opacity-0', 'pointer-events-none');
-      }
-
-      if (lineTop && lineMid && lineBot) {
-        lineTop.setAttribute('d', 'M4 6h16');
-        lineMid.style.opacity = '1';
-        lineBot.setAttribute('d', 'M4 18h16');
-      }
-    }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-
-    window.setLang = function(event, lang) {
-      if (event) event.preventDefault();
-
-      document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-        const newText = el.dataset[lang];
-        if (!newText) return;
-
-        const childSpan = el.querySelector('span');
-        if (childSpan && !el.classList.contains('nav-link')) {
-          el.childNodes[0].nodeValue = newText + ' ';
-        } else if (childSpan && el.classList.contains('nav-link')) {
-          childSpan.textContent = newText;
-        } else {
-          el.textContent = newText;
-        }
-      });
-
-      ['btn-ua', 'desk-btn-ua'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.toggle("text-black", lang === "ua");
-          el.classList.toggle("font-bold", lang === "ua");
-        }
-      });
-
-      ['btn-en', 'desk-btn-en'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.toggle("text-black", lang === "en");
-          el.classList.toggle("font-bold", lang === "en");
-        }
-      });
-
-      localStorage.setItem("selectedLang", lang);
-    };
-
-    const savedLang = localStorage.getItem("selectedLang") || "ua";
-    setLang(null, savedLang);
-  });
-  </script>
 </body>
 </html>

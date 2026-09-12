@@ -1,6 +1,6 @@
 :root {
   /* Фіксована висота шапки у px (без залежності від vw) */
-  --header-height: 58px;
+  --header-height: 68px;
 }
 
 @media (max-width: 767px) {

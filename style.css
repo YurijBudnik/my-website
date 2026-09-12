@@ -19,7 +19,7 @@ body {
   min-height: 55px;
   max-height: 240px;
   transition: height 0.3s ease-in-out;
-  align-items: baseline; /* Посадка всього тексту на одну лінію рядка */
+  align-items: center;
 }
 
 /* Контейнер для логотипу */

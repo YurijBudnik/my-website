@@ -116,14 +116,19 @@
 
                   <!-- Анімована стрілочка на Tailwind: завжди видима на екрані, при скролі зупиняється внизу фото -->
     <div class="sticky bottom-4 z-20 -mt-16 sm:-mt-20 flex justify-center pointer-events-none">
-      <a href="#news" class="pointer-events-auto flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer" aria-label="Scroll down to news">
-        <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 animate-bounce stroke-current drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      <!-- Інтерактивна стрілочка вниз -->
+      <a 
+        href="#news" 
+        class="scroll-down-arrow inline-flex items-center justify-center p-2 rounded-full text-gray-400 hover:text-gray-900 transition-colors duration-300 focus:outline-none"
+        aria-label="Прокрутити до новин"
+      >
+        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
       </a>
     </div>
 
-    <section class="bg-gray-50 py-16 px-6 text-center">
+    <section id="news" class="bg-gray-50 py-16 px-6 text-center">
       <h2 class="text-2xl font-serif tracking-wide mb-8" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
 
       <div class="max-w-xl mx-auto space-y-8">

@@ -92,9 +92,6 @@ body {
   overflow: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 /* ==========================================
    1. Мобільна версія (Mobile-First)
@@ -418,5 +415,9 @@ html {
 
   .lang-switch { 
     font-size: 11px;
+  }
+
+  html {
+   scroll-behavior: smooth;
   }
 }

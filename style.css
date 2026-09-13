@@ -415,48 +415,4 @@ body {
   .lang-switch { 
     font-size: 11px;
   }
-
-  /* ==========================================
-   Анімована стрілочка прокрутки (Гарантована анімація)
-   ========================================== */
-
-/* 1. Визначення анімації руху */
-@-webkit-keyframes force-bounce {
-  0%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(8px);
-    transform: translateY(8px);
-  }
-}
-
-@keyframes force-bounce {
-  0%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(8px);
-    transform: translateY(8px);
-  }
-}
-
-/* 2. Примусове застосування анімації без залежності від брекпоінтів */
-.scroll-arrow-icon {
-  -webkit-animation: force-bounce 1.8s infinite ease-in-out !important;
-  animation: force-bounce 1.8s infinite ease-in-out !important;
-  will-change: transform;
-}
-
-/* 3. Адаптація для горизонтального режиму (Landscape) на смартфонах */
-@media screen and (max-height: 500px) and (orientation: landscape) {
-  .scroll-arrow-container {
-    bottom: 12px !important; /* Фіксуємо притиснення до самого низу фото */
-  }
-  .scroll-arrow-icon {
-    width: 1.5rem !important;  /* Трохи зменшуємо розмір, щоб не перекривати фото */
-    height: 1.5rem !important;
-  }
 }

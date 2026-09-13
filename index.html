@@ -279,6 +279,12 @@
 
     const savedLang = localStorage.getItem("selectedLang") || "ua";
     setLang(null, savedLang);
+
+    // При завантаженні сторінки скидаємо скрол нагору та видаляємо хеш з URL
+    if (window.location.hash === '#news') {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+    }
   });
   </script>
 </body>

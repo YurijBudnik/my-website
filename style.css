@@ -428,5 +428,6 @@ body {
   
   .animate-bounce-custom {
     animation: bounce-subtle 2s infinite ease-in-out;
+    will-change: transform;
   } 
 }

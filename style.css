@@ -63,8 +63,8 @@ body {
 
 /* Перша (головна) літера в Accordionist */
 .responsive-sub-text .main-letter {
-  font-size: 1.3em;
-  font-weight: 500;
+  font-size: 1.1em;
+  font-weight: 400;
 }
 
 /* Другорядні літери в Accordionist */

@@ -27,15 +27,17 @@
       <!-- Внутрішній блок для десктопу/планшета з вирівнюванням по базовій лінії літер -->
       <div class="w-full flex items-baseline justify-between gap-4">
 
-        <!-- Брендинг / Логотип -->
-        <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
-          <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900 leading-none">
-            Yurij Budnik
+        <a href="#" class="flex flex-col text-left group">
+          <!-- Логотип (Ім'я) з атрибутами перекладу -->
+          <span id="logo-text" class="responsive-logo-text tracking-wider text-gray-900 leading-none font-normal" data-en="Yurij Budnik" data-ua="Юрій Буднік">
+            Юрій Буднік
           </span>
-          <span class="responsive-sub-text hidden lg:inline text-gray-600 leading-none">
-            <span class="main-letter">A</span><span class="responsive-sub-text-lowercase">ccordionist</span>
+        
+          <!-- Підзаголовок (Спеціальність) з атрибутами перекладу -->
+          <span class="responsive-sub-text hidden lg:inline text-gray-600 leading-none font-normal" data-en="Accordionist" data-ua="Акордеоніст">
+            Акордеоніст
           </span>
-        </a>    
+        </a> 
       
         <!-- Десктопне та планшетне меню -->
         <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">

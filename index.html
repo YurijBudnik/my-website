@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Біографія | Yurij Budnik</title>
+  <title>Yurij Budnik | Accordionist</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,54 +11,57 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-white text-gray-900 font-serif antialiased min-h-screen">
+<body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
   <!-- === HEADER (Шапка) === -->
   <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
     
-    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4 py-3 sm:py-4">
+    <!-- Верхній рядок шапки -->
+    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
         
+      <!-- Внутрішній блок для десктопу/планшета з вирівнюванням по базовій лінії літер -->
       <div class="w-full flex items-baseline justify-between gap-4">
 
-        <!-- Клікабельний логотип для повернення на головну -->
-        <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl hover:opacity-80 transition-opacity">
-          <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
-            Yurij Budnik
-          </span>
-        
-          <span class="responsive-sub-text tracking-normal hidden lg:inline text-gray-700 leading-none">
-            <span class="main-letter" data-en="A" data-ua="А">A</span><span class="responsive-sub-text-lowercase" data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
-          </span>
-        </a>  
-        
+      <!-- Брендинг / Логотип -->
+      <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
+        <!-- Ім'я / Логотип -->
+        <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
+          Yurij Budnik
+        </span>
+      
+        <!-- Підзаголовок зі збереженням структури літер -->
+        <span class="responsive-sub-text tracking-normal hidden lg:inline text-gray-700 leading-none">
+          <span class="main-letter" data-en="A" data-ua="А">A</span><span class="responsive-sub-text-lowercase" data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
+        </span>
+      </a>  
+      
         <!-- Десктопне та планшетне меню -->
         <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
-          <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
+          <a href="#biography" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
             <span>Біографія</span>
-            <!-- Активний стан: лінія завжди показана -->
-            <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-black transition-all duration-200 ease-out"></span>
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
-          <a href="index.html#concerts" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
+          <a href="#concerts" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
             <span>Концерти</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
-          <a href="index.html#media" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
+          <a href="#media" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
             <span>Медіа</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
-          <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
+          <a href="#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
             <span>Контакти</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
 
           <!-- Мовний перемикач -->
           <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
-            <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5 font-medium text-gray-600">UA</button>
+            <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
             <span class="text-gray-300 select-none scale-75">|</span>
             <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
           </div>
@@ -78,150 +81,119 @@
     </div>
 
     <!-- Мобільне випадаюче меню -->
-    <div id="mobile-menu" class="mobile-menu-grid md:hidden bg-white/95 backdrop-blur-md">
+    <div id="mobile-menu" class="mobile-menu-grid md:hidden">
       <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
+        
         <nav class="flex flex-col space-y-4 text-right">
-          <a href="biography.html" class="nav-link text-xl font-serif font-medium text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
-          <a href="index.html#concerts" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
-          <a href="index.html#media" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-          <a href="index.html#contact" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+          <a href="#biography" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+          <a href="#concerts" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+          <a href="#media" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+          <a href="#contact" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
         </nav>
 
+        <!-- Мобільний мовний перемикач -->
         <div class="mt-6 flex justify-end items-center space-x-1 text-[12px] text-gray-400 font-sans">
-          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5 font-medium text-gray-600">UA</button>
+          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
           <span class="text-gray-300 select-none scale-75">|</span>
           <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
         </div>
+
       </div>
     </div>
   </header>
 
-  <!-- === ГОЛОВНА СЕКЦІЯ БІОГРАФІЇ (Розміщена строго під шапкою) === -->
-  <main class="w-full min-h-[calc(100vh-68px)] flex flex-col md:flex-row">
-    
-    <!-- 1. Фотографія (Ліворуч на десктопі / Зверху на мобільному) -->
-    <div class="w-full h-[50vh] md:w-1/2 md:h-[calc(100vh-68px)] md:sticky md:top-[68px] flex-shrink-0 overflow-hidden">
-      <img 
-        src="hero2.jpg" 
-        alt="Yurij Budnik" 
-        class="w-full h-full object-cover object-center"
-      >
-    </div>
+  <!-- Головний контент -->
+  <main id="mainContent">
+    <section 
+      id="hero"
+      class="relative w-full bg-cover bg-center bg-no-repeat"
+      style="
+        height: calc(100vh - 58px);
+        min-height: 500px;
+        background-image: url('hero.jpg');
+      ">
+     </section>
 
-    <!-- 2. Текстовий блок (Праворуч на десктопі / Знизу на мобільному) -->
-    <div class="w-full md:w-1/2 px-6 sm:px-10 md:pl-10 md:pr-8 lg:pr-14 pt-8 md:pt-12 pb-16 md:pb-20 flex flex-col justify-start">
-      
-      <!-- Тонкий заголовок Biography / Біографія -->
-      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-extralight tracking-wide text-gray-900 mb-6 border-b border-gray-100 pb-3" data-en="Biography" data-ua="Біографія">
-        Біографія
-      </h1>
-
-      <!-- Текст біографії: оптимальний гармонійний розмір та тонке накреслення -->
-      <div class="space-y-5 text-gray-800 font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed tracking-normal">
-        
-        <p data-en="Yurii Budnik is a talented Ukrainian bayan player, performer, composer, arranger, and teacher. He is the author of numerous works for bayan, bayan duets, as well as many arrangements of Ukrainian folk songs. He is also a laureate of international competitions."
-           data-ua="Юрій Буднік - талановитий український баяніст, артист, композитор, аранжувальник, та викладач. Автор багатьох творів для баяну, дуету баяністів, а також безліч обробок українських народних пісень. Лауреат міжнародних конкурсів.">
-          Юрій Буднік - талановитий український баяніст, артист, композитор, аранжувальник, та викладач. Автор багатьох творів для баяну, дуету баяністів, а також безліч обробок українських народних пісень. Лауреат міжнародних конкурсів.
-        </p>
-
-        <p data-en="His musical journey began in childhood, when he first picked up a bayan given to him as a birthday gift. Since then, Yurii has mastered not only this instrument but also many others, including the accordion, two-row harmonica, synthesizer, guitar, bass guitar, sopilka, piano, and drums."
-           data-ua="Його музична подорож розпочалася ще з дитинства, коли він вперше взяв в руки баян, подарований на день народження. Відтоді Юрій опанував не лише цей інструмент, але й багато інших музичних інструментів: акордеону, двухрядної гармоні, синтезатора, гітари, бас-гітари, сопілки, фортепіано та барабанів.">
-          Його музична подорож розпочалася ще з дитинства, коли він вперше взяв в руки баян, подарований на день народження. Відтоді Юрій опанував не лише цей інструмент, але й багато інших музичних інструментів: акордеону, двухрядної гармоні, синтезатора, гітари, бас-гітари, сопілки, фортепіано та барабанів.
-        </p>
-
-        <p data-en="During his school years, he not only performed on the bayan and synthesizer at various events but also accompanied students during lessons, substituting for the music teacher. He often performed in a neighboring village at the local cultural center, accompanying vocalists, dancers, and a choir."
-           data-ua="У шкільному віці не тільки грав на баяні та синтезаторі під час різних заходів, але й акомпанував учням на уроках, замінюючи вчителя музики. Часто виступав в сусідньому селі, в будинку культури акомпануючи вокалістам, танцюристам та хору.">
-          У шкільному віці не тільки грав на баяні та синтезаторі під час різних заходів, але й акомпанував учням на уроках, замінюючи вчителя музики. Часто виступав в сусідньому селі, в будинку культури акомпануючи вокалістам, танцюристам та хору.
-        </p>
-
-        <p data-en="After finishing school, he enrolled in a music college, where he continued performing with various ensembles while also studying composition. Some of his works for bayan and bayan duets were performed during college exams and concerts, impressing audiences. During his studies, he participated in an interregional bayan competition, where he became a laureate."
-           data-ua="Після школи вступив до музичного училища та продовжував виступати з різними колективами, а також вивчав написання музики. Деякі його твори для баяну та дуету баянів звучали на екзаменах в училищі і різних концертах, та вразили слухачів. Під час навчання взяв участь у міжрегіональному конкурсі баяністів, де став лауреатом.">
-          Після школи вступив до музичного училища та продовжував виступати з різними колективами, а також вивчав написання музики. Деякі його твори для баяну та дуету баянів звучали на екзаменах в училищі і різних концертах, та вразили слухачів. Під час навчання взяв участь у міжрегіональному конкурсі баяністів, де став лауреатом.
-        </p>
-
-        <p data-en="He was later invited to join a music group that performed original songs. This became an important step in his career, marking his first experience recording in a professional studio, where three songs were recorded. These songs were later performed on stage in Mykolaiv during the Orange Revolution. At the same concert, bands such as TNMK and GreenJolly also performed."
-           data-ua="Був запрошений до музичного колективу, в якому грали авторські пісні. Це був важливий крок у його кар'єрі, і вперше відбувся запис на студії звукозапису, де були записані три пісні, з якими згодом виступили на сцені в Миколаєві під час Помаранчевої революції. На тому ж концерті також виступали гурти, такі як ТНМК і Грінджоли.">
-          Був запрошений до музичного колективу, в якому грали авторські пісні. Це був важливий крок у його кар'єрі, і вперше відбувся запис на студії звукозапису, де були записані три пісні, з якими згодом виступили на сцені в Миколаєві під час Помаранчевої революції. На тому ж концерті також виступали гурти, такі як ТНМК і Грінджоли.
-        </p>
-
-        <p data-en='After performing with this group, he attracted the attention of the band "Legenda," which was gaining popularity in Mykolaiv at the time, and he was invited to join them. Together, they participated in the qualifying round of the "Chervona Ruta" competition, where they won first place. They then competed in the final round in Kyiv, where they also took first place.'
-           data-ua='Після гри в цьому колективу привернув увагу гурту "Легенда", який на той час набирав популярність в Миколаєві. Куди і був запрошений. З ними прийняв участь у відбірковому турі конкурсу "Червона рута" де посіли перше місце. Потім взяли участь у фіналі цього конкурсу в Києві, де також здобули перше місце.'>
-          Після гри в цьому колективу привернув увагу гурту "Легенда", який на той час набирав популярність в Миколаєві. Куди і був запрошений. З ними прийняв участь у відбірковому турі конкурсу "Червона рута" де посіли перше місце. Потім взяли участь у фіналі цього конкурсу в Києві, де також здобули перше місце.
-        </p>
-
-        <p data-en="After graduating from music college, he studied for two years at the Mykolaiv University of Culture before enrolling in the Odesa Music Academy."
-           data-ua="Після музичного училища провчився два роки в Миколаївському університеті культури, після чого поступив в Одеську музичну академію.">
-          Після музичного училища провчився два роки в Миколаївському університеті культури, після чого поступив в Одеську музичну академію.
-        </p>
-
-        <p data-en="During his studies, he decided to test himself at an international bayan competition in Drohobych, where he became a laureate, winning third place. This was an important milestone in his career, highlighting his talent and skill."
-           data-ua="Під час навчання вирішив випробувати свої сили у міжнародному конкурсі баяністів у місті Дрогобич, на якому став лауреатом, зайнявши третє місце. Це був важливий крок у кар'єрі, який підкреслив його талант та вміння.">
-          Під час навчання вирішив випробувати свої сили у міжнародному конкурсі баяністів у місті Дрогобич, на якому став лауреатом, зайнявши третє місце. Це був важливий крок у кар'єрі, який підкреслив його талант та вміння.
-        </p>
-
-        <p data-en='In his first year at the academy, he became acquainted with the renowned Odesa folk music ensemble "Mozaika," with whom he later performed on numerous stages. Joining this ensemble provided a valuable opportunity to collaborate with respected musicians and gain significant experience.'
-           data-ua='На першому році навчання в академії знайомиться із знаменитим одеським колективом народної музики "Мозаїка", з яким потім неодноразово виступав на різних сценах. Долучившись до цього колективу, це була неймовірна можливість співпрацювати з визнаними музикантами та набуття цінного досвіду.'>
-          На першому році навчання в академії знайомиться із знаменитим одеським колективом народної музики "Мозаїка", з яким потім неодноразово виступав на різних сценах. Долучившись до цього колективу, це була неймовірна можливість співпрацювати з визнаними музикантами та набуття цінного досвіду.
-        </p>
-
-        <p data-en='In the same year, Yurii was invited to work at Odesa Music School No. 4, where he also performed in the Ukrainian music ensemble "Odeski Muzyky," formed by the school’s teachers and invited artists, including Honored Artists of Ukraine Mykola Trofymenko and Oleksandr Dmitriiev, as well as Honored Cultural Worker of Ukraine Serhii Litvinov.'
-           data-ua='Також в цьому ж році Юрія запросили працювати в одеську музичну школу №4, де одночасно він грав в ансамблі української музики "Одеські музики", сформований з педагогів цієї школи а також із запрошених артистів, серед яких були Заслужені артисти України Миколай Трофименко та Олександр Дмітрієв, а також заслужений діяч культури України Сергій Літвінов.'>
-          Також в цьому ж році Юрія запросили працювати в одеську музичну школу №4, де одночасно він грав в ансамблі української музики "Одеські музики", сформований з педагогів цієї школи а також із запрошених артистів, серед яких були Заслужені артисти України Миколай Трофименко та Олександр Дмітрієв, а також заслужений діяч культури України Сергій Літвінов.
-        </p>
-
-        <p data-en='His performances in these ensembles drew attention to him as an outstanding specialist with a refined musical style. As a result, he was invited to work at the Odesa Philharmonic as both an accompanist and a solo artist. Yurii Budnik’s creativity developed not only in classical and folk music performance but also in popular music. He collaborated and performed with various pop ensembles such as "Cardigan" and "Show Group Bessarabia."'
-           data-ua='Гра в цих колективах привернула увагу до нього як відмінного спеціаліста з чутливим стилем виконання музики. Тому був запрошений працювати до одеської Філармонії, як акомпаніатор та сольний артист. Творчість Юрія Будніка розвивалася не тільки як виконавець класичної, народної музики, але й естрадної. Він приєднувався та виступав з різними естрадними колективами, такими як "Кардіган", «Шоу гурт Бесарабія» .'>
-          Гра в цих колективах привернула увагу до нього як відмінного спеціаліста з чутливим стилем виконання музики. Тому був запрошений працювати до одеської Філармонії, як акомпаніатор та сольний артист. Творчість Юрія Будніка розвивалася не тільки як виконавець класичної, народної музики, але й естрадної. Він приєднувався та виступав з різними естрадними колективами, такими як "Кардіган", «Шоу гурт Бесарабія» .
-        </p>
-
-        <p data-en='While performing with "Show Group Bessarabia," Yurii revealed himself not only as a musician but also as a versatile performer. Their stage performances were true shows, combining music with elements of theater, choreography, and live bayan performance. By creating backing tracks for the group, he contributed his creative energy to each performance.'
-           data-ua='Під час виступів з колективом "Шоу група Бесарабія", Юрій зміг розкритися не лише як музикант, але й як різносторонній артист. Тому що виступи в цьому колективі на сцені були справжнім шоу, де музика поєднувалася з елементами театру та хореографії, а також живого виконання гри на баяні. Створюючи фонограми для цього колективу, він додавав своєї творчої сили до кожного виступу.'>
-          Під час виступів з колективом "Шоу група Бесарабія", Юрій зміг розкритися не лише як музикант, але й як різносторонній артист. Тому що виступи в цьому колективі на сцені були справжнім шоу, де музика поєднувалася з елементами театру та хореографії, а також живого виконання гри на баяні. Створюючи фонограми для цього колективу, він додавав своєї творчої сили до кожного виступу.
-        </p>
-
-        <p data-en="During the COVID-19 pandemic, he took time to rethink his artistic direction and decided to pursue a solo career. In his solo work, he performs classical pieces, contemporary and pop compositions, as well as his own works. His repertoire includes Ukrainian folk melodies and songs; French chanson by artists such as Patricia Kaas and Édith Piaf; German music from the repertoire of Marlene Dietrich; modern pop music in his own arrangements; jazz standards; and more."
-           data-ua="Під час епідемії коронавірусу знайшов час для переосмислення своєї творчої діяльності, та вирішив розпочати сольну кар'єру, де виконує як класичні твори, так і сучасні, естрадні композиції, а також власні твори. В його репертуарі є мелодії та пісні української народної музики; французький шансон таких виконавців як Патрісія Каас, Едіт Піаф; німецька музика, із репертуару Марлен Дітрих, Сучасна поп музика у своїх обробках, джазові стандарти і т. д.">
-          Під час епідемії коронавірусу знайшов час для переосмислення своєї творчої діяльності, та вирішив розпочати сольну кар'єру, де виконує як класичні твори, так і сучасні, естрадні композиції, а також власні твори. В його репертуарі є мелодії та пісні української народної музики; французький шансон таких виконавців як Патрісія Каас, Едіт Піаф; німецька музика, із репертуару Марлен Дітрих, Сучасна поп музика у своїх обробках, джазові стандарти і т. д.
-        </p>
-
+                        <!-- Анімована стрілочка на Tailwind: завжди видима на екрані, при скролі зупиняється внизу фото -->
+      <div class="sticky bottom-4 z-20 -mt-16 sm:-mt-20 flex justify-center pointer-events-none">
+        <a href="#news" class="pointer-events-auto flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer" aria-label="Scroll down to news">
+          <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 animate-bounce stroke-current drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </a>
       </div>
 
-      <!-- Блок Цитат знизу -->
-      <div class="mt-12 pt-8 border-t border-gray-200 space-y-8">
-        <div class="border-l-2 border-gray-300 pl-4 sm:pl-6 space-y-2">
-          <p class="text-gray-700 italic font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed" 
-             data-en='"Eric Lu showed an astonishing command of keyboard tone and color... the sign he is already a true artist. It was a spellbinding experience."'
-             data-ua='"Юрій Буднік продемонстрував дивовижне володіння тембром та барвами інструменту... ознака того, що він вже справжній артист. Це був заворожуючий досвід."'>
-            "Eric Lu showed an astonishing command of keyboard tone and color... the sign he is already a true artist. It was a spellbinding experience."
-          </p>
-          <p class="text-sm text-gray-500 font-sans tracking-wide" data-en="— The Guardian" data-ua="— The Guardian">— The Guardian</p>
+      <section id="news" class="bg-gray-50 py-16 px-6 text-center">
+        <h2 class="text-2xl font-serif tracking-wide mb-8" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
+  
+        <div class="max-w-xl mx-auto space-y-8">
+          <div class="border-b border-gray-200 pb-6">
+            <p class="text-xs text-gray-400 font-sans" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
+            <p class="text-lg my-2 font-light" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
+            <p class="text-sm text-gray-500" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
+          </div>
+  
+          <div class="border-b border-gray-200 pb-6">
+            <p class="text-xs text-gray-400 font-sans" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
+            <p class="text-lg my-2 font-light" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
+            <p class="text-sm text-gray-500" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
+          </div>
+  
+          <div class="border-b border-gray-200 pb-6">
+            <p class="text-xs text-gray-400 font-sans" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
+            <p class="text-lg my-2 font-light" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
+            <p class="text-sm text-gray-500" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
+          </div>
         </div>
-
-        <div class="border-l-2 border-gray-300 pl-4 sm:pl-6 space-y-2">
-          <p class="text-gray-700 italic font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed" 
-             data-en='"Lu&apos;s playing is in a rare class - sensitive and emotionally intuitive."'
-             data-ua='"Гра Будніка належить до рідкісного класу — чутлива та емоційно інтуїтивна."'>
-            "Lu's playing is in a rare class - sensitive and emotionally intuitive."
-          </p>
-          <p class="text-sm text-gray-500 font-sans tracking-wide" data-en="— BBC Music Magazine" data-ua="— BBC Music Magazine">— BBC Music Magazine</p>
-        </div>
-      </div>
-
-    </div>
-
+      </section>
   </main>
 
-  <!-- Скрипт перемикання мов та меню -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+
     const lineTop = document.getElementById('line-top');
     const lineMid = document.getElementById('line-mid');
     const lineBot = document.getElementById('line-bot');
+
     const logoLink = document.getElementById('logo-link');
+    const logoText = document.getElementById('logo-text');
+    const headerBar = document.getElementById('header-bar');
 
     let isOpen = false;
+
+    function adjustLogoSize() {
+      if (!logoLink || !logoText || !headerBar) return;
+
+      logoLink.style.fontSize = '';
+
+      const subText = logoLink.querySelector('.responsive-sub-text');
+      const isSubVisible = subText && getComputedStyle(subText).display !== 'none';
+      
+      let totalContentWidth = logoText.scrollWidth;
+
+      if (isSubVisible) {
+        const gap = parseFloat(getComputedStyle(logoLink).gap) || 8;
+        totalContentWidth += subText.scrollWidth + gap;
+      }
+
+      const availableWidth = logoLink.clientWidth;
+
+      if (totalContentWidth > availableWidth && availableWidth > 0) {
+        const scale = availableWidth / totalContentWidth;
+        const defaultFontSize = parseFloat(window.getComputedStyle(logoLink).fontSize);
+        
+        const newFontSize = Math.max(15, defaultFontSize * scale);
+        logoLink.style.fontSize = `${newFontSize}px`;
+      }
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      adjustLogoSize();
+    });
+    if (headerBar) resizeObserver.observe(headerBar);
+    window.addEventListener('resize', adjustLogoSize);
 
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', (e) => {
@@ -230,7 +202,11 @@
 
         if (isOpen) {
           mobileMenu.classList.add('is-open');
-          if (logoLink) logoLink.classList.add('opacity-0', 'pointer-events-none');
+
+          if (logoLink) {
+            logoLink.classList.add('opacity-0', 'pointer-events-none');
+          }
+
           if (lineTop && lineMid && lineBot) {
             lineTop.setAttribute('d', 'M 6 6 L 18 18');
             lineMid.style.opacity = '0';
@@ -244,14 +220,26 @@
 
     function closeMenu() {
       isOpen = false;
-      if (mobileMenu) mobileMenu.classList.remove('is-open');
-      if (logoLink) logoLink.classList.remove('opacity-0', 'pointer-events-none');
+      if (mobileMenu) {
+        mobileMenu.classList.remove('is-open');
+      }
+
+      if (logoLink) {
+        logoLink.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
       if (lineTop && lineMid && lineBot) {
         lineTop.setAttribute('d', 'M4 6h16');
         lineMid.style.opacity = '1';
         lineBot.setAttribute('d', 'M4 18h16');
       }
     }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
 
     window.setLang = function(event, lang) {
       if (event) event.preventDefault();
@@ -291,6 +279,12 @@
 
     const savedLang = localStorage.getItem("selectedLang") || "ua";
     setLang(null, savedLang);
+
+    // При завантаженні сторінки скидаємо скрол нагору та видаляємо хеш з URL
+    if (window.location.hash === '#news') {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+    }
   });
   </script>
 </body>

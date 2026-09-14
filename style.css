@@ -405,7 +405,7 @@ body {
   }
 
   nav a {
-    font-size: 22px;
+    font-size: 22px; !important;
   }
   
   .nav-link, .lang-link {

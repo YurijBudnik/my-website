@@ -18,15 +18,15 @@
 
 <body class="bg-white text-gray-900 font-serif antialiased min-h-screen">
 
-  <!-- === HEADER (Абсолютне позиціонування поверх фото) === -->
-  <header class="absolute top-0 left-0 z-40 w-full bg-white/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none transition-all duration-300 ease-in-out">
+  <!-- === HEADER (Шапка) === -->
+  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
     
-    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4 py-4">
+    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4 py-3 sm:py-4">
         
       <div class="w-full flex items-baseline justify-between gap-4">
 
-        <!-- Брендинг / Логотип -->
-        <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
+        <!-- Клікабельний логотип для повернення на головну -->
+        <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl hover:opacity-80 transition-opacity">
           <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
             Yurij Budnik
           </span>
@@ -40,7 +40,7 @@
         <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
           <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
             <span>Біографія</span>
-            <!-- Активний стан: підкреслення -->
+            <!-- Активний стан: лінія завжди показана -->
             <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-black transition-all duration-200 ease-out"></span>
           </a>
           <a href="index.html#concerts" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
@@ -57,10 +57,10 @@
           </a>
 
           <!-- Мовний перемикач -->
-          <div class="ml-1 pl-3 border-l border-gray-300 flex items-baseline space-x-1 text-[12px] font-sans text-gray-500 leading-none">
-            <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-900 transition-colors px-0.5 font-medium text-gray-900">UA</button>
-            <span class="text-gray-400 select-none scale-75">|</span>
-            <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-900 transition-colors px-0.5">EN</button>
+          <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
+            <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5 font-medium text-gray-600">UA</button>
+            <span class="text-gray-300 select-none scale-75">|</span>
+            <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
           </div>
         </nav>
 
@@ -96,28 +96,28 @@
     </div>
   </header>
 
-  <!-- === ГОЛОВНА СЕКЦІЯ БІОГРАФІЇ === -->
-  <main class="w-full min-h-screen flex flex-col md:flex-row">
+  <!-- === ГОЛОВНА СЕКЦІЯ БІОГРАФІЇ (Розміщена строго під шапкою) === -->
+  <main class="w-full min-h-[calc(100vh-68px)] flex flex-col md:flex-row">
     
-    <!-- 1. Фотографія (Ліва частина на десктопі / Верхня частина на мобільному) -->
-    <div class="w-full h-[50vh] md:w-1/2 md:h-screen md:sticky md:top-0 flex-shrink-0 overflow-hidden">
+    <!-- 1. Фотографія (Ліворуч на десктопі / Зверху на мобільному) -->
+    <div class="w-full h-[50vh] md:w-1/2 md:h-[calc(100vh-68px)] md:sticky md:top-[68px] flex-shrink-0 overflow-hidden">
       <img 
         src="hero2.jpg" 
         alt="Yurij Budnik" 
-        class="w-full h-full object-cover object-top md:object-center"
+        class="w-full h-full object-cover object-center"
       >
     </div>
 
-    <!-- 2. Текстовий блок (Права частина на десктопі / Нижня частина на мобільному) -->
-    <div class="w-full md:w-1/2 px-6 sm:px-10 md:pl-12 md:pr-8 lg:pr-16 pt-10 md:pt-28 pb-16 md:pb-24 flex flex-col justify-start">
+    <!-- 2. Текстовий блок (Праворуч на десктопі / Знизу на мобільному) -->
+    <div class="w-full md:w-1/2 px-6 sm:px-10 md:pl-10 md:pr-8 lg:pr-14 pt-8 md:pt-12 pb-16 md:pb-20 flex flex-col justify-start">
       
-      <!-- Тонкий заголовок Biography -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extralight tracking-wide text-gray-900 mb-8 border-b border-gray-100 pb-4" data-en="Biography" data-ua="Біографія">
+      <!-- Тонкий заголовок Biography / Біографія -->
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-extralight tracking-wide text-gray-900 mb-6 border-b border-gray-100 pb-3" data-en="Biography" data-ua="Біографія">
         Біографія
       </h1>
 
-      <!-- Текст біографії: тонший і збільшений -->
-      <div class="space-y-6 text-gray-800 font-serif text-lg md:text-xl lg:text-2xl font-extralight leading-relaxed tracking-normal">
+      <!-- Текст біографії: оптимальний гармонійний розмір та тонке накреслення -->
+      <div class="space-y-5 text-gray-800 font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed tracking-normal">
         
         <p data-en="Yurii Budnik is a talented Ukrainian bayan player, performer, composer, arranger, and teacher. He is the author of numerous works for bayan, bayan duets, as well as many arrangements of Ukrainian folk songs. He is also a laureate of international competitions."
            data-ua="Юрій Буднік - талановитий український баяніст, артист, композитор, аранжувальник, та викладач. Автор багатьох творів для баяну, дуету баяністів, а також безліч обробок українських народних пісень. Лауреат міжнародних конкурсів.">
@@ -187,9 +187,9 @@
       </div>
 
       <!-- Блок Цитат знизу -->
-      <div class="mt-16 pt-10 border-t border-gray-200 space-y-8">
+      <div class="mt-12 pt-8 border-t border-gray-200 space-y-8">
         <div class="border-l-2 border-gray-300 pl-4 sm:pl-6 space-y-2">
-          <p class="text-gray-700 italic font-serif text-lg sm:text-xl font-extralight leading-relaxed" 
+          <p class="text-gray-700 italic font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed" 
              data-en='"Eric Lu showed an astonishing command of keyboard tone and color... the sign he is already a true artist. It was a spellbinding experience."'
              data-ua='"Юрій Буднік продемонстрував дивовижне володіння тембром та барвами інструменту... ознака того, що він вже справжній артист. Це був заворожуючий досвід."'>
             "Eric Lu showed an astonishing command of keyboard tone and color... the sign he is already a true artist. It was a spellbinding experience."
@@ -198,7 +198,7 @@
         </div>
 
         <div class="border-l-2 border-gray-300 pl-4 sm:pl-6 space-y-2">
-          <p class="text-gray-700 italic font-serif text-lg sm:text-xl font-extralight leading-relaxed" 
+          <p class="text-gray-700 italic font-serif text-base sm:text-lg lg:text-xl font-light leading-relaxed" 
              data-en='"Lu&apos;s playing is in a rare class - sensitive and emotionally intuitive."'
              data-ua='"Гра Будніка належить до рідкісного класу — чутлива та емоційно інтуїтивна."'>
             "Lu's playing is in a rare class - sensitive and emotionally intuitive."
@@ -273,7 +273,7 @@
       ['btn-ua', 'desk-btn-ua'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-          el.classList.toggle("text-gray-900", lang === "ua");
+          el.classList.toggle("text-gray-600", lang === "ua");
           el.classList.toggle("font-medium", lang === "ua");
         }
       });
@@ -281,7 +281,7 @@
       ['btn-en', 'desk-btn-en'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-          el.classList.toggle("text-gray-900", lang === "en");
+          el.classList.toggle("text-gray-600", lang === "en");
           el.classList.toggle("font-medium", lang === "en");
         }
       });

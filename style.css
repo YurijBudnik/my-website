@@ -420,4 +420,14 @@ body {
   html {
    scroll-behavior: smooth;
   }
+
+    /* Примусове застосування ультратонкого накреслення шрифту */
+  .font-extralight,
+  .font-light-custom {
+    font-weight: 200 !important;
+  }
+  
+  .font-light-subtle {
+    font-weight: 300 !important;
+  }
 }

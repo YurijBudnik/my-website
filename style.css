@@ -255,7 +255,7 @@ body {
 .hero {
   margin-top: var(--header-height);
   height: calc(100vh - var(--header-height));
-  background: url('hero.jpg') center 20% /cover no-repeat;
+  background: url('hero.jpg') center 20% / cover no-repeat;
 }
 
 .news {

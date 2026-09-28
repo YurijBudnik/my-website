@@ -92,6 +92,111 @@ body {
   overflow: hidden;
 }
 
+/* TITLE */
+.page-title {
+  margin-top: 80px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.page-title h1 {
+  font-size: 28px;
+}
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+/* 4 в ряд на десктопі */
+@media (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ФОТО */
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* шахматний ефект */
+.gallery img:nth-child(even) {
+  transform: translateY(10px);
+}
+
+.gallery img:nth-child(odd) {
+  transform: translateY(-10px);
+}
+
+/* hover */
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* фото */
+.modal img {
+  max-width: 90%;
+  max-height: 80%;
+}
+
+/* хрестик */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+/* стрілки */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  color: white;
+}
+
+.arrow.left {
+  left: 20px;
+}
+
+.arrow.right {
+  right: 20px;
+}
+
+/* номер */
+.counter {
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  font-size: 16px;
+}
 
 /* ==========================================
    1. Мобільна версія (Mobile-First)

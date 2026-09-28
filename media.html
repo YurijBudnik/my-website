@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo-container">
+    <span data-en="Yurij Budnik" data-ua="Юрій Буднік">Yurij Budnik</span>
+    <span data-en="Accordionist" data-ua="Акордеоніст">Accordionist</span>
+  </a>
+</header>
+
+<!-- TITLE -->
+<section class="page-title">
+  <h1 data-en="Media" data-ua="Галерея">Media</h1>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+
+  <img src="images/media/1.jpg" onclick="openModal(0)">
+  <img src="images/media/2.jpg" onclick="openModal(1)">
+  <img src="images/media/3.jpg" onclick="openModal(2)">
+  <img src="images/media/4.jpg" onclick="openModal(3)">
+  <img src="images/media/5.jpg" onclick="openModal(4)">
+  <img src="images/media/6.jpg" onclick="openModal(5)">
+  <img src="images/media/7.jpg" onclick="openModal(6)">
+  <img src="images/media/8.jpg" onclick="openModal(7)">
+
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+
+  <span class="close" onclick="closeModal()">×</span>
+
+  <img id="modal-img">
+
+  <div class="counter" id="counter"></div>
+
+  <div class="arrow left" onclick="prev()">‹</div>
+  <div class="arrow right" onclick="next()">›</div>
+
+</div>
+
+<script>
+const images = [
+  "images/media/1.jpg",
+  "images/media/2.jpg",
+  "images/media/3.jpg",
+  "images/media/4.jpg",
+  "images/media/5.jpg",
+  "images/media/6.jpg",
+  "images/media/7.jpg",
+  "images/media/8.jpg"
+];
+
+let current = 0;
+
+function openModal(index) {
+  current = index;
+  document.getElementById("modal").style.display = "flex";
+  update();
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function update() {
+  document.getElementById("modal-img").src = images[current];
+  document.getElementById("counter").innerText =
+    (current + 1) + " / " + images.length;
+}
+
+function next() {
+  current = (current + 1) % images.length;
+  update();
+}
+
+function prev() {
+  current = (current - 1 + images.length) % images.length;
+  update();
+}
+</script>
+
+</body>
+</html>

@@ -172,42 +172,93 @@
 <!-- ================= LIGHTBOX ================= -->
 <div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50">
 
+  <!-- CLOSE -->
   <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-3xl">×</button>
 
-  <img id="lightbox-img" class="max-h-[80vh]">
+  <!-- LEFT -->
+  <button id="prevBtn" class="absolute left-5 text-white/60 hover:text-white text-4xl">‹</button>
+
+  <!-- IMAGE -->
+  <div class="flex flex-col items-center">
+    <img id="lightbox-img" class="max-h-[80vh] object-contain">
+    <p id="counter" class="text-white/70 text-sm mt-4">1 / 14</p>
+  </div>
+
+  <!-- RIGHT -->
+  <button id="nextBtn" class="absolute right-5 text-white/60 hover:text-white text-4xl">›</button>
 
 </div>
 
 <!-- ================= SCRIPT ================= -->
 <script>
-const images = document.querySelectorAll('.gallery-img');
+const images = Array.from(document.querySelectorAll('.gallery-img'));
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
+const counter = document.getElementById('counter');
 
-images.forEach(img => {
+let currentIndex = 0;
+
+// OPEN
+images.forEach((img, index) => {
   img.addEventListener('click', () => {
-    lightbox.style.display = 'flex';
-    lightboxImg.src = img.src;
+    currentIndex = index;
+    openLightbox();
   });
 });
 
+function openLightbox() {
+  lightbox.style.display = 'flex';
+  updateImage();
+}
+
+// UPDATE
+function updateImage() {
+  lightboxImg.src = images[currentIndex].src;
+  counter.textContent = `${currentIndex + 1} / ${images.length}`;
+}
+
+// CLOSE
 function closeLightbox() {
   lightbox.style.display = 'none';
 }
 
-// LANGUAGE
-function setLang(event, lang) {
-  if(event) event.preventDefault();
-
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.dataset[lang];
-  });
-
-  localStorage.setItem("lang", lang);
+// NAVIGATION
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateImage();
 }
 
-const saved = localStorage.getItem("lang") || "ua";
-setLang(null, saved);
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateImage();
+}
+
+document.getElementById('nextBtn').onclick = nextImage;
+document.getElementById('prevBtn').onclick = prevImage;
+
+// KEYBOARD
+document.addEventListener('keydown', (e) => {
+  if (lightbox.style.display !== 'flex') return;
+
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// TOUCH SWIPE (mobile)
+let startY = 0;
+
+lightbox.addEventListener('touchstart', e => {
+  startY = e.touches[0].clientY;
+});
+
+lightbox.addEventListener('touchend', e => {
+  let endY = e.changedTouches[0].clientY;
+  let diff = startY - endY;
+
+  if (diff > 50) nextImage();      // swipe up
+  if (diff < -50) prevImage();     // swipe down
+});
 </script>
 
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>media</title>
+  <title>Yurij Budnik</title>
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,6 +14,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+<style>
+/* Однакові правила шапки для index.html і media.html. */
+html { scrollbar-gutter: stable; }
+body { overflow-y: scroll; }
+header { font-family: "Cormorant Garamond", Georgia, serif; }
+#header-bar { height:58px; min-height:58px; }
+#header-bar > div { min-width:0; }
+#logo-link { white-space:nowrap; }
+#desktop-nav .nav-link { text-align:center; }
+#desktop-nav .nav-link::after { content:none; }
+#desktop-nav .nav-link > span:last-child { width:0; }
+#desktop-nav .nav-link:hover > span:last-child,
+#desktop-nav .nav-link:focus-visible > span:last-child,
+#desktop-nav .nav-link[aria-current="page"] > span:last-child { width:100%; }
+.nav-link[aria-current="page"] { color:#000; }
+#mobile-menu-btn { width:36px; height:36px; min-width:36px; min-height:36px; flex:0 0 36px; padding:6px; }
+#mobile-menu-btn svg { display:block; width:24px; height:24px; }
+#mobile-menu[hidden] { display:none !important; }
+#mobile-menu { position:fixed; inset:58px 0 0; height:calc(100dvh - 58px); background:#fff; z-index:45; display:block; overflow-y:auto; }
+#mobile-menu .mobile-menu-inner { height:100%; min-height:0; }
+#mobile-menu .nav-link { align-self:flex-end; width:max-content; }
+#mobile-menu .nav-link:hover, #mobile-menu .nav-link[aria-current="page"] { text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px; }
+#desk-btn-ua, #desk-btn-en, #btn-ua, #btn-en { color:#9ca3af; font-weight:400; width:22px; flex:0 0 22px; }
+#desk-btn-ua[aria-pressed="true"], #desk-btn-en[aria-pressed="true"], #btn-ua[aria-pressed="true"], #btn-en[aria-pressed="true"] { color:#111827; font-weight:500; }
+body.menu-open { overflow:hidden; }
+@media (min-width:768px) { #mobile-menu { display:none; } }
+</style>
 </head>
 
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
@@ -28,7 +55,7 @@
       <div class="w-full flex items-baseline justify-between gap-4">
 
       <!-- Брендинг / Логотип -->
-      <a href="#" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
+      <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
         <!-- Ім'я / Логотип -->
         <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
           Yurij Budnik
@@ -54,7 +81,7 @@
             <span>Медіа</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
-          <a href="#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
+          <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
             <span>Контакти</span>
             <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
           </a>
@@ -70,7 +97,7 @@
       </div>
 
       <!-- Кнопка бургер-меню для мобільних пристроїв -->
-      <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-1.5 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
+      <button id="mobile-menu-btn" type="button" aria-label="Меню" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-1.5 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
         <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
           <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
@@ -81,14 +108,14 @@
     </div>
 
     <!-- Мобільне випадаюче меню -->
-    <div id="mobile-menu" class="mobile-menu-grid md:hidden">
+    <div id="mobile-menu" hidden class="mobile-menu-grid md:hidden">
       <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
         
         <nav class="flex flex-col space-y-4 text-right">
           <a href="biography.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
           <a href="concerts.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
           <a href="media.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
-          <a href="#contact" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+          <a href="index.html#contact" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
         </nav>
 
         <!-- Мобільний мовний перемикач -->
@@ -148,144 +175,64 @@
       </section>
   </main>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    const lineTop = document.getElementById('line-top');
-    const lineMid = document.getElementById('line-mid');
-    const lineBot = document.getElementById('line-bot');
-
-    const logoLink = document.getElementById('logo-link');
-    const logoText = document.getElementById('logo-text');
-    const headerBar = document.getElementById('header-bar');
-
-    let isOpen = false;
-
-    function adjustLogoSize() {
-      if (!logoLink || !logoText || !headerBar) return;
-
-      logoLink.style.fontSize = '';
-
-      const subText = logoLink.querySelector('.responsive-sub-text');
-      const isSubVisible = subText && getComputedStyle(subText).display !== 'none';
-      
-      let totalContentWidth = logoText.scrollWidth;
-
-      if (isSubVisible) {
-        const gap = parseFloat(getComputedStyle(logoLink).gap) || 8;
-        totalContentWidth += subText.scrollWidth + gap;
-      }
-
-      const availableWidth = logoLink.clientWidth;
-
-      if (totalContentWidth > availableWidth && availableWidth > 0) {
-        const scale = availableWidth / totalContentWidth;
-        const defaultFontSize = parseFloat(window.getComputedStyle(logoLink).fontSize);
-        
-        const newFontSize = Math.max(15, defaultFontSize * scale);
-        logoLink.style.fontSize = `${newFontSize}px`;
-      }
-    }
-
-    const resizeObserver = new ResizeObserver(() => {
-      adjustLogoSize();
-    });
-    if (headerBar) resizeObserver.observe(headerBar);
-    window.addEventListener('resize', adjustLogoSize);
-
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        isOpen = !isOpen;
-
-        if (isOpen) {
-          mobileMenu.classList.add('is-open');
-
-          if (logoLink) {
-            logoLink.classList.add('opacity-0', 'pointer-events-none');
-          }
-
-          if (lineTop && lineMid && lineBot) {
-            lineTop.setAttribute('d', 'M 6 6 L 18 18');
-            lineMid.style.opacity = '0';
-            lineBot.setAttribute('d', 'M 6 18 L 18 6');
-          }
-        } else {
-          closeMenu();
-        }
-      });
-    }
-
-    function closeMenu() {
-      isOpen = false;
-      if (mobileMenu) {
-        mobileMenu.classList.remove('is-open');
-      }
-
-      if (logoLink) {
-        logoLink.classList.remove('opacity-0', 'pointer-events-none');
-      }
-
-      if (lineTop && lineMid && lineBot) {
-        lineTop.setAttribute('d', 'M4 6h16');
-        lineMid.style.opacity = '1';
-        lineBot.setAttribute('d', 'M4 18h16');
-      }
-    }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
-
-    window.setLang = function(event, lang) {
-      if (event) event.preventDefault();
-
-      document.querySelectorAll('[data-en][data-ua]').forEach(el => {
-        const newText = el.dataset[lang];
-        if (!newText) return;
-
-        const childSpan = el.querySelector('span');
-        if (childSpan && !el.classList.contains('nav-link')) {
-          el.childNodes[0].nodeValue = newText + ' ';
-        } else if (childSpan && el.classList.contains('nav-link')) {
-          childSpan.textContent = newText;
-        } else {
-          el.textContent = newText;
-        }
-      });
-
-      ['btn-ua', 'desk-btn-ua'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.toggle("text-gray-600", lang === "ua");
-          el.classList.toggle("font-medium", lang === "ua");
-        }
-      });
-
-      ['btn-en', 'desk-btn-en'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.toggle("text-gray-600", lang === "en");
-          el.classList.toggle("font-medium", lang === "en");
-        }
-      });
-
-      localStorage.setItem("selectedLang", lang);
-    };
-
-    const savedLang = localStorage.getItem("selectedLang") || "ua";
-    setLang(null, savedLang);
-
-    // При завантаженні сторінки скидаємо скрол нагору та видаляємо хеш з URL
-    if (window.location.hash === '#news') {
-      history.replaceState(null, null, window.location.pathname + window.location.search);
-      window.scrollTo(0, 0);
-    }
-  });
-  </script>
+<script>
+(() => {
+ const btn=document.getElementById('mobile-menu-btn');
+ const menu=document.getElementById('mobile-menu');
+ const logo=document.getElementById('logo-link');
+ const top=document.getElementById('line-top'), mid=document.getElementById('line-mid'), bot=document.getElementById('line-bot');
+ function closeMenu(){
+   menu.hidden=true; menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false');
+   document.body.classList.remove('menu-open'); logo.classList.remove('opacity-0','pointer-events-none');
+   top.setAttribute('d','M4 6h16'); mid.style.opacity='1'; bot.setAttribute('d','M4 18h16');
+ }
+ btn.addEventListener('click',()=>{
+   if(!menu.hidden){closeMenu();return;}
+   menu.hidden=false; menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true');
+   document.body.classList.add('menu-open'); logo.classList.add('opacity-0','pointer-events-none');
+   top.setAttribute('d','M6 6L18 18'); mid.style.opacity='0'; bot.setAttribute('d','M6 18L18 6');
+ });
+ document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',closeMenu));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+ window.addEventListener('resize',()=>{if(innerWidth>=768)closeMenu();});
+ const current=(location.pathname.split('/').pop() || 'index.html');
+ document.querySelectorAll('.nav-link').forEach(link=>{
+   if(link.getAttribute('href')===current) link.setAttribute('aria-current','page');
+ });
+ function fitLogo(){
+   logo.style.fontSize='';
+   const name=document.getElementById('logo-text'),sub=logo.querySelector('.responsive-sub-text');
+   let needed=name.scrollWidth;
+   if(sub && getComputedStyle(sub).display!=='none')needed+=sub.scrollWidth+(parseFloat(getComputedStyle(logo).gap)||8);
+   if(needed>logo.clientWidth && logo.clientWidth>0)logo.style.fontSize=Math.max(15,parseFloat(getComputedStyle(logo).fontSize)*logo.clientWidth/needed)+'px';
+ }
+ function reserveMenuWidths(){
+   document.querySelectorAll('#desktop-nav .nav-link').forEach(link=>{
+     const probe=document.createElement('span');
+     probe.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;pointer-events:none;width:max-content';
+     link.append(probe);
+     probe.textContent=link.dataset.ua; const ua=probe.getBoundingClientRect().width;
+     probe.textContent=link.dataset.en; const en=probe.getBoundingClientRect().width;
+     probe.remove(); link.style.width=Math.ceil(Math.max(ua,en))+'px';
+   }); fitLogo();
+ }
+ window.setLang=(event,lang)=>{
+   if(event)event.preventDefault(); lang=lang==='en'?'en':'ua';
+   document.querySelectorAll('[data-en][data-ua]').forEach(el=>{
+     const target=el.classList.contains('nav-link') && el.firstElementChild ? el.firstElementChild : el;
+     target.textContent=el.dataset[lang];
+   });
+   document.documentElement.lang=lang==='ua'?'uk':'en';
+   ['desk-btn-ua','btn-ua','desk-btn-en','btn-en'].forEach(id=>document.getElementById(id)?.setAttribute('aria-pressed',String(id.endsWith(lang))));
+   try{localStorage.setItem('selectedLang',lang);}catch{}
+   if(document.querySelector('[data-page-title]'))document.title=lang==='en'?'Media':'Галерея';
+   fitLogo();
+ };
+ let lang='ua'; try{lang=localStorage.getItem('selectedLang')||'ua';}catch{}
+ setLang(null,lang);
+ window.addEventListener('resize',reserveMenuWidths);
+ if(document.fonts)document.fonts.ready.then(reserveMenuWidths); else reserveMenuWidths();
+})();
+</script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 :root {
-  --header-height:68px; /* Висота шапки на всіх сторінках. */
-  --text-weight:400; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
+  --header-height:72px; /* Висота шапки на всіх сторінках. */
+  --text-weight:500; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
   --heading-weight:400; /* Товщина заголовків. */
   --logo-weight:400; /* Товщина логотипа. */
-  --lightbox-dimming:.68; /* Затемнення фону від 0 до 1. */
+  --lightbox-dimming:.8; /* Затемнення фону від 0 до 1. */
   --page-background:#f8f7f4;
   --site-font:"Cormorant Garamond",Georgia,serif;
-  --gallery-gap:10.6666667px; /* Попередні 32 px, зменшені втричі. */
-  --gallery-stagger:12px; /* Невелике зміщення першого ряду. */
+  --gallery-gap:9px; /* Попередні 32 px, зменшені втричі. */
+  --gallery-stagger:11px; /* Невелике зміщення першого ряду. */
 }
 * { box-sizing:border-box; }
 html { scrollbar-gutter:stable; scroll-behavior:smooth; }

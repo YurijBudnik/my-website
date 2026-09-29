@@ -1,19 +1,24 @@
 :root {
-  --header-height:58px;
+  --header-height:68px; /* Висота шапки на всіх сторінках. */
+  --text-weight:400; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
+  --heading-weight:400; /* Товщина заголовків. */
+  --logo-weight:400; /* Товщина логотипа. */
+  --lightbox-dimming:.68; /* Затемнення фону від 0 до 1. */
   --page-background:#f8f7f4;
   --site-font:"Cormorant Garamond",Georgia,serif;
-  --gallery-gap:32px;
+  --gallery-gap:10.6666667px; /* Попередні 32 px, зменшені втричі. */
+  --gallery-stagger:12px; /* Невелике зміщення першого ряду. */
 }
 * { box-sizing:border-box; }
 html { scrollbar-gutter:stable; scroll-behavior:smooth; }
 body[class*="page-"] {
   margin:0; min-height:100vh; overflow-y:scroll;
   color:#111827; background:var(--page-background);
-  font-family:var(--site-font); font-weight:300;
+  font-family:var(--site-font); font-weight:var(--text-weight);
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
 }
 body .font-serif, body main .font-sans, body footer.font-sans { font-family:var(--site-font); }
-body main .font-bold, body main .font-semibold, body main .font-medium { font-weight:300; }
+body main .font-bold, body main .font-semibold, body main .font-medium, body main .font-light, body main .font-extralight { font-weight:var(--text-weight); }
 body main, body #news { background:var(--page-background); }
 .site-header {
   position:sticky; top:0; z-index:40; width:100%;
@@ -29,17 +34,17 @@ body main, body #news { background:var(--page-background); }
 .logo-container {
   display:flex; align-items:baseline; gap:8px; min-width:0;
   max-width:100%; white-space:nowrap; font-size:24px;
-  color:#111827; text-decoration:none; flex-shrink:1;
+  color:#111827; text-decoration:none; flex:0 0 auto;
 }
-.responsive-logo-text { white-space:nowrap; font-size:1.5em; line-height:1; font-weight:300; }
-.responsive-sub-text { display:none; white-space:nowrap; font-size:.85em; line-height:1; font-weight:200; color:#374151; flex-shrink:0; }
+.responsive-logo-text { white-space:nowrap; font-size:36px; line-height:1; font-weight:var(--logo-weight); }
+.responsive-sub-text { display:none; white-space:nowrap; font-size:30px; line-height:1; font-weight:var(--logo-weight); color:#374151; flex-shrink:0; }
 .responsive-sub-text .main-letter { font-size:1.08em; font-weight:400; }
 .responsive-sub-text-lowercase { text-transform:lowercase; }
 #desktop-nav { display:none; flex-shrink:0; align-items:baseline; gap:20px; }
 .site-header .nav-link {
-  position:relative; display:inline-block; white-space:nowrap;
+  position:relative; display:inline-grid; grid-template-areas:"label"; white-space:nowrap;
   color:#374151; font-family:var(--site-font); font-size:18px;
-  font-weight:300; line-height:1; text-decoration:none;
+  font-weight:var(--text-weight); line-height:1; text-decoration:none;
   transition:color .2s ease;
 }
 .site-header .nav-link:hover, .site-header .nav-link[aria-current="page"] { color:#000; }
@@ -50,6 +55,8 @@ body main, body #news { background:var(--page-background); }
 .nav-link:hover .nav-underline, .nav-link:focus-visible .nav-underline,
 .nav-link[aria-current="page"] .nav-underline { width:100%; }
 #desktop-nav .nav-link { text-align:center; }
+.nav-label, .nav-size { grid-area:label; }
+.nav-size { visibility:hidden; pointer-events:none; user-select:none; }
 .language-switch {
   display:flex; align-items:baseline; justify-content:flex-end; gap:4px;
   color:#d1d5db; font-family:Arial,sans-serif; font-size:12px; line-height:1;
@@ -83,21 +90,22 @@ body main, body #news { background:var(--page-background); }
 #mobile-menu .nav-link { font-size:22px; line-height:1.1; }
 #mobile-menu .language-switch { margin-top:18px; }
 .site-title {
-  font-family:var(--site-font); font-size:36px; font-weight:200;
+  font-family:var(--site-font); font-size:36px; font-weight:var(--heading-weight);
   letter-spacing:.025em; line-height:1.2; color:#111827;
   border:0; padding:0;
 }
 .biography-title { margin:0 0 24px; }
+.biography-main { min-height:calc(100dvh - var(--header-height)); }
 .concert-title { margin:0 0 16px; }
 .section-rule { width:48px; height:1px; margin:0 auto; background:#d1d5db; }
 .page-concerts { display:flex; flex-direction:column; }
 .page-concerts .site-header { flex-shrink:0; }
 .page-concerts main { flex-grow:1; }
-.page-concerts footer { flex-shrink:0; font-weight:300; }
+.page-concerts footer { flex-shrink:0; font-weight:var(--text-weight); }
 #news { padding:64px 24px; text-align:center; }
-#news .news-title { margin:0 0 16px; font-family:var(--site-font); font-size:28px; font-weight:200; line-height:1.2; letter-spacing:.025em; }
+#news .news-title { margin:0 0 16px; font-family:var(--site-font); font-size:28px; font-weight:var(--heading-weight); line-height:1.2; letter-spacing:.025em; }
 #news .section-rule { margin-bottom:36px; }
-#news p { font-family:var(--site-font); font-weight:300; }
+#news p { font-family:var(--site-font); font-weight:var(--text-weight); }
 .media-main { padding:26px 24px 70px; }
 .media-title { margin:0 0 42px; text-align:center; }
 .media-gallery {
@@ -115,11 +123,11 @@ body main, body #news { background:var(--page-background); }
 #lightbox {
   position:fixed; inset:0; width:100%; max-width:none;
   height:100%; height:100dvh; max-height:none; margin:0; padding:22px;
-  border:0; outline:none; background:rgba(0,0,0,.94); color:#fff; z-index:100;
+  border:0; outline:none; background:transparent; color:#fff; z-index:100; overscroll-behavior:contain; touch-action:none;
 }
 #lightbox:not([open]) { display:none; }
 #lightbox[open] { display:flex; align-items:center; justify-content:center; }
-#lightbox::backdrop { background:rgba(0,0,0,.94); }
+#lightbox::backdrop { background:rgba(0,0,0,var(--lightbox-dimming)); }
 .lightbox-layout { width:100%; height:100%; display:grid; grid-template-columns:60px minmax(0,1fr) 60px; gap:20px; align-items:center; }
 .lightbox-figure { min-width:0; min-height:0; height:100%; margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
 #lightbox-img { display:block; max-width:100%; max-height:calc(100dvh - 100px); width:auto; height:auto; object-fit:contain; }
@@ -128,13 +136,14 @@ body main, body #news { background:var(--page-background); }
 #close-lightbox {
   position:absolute; top:max(10px,env(safe-area-inset-top)); right:16px;
   width:44px; height:44px; padding:0; border:0; border-radius:0;
-  font:34px Arial,sans-serif; color:rgba(255,255,255,.55);
+  color:rgba(255,255,255,.55);
   z-index:2; background:none; box-shadow:none; text-shadow:none;
   filter:none; outline:none; animation:none; cursor:pointer;
   -webkit-tap-highlight-color:transparent;
 }
 #close-lightbox:hover, #close-lightbox:active { color:rgba(255,255,255,.55); background:none; box-shadow:none; }
-#close-lightbox:focus-visible { outline:1px solid rgba(255,255,255,.45); outline-offset:2px; }
+#close-lightbox svg { display:block; width:24px; height:24px; margin:auto; }
+#close-lightbox:focus, #close-lightbox:focus-visible { outline:none; background:none; box-shadow:none; }
 .lightbox-arrow {
   width:52px; height:52px; padding:10px; border:0; background:none;
   color:rgba(255,255,255,.55); cursor:pointer; justify-self:center;
@@ -151,6 +160,8 @@ body.photo-open { overflow:hidden; }
   .logo-container { font-size:30px; }
 }
 @media (min-width:768px) {
+  .responsive-logo-text { font-size:40px; }
+  .biography-portrait { position:sticky; top:var(--header-height); height:calc(100dvh - var(--header-height)); }
   .responsive-header-bar { padding:0 32px; }
   .logo-container { font-size:26.4px; }
   #desktop-nav { display:flex; }
@@ -159,18 +170,27 @@ body.photo-open { overflow:hidden; }
 @media (min-width:1024px) {
   .responsive-header-bar { padding:0 40px; }
   .logo-container { font-size:44px; }
-  .responsive-sub-text { display:inline; }
+  .responsive-logo-text { font-size:54px; }
   #desktop-nav { gap:28px; }
   .site-header .nav-link { font-size:20px; }
+}
+@media (min-width:1200px) {
+  .responsive-sub-text { display:inline; }
+}
+@media (max-width:359px) {
+  .responsive-logo-text { font-size:32px; }
 }
 @media (min-width:768px) and (max-width:1023px) {
   .media-gallery { --columns:2; max-width:640px; }
 }
 @media (max-width:767px) {
   .site-title { font-size:30px; }
+  .concert-card { flex-direction:row; align-items:stretch; }
+  .concert-date { width:84px; min-width:84px; flex:0 0 84px; padding:16px 8px; }
+  .concert-info { min-width:0; padding:16px 12px; }
   .media-main { padding:20px 24px 44px; }
   .media-title { margin-bottom:28px; }
-  .media-gallery { --columns:1; max-width:420px; --gallery-gap:28px; }
+  .media-gallery { --columns:1; max-width:420px; --gallery-gap:9.3333333px; }
   #news .news-title { font-size:26px; }
   #lightbox { padding:48px 16px 16px; }
   .lightbox-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:44px minmax(0,1fr) 44px; gap:8px; }

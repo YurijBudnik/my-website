@@ -191,7 +191,7 @@ body.photo-open { overflow:hidden; }
   .media-main { padding:20px 24px 44px; }
   .media-title { margin-bottom:28px; }
   .media-gallery { --columns:1; max-width:420px; --gallery-gap:9.3333333px; }
-  #news .news-title { font-size:26px; }
+  #news .news-title { font-size:32px; }
   #lightbox { padding:48px 16px 16px; }
   .lightbox-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:44px minmax(0,1fr) 44px; gap:8px; }
   .lightbox-figure { grid-row:2; }

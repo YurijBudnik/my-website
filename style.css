@@ -90,7 +90,7 @@ body main, body #news { background:var(--page-background); }
 #mobile-menu .nav-link { font-size:22px; line-height:1.1; }
 #mobile-menu .language-switch { margin-top:18px; }
 .site-title {
-  font-family:var(--site-font); font-size:36px; font-weight:var(--heading-weight);
+  font-family:var(--site-font); font-size:39px; font-weight:var(--heading-weight);
   letter-spacing:.025em; line-height:1.2; color:#111827;
   border:0; padding:0;
 }

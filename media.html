@@ -14,10 +14,10 @@
   <style>
     .gallery-img {
       width: 100%;
-      height: 300px;
+      height: 260px;
       object-fit: cover;
       cursor: pointer;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.4s ease;
     }
 
     .gallery-img:hover {
@@ -33,67 +33,78 @@
 
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
 
-<!-- ================= HEADER (КОПІЯ) ================= -->
-<header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100">
+<!-- ================= HEADER (ТОЧНА КОПІЯ) ================= -->
+<header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
+    
   <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
-
+      
     <div class="w-full flex items-baseline justify-between gap-4">
 
-      <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
-        <span id="logo-text" class="responsive-logo-text text-gray-900" data-en="Yurij Budnik" data-ua="Юрій Буднік">
-          Yurij Budnik
-        </span>
-
-        <span class="responsive-sub-text hidden lg:inline text-gray-700">
-          <span data-en="A" data-ua="А">A</span><span data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
-        </span>
-      </a>
-
+    <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
+      <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
+        Yurij Budnik
+      </span>
+    
+      <span class="responsive-sub-text tracking-normal hidden lg:inline text-gray-700 leading-none">
+        <span class="main-letter" data-en="A" data-ua="А">A</span><span class="responsive-sub-text-lowercase" data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
+      </span>
+    </a>  
+    
       <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
 
-        <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none">
-          <span data-en="Biography" data-ua="Біографія">Біографія</span>
+        <!-- Biography -->
+        <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
+          <span>Біографія</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
         </a>
 
-        <a href="concerts.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none">
-          <span data-en="Concerts" data-ua="Концерти">Концерти</span>
+        <!-- Concerts -->
+        <a href="concerts.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
+          <span>Концерти</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
         </a>
 
-        <a href="media.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-black leading-none">
-          <span data-en="Media" data-ua="Медіа">Медіа</span>
+        <!-- ACTIVE -->
+        <a href="media.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-black leading-none" data-en="Media" data-ua="Медіа">
+          <span>Медіа</span>
+          <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-black"></span>
         </a>
 
-        <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none">
-          <span data-en="Contact" data-ua="Контакти">Контакти</span>
+        <!-- Contact -->
+        <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
+          <span>Контакти</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
         </a>
 
-        <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px]">
-          <button id="desk-btn-ua" onclick="setLang(event,'ua')">UA</button>
-          <span>|</span>
-          <button id="desk-btn-en" onclick="setLang(event,'en')">EN</button>
+        <!-- LANG -->
+        <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
+          <button id="desk-btn-ua" onclick="setLang(event,'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
+          <span class="text-gray-300 select-none scale-75">|</span>
+          <button id="desk-btn-en" onclick="setLang(event,'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
         </div>
 
       </nav>
     </div>
 
-    <button id="mobile-menu-btn" class="md:hidden p-2">☰</button>
+    <button id="mobile-menu-btn" class="md:hidden p-1.5">☰</button>
   </div>
 </header>
 
 <!-- ================= CONTENT ================= -->
-<main class="pt-20">
+<main class="pt-24">
 
   <!-- TITLE -->
-  <section class="text-center py-10">
-    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-extralight tracking-wide text-gray-900 mb-6 border-b border-gray-100 pb-3">
+  <section class="text-center py-12">
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-extralight tracking-wide text-gray-900 mb-6 border-b border-gray-100 pb-3"
+        data-en="Media"
+        data-ua="Галерея">
       Галерея
     </h1>
   </section>
 
   <!-- GRID -->
-  <section class="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-10">
+  <section class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 px-6">
 
-    <!-- ШАХМАТКА -->
     <div><img src="images/media/1.jpg" class="gallery-img"></div>
     <div class="offset"><img src="images/media/2.jpg" class="gallery-img"></div>
     <div><img src="images/media/3.jpg" class="gallery-img"></div>
@@ -123,7 +134,7 @@
 
   <button id="prevBtn" class="absolute left-5 text-white/60 hover:text-white text-4xl">‹</button>
 
-  <div class="flex flex-col items-center animate-fade">
+  <div class="flex flex-col items-center">
     <img id="lightbox-img" class="max-h-[80vh] object-contain transition-all duration-500 scale-95 opacity-0">
     <p id="counter" class="text-white/70 text-sm mt-4"></p>
   </div>
@@ -156,7 +167,6 @@ function updateImage() {
   setTimeout(() => {
     lightboxImg.src = images[currentIndex].src;
     counter.textContent = `${currentIndex + 1} / ${images.length}`;
-
     lightboxImg.style.opacity = 1;
     lightboxImg.style.transform = "scale(1)";
   }, 100);
@@ -201,20 +211,6 @@ lightbox.addEventListener('touchend', e => {
   if (diff > 50) nextImage();
   if (diff < -50) prevImage();
 });
-
-// LANG
-function setLang(event, lang) {
-  if(event) event.preventDefault();
-
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.dataset[lang];
-  });
-
-  localStorage.setItem("lang", lang);
-}
-
-const saved = localStorage.getItem("lang") || "ua";
-setLang(null, saved);
 </script>
 
 </body>

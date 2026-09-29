@@ -1,7 +1,6 @@
 (() => {
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const logo = document.getElementById('logo-link');
   const top = document.getElementById('line-top');
   const mid = document.getElementById('line-mid');
   const bottom = document.getElementById('line-bot');
@@ -29,35 +28,6 @@
     if (link.getAttribute('href') === current) link.setAttribute('aria-current', 'page');
   });
 
-  function fitLogo() {
-    logo.style.fontSize = '';
-    const name = document.getElementById('logo-text');
-    const sub = logo.querySelector('.responsive-sub-text');
-    let needed = name.scrollWidth;
-    if (sub && getComputedStyle(sub).display !== 'none') {
-      needed += sub.scrollWidth + (parseFloat(getComputedStyle(logo).gap) || 8);
-    }
-    const available = logo.clientWidth;
-    if (needed > available && available > 0) {
-      logo.style.fontSize = Math.max(15, parseFloat(getComputedStyle(logo).fontSize) * available / needed) + 'px';
-    }
-  }
-
-  function reserveMenuWidths() {
-    document.querySelectorAll('#desktop-nav .nav-link').forEach(link => {
-      const probe = document.createElement('span');
-      probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;pointer-events:none;width:max-content';
-      link.append(probe);
-      probe.textContent = link.dataset.ua;
-      const ua = probe.getBoundingClientRect().width;
-      probe.textContent = link.dataset.en;
-      const en = probe.getBoundingClientRect().width;
-      probe.remove();
-      link.style.width = Math.ceil(Math.max(ua, en)) + 'px';
-    });
-    fitLogo();
-  }
-
   window.setLang = (event, language) => {
     if (event) event.preventDefault();
     const lang = language === 'en' ? 'en' : 'ua';
@@ -72,7 +42,6 @@
     try { localStorage.setItem('selectedLang', lang); } catch {}
     const title = document.querySelector('[data-page-title]');
     document.title = title ? title.dataset[lang] + ' | Yurij Budnik' : 'Yurij Budnik';
-    fitLogo();
   };
 
   let language = 'ua';
@@ -80,8 +49,5 @@
   setLang(null, language);
   window.addEventListener('resize', () => {
     if (innerWidth >= 768) setMenu(false);
-    reserveMenuWidths();
   });
-  if (document.fonts) document.fonts.ready.then(reserveMenuWidths);
-  else reserveMenuWidths();
 })();

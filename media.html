@@ -5,213 +5,295 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Media</title>
 
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+<style>
+/* Однакові правила шапки для index.html і media.html. */
+html { scrollbar-gutter: stable; }
+body { overflow-y: scroll; }
+header { font-family: "Cormorant Garamond", Georgia, serif; }
+#header-bar { height:58px; min-height:58px; }
+#header-bar > div { min-width:0; }
+#logo-link { white-space:nowrap; }
+#desktop-nav .nav-link { text-align:center; }
+#desktop-nav .nav-link::after { content:none; }
+#desktop-nav .nav-link > span:last-child { width:0; }
+#desktop-nav .nav-link:hover > span:last-child,
+#desktop-nav .nav-link:focus-visible > span:last-child,
+#desktop-nav .nav-link[aria-current="page"] > span:last-child { width:100%; }
+.nav-link[aria-current="page"] { color:#000; }
+#mobile-menu-btn { width:36px; height:36px; min-width:36px; min-height:36px; flex:0 0 36px; padding:6px; }
+#mobile-menu-btn svg { display:block; width:24px; height:24px; }
+#mobile-menu[hidden] { display:none !important; }
+#mobile-menu { position:fixed; inset:58px 0 0; height:calc(100dvh - 58px); background:#fff; z-index:45; display:block; overflow-y:auto; }
+#mobile-menu .mobile-menu-inner { height:100%; min-height:0; }
+#mobile-menu .nav-link { align-self:flex-end; width:max-content; }
+#mobile-menu .nav-link:hover, #mobile-menu .nav-link[aria-current="page"] { text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px; }
+#desk-btn-ua, #desk-btn-en, #btn-ua, #btn-en { color:#9ca3af; font-weight:400; width:22px; flex:0 0 22px; }
+#desk-btn-ua[aria-pressed="true"], #desk-btn-en[aria-pressed="true"], #btn-ua[aria-pressed="true"], #btn-en[aria-pressed="true"] { color:#111827; font-weight:500; }
+body.menu-open { overflow:hidden; }
+@media (min-width:768px) { #mobile-menu { display:none; } }
 
-  <style>
-    .gallery-img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.5s ease, opacity 0.4s ease;
-    }
-
-    .gallery-img:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
-
-    .offset {
-      transform: translateY(20%);
-    }
-  </style>
+.media-main { padding:26px 24px 70px; }
+.media-title { margin:0 0 42px; padding:0; border:0; text-align:center; font-family:"Cormorant Garamond",Georgia,serif; font-size:36px; font-weight:200; letter-spacing:.025em; line-height:1.2; }
+.media-gallery { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:36px 32px; align-items:start; }
+.gallery-item { display:block; width:100%; padding:0; border:0; background:none; cursor:pointer; }
+.gallery-img { display:block; width:100%; height:auto; max-height:none; object-fit:contain; transition:opacity .35s; }
+.gallery-item:hover .gallery-img { opacity:.88; }
+.gallery-item:focus-visible { outline:2px solid #555; outline-offset:5px; }
+#lightbox { position:fixed; inset:0; width:100%; max-width:none; height:100%; height:100dvh; max-height:none; margin:0; padding:22px; border:0; background:rgba(0,0,0,.94); color:white; z-index:100; }
+#lightbox:not([open]) { display:none; }
+#lightbox[open] { display:flex; align-items:center; justify-content:center; }
+#lightbox::backdrop { background:rgba(0,0,0,.94); }
+.lightbox-layout { width:100%; height:100%; display:grid; grid-template-columns:60px minmax(0,1fr) 60px; gap:20px; align-items:center; }
+.lightbox-figure { min-width:0; min-height:0; height:100%; margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
+#lightbox-img { display:block; max-width:100%; max-height:calc(100dvh - 100px); width:auto; height:auto; object-fit:contain; }
+#lightbox-img.photo-enter { animation:photo-enter .25s ease; }
+#counter { margin:0; flex-shrink:0; font:13px Arial,sans-serif; color:rgba(255,255,255,.7); }
+#close-lightbox { position:absolute; top:max(10px,env(safe-area-inset-top)); right:16px; width:44px; height:44px; font:34px Arial,sans-serif; color:#fff; z-index:2; background:none; border:0; cursor:pointer; }
+.lightbox-arrow { width:52px; height:52px; padding:10px; border:0; background:none; color:rgba(255,255,255,.55); cursor:pointer; justify-self:center; touch-action:manipulation; }
+.lightbox-arrow svg { width:100%; height:100%; display:block; }
+.lightbox-arrow.arrow-flash { animation:arrow-flash 1s ease-out; }
+.lightbox-arrow:focus-visible { outline:1px solid white; outline-offset:3px; }
+body.photo-open { overflow:hidden; }
+@keyframes arrow-flash { from {color:#fff;} to {color:rgba(255,255,255,.55);} }
+@keyframes photo-enter { from {opacity:.3; transform:scale(.98);} to {opacity:1; transform:scale(1);} }
+@media (min-width:768px) and (max-width:1023px) { .media-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:640px; } }
+@media (max-width:767px) {
+ .media-main { padding:20px 24px 44px; }
+ .media-title { font-size:30px; margin-bottom:28px; }
+ .media-gallery { grid-template-columns:minmax(0,1fr); max-width:420px; gap:28px; }
+ .gallery-item { margin-top:0 !important; }
+ #lightbox { padding:48px 16px 16px; }
+ .lightbox-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:44px minmax(0,1fr) 44px; gap:8px; }
+ .lightbox-figure { grid-row:2; }
+ #prevBtn { grid-row:1; }
+ #nextBtn { grid-row:3; }
+ .lightbox-arrow { width:44px; height:44px; }
+ .lightbox-arrow svg { transform:rotate(90deg); }
+ #lightbox-img { max-height:calc(100dvh - 210px); }
+}
+</style>
 </head>
 
 <body class="bg-white text-gray-900 font-serif antialiased overflow-y-scroll">
-
-<!-- ================= HEADER (ТОЧНА КОПІЯ) ================= -->
-<header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
+  <!-- === HEADER (Шапка) === -->
+  <header class="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300 ease-in-out">
     
-  <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
+    <!-- Верхній рядок шапки -->
+    <div id="header-bar" class="responsive-header-bar w-full px-4 sm:px-6 md:px-8 lg:px-10 flex items-center justify-between gap-4">
+        
+      <!-- Внутрішній блок для десктопу/планшета з вирівнюванням по базовій лінії літер -->
+      <div class="w-full flex items-baseline justify-between gap-4">
+
+      <!-- Брендинг / Логотип -->
+      <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
+        <!-- Ім'я / Логотип -->
+        <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
+          Yurij Budnik
+        </span>
       
-    <div class="w-full flex items-baseline justify-between gap-4">
+        <!-- Підзаголовок зі збереженням структури літер -->
+        <span class="responsive-sub-text tracking-normal hidden lg:inline text-gray-700 leading-none">
+          <span class="main-letter" data-en="A" data-ua="А">A</span><span class="responsive-sub-text-lowercase" data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
+        </span>
+      </a>  
+      
+        <!-- Десктопне та планшетне меню -->
+        <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
+          <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
+            <span>Біографія</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
+          </a>
+          <a href="concerts.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
+            <span>Концерти</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
+          </a>
+          <a href="media.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Media" data-ua="Медіа">
+            <span>Медіа</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
+          </a>
+          <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
+            <span>Контакти</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
+          </a>
 
-    <a href="index.html" id="logo-link" class="logo-container min-w-0 flex items-baseline gap-2 text-2xl sm:text-3xl lg:text-4xl">
-      <span id="logo-text" class="responsive-logo-text tracking-normal text-gray-900 leading-none" data-en="Yurij Budnik" data-ua="Юрій Буднік">
-        Yurij Budnik
-      </span>
-    
-      <span class="responsive-sub-text tracking-normal hidden lg:inline text-gray-700 leading-none">
-        <span class="main-letter" data-en="A" data-ua="А">A</span><span class="responsive-sub-text-lowercase" data-en="ccordionist" data-ua="кордеоніст">ccordionist</span>
-      </span>
-    </a>  
-    
-      <nav id="desktop-nav" class="hidden md:flex items-baseline space-x-5 lg:space-x-7 flex-shrink-0">
+          <!-- Мовний перемикач -->
+          <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
+            <button id="desk-btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
+            <span class="text-gray-300 select-none scale-75">|</span>
+            <button id="desk-btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
+          </div>
+        </nav>
 
-        <!-- Biography -->
-        <a href="biography.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Biography" data-ua="Біографія">
-          <span>Біографія</span>
-          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
-        </a>
+      </div>
 
-        <!-- Concerts -->
-        <a href="concerts.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Concerts" data-ua="Концерти">
-          <span>Концерти</span>
-          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
-        </a>
+      <!-- Кнопка бургер-меню для мобільних пристроїв -->
+      <button id="mobile-menu-btn" type="button" aria-label="Меню" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-1.5 text-gray-900 hover:text-black focus:outline-none z-50 flex-shrink-0 self-center ml-[3px]">
+        <svg class="w-6 h-6 transition-transform duration-300 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="line-top" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16" />
+          <path id="line-mid" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16" />
+          <path id="line-bot" class="transition-all duration-300 ease-in-out origin-center" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16" />
+        </svg>
+      </button>
 
-        <!-- ACTIVE -->
-        <a href="media.html" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-black leading-none" data-en="Media" data-ua="Медіа">
-          <span>Медіа</span>
-          <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-black"></span>
-        </a>
-
-        <!-- Contact -->
-        <a href="index.html#contact" class="nav-link tracking-normal group relative text-base lg:text-lg font-light text-gray-700 hover:text-black transition-colors leading-none" data-en="Contact" data-ua="Контакти">
-          <span>Контакти</span>
-          <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-black transition-all duration-200 ease-out group-hover:w-full"></span>
-        </a>
-
-        <!-- LANG -->
-        <div class="ml-1 pl-3 border-l border-gray-200 flex items-baseline space-x-1 text-[12px] font-sans text-gray-400 leading-none">
-          <button id="desk-btn-ua" onclick="setLang(event,'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
-          <span class="text-gray-300 select-none scale-75">|</span>
-          <button id="desk-btn-en" onclick="setLang(event,'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
-        </div>
-
-      </nav>
     </div>
 
-    <button id="mobile-menu-btn" class="md:hidden p-1.5">☰</button>
-  </div>
-</header>
+    <!-- Мобільне випадаюче меню -->
+    <div id="mobile-menu" hidden class="mobile-menu-grid md:hidden">
+      <div class="mobile-menu-inner flex flex-col justify-between px-6 pb-6 pt-2">
+        
+        <nav class="flex flex-col space-y-4 text-right">
+          <a href="biography.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Biography" data-ua="Біографія">Біографія</a>
+          <a href="concerts.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Concerts" data-ua="Концерти">Концерти</a>
+          <a href="media.html" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Media" data-ua="Медіа">Медіа</a>
+          <a href="index.html#contact" class="nav-link text-xl font-serif font-light text-gray-700 hover:text-black transition-colors" data-en="Contact" data-ua="Контакти">Контакти</a>
+        </nav>
 
-<!-- ================= CONTENT ================= -->
-<main class="pt-24">
+        <!-- Мобільний мовний перемикач -->
+        <div class="mt-6 flex justify-end items-center space-x-1 text-[12px] text-gray-400 font-sans">
+          <button id="btn-ua" onclick="setLang(event, 'ua')" class="hover:text-gray-700 transition-colors px-0.5">UA</button>
+          <span class="text-gray-300 select-none scale-75">|</span>
+          <button id="btn-en" onclick="setLang(event, 'en')" class="hover:text-gray-700 transition-colors px-0.5">EN</button>
+        </div>
 
-  <!-- TITLE -->
-  <section class="text-center py-12">
-    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-extralight tracking-wide text-gray-900 mb-6 border-b border-gray-100 pb-3"
-        data-en="Media"
-        data-ua="Галерея">
-      Галерея
-    </h1>
+      </div>
+    </div>
+  </header>
+
+
+<main class="media-main">
+  <h1 class="media-title" data-page-title data-en="Media" data-ua="Галерея">Галерея</h1>
+  <section class="media-gallery" aria-label="Фотогалерея">
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 1"><img src="images/media/1.jpg" class="gallery-img" alt="Юрій Буднік — фото 1" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 2"><img src="images/media/2.jpg" class="gallery-img" alt="Юрій Буднік — фото 2" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 3"><img src="images/media/3.jpg" class="gallery-img" alt="Юрій Буднік — фото 3" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 4"><img src="images/media/4.jpg" class="gallery-img" alt="Юрій Буднік — фото 4" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 5"><img src="images/media/5.jpg" class="gallery-img" alt="Юрій Буднік — фото 5" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 6"><img src="images/media/6.jpg" class="gallery-img" alt="Юрій Буднік — фото 6" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 7"><img src="images/media/7.jpg" class="gallery-img" alt="Юрій Буднік — фото 7" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 8"><img src="images/media/8.jpg" class="gallery-img" alt="Юрій Буднік — фото 8" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 9"><img src="images/media/9.jpg" class="gallery-img" alt="Юрій Буднік — фото 9" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 10"><img src="images/media/10.jpg" class="gallery-img" alt="Юрій Буднік — фото 10" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 11"><img src="images/media/11.jpg" class="gallery-img" alt="Юрій Буднік — фото 11" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 12"><img src="images/media/12.jpg" class="gallery-img" alt="Юрій Буднік — фото 12" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 13"><img src="images/media/13.jpg" class="gallery-img" alt="Юрій Буднік — фото 13" loading="lazy" decoding="async"></button>
+    <button type="button" class="gallery-item" aria-label="Відкрити фото 14"><img src="images/media/14.jpg" class="gallery-img" alt="Юрій Буднік — фото 14" loading="lazy" decoding="async"></button>
   </section>
-
-  <!-- GRID -->
-  <section class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 px-6">
-
-    <div><img src="images/media/1.jpg" class="gallery-img"></div>
-    <div class="offset"><img src="images/media/2.jpg" class="gallery-img"></div>
-    <div><img src="images/media/3.jpg" class="gallery-img"></div>
-    <div class="offset"><img src="images/media/4.jpg" class="gallery-img"></div>
-
-    <div class="offset"><img src="images/media/5.jpg" class="gallery-img"></div>
-    <div><img src="images/media/6.jpg" class="gallery-img"></div>
-    <div class="offset"><img src="images/media/7.jpg" class="gallery-img"></div>
-    <div><img src="images/media/8.jpg" class="gallery-img"></div>
-
-    <div><img src="images/media/9.jpg" class="gallery-img"></div>
-    <div class="offset"><img src="images/media/10.jpg" class="gallery-img"></div>
-    <div><img src="images/media/11.jpg" class="gallery-img"></div>
-    <div class="offset"><img src="images/media/12.jpg" class="gallery-img"></div>
-
-    <div class="offset"><img src="images/media/13.jpg" class="gallery-img"></div>
-    <div><img src="images/media/14.jpg" class="gallery-img"></div>
-
-  </section>
-
 </main>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50">
-
-  <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-3xl">×</button>
-
-  <button id="prevBtn" class="absolute left-5 text-white/60 hover:text-white text-4xl">‹</button>
-
-  <div class="flex flex-col items-center">
-    <img id="lightbox-img" class="max-h-[80vh] object-contain transition-all duration-500 scale-95 opacity-0">
-    <p id="counter" class="text-white/70 text-sm mt-4"></p>
-  </div>
-
-  <button id="nextBtn" class="absolute right-5 text-white/60 hover:text-white text-4xl">›</button>
-
-</div>
-
-<!-- SCRIPT -->
+<dialog id="lightbox" aria-label="Перегляд фото">
+ <button id="close-lightbox" type="button" aria-label="Закрити">×</button>
+ <div class="lightbox-layout">
+  <button id="prevBtn" type="button" class="lightbox-arrow" aria-label="Попереднє фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5L8 12l7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <figure class="lightbox-figure"><img id="lightbox-img" alt=""><figcaption id="counter" aria-live="polite"></figcaption></figure>
+  <button id="nextBtn" type="button" class="lightbox-arrow" aria-label="Наступне фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+ </div>
+</dialog>
 <script>
-const images = Array.from(document.querySelectorAll('.gallery-img'));
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const counter = document.getElementById('counter');
+(() => {
+ const btn=document.getElementById('mobile-menu-btn');
+ const menu=document.getElementById('mobile-menu');
+ const logo=document.getElementById('logo-link');
+ const top=document.getElementById('line-top'), mid=document.getElementById('line-mid'), bot=document.getElementById('line-bot');
+ function closeMenu(){
+   menu.hidden=true; menu.classList.remove('is-open'); btn.setAttribute('aria-expanded','false');
+   document.body.classList.remove('menu-open'); logo.classList.remove('opacity-0','pointer-events-none');
+   top.setAttribute('d','M4 6h16'); mid.style.opacity='1'; bot.setAttribute('d','M4 18h16');
+ }
+ btn.addEventListener('click',()=>{
+   if(!menu.hidden){closeMenu();return;}
+   menu.hidden=false; menu.classList.add('is-open'); btn.setAttribute('aria-expanded','true');
+   document.body.classList.add('menu-open'); logo.classList.add('opacity-0','pointer-events-none');
+   top.setAttribute('d','M6 6L18 18'); mid.style.opacity='0'; bot.setAttribute('d','M6 18L18 6');
+ });
+ document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',closeMenu));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+ window.addEventListener('resize',()=>{if(innerWidth>=768)closeMenu();});
+ const current=(location.pathname.split('/').pop() || 'index.html');
+ document.querySelectorAll('.nav-link').forEach(link=>{
+   if(link.getAttribute('href')===current) link.setAttribute('aria-current','page');
+ });
+ function fitLogo(){
+   logo.style.fontSize='';
+   const name=document.getElementById('logo-text'),sub=logo.querySelector('.responsive-sub-text');
+   let needed=name.scrollWidth;
+   if(sub && getComputedStyle(sub).display!=='none')needed+=sub.scrollWidth+(parseFloat(getComputedStyle(logo).gap)||8);
+   if(needed>logo.clientWidth && logo.clientWidth>0)logo.style.fontSize=Math.max(15,parseFloat(getComputedStyle(logo).fontSize)*logo.clientWidth/needed)+'px';
+ }
+ function reserveMenuWidths(){
+   document.querySelectorAll('#desktop-nav .nav-link').forEach(link=>{
+     const probe=document.createElement('span');
+     probe.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;pointer-events:none;width:max-content';
+     link.append(probe);
+     probe.textContent=link.dataset.ua; const ua=probe.getBoundingClientRect().width;
+     probe.textContent=link.dataset.en; const en=probe.getBoundingClientRect().width;
+     probe.remove(); link.style.width=Math.ceil(Math.max(ua,en))+'px';
+   }); fitLogo();
+ }
+ window.setLang=(event,lang)=>{
+   if(event)event.preventDefault(); lang=lang==='en'?'en':'ua';
+   document.querySelectorAll('[data-en][data-ua]').forEach(el=>{
+     const target=el.classList.contains('nav-link') && el.firstElementChild ? el.firstElementChild : el;
+     target.textContent=el.dataset[lang];
+   });
+   document.documentElement.lang=lang==='ua'?'uk':'en';
+   ['desk-btn-ua','btn-ua','desk-btn-en','btn-en'].forEach(id=>document.getElementById(id)?.setAttribute('aria-pressed',String(id.endsWith(lang))));
+   try{localStorage.setItem('selectedLang',lang);}catch{}
+   if(document.querySelector('[data-page-title]'))document.title=lang==='en'?'Media':'Галерея';
+   fitLogo();
+ };
+ let lang='ua'; try{lang=localStorage.getItem('selectedLang')||'ua';}catch{}
+ setLang(null,lang);
+ window.addEventListener('resize',reserveMenuWidths);
+ if(document.fonts)document.fonts.ready.then(reserveMenuWidths); else reserveMenuWidths();
+})();
 
-let currentIndex = 0;
-
-images.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    currentIndex = index;
-    lightbox.style.display = 'flex';
-    updateImage();
-  });
-});
-
-function updateImage() {
-  lightboxImg.style.opacity = 0;
-  lightboxImg.style.transform = "scale(0.95)";
-
-  setTimeout(() => {
-    lightboxImg.src = images[currentIndex].src;
-    counter.textContent = `${currentIndex + 1} / ${images.length}`;
-    lightboxImg.style.opacity = 1;
-    lightboxImg.style.transform = "scale(1)";
-  }, 100);
-}
-
-function closeLightbox() {
-  lightbox.style.display = 'none';
-}
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateImage();
-}
-
-function prevImage() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateImage();
-}
-
-document.getElementById('nextBtn').onclick = nextImage;
-document.getElementById('prevBtn').onclick = prevImage;
-
-// keyboard
-document.addEventListener('keydown', (e) => {
-  if (lightbox.style.display !== 'flex') return;
-  if (e.key === 'ArrowRight') nextImage();
-  if (e.key === 'ArrowLeft') prevImage();
-  if (e.key === 'Escape') closeLightbox();
-});
-
-// swipe
-let startY = 0;
-
-lightbox.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-});
-
-lightbox.addEventListener('touchend', e => {
-  let endY = e.changedTouches[0].clientY;
-  let diff = startY - endY;
-
-  if (diff > 50) nextImage();
-  if (diff < -50) prevImage();
-});
+(() => {
+ const items=[...document.querySelectorAll('.gallery-item')], images=items.map(el=>el.querySelector('img'));
+ const box=document.getElementById('lightbox'), photo=document.getElementById('lightbox-img'), counter=document.getElementById('counter');
+ const prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn');
+ let index=0, opener=null;
+ function arrange(){
+   items.forEach((item,i)=>item.style.marginTop=innerWidth>=768 && i%2===1 ? (images[i].getBoundingClientRect().height*.2)+'px' : '0px');
+ }
+ images.forEach(img=>img.addEventListener('load',arrange));
+ window.addEventListener('resize',arrange); arrange();
+ function show(){
+   photo.classList.remove('photo-enter'); photo.src=images[index].currentSrc || images[index].src;
+   photo.alt=images[index].alt; counter.textContent=(index+1)+' / '+images.length;
+ }
+ photo.addEventListener('load',()=>{photo.classList.remove('photo-enter'); void photo.offsetWidth; photo.classList.add('photo-enter');});
+ items.forEach((item,i)=>item.addEventListener('click',()=>{
+   index=i; opener=item; show(); box.showModal(); document.body.classList.add('photo-open');
+ }));
+ function close(){box.close();}
+ box.addEventListener('close',()=>{document.body.classList.remove('photo-open'); opener?.focus({preventScroll:true});});
+ document.getElementById('close-lightbox').addEventListener('click',close);
+ box.addEventListener('click',e=>{if(e.target===box || e.target.classList.contains('lightbox-layout'))close();});
+ function step(direction,button){
+   button.classList.remove('arrow-flash'); void button.offsetWidth; button.classList.add('arrow-flash');
+   index=(index+direction+images.length)%images.length; show();
+ }
+ prev.addEventListener('click',()=>step(-1,prev)); next.addEventListener('click',()=>step(1,next));
+ document.addEventListener('keydown',e=>{
+   if(!box.open)return;
+   if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();step(1,next);}
+   if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();step(-1,prev);}
+ });
+ let start=null;
+ photo.addEventListener('touchstart',e=>{start={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
+ photo.addEventListener('touchend',e=>{
+   if(!start)return; const dx=start.x-e.changedTouches[0].clientX,dy=start.y-e.changedTouches[0].clientY;start=null;
+   const diff=Math.abs(dy)>Math.abs(dx)?dy:dx; if(Math.abs(diff)>50)step(diff>0?1:-1,diff>0?next:prev);
+ },{passive:true});
+})();
 </script>
-
 </body>
 </html>

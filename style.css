@@ -210,3 +210,13 @@ body.photo-open { overflow:hidden; }
 #mobile-menu a[href="media.html"] {
   transform: translateX(-5px);
 }
+.page-biography .biography-portrait {
+  height: auto;
+}
+
+.page-biography .biography-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

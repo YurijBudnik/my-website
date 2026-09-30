@@ -8,8 +8,8 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css?v=3">
- <script src="site.js?v=3" defer></script>
+ <link rel="stylesheet" href="style.css?v=4">
+ <script src="site.js?v=4" defer></script>
  
 </head>
 <body class="page-concerts">
@@ -23,7 +23,7 @@
    <nav id="desktop-nav" aria-label="Основне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="index.html#contact" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
   </div>
   <button type="button" id="mobile-menu-btn" aria-label="Меню" aria-controls="mobile-menu" aria-expanded="false">
    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path id="line-top" d="M4 6h16"/><path id="line-mid" d="M4 12h16"/><path id="line-bot" d="M4 18h16"/></svg>
@@ -34,11 +34,11 @@
    <div class="mobile-menu-inner"><nav aria-label="Мобільне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="index.html#contact" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
   </div>
  </div>
 </header>
-<main class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+<main class="concerts-main w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
     
     <!-- Заголовок розділу -->
     <div class="text-center mb-12 sm:mb-16">
@@ -50,7 +50,7 @@
 
     <!-- Підзаголовок -->
     <div class="mb-6">
-      <h2 class="text-xl sm:text-2xl font-serif font-light text-gray-600" data-en="Upcoming Performances" data-ua="Найближчі виступи">
+      <h2 class="concerts-subtitle" data-en="Upcoming Performances" data-ua="Найближчі виступи">
         Upcoming Performances
       </h2>
     </div>
@@ -62,10 +62,10 @@
       <div class="concert-card flex flex-row items-stretch bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
         <!-- Блок дати -->
         <div class="concert-date bg-[#181e28] text-white flex flex-col justify-center items-center py-5 px-6 min-w-[110px] text-center font-sans">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5">SEP</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5" data-en="SEP" data-ua="ВЕР">ВЕР</span>
           <span class="text-3xl font-light leading-none my-1">26</span>
           <span class="text-xs text-gray-300 font-light mt-0.5">2026</span>
-          <span class="text-[11px] text-gray-400 mt-1 uppercase">Sat</span>
+          <span class="text-[11px] text-gray-400 mt-1 uppercase" data-en="Sat" data-ua="СБ">СБ</span>
         </div>
         
         <!-- Інформація про концерт -->
@@ -74,8 +74,8 @@
             <h3 class="text-lg sm:text-xl font-serif font-bold text-gray-900 leading-snug">
               Filharmonia Kraków
             </h3>
-            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1">
-              Kraków, Poland
+            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1" data-en="Kraków, Poland" data-ua="Краків, Польща">
+              Краків, Польща
             </p>
             <p class="text-xs sm:text-sm italic text-gray-600 font-serif mt-2" data-en="Recital" data-ua="Сольний концерт">
               Recital
@@ -83,7 +83,7 @@
           </div>
 
           <!-- Кнопка квитків -->
-          <a href="#" class="w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
+          <a href="#" class="concert-tickets w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
             TICKETS
           </a>
         </div>
@@ -93,10 +93,10 @@
       <div class="concert-card flex flex-row items-stretch bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
         <!-- Блок дати -->
         <div class="concert-date bg-[#181e28] text-white flex flex-col justify-center items-center py-5 px-6 min-w-[110px] text-center font-sans">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5">SEP</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5" data-en="SEP" data-ua="ВЕР">ВЕР</span>
           <span class="text-3xl font-light leading-none my-1">29</span>
           <span class="text-xs text-gray-300 font-light mt-0.5">2026</span>
-          <span class="text-[11px] text-gray-400 mt-1 uppercase">Tue</span>
+          <span class="text-[11px] text-gray-400 mt-1 uppercase" data-en="Tue" data-ua="ВТ">ВТ</span>
         </div>
         
         <!-- Інформація про концерт -->
@@ -105,8 +105,8 @@
             <h3 class="text-lg sm:text-xl font-serif font-bold text-gray-900 leading-snug">
               Théâtre des Champs-Élysées
             </h3>
-            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1">
-              Paris, France
+            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1" data-en="Paris, France" data-ua="Париж, Франція">
+              Париж, Франція
             </p>
             <p class="text-xs sm:text-sm italic text-gray-600 font-serif mt-2" data-en="Recital" data-ua="Сольний концерт">
               Recital
@@ -114,7 +114,7 @@
           </div>
 
           <!-- Кнопка квитків -->
-          <a href="#" class="w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
+          <a href="#" class="concert-tickets w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
             TICKETS
           </a>
         </div>
@@ -124,10 +124,10 @@
       <div class="concert-card flex flex-row items-stretch bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
         <!-- Блок дати -->
         <div class="concert-date bg-[#181e28] text-white flex flex-col justify-center items-center py-5 px-6 min-w-[110px] text-center font-sans">
-          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5">OCT</span>
+          <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-0.5" data-en="OCT" data-ua="ЖОВ">ЖОВ</span>
           <span class="text-3xl font-light leading-none my-1">4</span>
           <span class="text-xs text-gray-300 font-light mt-0.5">2026</span>
-          <span class="text-[11px] text-gray-400 mt-1 uppercase">Sun</span>
+          <span class="text-[11px] text-gray-400 mt-1 uppercase" data-en="Sun" data-ua="НД">НД</span>
         </div>
         
         <!-- Інформація про концерт -->
@@ -136,8 +136,8 @@
             <h3 class="text-lg sm:text-xl font-serif font-bold text-gray-900 leading-snug">
               Festival Nuit Romantiques
             </h3>
-            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1">
-              Aix-les-Bains, France
+            <p class="text-xs sm:text-sm text-gray-500 font-sans mt-1" data-en="Aix-les-Bains, France" data-ua="Екс-ле-Бен, Франція">
+              Екс-ле-Бен, Франція
             </p>
             <p class="text-xs sm:text-sm italic text-gray-600 font-serif mt-2" data-en="Recital" data-ua="Сольний концерт">
               Recital
@@ -145,7 +145,7 @@
           </div>
 
           <!-- Кнопка квитків -->
-          <a href="#" class="w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
+          <a href="#" class="concert-tickets w-full sm:w-auto text-center bg-[#181e28] hover:bg-black text-white text-xs font-sans font-medium tracking-widest uppercase px-6 py-2.5 rounded transition-colors" data-en="TICKETS" data-ua="КВИТКИ">
             TICKETS
           </a>
         </div>

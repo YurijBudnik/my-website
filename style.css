@@ -95,9 +95,9 @@ body main, body #news { background:var(--page-background); }
   letter-spacing:.025em; line-height:1.2; color:#111827;
   border:0; padding:0;
 }
-.biography-title { margin:0 0 24px; }
+.biography-title { margin:0 0 36px; }
 .biography-main { min-height:calc(100dvh - var(--header-height)); }
-.concert-title { margin:0 0 16px; }
+.concert-title { margin:0 0 36px; }
 .section-rule { width:48px; height:1px; margin:0 auto; background:#d1d5db; }
 .page-concerts { display:flex; flex-direction:column; }
 .page-concerts .site-header { flex-shrink:0; }

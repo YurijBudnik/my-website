@@ -8,8 +8,8 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css?v=3">
- <script src="site.js?v=3" defer></script>
+ <link rel="stylesheet" href="style.css?v=4">
+ <script src="site.js?v=4" defer></script>
  
 </head>
 <body class="page-index">
@@ -23,7 +23,7 @@
    <nav id="desktop-nav" aria-label="Основне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="index.html#contact" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
   </div>
   <button type="button" id="mobile-menu-btn" aria-label="Меню" aria-controls="mobile-menu" aria-expanded="false">
    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path id="line-top" d="M4 6h16"/><path id="line-mid" d="M4 12h16"/><path id="line-bot" d="M4 18h16"/></svg>
@@ -34,7 +34,7 @@
    <div class="mobile-menu-inner"><nav aria-label="Мобільне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="index.html#contact" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
   </div>
  </div>
 </header>
@@ -58,29 +58,33 @@
         </a>
       </div>
 
-      <section id="news" class="bg-gray-50 py-16 px-6 text-center">
-        <h2 class="news-title" data-en="Latest News" data-ua="Останні новини">Останні новини</h2><div class="section-rule" aria-hidden="true"></div>
+      <section id="news" class="home-news">
+ <h2 class="news-title" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
+ <div class="section-rule" aria-hidden="true"></div>
+<div class="news-list">
+<article class="news-item">
+            <p class="news-date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
+            <p class="news-headline" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
+            <p class="news-source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
+          </article>
   
-        <div class="max-w-xl mx-auto space-y-8">
-          <div class="border-b border-gray-200 pb-6">
-            <p class="text-xs text-gray-400 font-sans" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
-            <p class="text-lg my-2 font-light" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
-            <p class="text-sm text-gray-500" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
-          </div>
+          
+<article class="news-item">
+            <p class="news-date" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
+            <p class="news-headline" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
+            <p class="news-source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
+          </article>
   
-          <div class="border-b border-gray-200 pb-6">
-            <p class="text-xs text-gray-400 font-sans" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
-            <p class="text-lg my-2 font-light" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
-            <p class="text-sm text-gray-500" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
-          </div>
-  
-          <div class="border-b border-gray-200 pb-6">
-            <p class="text-xs text-gray-400 font-sans" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
-            <p class="text-lg my-2 font-light" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
-            <p class="text-sm text-gray-500" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
-          </div>
-        </div>
-      </section>
+          
+<article class="news-item">
+            <p class="news-date" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
+            <p class="news-headline" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
+            <p class="news-source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
+          </article>
+        
+</div>
+<div class="all-news-action"><a href="news.html" class="all-news-link"><span data-en="View all news" data-ua="Усі новини">Усі новини</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</section>
   </main>
 </body>
 </html>

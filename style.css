@@ -3,7 +3,7 @@
   --text-weight:400; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
   --heading-weight:400; /* Товщина заголовків. */
   --logo-weight:400; /* Товщина логотипа. */
-  --lightbox-dimming:.68; /* Затемнення фону від 0 до 1. */
+  --lightbox-dimming:.94; /* Затемнення фону від 0 до 1. */
   --page-background:#f8f7f4;
   --site-font:"Cormorant Garamond",Georgia,serif;
   --gallery-gap:10.6666667px; /* Попередні 32 px, зменшені втричі. */

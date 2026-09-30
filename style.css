@@ -173,7 +173,7 @@ body.photo-open { overflow:hidden; }
   .logo-container { font-size:44px; }
   .responsive-logo-text { font-size:54px; }
   #desktop-nav { gap:28px; }
-  .site-header .nav-link { font-size:20px; }
+  .site-header .nav-link { font-size:22px; }
 }
 @media (min-width:1200px) {
   .responsive-sub-text { display:inline; }
@@ -185,14 +185,14 @@ body.photo-open { overflow:hidden; }
   .media-gallery { --columns:2; max-width:640px; }
 }
 @media (max-width:767px) {
-  .site-title { font-size:30px; }
+  .site-title { font-size:36px; }
   .concert-card { flex-direction:row; align-items:stretch; }
   .concert-date { width:84px; min-width:84px; flex:0 0 84px; padding:16px 8px; }
   .concert-info { min-width:0; padding:16px 12px; }
   .media-main { padding:20px 24px 44px; }
   .media-title { margin-bottom:28px; }
   .media-gallery { --columns:1; max-width:420px; --gallery-gap:9.3333333px; }
-  #news .news-title { font-size:32px; }
+  #news .news-title { font-size:36px; }
   #lightbox { padding:48px 16px 16px; }
   .lightbox-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:44px minmax(0,1fr) 44px; gap:8px; }
   .lightbox-figure { grid-row:2; }

@@ -25,7 +25,7 @@
 
   const current = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('href') === current) link.setAttribute('aria-current', 'page');
+    if (link.getAttribute('href').split('/').pop().split(/[?#]/)[0] === current) link.setAttribute('aria-current', 'page');
   });
 
   window.setLang = (event, language) => {
@@ -48,6 +48,6 @@
   try { language = localStorage.getItem('selectedLang') || 'ua'; } catch {}
   setLang(null, language);
   window.addEventListener('resize', () => {
-    if (innerWidth >= 768) setMenu(false);
+    if (innerWidth >= 960) setMenu(false);
   });
 })();

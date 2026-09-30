@@ -1,13 +1,14 @@
 :root {
-  --header-height:72px; /* Висота шапки на всіх сторінках. */
-  --text-weight:500; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
-  --heading-weight:500; /* Товщина заголовків. */
+  --header-height:68px; /* Висота шапки на всіх сторінках. */
+  --text-weight:400; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
+  --heading-weight:400; /* Товщина заголовків. */
   --logo-weight:400; /* Товщина логотипа. */
-  --lightbox-dimming:.9; /* Затемнення фону від 0 до 1. */
+  --lightbox-dimming:.68; /* Затемнення фону від 0 до 1. */
   --page-background:#f8f7f4;
   --site-font:"Cormorant Garamond",Georgia,serif;
-  --gallery-gap:9px; /* Попередні 32 px, зменшені втричі. */
-  --gallery-stagger:11px; /* Невелике зміщення першого ряду. */
+  --gallery-gap:10.6666667px; /* Попередні 32 px, зменшені втричі. */
+  --page-title-size:36px; /* Розмір назв сторінок на всіх екранах. */
+  --gallery-stagger:12px; /* Невелике зміщення першого ряду. */
 }
 * { box-sizing:border-box; }
 html { scrollbar-gutter:stable; scroll-behavior:smooth; }
@@ -89,9 +90,8 @@ body main, body #news { background:var(--page-background); }
 #mobile-menu nav { display:flex; flex-direction:column; align-items:flex-end; gap:18px; }
 #mobile-menu .nav-link { font-size:22px; line-height:1.1; }
 #mobile-menu .language-switch { margin-top:18px; }
-}
 .site-title {
-  font-family:var(--site-font); font-size:36px; font-weight:var(--heading-weight);
+  font-family:var(--site-font); font-size:var(--page-title-size); font-weight:var(--heading-weight);
   letter-spacing:.025em; line-height:1.2; color:#111827;
   border:0; padding:0;
 }
@@ -104,7 +104,7 @@ body main, body #news { background:var(--page-background); }
 .page-concerts main { flex-grow:1; }
 .page-concerts footer { flex-shrink:0; font-weight:var(--text-weight); }
 #news { padding:64px 24px; text-align:center; }
-#news .news-title { margin:0 0 18px; font-family:var(--site-font); font-size:36px; font-weight:var(--heading-weight); line-height:1.2; letter-spacing:.025em; }
+#news .news-title { margin:0 0 16px; font-family:var(--site-font); font-size:28px; font-weight:var(--heading-weight); line-height:1.2; letter-spacing:.025em; }
 #news .section-rule { margin-bottom:36px; }
 #news p { font-family:var(--site-font); font-weight:var(--text-weight); }
 .media-main { padding:26px 24px 70px; }
@@ -117,10 +117,12 @@ body main, body #news { background:var(--page-background); }
 }
 .media-gallery.is-positioned { display:block; position:relative; }
 .media-gallery.is-positioned .gallery-item { position:absolute; margin:0; }
-.gallery-item { display:block; width:100%; padding:0; border:0; margin:0; background:none; cursor:pointer; }
-.gallery-img { display:block; width:100%; height:auto; max-height:none; object-fit:contain; transition:opacity .35s; }
-.gallery-item:hover .gallery-img { opacity:.88; }
-.gallery-item:focus-visible { outline:2px solid #555; outline-offset:5px; }
+.gallery-item { display:block; width:100%; padding:0; border:0; margin:0; background:none; cursor:pointer; overflow:hidden; -webkit-tap-highlight-color:transparent; }
+.gallery-img { display:block; width:100%; height:auto; max-height:none; object-fit:contain; transition:transform .4s ease; transform-origin:center; }
+.gallery-item:focus, .gallery-item:focus-visible { outline:none; box-shadow:none; }
+@media (hover:hover) and (pointer:fine) {
+  .gallery-item:hover .gallery-img { transform:scale(1.035); }
+}
 #lightbox {
   position:fixed; inset:0; width:100%; max-width:none;
   height:100%; height:100dvh; max-height:none; margin:0; padding:22px;
@@ -162,7 +164,6 @@ body.photo-open { overflow:hidden; }
 }
 @media (min-width:768px) {
   .responsive-logo-text { font-size:40px; }
-  .biography-portrait { position:sticky; top:var(--header-height); height:calc(100dvh - var(--header-height)); }
   .responsive-header-bar { padding:0 32px; }
   .logo-container { font-size:26.4px; }
   #desktop-nav { display:flex; }
@@ -173,7 +174,7 @@ body.photo-open { overflow:hidden; }
   .logo-container { font-size:44px; }
   .responsive-logo-text { font-size:54px; }
   #desktop-nav { gap:28px; }
-  .site-header .nav-link { font-size:22px; }
+  .site-header .nav-link { font-size:20px; }
 }
 @media (min-width:1200px) {
   .responsive-sub-text { display:inline; }
@@ -185,14 +186,13 @@ body.photo-open { overflow:hidden; }
   .media-gallery { --columns:2; max-width:640px; }
 }
 @media (max-width:767px) {
-  .site-title { font-size:36px; }
   .concert-card { flex-direction:row; align-items:stretch; }
   .concert-date { width:84px; min-width:84px; flex:0 0 84px; padding:16px 8px; }
   .concert-info { min-width:0; padding:16px 12px; }
   .media-main { padding:20px 24px 44px; }
   .media-title { margin-bottom:28px; }
   .media-gallery { --columns:1; max-width:420px; --gallery-gap:9.3333333px; }
-  #news .news-title { font-size:36px; }
+  #news .news-title { font-size:26px; }
   #lightbox { padding:48px 16px 16px; }
   .lightbox-layout { grid-template-columns:minmax(0,1fr); grid-template-rows:44px minmax(0,1fr) 44px; gap:8px; }
   .lightbox-figure { grid-row:2; }
@@ -207,16 +207,90 @@ body.photo-open { overflow:hidden; }
   .mobile-menu-grid, .mobile-menu-grid.is-open { transition:none; }
   #lightbox-img.photo-enter { animation:none; }
 }
-#mobile-menu a[href="media.html"] {
-  transform: translateX(-5px);
+
+/* Положення лише Media в мобільному меню. */
+#mobile-menu a[href="media.html"] { transform:translateX(-5px); }
+
+/* Новини: усі три рівні тексту збільшено рівно на 2 px. */
+.news-list { width:100%; max-width:576px; margin:0 auto; }
+.news-item { padding:0 0 24px; margin:0 0 32px; border-bottom:1px solid #e5e7eb; }
+.news-item:last-child { margin-bottom:0; }
+.news-item p { font-family:var(--site-font); font-weight:var(--text-weight); }
+.news-date { margin:0; font-size:14px; line-height:1.5; color:#9ca3af; }
+.news-headline { margin:8px 0; font-size:20px; line-height:1.5; color:#111827; }
+.news-source { margin:0; font-size:16px; line-height:1.5; color:#6b7280; }
+.all-news-action { margin-top:36px; display:flex; justify-content:center; }
+.all-news-link {
+  display:inline-flex; align-items:center; gap:12px; padding:10px 2px;
+  font-family:var(--site-font); font-size:20px; font-weight:var(--text-weight);
+  color:#374151; text-decoration:none; border-bottom:1px solid #9ca3af;
+  transition:color .2s ease,border-color .2s ease;
 }
-.page-biography .biography-portrait {
-  height: auto;
+.all-news-link svg { width:22px; height:22px; flex-shrink:0; }
+.all-news-link:hover { color:#000; border-color:#000; }
+.news-page-main { max-width:760px; margin:0 auto; padding:48px 24px 72px; text-align:center; }
+.news-page-title { margin:0 0 16px; }
+.news-page-main > .section-rule { margin-bottom:44px; }
+
+/* Biography: нерухома ліва половина екрана; текст прокручується справа. */
+.page-biography .biography-portrait { height:auto; }
+.page-biography .biography-portrait img { display:block; width:100%; height:auto; object-fit:contain; }
+@media (min-width:768px) {
+  .page-biography .biography-portrait {
+    position:fixed; top:var(--header-height); bottom:0; left:0;
+    width:50%; height:calc(100dvh - var(--header-height)); z-index:0;
+  }
+  .page-biography .biography-portrait img { width:100%; height:100%; object-fit:cover; object-position:center; }
+  .page-biography .biography-copy { width:50%; margin-left:50%; min-width:0; }
 }
 
-.page-biography .biography-portrait img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+/* Concerts: читабельна ієрархія та дата зліва на всіх екранах. */
+.page-concerts footer { font-size:14px; line-height:1.5; }
+.page-concerts .concerts-subtitle { font-family:var(--site-font); font-size:26px; font-weight:var(--text-weight); line-height:1.3; color:#4b5563; }
+.page-concerts .concert-info { min-width:0; gap:20px; }
+.page-concerts .concert-info > div { min-width:0; }
+.page-concerts .concert-info h3 { font-size:26px; line-height:1.25; font-weight:var(--text-weight); }
+.page-concerts .concert-info p { font-size:18px; line-height:1.5; }
+.page-concerts .concert-info p.italic { font-size:20px; }
+.page-concerts .concert-date { flex:0 0 116px; min-width:116px; }
+.page-concerts .concert-date span:nth-child(1) { font-size:14px; }
+.page-concerts .concert-date span:nth-child(2) { font-size:38px; }
+.page-concerts .concert-date span:nth-child(3) { font-size:16px; }
+.page-concerts .concert-date span:nth-child(4) { font-size:13px; }
+.page-concerts .concert-tickets { flex-shrink:0; font-size:14px; line-height:1.2; padding:12px 18px; letter-spacing:.12em; }
+@media (max-width:767px) {
+  .page-concerts .concerts-subtitle { font-size:24px; }
+  .page-concerts .concert-date { width:88px; min-width:88px; flex-basis:88px; }
+  .page-concerts .concert-info { padding:18px 14px; gap:16px; }
+  .page-concerts .concert-info h3 { font-size:24px; }
+  .page-concerts .concert-info p.italic { font-size:18px; }
+  .news-page-main { padding:32px 24px 52px; }
+}
+@media (min-width:640px) and (max-width:900px) {
+  .page-concerts .concert-info { flex-direction:column; align-items:flex-start; }
+}
+
+/* Contact: прямі посилання на пошту, телефон і соціальні мережі. */
+.contact-main { width:100%; max-width:760px; margin:0 auto; padding:48px 24px 76px; text-align:center; }
+.contact-title { margin:0 0 46px; }
+.contact-details { display:flex; flex-direction:column; gap:28px; margin:0; }
+.contact-detail dt { margin:0 0 8px; font-size:14px; font-weight:var(--text-weight); letter-spacing:.12em; color:#6b7280; }
+.contact-detail dd { margin:0; }
+.contact-detail dd a { font-size:28px; line-height:1.4; color:#111827; text-decoration:none; overflow-wrap:anywhere; }
+.contact-detail dd a:hover { text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
+.social-links { display:flex; justify-content:center; align-items:center; gap:14px; margin-top:40px; }
+.social-link {
+  display:flex; justify-content:center; align-items:center; width:48px; height:48px;
+  border:1px solid #d1d5db; border-radius:50%; color:#374151;
+  transition:color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.social-link svg { width:24px; height:24px; }
+.social-link:hover { color:#000; border-color:#111827; transform:translateY(-2px); }
+.social-link:focus-visible, .all-news-link:focus-visible { outline:1px solid #374151; outline-offset:5px; }
+@media (max-width:767px) {
+  .contact-main { padding:32px 24px 56px; }
+  .contact-detail dd a { font-size:24px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .gallery-img, .social-link { transition:none; }
 }

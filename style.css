@@ -3,10 +3,10 @@
   --text-weight:400; /* Товщина основного тексту і меню: 300 тонше, 400 середня, 500 товстіше. */
   --heading-weight:400; /* Товщина заголовків. */
   --logo-weight:400; /* Товщина логотипа. */
-  --lightbox-dimming:.94; /* Затемнення фону від 0 до 1. */
+  --lightbox-dimming:.96; /* Затемнення фону від 0 до 1. */
   --page-background:#f8f7f4;
   --site-font:"Cormorant Garamond",Georgia,serif;
-  --gallery-gap:10.6666667px; /* Попередні 32 px, зменшені втричі. */
+  --gallery-gap:8px; /* Попередні 32 px, зменшені втричі. */
   --page-title-size:36px; /* Розмір назв сторінок на всіх екранах. */
   --gallery-stagger:12px; /* Невелике зміщення першого ряду. */
 }

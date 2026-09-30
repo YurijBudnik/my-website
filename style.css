@@ -166,8 +166,6 @@ body.photo-open { overflow:hidden; }
   .responsive-logo-text { font-size:40px; }
   .responsive-header-bar { padding:0 32px; }
   .logo-container { font-size:26.4px; }
-  #desktop-nav { display:flex; }
-  #mobile-menu-btn, #mobile-menu { display:none; }
 }
 @media (min-width:1024px) {
   .responsive-header-bar { padding:0 40px; }
@@ -293,4 +291,10 @@ body.photo-open { overflow:hidden; }
 }
 @media (prefers-reduced-motion:reduce) {
   .gallery-img, .social-link { transition:none; }
+}
+
+/* Пʼять пунктів меню: на вузьких планшетах — бургер без перекриття логотипа. */
+@media (min-width:960px) {
+  #desktop-nav { display:flex; }
+  #mobile-menu-btn, #mobile-menu { display:none; }
 }

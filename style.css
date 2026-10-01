@@ -299,13 +299,14 @@ body.photo-open { overflow:hidden; }
   #mobile-menu-btn, #mobile-menu { display:none; }
 }
 
-/* Вирівнювання пунктів бургер-меню */
+/* Список справа, перші літери вирівняні */
 #mobile-menu nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: max-content;
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 #mobile-menu .nav-link {
@@ -315,6 +316,6 @@ body.photo-open { overflow:hidden; }
 }
 
 #mobile-menu .nav-label {
-  text-align: left;
   justify-self: start;
+  text-align: left;
 }

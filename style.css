@@ -298,3 +298,23 @@ body.photo-open { overflow:hidden; }
   #desktop-nav { display:flex; }
   #mobile-menu-btn, #mobile-menu { display:none; }
 }
+
+/* Вирівнювання пунктів бургер-меню */
+#mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  margin-inline: auto;
+}
+
+#mobile-menu .nav-link {
+  justify-content: flex-start;
+  justify-items: start;
+  text-align: left;
+}
+
+#mobile-menu .nav-label {
+  text-align: left;
+  justify-self: start;
+}

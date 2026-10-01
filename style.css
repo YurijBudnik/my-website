@@ -206,8 +206,6 @@ body.photo-open { overflow:hidden; }
   #lightbox-img.photo-enter { animation:none; }
 }
 
-/* Положення лише Media в мобільному меню. */
-#mobile-menu a[href="media.html"] { transform:translateX(-5px); }
 
 /* Новини: усі три рівні тексту збільшено рівно на 2 px. */
 .news-list { width:100%; max-width:576px; margin:0 auto; }

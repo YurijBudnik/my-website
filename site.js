@@ -1,53 +1,9 @@
 (() => {
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const top = document.getElementById('line-top');
-  const mid = document.getElementById('line-mid');
-  const bottom = document.getElementById('line-bot');
-
-  function setMenu(open) {
-    menu.classList.toggle('is-open', open);
-    menu.inert = !open;
-    menu.setAttribute('aria-hidden', String(!open));
-    btn.setAttribute('aria-expanded', String(open));
-    top.setAttribute('d', open ? 'M6 6L18 18' : 'M4 6h16');
-    mid.style.opacity = open ? '0' : '1';
-    bottom.setAttribute('d', open ? 'M6 18L18 6' : 'M4 18h16');
-  }
-  btn.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
-  document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-      setMenu(false);
-      btn.focus();
-    }
-  });
-
-  const current = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('href').split('/').pop().split(/[?#]/)[0] === current) link.setAttribute('aria-current', 'page');
-  });
-
-  window.setLang = (event, language) => {
-    if (event) event.preventDefault();
-    const lang = language === 'en' ? 'en' : 'ua';
-    document.querySelectorAll('[data-en][data-ua]').forEach(element => {
-      const label = element.classList.contains('nav-link') ? element.querySelector('.nav-label') : element;
-      label.textContent = element.dataset[lang];
-    });
-    document.documentElement.lang = lang === 'ua' ? 'uk' : 'en';
-    ['desk-btn-ua', 'btn-ua', 'desk-btn-en', 'btn-en'].forEach(id => {
-      document.getElementById(id).setAttribute('aria-pressed', String(id.endsWith(lang)));
-    });
-    try { localStorage.setItem('selectedLang', lang); } catch {}
-    const title = document.querySelector('[data-page-title]');
-    document.title = title ? title.dataset[lang] + ' | Yurij Budnik' : 'Yurij Budnik';
-  };
-
-  let language = 'ua';
-  try { language = localStorage.getItem('selectedLang') || 'ua'; } catch {}
-  setLang(null, language);
-  window.addEventListener('resize', () => {
-    if (innerWidth >= 960) setMenu(false);
-  });
+ const btn=document.getElementById('mobile-menu-btn'),menu=document.getElementById('mobile-menu');
+ function setMenu(open){menu.classList.toggle('is-open',open);menu.inert=!open;menu.setAttribute('aria-hidden',String(!open));btn.setAttribute('aria-expanded',String(open));document.body.classList.toggle('menu-open',open);document.getElementById('line-top').setAttribute('d',open?'M6 6L18 18':'M4 6h16');document.getElementById('line-mid').style.opacity=open?'0':'1';document.getElementById('line-bot').setAttribute('d',open?'M6 18L18 6':'M4 18h16');}
+ btn.addEventListener('click',()=>setMenu(btn.getAttribute('aria-expanded')!=='true'));
+ document.querySelectorAll('.nav-link').forEach(a=>{if(a.getAttribute('href').split('/').pop()===(location.pathname.split('/').pop()||'index.html'))a.setAttribute('aria-current','page');a.addEventListener('click',()=>setMenu(false));});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&btn.getAttribute('aria-expanded')==='true'){setMenu(false);btn.focus();}if(e.key==='Tab'&&btn.getAttribute('aria-expanded')==='true'){const list=[btn,...menu.querySelectorAll('a,button')];const i=list.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();list.at(-1).focus();}else if(!e.shiftKey&&i===list.length-1){e.preventDefault();btn.focus();}}});
+ window.setLang=(event,language)=>{event?.preventDefault();const lang=language==='en'?'en':'ua';document.querySelectorAll('[data-en][data-ua]').forEach(el=>{const label=el.classList.contains('nav-link')?el.querySelector('.nav-label'):el;label.textContent=el.dataset[lang];});document.documentElement.lang=lang==='ua'?'uk':'en';['desk-btn-ua','btn-ua','desk-btn-en','btn-en'].forEach(id=>document.getElementById(id)?.setAttribute('aria-pressed',String(id.endsWith(lang))));try{localStorage.setItem('selectedLang',lang);}catch{}const title=document.querySelector('[data-page-title]');document.title=title?title.dataset[lang]+' | Yurij Budnik':'Yurij Budnik';document.dispatchEvent(new CustomEvent('languagechange',{detail:lang}));};
+ let lang='ua';try{lang=localStorage.getItem('selectedLang')||'ua';}catch{}setLang(null,lang);window.addEventListener('resize',()=>{if(innerWidth>=960)setMenu(false);});
 })();

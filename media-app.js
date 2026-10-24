@@ -1,4 +1,4 @@
-/* Media v5. Shared layout stays mounted while content changes. */
+/* Media v6. Shared layout stays mounted while content changes. */
 (() => {
   'use strict';
   const data = window.MEDIA_CONTENT;
@@ -15,12 +15,13 @@
   const state = {lang:document.documentElement.lang==='en'?'en':'ua', track:0, photo:0, video:0, filter:'all', source:'', view:'media', score:null};
   const svg = (body, name) => `<svg viewBox="0 0 24 24" aria-hidden="true" class="icon icon-${name}" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
   const icons = {
+    close:svg('<path d="m6 6 12 12M18 6 6 18"/>','close'),
     play:svg('<path d="m8 5 11 7-11 7Z"/>','play'),
     pause:svg('<path d="M8 5v14M16 5v14"/>','pause'),
     speaker:svg('<path d="M11 4 6 8H3v8h3l5 4Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/>','speaker'),
     headphones:svg('<path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/>','headphones'),
-    photo:svg('<rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="8" cy="9" r="1.5"/><path d="m3 17 6-5 4 4 3-3 5 5"/>','photo'),
-    score:svg('<path d="M5 2h9l5 5v15H5Z M14 2v6h5 M8 12h8M8 16h8"/>','score'),
+    photo:svg('<rect x="2" y="3" width="20" height="18" rx="3"/><circle cx="16" cy="8" r="2"/><path d="m2 17 6-7 8 8M13 15l3-3 6 6"/>','photo'),
+    score:svg('<path d="M14 2H6a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V9Z M14 2v5a2 2 0 0 0 2 2h5M6 11h5M6 14h5M6 17h3M18 14h1M18 17h1M14 17v-6l3 2"/><ellipse cx="12" cy="18" rx="2" ry="1.4" transform="rotate(-25 12 18)"/>','score'),
     video:svg('<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z"/>','video'),
     left:svg('<path d="m15 5-7 7 7 7"/>','left'),
     right:svg('<path d="m9 5 7 7-7 7"/>','right'),
@@ -69,13 +70,15 @@
   function closeModal(){dialog.close();}
   dialog.addEventListener('close',()=>{
     modal.innerHTML='';dialog.dataset.kind='';document.body.classList.remove('modal-open');
-    if(restoreFocus?.isConnected)restoreFocus.focus({preventScroll:true});
+    if(restoreFocus?.isConnected){if(mobileQuery.matches)restoreFocus.blur();else restoreFocus.focus({preventScroll:true});}
+    initAmbient();
   });
   dialog.addEventListener('click',event=>{
     if(event.target!==dialog)return;
     const r=dialog.getBoundingClientRect();
     if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeModal();
   });
+  $('.close-dialog').innerHTML=icons.close;
   $('.close-dialog').onclick=closeModal;
   function previewScore(id){const s=getScore(id);if(s)openModal(`<h2>${escape(s.title)}</h2><img class="sample-image" src="${s.sample}" alt="${text('Зразок нот','Sheet music sample')}"><p class="modal-caption">${text('Фрагмент партитури · Зразок','Score excerpt · Sample')}</p>`,'score');}
   function openVideo(id,start=0){audio.pause();openModal(`<iframe class="stage" title="${text('Відео виконання','Performance video')}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&start=${Number(start)||0}"></iframe>`,'video');}
@@ -86,7 +89,7 @@
   modal.addEventListener('click',event=>{const remove=event.target.closest('[data-remove]');if(remove){cart=cart.filter(id=>id!==remove.dataset.remove);saveCart();showCart();}});
 
   function card(score,small=false){
-    return `<article class="score-card"><a href="${scoreUrl(score)}" class="cover-link"><img src="${score.cover}" alt="${escape(score.title)}" loading="lazy" width="600" height="850"></a><h2><a href="${scoreUrl(score)}">${escape(score.title)}</a></h2>${small?'':`<div class="card-actions"><div>${score.audio?`<button data-audio="${score.audio}" data-audio-icon="speaker" aria-label="${text('Послухати','Listen to')} ${escape(score.title)}">${icons.speaker}</button>`:''}${score.video?`<button data-video="${score.video}" aria-label="${text('Дивитися','Watch')} ${escape(score.title)}">${icons.video}</button>`:''}</div><a href="${scoreUrl(score)}">${text('Переглянути','Explore')} <span aria-hidden="true">→</span></a></div>`}</article>`;
+    return `<article class="score-card"><a href="${scoreUrl(score)}" class="cover-link"><img src="${score.cover}" alt="${escape(score.title)}" loading="lazy" width="600" height="850"></a><h2><a href="${scoreUrl(score)}">${escape(score.title)}</a></h2>${small?'':`<div class="card-actions"><div>${score.audio?`<button data-audio="${score.audio}" data-audio-icon="headphones" aria-label="${text('Послухати','Listen to')} ${escape(score.title)}">${icons.headphones}</button>`:''}${score.video?`<button data-video="${score.video}" aria-label="${text('Дивитися','Watch')} ${escape(score.title)}">${icons.video}</button>`:''}</div><a href="${scoreUrl(score)}">${text('Переглянути','Explore')} <span aria-hidden="true">→</span></a></div>`}</article>`;
   }
   function carousel(items, extra=''){
     return `<div class="carousel-wrap"><div class="carousel ${extra}" tabindex="0" aria-label="${text('Горизонтальна добірка','Scrollable collection')}">${items}</div><button class="edge left" data-scroll="-1" aria-label="${text('Гортати ліворуч','Scroll left')}">${icons.left}</button><button class="edge right" data-scroll="1" aria-label="${text('Гортати праворуч','Scroll right')}">${icons.right}</button></div>`;
@@ -103,22 +106,30 @@
     return `<article class="detail"><div class="detail-cover"><button class="cover-button" data-preview="${score.id}" aria-label="${text('Переглянути ноти','Preview sheet music')} ${escape(score.title)}"><img src="${score.cover}" alt="${escape(score.title)}" width="600" height="850"><span>${icons.expand}</span></button><button class="preview-hint" data-preview="${score.id}">${text('Переглянути ноти','Preview sheet music')}</button></div><div class="detail-info"><h2>${escape(score.title)}</h2><p class="composer">${escape(score.composer)}</p><p class="arranger">${text('Аранжування Yurij Budnik','Arranged by Yurij Budnik')}</p><p class="description">${escape(state.lang==='en'?score.descriptionEn:score.descriptionUa)}</p>${compactPlayer(score)}${score.video?`<button class="video-link" data-video="${score.video}">${icons.video} ${text('Дивитися відео','Watch video')}</button>`:''}</div><div class="detail-purchase"><div class="buy-row"><button class="primary" data-add="${score.id}">${icons.bag} ${cart.includes(score.id)?text('У кошику','In cart'):text('Додати до кошика','Add to cart')}</button><span class="price">${price(score)}</span></div><p class="facts">PDF · ${score.pages} ${text('сторінок','pages')}</p></div></article><section class="related-scores"><h2 class="section-small">${text('Інші п’єси','Other pieces')}</h2>${carousel(data.scores.filter(s=>s.id!==score.id).map(s=>card(s,true)).join(''),'score-carousel')}</section>`;
   }
   function renderMusic(){
-    return `<div class="album-layout"><div class="album-art"><video class="album-cover-video" data-ambient autoplay muted loop playsinline preload="metadata" poster="assets/album-cover.jpg" aria-label="Yurij Budnik"><source src="assets/album-cover.mp4" type="video/mp4"></video></div><div class="album-tracks"><ol id="tracks">${data.tracks.map((s,i)=>`<li class="track ${i===state.track?'active':''}"><button data-track="${i}" aria-label="${text('Відтворити','Play')} ${escape(s.title)}"><span class="track-number">${i+1}</span><span class="track-name">${escape(s.title)}</span></button><span class="track-duration">${time(s.duration)}</span><button class="track-menu" data-links="${i}" aria-label="${text('Посилання для','Links for')} ${escape(s.title)}">${icons.dots}</button></li>`).join('')}</ol><div class="player" data-player-src="${data.tracks[state.track].src}"><div class="now-playing"><span class="now-title">${escape(data.tracks[state.track].title)}</span><small>Yurij Budnik</small></div><div class="transport"><button data-track-step="-1" aria-label="${text('Попередній трек','Previous track')}">${icons.left}</button><button id="toggle-track" data-track="${state.track}" aria-label="${text('Відтворити або призупинити','Play or pause')}">${icons.play}</button><button data-track-step="1" aria-label="${text('Наступний трек','Next track')}">${icons.right}</button></div><span class="elapsed">0:00</span><input class="audio-progress" type="range" min="0" max="1000" value="0" aria-label="${text('Позиція відтворення','Playback position')}"><span class="total-time">${time(data.tracks[state.track].duration)}</span><label class="volume">${icons.speaker}<input type="range" min="0" max="1" step="0.01" value="${audio.volume}" data-volume aria-label="${text('Гучність','Volume')}"></label></div></div></div>`;
+    return `<div class="album-layout"><div class="album-art"><button class="album-open" data-album-open aria-label="${text('Збільшити обкладинку та відтворити відео','Expand cover and play video')}"><video class="album-cover-video" data-ambient autoplay muted loop playsinline preload="metadata" poster="assets/album-cover.jpg" aria-label="Yurij Budnik"><source src="assets/album-cover.mp4" type="video/mp4"></video></button></div><div class="album-tracks"><ol id="tracks">${data.tracks.map((s,i)=>`<li class="track ${i===state.track?'active':''}"><button data-track="${i}" aria-label="${text('Відтворити','Play')} ${escape(s.title)}"><span class="track-number">${i+1}</span><span class="track-play" aria-hidden="true">${icons.play}</span><span class="track-name">${escape(s.title)}</span></button><span class="track-duration">${time(s.duration)}</span><button class="track-menu" data-links="${i}" aria-label="${text('Посилання для','Links for')} ${escape(s.title)}">${icons.dots}</button></li>`).join('')}</ol><div class="player" data-player-src="${data.tracks[state.track].src}"><div class="now-playing"><span class="now-title">${escape(data.tracks[state.track].title)}</span><small>Yurij Budnik</small></div><div class="transport"><button data-track-step="-1" aria-label="${text('Попередній трек','Previous track')}">${icons.left}</button><button id="toggle-track" data-track="${state.track}" aria-label="${text('Відтворити або призупинити','Play or pause')}">${icons.play}</button><button data-track-step="1" aria-label="${text('Наступний трек','Next track')}">${icons.right}</button></div><span class="elapsed">0:00</span><input class="audio-progress" type="range" min="0" max="1000" value="0" aria-label="${text('Позиція відтворення','Playback position')}"><span class="total-time">${time(data.tracks[state.track].duration)}</span><label class="volume">${icons.speaker}<input type="range" min="0" max="1" step="0.01" value="${audio.volume}" data-volume aria-label="${text('Гучність','Volume')}"></label></div></div></div>`;
   }
-  function videoFrame(){const v=data.videos[state.video];return `<button class="video-poster stage" data-main-video aria-label="${text('Дивитися','Watch')} ${escape(state.lang==='en'?v.titleEn:v.titleUa)}"><img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${escape(state.lang==='en'?v.titleEn:v.titleUa)}"></button><div class="stage-caption"><h2 class="stage-title">${escape(state.lang==='en'?v.titleEn:v.titleUa)}</h2><span>${state.video+1} / ${data.videos.length}</span></div>`;}
-  function renderVideos(){return `<div id="video-stage">${videoFrame()}</div>${carousel(data.videos.map((v,i)=>`<button class="thumbnail ${i===state.video?'active':''}" data-vid="${i}" aria-pressed="${i===state.video}"><span class="video-thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""></span><span class="video-caption"><span class="video-number">${i+1}</span>${escape(state.lang==='en'?v.titleEn:v.titleUa)}</span></button>`).join(''),'video-carousel')}`;}
+  function videoFrame(){const v=data.videos[state.video];return `<iframe class="stage" title="${escape(state.lang==='en'?v.titleEn:v.titleUa)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://www.youtube-nocookie.com/embed/${v.id}?controls=1&playsinline=1&rel=0&start=${v.start||0}"></iframe><div class="stage-caption"><h2 class="stage-title">${escape(state.lang==='en'?v.titleEn:v.titleUa)}</h2><span>${state.video+1} / ${data.videos.length}</span></div>`;}
+  function videoDescription(){const v=data.videos[state.video];return escape(state.lang==='en'?v.descriptionEn:v.descriptionUa);}
+  function albumModal(){
+    openModal(`<video class="expanded-album" src="assets/album-cover.mp4" poster="assets/album-cover.jpg" controls autoplay muted loop playsinline aria-label="${text('Відеообкладинка альбому','Album video cover')}"></video>`,'album');
+    $$('.album-cover-video').forEach(v=>v.pause());
+    const v=$('.expanded-album');v.muted=true;v.play()?.catch(()=>{});
+  }
+
+  function renderVideos(){return `<div id="video-stage">${videoFrame()}</div>${carousel(data.videos.map((v,i)=>`<button class="thumbnail ${i===state.video?'active':''}" data-vid="${i}" aria-pressed="${i===state.video}"><span class="video-thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""></span><span class="video-caption"><span class="video-number">${i+1}</span>${escape(state.lang==='en'?v.titleEn:v.titleUa)}</span></button>`) .join(''),'video-carousel')}<p class="video-description">${videoDescription()}</p>`;}
 
   function renderPhotos(){return `<div class="photo-stage"><img id="main-photo" src="${photos[state.photo]}" alt="${text('Юрій Буднік — фото','Yurij Budnik — photo')} ${state.photo+1}"><button data-photo-expand aria-label="${text('Відкрити фото','Open photo')}">${icons.expand}</button></div><p class="photo-counter">${state.photo+1} / ${photos.length}</p>${carousel(photos.map((src,i)=>`<button class="thumbnail ${i===state.photo?'active':''}" data-photo="${i}" aria-pressed="${i===state.photo}" aria-label="${text('Фото','Photo')} ${i+1}"><img loading="lazy" src="${src}" alt=""></button>`).join(''),'photo-carousel')}`;}
   function renderHub(){
-    const entries=[['videos','video','play','Дивитися','Watch'],['photos','photo','photo','Відкрити','Explore'],['music','music','headphones','Слухати','Listen'],['scores','scores','score','Переглянути','Explore']];
+    const entries=[['videos','video','video','Дивитися','Watch'],['photos','photo','photo','Відкрити','Explore'],['music','music','headphones','Слухати','Listen'],['scores','scores','score','Переглянути','Explore']];
     return `<div class="hub">${entries.map(([view,asset,icon,ua,en])=>`<a class="hub-panel hub-${asset}" href="${view}.html" aria-label="${text(...labels[view])}">${asset==='video'?`<video class="hub-visual" data-panel-video data-ambient autoplay muted loop playsinline preload="metadata" poster="assets/media-panels/video-desktop.jpg" aria-hidden="true"></video>`:`<picture class="hub-visual"><source media="(max-width:760px)" srcset="assets/media-panels/${asset}-mobile.jpg"><img src="assets/media-panels/${asset}-desktop.jpg" alt="" fetchpriority="high"></picture>`}<h2>${text(...labels[view])}</h2><span class="hub-action" aria-hidden="true"><span class="hub-icon">${icons[icon]}</span><span>${text(ua,en)}</span><span class="hub-arrow">⟶</span></span></a>`).join('')}</div>`;
   }
   const mobileQuery=window.matchMedia('(max-width:760px)');
+  const galleryDesktopQuery=window.matchMedia('(min-width:761px), (min-width:600px) and (orientation:landscape)');
   const reducedQuery=window.matchMedia('(prefers-reduced-motion:reduce)');
   function initAmbient(){
     const panel=$('[data-panel-video]');
     if(panel){const mode=mobileQuery.matches?'mobile':'desktop';const src=`assets/media-panels/video-${mode}.mp4`;if(panel.getAttribute('src')!==src){panel.poster=`assets/media-panels/video-${mode}.jpg`;panel.src=src;}}
-    $$('[data-ambient]').forEach(v=>{v.muted=true;if(document.hidden||reducedQuery.matches)v.pause();else v.play()?.catch(()=>{});});
+    $$('[data-ambient]').forEach(v=>{v.muted=true;if(document.hidden||reducedQuery.matches||(mobileQuery.matches&&v.classList.contains('album-cover-video'))||dialog.dataset.kind==='album')v.pause();else v.play()?.catch(()=>{});});
   }
   mobileQuery.addEventListener('change',initAmbient);
   reducedQuery.addEventListener('change',initAmbient);
@@ -157,7 +168,8 @@
     }
   }
   function syncAudio(){
-    $$('[data-audio]').forEach(button=>{const playing=button.dataset.audio===state.source&&!audio.paused;button.innerHTML=playing?icons.pause:(button.dataset.audioIcon==='speaker'?icons.speaker:icons.play);button.setAttribute('aria-pressed',String(playing));});
+    $$('[data-audio]').forEach(button=>{const playing=button.dataset.audio===state.source&&!audio.paused;button.innerHTML=playing?icons.pause:(button.dataset.audioIcon==='headphones'?icons.headphones:icons.play);button.setAttribute('aria-pressed',String(playing));});
+    $$('.track-play').forEach((el,i)=>{el.innerHTML=state.track===i&&state.source===data.tracks[i].src&&!audio.paused?icons.pause:icons.play;});
     const now=$('.now-title');if(now)now.textContent=data.tracks[state.track].title;
     const toggle=$('#toggle-track');if(toggle)toggle.innerHTML=state.source===data.tracks[state.track].src&&!audio.paused?icons.pause:icons.play;
     $$('[data-player-src]').forEach(player=>{
@@ -211,7 +223,7 @@
   content.addEventListener('click',event=>{
     if(event.target.id==='main-photo'){photoModal();return;}
     const b=event.target.closest('button');if(!b)return;
-    if(b.dataset.scroll){const el=$('.carousel',b.parentNode);el.scrollBy({left:Number(b.dataset.scroll)*el.clientWidth*.7,behavior:'smooth'});}
+    if(b.dataset.scroll){const el=$('.carousel',b.parentNode);el.scrollBy({left:Number(b.dataset.scroll)*el.clientWidth*(mobileQuery.matches?1.05:.85),behavior:'smooth'});b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');setTimeout(()=>b.classList.remove('flash'),500);}
     else if(b.dataset.filter){state.filter=b.dataset.filter;render();}
     else if(b.dataset.preview)previewScore(b.dataset.preview);
     else if(b.dataset.add)addToCart(b.dataset.add);
@@ -220,9 +232,9 @@
     else if(b.dataset.track!==undefined)selectTrack(Number(b.dataset.track));
     else if(b.dataset.trackStep)selectTrack(state.track+Number(b.dataset.trackStep));
     else if(b.dataset.links!==undefined)showTrackLinks(Number(b.dataset.links));
-    else if(b.hasAttribute('data-main-video')){const v=data.videos[state.video];audio.pause();b.outerHTML=`<iframe class="stage" title="${escape(state.lang==='en'?v.titleEn:v.titleUa)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&start=${v.start||0}"></iframe>`;}
-    else if(b.dataset.vid!==undefined){state.video=Number(b.dataset.vid);audio.pause();$('#video-stage').innerHTML=videoFrame();$$('[data-vid]').forEach((button,i)=>{button.classList.toggle('active',i===state.video);button.setAttribute('aria-pressed',String(i===state.video));});}
-    else if(b.dataset.photo!==undefined){choosePhoto(Number(b.dataset.photo));if(mobileQuery.matches)photoModal();}
+    else if(b.hasAttribute('data-album-open'))albumModal();
+    else if(b.dataset.vid!==undefined){state.video=Number(b.dataset.vid);audio.pause();$('#video-stage').innerHTML=videoFrame();$('.video-description').textContent=videoDescription();$$('[data-vid]').forEach((button,i)=>{button.classList.toggle('active',i===state.video);button.setAttribute('aria-pressed',String(i===state.video));});}
+    else if(b.dataset.photo!==undefined){choosePhoto(Number(b.dataset.photo));if(!galleryDesktopQuery.matches)photoModal();}
     else if(b.hasAttribute('data-photo-expand'))photoModal();
   });
   content.addEventListener('input',e=>{

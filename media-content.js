@@ -1,4 +1,3 @@
-/* Редагуйте назви, описи, авторів, ціни й посилання тут. Ціни — USD. */
 window.MEDIA_CONTENT = {
   "tracks": [
     {
@@ -87,55 +86,73 @@ window.MEDIA_CONTENT = {
       "id": "lIz_NiETifc",
       "start": 10,
       "titleUa": "Відео 1",
-      "titleEn": "Video 1"
+      "titleEn": "Video 1",
+      "descriptionUa": "Енергійний музичний фрагмент: чіткий ритм, рухливі пасажі та яскраві тембри акордеона.",
+      "descriptionEn": "An energetic musical excerpt with a crisp rhythm, agile passages and vibrant accordion colours."
     },
     {
       "id": "Ep94ugME37Y",
       "start": 0,
       "titleUa": "Відео 2",
-      "titleEn": "Video 2"
+      "titleEn": "Video 2",
+      "descriptionUa": "Лірична музична історія, у якій співуча мелодія й м’яке звучання акордеона створюють камерний настрій.",
+      "descriptionEn": "A lyrical musical story, with a singing melody and a warm, intimate accordion sound."
     },
     {
       "id": "3B1NWGe3e-g",
       "start": 0,
       "titleUa": "Відео 3",
-      "titleEn": "Video 3"
+      "titleEn": "Video 3",
+      "descriptionUa": "Сучасна мелодія в авторському прочитанні на акордеоні: знайомі інтонації та нові темброві барви.",
+      "descriptionEn": "A contemporary melody reinterpreted on accordion, bringing fresh colours to familiar phrases."
     },
     {
       "id": "ik-QIUAPhUM",
       "start": 0,
       "titleUa": "Відео 4",
-      "titleEn": "Video 4"
+      "titleEn": "Video 4",
+      "descriptionUa": "Фрагмент виконання Юрія Будніка — знайомство з виразністю акордеона та його різноманітним звучанням.",
+      "descriptionEn": "A performance excerpt by Yurij Budnik exploring the expressive range and varied sound of the accordion."
     },
     {
       "id": "obWi3-SEqO4",
       "start": 0,
       "titleUa": "Відео 5",
-      "titleEn": "Video 5"
+      "titleEn": "Video 5",
+      "descriptionUa": "М’яка мелодійна лінія, спокійний пульс і теплі гармонії — музика для уважного, неквапливого слухання.",
+      "descriptionEn": "A gentle melodic line, a relaxed pulse and warm harmonies invite unhurried listening."
     },
     {
       "id": "PoKyyzH4xY4",
       "start": 934,
       "titleUa": "Відео 6",
-      "titleEn": "Video 6"
+      "titleEn": "Video 6",
+      "descriptionUa": "Кіномузика в звучанні акордеона: ліричний характер, виразні фрази й відчуття легкої ностальгії.",
+      "descriptionEn": "Film music through the sound of the accordion: lyrical phrases and a touch of nostalgia."
     },
     {
       "id": "uMTY_b_hFsI",
       "start": 0,
       "titleUa": "Відео 7",
-      "titleEn": "Video 7"
+      "titleEn": "Video 7",
+      "descriptionUa": "Музичний епізод із репертуару Юрія Будніка, у якому мелодія, ритм і тембр складаються в цілісну історію.",
+      "descriptionEn": "An episode from Yurij Budnik’s repertoire, bringing melody, rhythm and timbre into one musical story."
     },
     {
       "id": "cS7V_dNGqf0",
       "start": 0,
       "titleUa": "Відео 8",
-      "titleEn": "Video 8"
+      "titleEn": "Video 8",
+      "descriptionUa": "Акордеон у центрі уваги: контрасти настрою, мелодійні деталі та індивідуальна манера виконання.",
+      "descriptionEn": "Accordion in focus: contrasting moods, melodic detail and an individual performance style."
     },
     {
       "id": "Zl2X8vITlOM",
       "start": 0,
       "titleUa": "Відео 9",
-      "titleEn": "Video 9"
+      "titleEn": "Video 9",
+      "descriptionUa": "Ще одна грань звучання акордеона у виконанні Юрія Будніка — від тонких інтонацій до насичених музичних барв.",
+      "descriptionEn": "Another side of the accordion in a performance by Yurij Budnik, from subtle phrasing to rich musical colours."
     }
   ],
   "scores": [

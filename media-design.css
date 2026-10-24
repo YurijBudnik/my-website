@@ -71,3 +71,157 @@ main[data-view=photos]{height:100dvh;display:flex;flex-direction:column;padding-
 @media(prefers-reduced-motion:reduce){.photo-carousel img,.hub picture img{transition:none}.photo-modal-image{will-change:auto}}
 
 .media-redesign dialog[data-kind=photo] #overlay-content{height:100%}
+
+/* v6 refinements — shared header stays untouched. */
+.hub .hub-arrow{margin-left:2px}
+@media(min-width:761px){
+ .hub h2{left:18px;top:24px;padding:6px 14px 9px;background:rgba(28,29,29,.35);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-radius:3px;font-size:clamp(34px,4vw,64px)}
+ .hub h2:after{display:none}
+ .hub-action{left:18px;right:auto;bottom:30px;gap:10px;font-size:clamp(22px,2vw,30px);padding:9px 12px;background:rgba(28,29,29,.35);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-radius:3px;max-width:calc(100% - 36px)}
+ .hub-icon{width:40px;height:40px}.hub-icon .icon{width:22px;height:22px}
+ .hub .hub-arrow{font-size:31px}
+ .hub-music h2,.hub-music .hub-action{background:rgba(255,252,245,.45)}
+}
+@media(min-width:761px) and (max-width:1100px){.hub-action{font-size:21px;gap:7px;left:12px;padding:8px;max-width:calc(100% - 24px)}.hub-icon{width:30px;height:30px}.hub-icon .icon{width:18px;height:18px}.hub .hub-arrow{font-size:24px}}
+/* Unified circular arrows and a gentle light fade at the edges. */
+.carousel-wrap{--thumb-height:128px}
+.carousel-wrap:has(.photo-carousel){--thumb-height:110px}
+.carousel-wrap:has(.score-carousel){--thumb-height:180px}
+.carousel-wrap:before,.carousel-wrap:after{content:"";position:absolute;top:5px;height:var(--thumb-height);width:65px;z-index:1;pointer-events:none;border-radius:8px}
+.carousel-wrap:before{left:0;background:linear-gradient(90deg,rgba(255,253,247,.62),rgba(255,253,247,0))}
+.carousel-wrap:after{right:0;background:linear-gradient(-90deg,rgba(255,253,247,.62),rgba(255,253,247,0))}
+.media-redesign .carousel-wrap .edge{top:calc(var(--thumb-height)/2 - 17px);bottom:auto;width:44px;height:44px;border-radius:50%!important;background:rgba(255,253,247,.58)!important;color:#625d56!important;box-shadow:0 1px 8px #443b2520;transition:background-color .25s ease,transform .25s ease,opacity .25s ease;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.media-redesign .edge.left{left:7px}.media-redesign .edge.right{right:7px}
+.media-redesign .edge .icon{width:21px;height:25px;stroke-width:1.6}
+.media-redesign .carousel-wrap .edge.flash{background:#fffdf7!important;transform:scale(1.08)}
+.media-redesign .edge:disabled{opacity:.3;box-shadow:none}
+.carousel{scroll-snap-type:none;-webkit-overflow-scrolling:touch}
+main[data-view=videos] #view-content>.carousel-wrap,main[data-view=photos] #view-content>.carousel-wrap{width:calc(100% + 28px);margin-left:-14px}
+.video-carousel>*{flex-basis:calc((100% - 56px)/5)}
+.video-thumb{overflow:hidden;border-radius:9px}
+.video-thumb img{height:128px;transition:transform .4s ease}
+.stage{border-radius:12px;overflow:hidden}
+.video-description{max-width:1080px;margin:12px auto 0;color:var(--muted);font-size:19px;line-height:1.45}
+.photo-stage img{border-radius:12px}
+.photo-carousel>*{flex-basis:calc((100% - 84px)/7);border-radius:8px}
+.photo-carousel img{height:110px;border-radius:8px}
+.photo-carousel{padding-top:5px;padding-bottom:5px}
+.photo-modal-image{border-radius:10px}
+@media(hover:hover){.video-carousel .thumbnail:hover img,.photo-carousel .thumbnail:hover img{transform:scale(1.045)}}
+/* Real cross glyphs, independent of the text font or focus underline. */
+.media-redesign .close-dialog{display:grid;place-items:center;text-decoration:none!important}
+.media-redesign .close-dialog .icon{width:24px;height:24px;stroke-width:1.5}
+.media-redesign .close-dialog:focus-visible{outline:1px solid currentColor!important;outline-offset:-7px;text-decoration:none!important;border-radius:50%}
+.media-redesign .close-dialog:focus:not(:focus-visible){outline:none!important}
+.media-redesign button,.media-redesign a{-webkit-tap-highlight-color:transparent}
+/* Catalogue: larger, closely spaced covers; next row invites scrolling. */
+@media(min-width:761px){
+ .score-grid{max-width:940px;gap:30px 28px}
+ .score-grid .score-card{max-width:none}
+ .score-grid .cover-link{display:block}
+ .score-grid .score-card img{width:100%;height:auto;max-height:none;aspect-ratio:600/850;object-fit:contain}
+ .score-grid .score-card h2{font-size:23px;margin:11px 0 5px}
+ .score-grid .card-actions{justify-content:space-between;gap:8px}
+}
+.card-actions{color:var(--accent)}
+.card-actions>div{display:flex;align-items:center;gap:10px}
+.card-actions button{width:31px;height:36px;display:grid;place-items:center}
+.card-actions .icon{width:23px;height:23px}
+.card-actions a{display:flex;gap:10px;align-items:center;white-space:nowrap}
+.album-open{display:block;padding:0;width:100%;cursor:zoom-in!important}
+.album-cover-video{pointer-events:none;border-radius:6px}
+.player{background:rgba(243,233,219,.82)}
+.track-play{display:grid;place-items:center;width:13px;flex-shrink:0;color:var(--accent)}
+.track-play .icon{width:13px;height:15px;fill:currentColor;stroke-width:1}
+.track-play .icon-pause{fill:none;stroke-width:2}
+.track-name{min-width:0}
+.media-redesign dialog[data-kind=album]{width:min(92vw,820px);padding:44px 18px 18px;background:#171717;color:#ccc}
+.expanded-album{display:block;width:100%;max-height:calc(90dvh - 70px);aspect-ratio:1;object-fit:contain;border-radius:6px}
+@media(max-width:760px){
+ .hub-icon .icon-photo{width:22px;height:22px}.hub-icon .icon-score{width:23px;height:25px}
+ main[data-view=videos] #view-content>.carousel-wrap{width:calc(100% + 12px);margin-left:-6px}
+ .video-carousel>*{flex-basis:172px}
+ .video-thumb img{height:105px}
+ .carousel-wrap{--thumb-height:105px}
+ .carousel-wrap:has(.score-carousel){--thumb-height:175px}
+ .media-redesign .carousel-wrap .edge{width:38px;height:38px;top:calc(var(--thumb-height)/2 - 14px)}
+ .media-redesign .edge.left{left:4px}.media-redesign .edge.right{right:4px}
+ .carousel-wrap:before,.carousel-wrap:after{width:48px}
+ .video-description{font-size:18px;margin-top:13px}
+ main[data-view=photos]{height:auto;min-height:100dvh}
+ main[data-view=photos] #view-content{display:block}
+ main[data-view=photos] #view-content>.carousel-wrap{width:100%;margin:0}
+ main[data-view=photos] .carousel-wrap:before,main[data-view=photos] .carousel-wrap:after{display:none}
+ .photo-carousel{display:flex;flex-direction:column;gap:20px;overflow:visible;scroll-snap-type:none;padding:0}
+ .photo-carousel>.thumbnail{flex:none;width:100%;max-width:none;border:0!important;border-radius:10px;padding:0;background:transparent;outline:none!important;box-shadow:none!important}
+ .photo-carousel img{width:100%;height:auto;max-height:none;object-fit:contain;border-radius:10px}
+ .photo-carousel .thumbnail.active{outline:none!important;box-shadow:none!important}
+ .photo-carousel .thumbnail:focus-visible{outline:1px solid var(--accent)!important;outline-offset:4px}
+ .photo-carousel~.edge{display:none!important}
+ .track>button:first-child{gap:8px}.track-play{width:10px}.track-play .icon{width:10px;height:12px}
+ .card-actions>div{gap:7px}
+}
+@media(prefers-reduced-motion:reduce){.media-redesign .carousel-wrap .edge,.video-thumb img{transition:none}.media-redesign .carousel-wrap .edge.flash{transform:none}}
+@media(min-width:761px){.photo-stage img{position:absolute;inset:0;margin:auto;width:auto;height:auto;max-width:100%;max-height:100%;border-radius:12px}}
+@media(max-width:760px){
+ .media-redesign dialog[data-kind=album]{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;padding:54px 8px 24px;border-radius:0;background:#141414}
+ .media-redesign dialog[data-kind=album] #overlay-content{height:100%;display:flex;align-items:center}
+ .expanded-album{width:100%;max-height:calc(100dvh - 90px)}
+}
+.card-actions button[data-audio]{width:29px;height:29px;border:1px solid currentColor;border-radius:50%}
+.card-actions button[data-audio] .icon{width:17px;height:17px}
+/* Compact shared subnavigation, without redundant page headings/back links. */
+.media-heading .backlinks,.media-heading .heading-row h1{display:none!important}
+.media-heading{margin-bottom:12px}
+.heading-row{display:flex;justify-content:flex-end;min-height:42px;gap:0}
+.media-navigation{order:0}
+.media-redesign main:not([data-view=media]){padding-top:calc(var(--header-height) + 6px)}
+@media(min-width:761px){
+ .hub-panel:not(.hub-music) h2,.hub-panel:not(.hub-music) .hub-action{color:#fff;background:rgba(18,20,20,.51)}
+ .hub-music h2,.hub-music .hub-action{color:#24221f;background:rgba(255,252,245,.68)}
+}
+@media(max-width:760px){
+ .heading-row{min-height:38px}
+ .media-heading{margin-bottom:10px}
+}
+/* Landscape layouts depend on usable viewport space, including folded devices. */
+@media(orientation:landscape) and (min-width:600px){
+ main[data-view=music] .album-layout{display:grid;grid-template-columns:minmax(160px,36%) minmax(0,1fr);gap:24px;align-items:start}
+ main[data-view=music] .album-art{width:100%;max-width:470px;margin:0}
+ main[data-view=music] .album-cover-video{max-height:calc(100svh - var(--header-height) - 130px);object-fit:contain}
+ main[data-view=music] .track{min-height:38px}
+ main[data-view=music] .track>button:first-child{font-size:19px;padding:5px 0;gap:8px}
+ main[data-view=photos]{height:100dvh;min-height:0;display:flex;flex-direction:column;padding-bottom:10px}
+ main[data-view=photos] #view-content{display:flex;flex-direction:column;flex:1;min-height:0;justify-content:normal}
+ main[data-view=photos] .photo-stage{display:block;position:relative;flex:1;min-height:50px}
+ main[data-view=photos] .photo-stage img{position:absolute;inset:0;margin:auto;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
+ main[data-view=photos] .photo-counter{display:block;font-size:14px;margin:3px 0}
+ main[data-view=photos] #view-content>.carousel-wrap{width:calc(100% + 16px);margin-left:-8px}
+ main[data-view=photos] .photo-carousel{display:flex;flex-direction:row;align-items:stretch;gap:12px;overflow-x:auto;overflow-y:hidden;padding:5px 0;scroll-snap-type:none}
+ main[data-view=photos] .photo-carousel>.thumbnail{flex:0 0 150px;max-width:none;width:auto;padding:0}
+ main[data-view=photos] .photo-carousel img{width:100%;height:clamp(56px,12dvh,110px);object-fit:cover;border-radius:8px}
+ main[data-view=photos] .carousel-wrap{--thumb-height:clamp(56px,12dvh,110px)}
+ main[data-view=photos] .carousel-wrap:before,main[data-view=photos] .carousel-wrap:after{display:block}
+ main[data-view=photos] .photo-carousel~.edge:not([hidden]){display:flex!important}
+ main[data-view=videos]{height:100dvh;display:flex;flex-direction:column;padding-bottom:10px}
+ main[data-view=videos] .media-heading{flex-shrink:0;margin-bottom:6px}
+ main[data-view=videos] #view-content{display:grid;grid-template-rows:minmax(90px,1fr) auto auto;gap:6px;flex:1;min-height:0}
+ main[data-view=videos] #video-stage{width:100%;height:100%;min-height:0;display:flex;flex-direction:column;margin:0 auto}
+ main[data-view=videos] #video-stage .stage{height:auto;min-height:0;flex:1;aspect-ratio:auto}
+ main[data-view=videos] .stage-caption{flex-shrink:0;padding:4px 0}
+ main[data-view=videos] .stage-title{font-size:23px}
+ main[data-view=videos] .carousel-wrap{--thumb-height:clamp(52px,12dvh,110px)}
+ main[data-view=videos] .video-thumb img{height:var(--thumb-height)}
+ main[data-view=videos] .video-carousel{padding:4px 0}
+ main[data-view=videos] .video-carousel>*{flex-basis:190px}
+ main[data-view=videos] .video-caption{font-size:16px!important;padding:4px 0}
+ main[data-view=videos] .video-description{font-size:17px;line-height:1.25;margin:0 auto;width:100%}
+}
+@media(orientation:landscape) and (max-height:500px) and (min-width:600px){
+ .media-heading{margin-bottom:5px}
+ .heading-row{min-height:34px}.media-navigation{min-height:34px}
+ .media-navigation a{padding:5px 0;font-size:17px}
+ main[data-view=videos] .stage-title{font-size:20px}
+ main[data-view=videos] .video-description{font-size:15px}
+}
+@media(orientation:landscape) and (min-width:600px){main[data-view=videos] #view-content{grid-template-columns:minmax(0,1fr);min-width:0}main[data-view=videos] #view-content>*{min-width:0}}

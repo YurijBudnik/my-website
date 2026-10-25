@@ -1,4 +1,4 @@
-/* Media v6. Shared layout stays mounted while content changes. */
+/* Media v7. Shared layout stays mounted while content changes. */
 (() => {
   'use strict';
   const data = window.MEDIA_CONTENT;
@@ -53,19 +53,42 @@
     $('#cart-button').hidden=!cart.length;
     $('#cart-button').setAttribute('aria-label',`${text('Кошик','Cart')} (${cart.length})`);
   }
-  function saveCart(){try{localStorage.setItem('budnik-cart-v3',JSON.stringify(cart));}catch{}cartCount();}
-  function addToCart(id){
+  function saveCart(){try{localStorage.setItem('budnik-cart-v3',JSON.stringify(cart));}catch{}cartCount();syncCartButtons();}
+  function syncCartButtons(){
+    $$('[data-add]').forEach(button=>{
+      const score=getScore(button.dataset.add),added=cart.includes(button.dataset.add);
+      button.classList.toggle('in-cart',added);
+      button.innerHTML=icons.bag+(button.classList.contains('quick-add')?'':' '+(added?text('Відкрити кошик','Open cart'):text('Додати до кошика','Add to cart')));
+      button.setAttribute('aria-label',`${added?text('Відкрити кошик','Open cart'):text('Додати до кошика','Add to cart')} — ${score.title}`);
+    });
+  }
+  function flyToCart(id,source){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    const img=source?.closest('.score-card')?.querySelector('img')||$('.detail-cover img');
+    const target=$('#cart-button');
+    if(!img||!img.animate)return;
+    const from=img.getBoundingClientRect(),to=target.getBoundingClientRect();
+    if(!from.width||to.bottom<0||to.top>window.innerHeight)return;
+    const ghost=document.createElement('img');ghost.src=getScore(id).cover;ghost.alt='';ghost.className='cart-flight';ghost.setAttribute('aria-hidden','true');
+    Object.assign(ghost.style,{left:from.left+'px',top:from.top+'px',width:from.width+'px',height:from.height+'px'});
+    document.body.appendChild(ghost);
+    const dx=to.left+to.width/2-from.left-from.width/2,dy=to.top+to.height/2-from.top-from.height/2;
+    const flight=ghost.animate([{transform:'translate(0,0) scale(1)',opacity:.8},{transform:`translate(${dx*.45}px,${dy*.55-45}px) scale(.55)`,opacity:.65,offset:.5},{transform:`translate(${dx}px,${dy}px) scale(.07)`,opacity:0}],{duration:760,easing:'cubic-bezier(.25,.65,.3,1)'});
+    flight.onfinish=()=>{ghost.remove();target.animate([{filter:'brightness(1)'},{filter:'brightness(1.5)'},{filter:'brightness(1)'}],{duration:340});};
+    flight.oncancel=()=>ghost.remove();
+  }
+  function addToCart(id,source){
     if(!getScore(id))return;
-    if(!cart.includes(id)){cart.push(id);saveCart();}
+    if(cart.includes(id)){showCart();return;}
+    cart.push(id);saveCart();syncCartButtons();flyToCart(id,source);
     announce(text('Ноти додано до кошика.','Sheet music added to your cart.'));
-    $$('[data-add]').forEach(button=>{if(button.dataset.add===id)button.innerHTML=icons.bag+' '+text('У кошику','In cart');});
   }
   function openModal(html, kind=''){
     if(!dialog.open)restoreFocus=document.activeElement;
     modal.innerHTML=html;dialog.dataset.kind=kind;
     if(!dialog.open)dialog.showModal();
     document.body.classList.add('modal-open');
-    $('.close-dialog').focus({preventScroll:true});
+    (kind==='album'?$('.album-dismiss'):$('.close-dialog')).focus({preventScroll:true});
   }
   function closeModal(){dialog.close();}
   dialog.addEventListener('close',()=>{
@@ -74,6 +97,7 @@
     initAmbient();
   });
   dialog.addEventListener('click',event=>{
+    if(dialog.dataset.kind==='album'){closeModal();return;}
     if(event.target!==dialog)return;
     const r=dialog.getBoundingClientRect();
     if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeModal();
@@ -89,7 +113,7 @@
   modal.addEventListener('click',event=>{const remove=event.target.closest('[data-remove]');if(remove){cart=cart.filter(id=>id!==remove.dataset.remove);saveCart();showCart();}});
 
   function card(score,small=false){
-    return `<article class="score-card"><a href="${scoreUrl(score)}" class="cover-link"><img src="${score.cover}" alt="${escape(score.title)}" loading="lazy" width="600" height="850"></a><h2><a href="${scoreUrl(score)}">${escape(score.title)}</a></h2>${small?'':`<div class="card-actions"><div>${score.audio?`<button data-audio="${score.audio}" data-audio-icon="headphones" aria-label="${text('Послухати','Listen to')} ${escape(score.title)}">${icons.headphones}</button>`:''}${score.video?`<button data-video="${score.video}" aria-label="${text('Дивитися','Watch')} ${escape(score.title)}">${icons.video}</button>`:''}</div><a href="${scoreUrl(score)}">${text('Переглянути','Explore')} <span aria-hidden="true">→</span></a></div>`}</article>`;
+    return `<article class="score-card"><div class="score-cover-wrap"><a href="${scoreUrl(score)}" class="cover-link"><img src="${score.cover}" alt="${escape(score.title)}" loading="lazy" width="600" height="850"></a>${small?`<button class="quick-add" data-add="${score.id}" aria-label="${text('Додати до кошика','Add to cart')} — ${escape(score.title)}">${icons.bag}</button>`:''}</div><h2><a href="${scoreUrl(score)}">${escape(score.title)}</a></h2>${small?'':`<div class="card-actions"><div>${score.audio?`<button data-audio="${score.audio}" data-audio-icon="headphones" aria-label="${text('Послухати','Listen to')} ${escape(score.title)}">${icons.headphones}</button>`:''}${score.video?`<button data-video="${score.video}" aria-label="${text('Дивитися','Watch')} ${escape(score.title)}">${icons.video}</button>`:''}</div><a href="${scoreUrl(score)}">${text('Переглянути','Explore')} <span aria-hidden="true">→</span></a></div>`}</article>`;
   }
   function carousel(items, extra=''){
     return `<div class="carousel-wrap"><div class="carousel ${extra}" tabindex="0" aria-label="${text('Горизонтальна добірка','Scrollable collection')}">${items}</div><button class="edge left" data-scroll="-1" aria-label="${text('Гортати ліворуч','Scroll left')}">${icons.left}</button><button class="edge right" data-scroll="1" aria-label="${text('Гортати праворуч','Scroll right')}">${icons.right}</button></div>`;
@@ -108,17 +132,17 @@
   function renderMusic(){
     return `<div class="album-layout"><div class="album-art"><button class="album-open" data-album-open aria-label="${text('Збільшити обкладинку та відтворити відео','Expand cover and play video')}"><video class="album-cover-video" data-ambient autoplay muted loop playsinline preload="metadata" poster="assets/album-cover.jpg" aria-label="Yurij Budnik"><source src="assets/album-cover.mp4" type="video/mp4"></video></button></div><div class="album-tracks"><ol id="tracks">${data.tracks.map((s,i)=>`<li class="track ${i===state.track?'active':''}"><button data-track="${i}" aria-label="${text('Відтворити','Play')} ${escape(s.title)}"><span class="track-number">${i+1}</span><span class="track-play" aria-hidden="true">${icons.play}</span><span class="track-name">${escape(s.title)}</span></button><span class="track-duration">${time(s.duration)}</span><button class="track-menu" data-links="${i}" aria-label="${text('Посилання для','Links for')} ${escape(s.title)}">${icons.dots}</button></li>`).join('')}</ol><div class="player" data-player-src="${data.tracks[state.track].src}"><div class="now-playing"><span class="now-title">${escape(data.tracks[state.track].title)}</span><small>Yurij Budnik</small></div><div class="transport"><button data-track-step="-1" aria-label="${text('Попередній трек','Previous track')}">${icons.left}</button><button id="toggle-track" data-track="${state.track}" aria-label="${text('Відтворити або призупинити','Play or pause')}">${icons.play}</button><button data-track-step="1" aria-label="${text('Наступний трек','Next track')}">${icons.right}</button></div><span class="elapsed">0:00</span><input class="audio-progress" type="range" min="0" max="1000" value="0" aria-label="${text('Позиція відтворення','Playback position')}"><span class="total-time">${time(data.tracks[state.track].duration)}</span><label class="volume">${icons.speaker}<input type="range" min="0" max="1" step="0.01" value="${audio.volume}" data-volume aria-label="${text('Гучність','Volume')}"></label></div></div></div>`;
   }
-  function videoFrame(){const v=data.videos[state.video];return `<iframe class="stage" title="${escape(state.lang==='en'?v.titleEn:v.titleUa)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://www.youtube-nocookie.com/embed/${v.id}?controls=1&playsinline=1&rel=0&start=${v.start||0}"></iframe><div class="stage-caption"><h2 class="stage-title">${escape(state.lang==='en'?v.titleEn:v.titleUa)}</h2><span>${state.video+1} / ${data.videos.length}</span></div>`;}
+  function videoFrame(){const v=data.videos[state.video];return `<iframe class="stage" title="${escape(state.lang==='en'?v.titleEn:v.titleUa)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://www.youtube-nocookie.com/embed/${v.id}?controls=1&playsinline=1&rel=0&start=${v.start||0}"></iframe><div class="stage-caption"><h2 class="stage-title">${escape(state.lang==='en'?v.titleEn:v.titleUa)}</h2><span>${state.video+1} / ${data.videos.length}</span></div><p class="video-description">${videoDescription()}</p>`;}
   function videoDescription(){const v=data.videos[state.video];return escape(state.lang==='en'?v.descriptionEn:v.descriptionUa);}
   function albumModal(){
-    openModal(`<video class="expanded-album" src="assets/album-cover.mp4" poster="assets/album-cover.jpg" controls autoplay muted loop playsinline aria-label="${text('Відеообкладинка альбому','Album video cover')}"></video>`,'album');
+    openModal(`<button class="album-dismiss" aria-label="${text('Закрити обкладинку','Close album cover')}"><video class="expanded-album" disablepictureinpicture disableremoteplayback src="assets/album-cover.mp4" poster="assets/album-cover.jpg" autoplay muted loop playsinline aria-label="${text('Відеообкладинка альбому','Album video cover')}"></video></button>`,'album');
     $$('.album-cover-video').forEach(v=>v.pause());
     const v=$('.expanded-album');v.muted=true;v.play()?.catch(()=>{});
   }
 
-  function renderVideos(){return `<div id="video-stage">${videoFrame()}</div>${carousel(data.videos.map((v,i)=>`<button class="thumbnail ${i===state.video?'active':''}" data-vid="${i}" aria-pressed="${i===state.video}"><span class="video-thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""></span><span class="video-caption"><span class="video-number">${i+1}</span>${escape(state.lang==='en'?v.titleEn:v.titleUa)}</span></button>`) .join(''),'video-carousel')}<p class="video-description">${videoDescription()}</p>`;}
+  function renderVideos(){return `<div id="video-stage">${videoFrame()}</div>${carousel(data.videos.map((v,i)=>`<button class="thumbnail ${i===state.video?'active':''}" data-vid="${i}" aria-pressed="${i===state.video}"><span class="video-thumb"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""></span><span class="video-caption"><span class="video-number">${i+1}</span>${escape(state.lang==='en'?v.titleEn:v.titleUa)}</span></button>`) .join(''),'video-carousel')}`;}
 
-  function renderPhotos(){return `<div class="photo-stage"><img id="main-photo" src="${photos[state.photo]}" alt="${text('Юрій Буднік — фото','Yurij Budnik — photo')} ${state.photo+1}"><button data-photo-expand aria-label="${text('Відкрити фото','Open photo')}">${icons.expand}</button></div><p class="photo-counter">${state.photo+1} / ${photos.length}</p>${carousel(photos.map((src,i)=>`<button class="thumbnail ${i===state.photo?'active':''}" data-photo="${i}" aria-pressed="${i===state.photo}" aria-label="${text('Фото','Photo')} ${i+1}"><img loading="lazy" src="${src}" alt=""></button>`).join(''),'photo-carousel')}`;}
+  function renderPhotos(){return `<div class="photo-stage"><img id="main-photo" src="${photos[state.photo]}" alt="${text('Юрій Буднік — фото','Yurij Budnik — photo')} ${state.photo+1}"><button data-photo-expand aria-label="${text('Відкрити фото','Open photo')}">${icons.expand}</button></div><p class="photo-counter">${state.photo+1} / ${photos.length}</p>${carousel(photos.map((src,i)=>`<button class="thumbnail ${i===state.photo?'active':''}" data-photo="${i}" aria-pressed="${i===state.photo}" aria-label="${text('Фото','Photo')} ${i+1}"><img loading="lazy" src="${src}" alt=""></button>`).join(''),'photo-carousel')}<button class="photo-top" data-photo-top hidden aria-label="${text('На початок сторінки','Back to top')}"><svg viewBox="0 0 24 24" class="icon" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 14 6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;}
   function renderHub(){
     const entries=[['videos','video','video','Дивитися','Watch'],['photos','photo','photo','Відкрити','Explore'],['music','music','headphones','Слухати','Listen'],['scores','scores','score','Переглянути','Explore']];
     return `<div class="hub">${entries.map(([view,asset,icon,ua,en])=>`<a class="hub-panel hub-${asset}" href="${view}.html" aria-label="${text(...labels[view])}">${asset==='video'?`<video class="hub-visual" data-panel-video data-ambient autoplay muted loop playsinline preload="metadata" poster="assets/media-panels/video-desktop.jpg" aria-hidden="true"></video>`:`<picture class="hub-visual"><source media="(max-width:760px)" srcset="assets/media-panels/${asset}-mobile.jpg"><img src="assets/media-panels/${asset}-desktop.jpg" alt="" fetchpriority="high"></picture>`}<h2>${text(...labels[view])}</h2><span class="hub-action" aria-hidden="true"><span class="hub-icon">${icons[icon]}</span><span>${text(ua,en)}</span><span class="hub-arrow">⟶</span></span></a>`).join('')}</div>`;
@@ -149,7 +173,7 @@
     else content.innerHTML=({music:renderMusic,videos:renderVideos,photos:renderPhotos,media:renderHub})[r.view]();
     $$('[data-en][data-ua]', $('#media-app')).forEach(el=>el.textContent=el.dataset[state.lang]);
     $('.close-dialog').setAttribute('aria-label',text('Закрити','Close'));
-    cartCount();syncAudio();initCarousels();initAmbient();
+    cartCount();syncCartButtons();syncAudio();initCarousels();initAmbient();updatePhotoTop();
   }
   function playSource(source){
     if(state.source===source){if(audio.paused)audio.play().catch(audioError);else audio.pause();}
@@ -211,6 +235,8 @@
   modal.addEventListener('touchend',e=>{if(!swipe)return;const dx=e.changedTouches[0].clientX-swipe.x,dy=e.changedTouches[0].clientY-swipe.y;swipe=null;const axis=Math.abs(dx)>Math.abs(dy)?'x':'y',delta=axis==='x'?dx:dy;if(Math.abs(delta)>40){const direction=delta<0?1:-1;choosePhoto(state.photo+direction,axis,direction);}},{passive:true});
   modal.addEventListener('touchcancel',()=>{swipe=null;});
 
+  function updatePhotoTop(){const b=$('.photo-top');if(b)b.hidden=state.view!=='photos'||(window.scrollY||0)<160;}
+  window.addEventListener('scroll',updatePhotoTop,{passive:true});
   function initCarousels(){
     $$('.carousel').forEach(el=>{
       const update=()=>{const left=$('.edge.left',el.parentNode),right=$('.edge.right',el.parentNode);const max=el.scrollWidth-el.clientWidth;left.hidden=max<2;right.hidden=max<2;left.disabled=el.scrollLeft<2;right.disabled=el.scrollLeft>=max-2;};
@@ -224,9 +250,10 @@
     if(event.target.id==='main-photo'){photoModal();return;}
     const b=event.target.closest('button');if(!b)return;
     if(b.dataset.scroll){const el=$('.carousel',b.parentNode);el.scrollBy({left:Number(b.dataset.scroll)*el.clientWidth*(mobileQuery.matches?1.05:.85),behavior:'smooth'});b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash');setTimeout(()=>b.classList.remove('flash'),500);}
+    else if(b.hasAttribute('data-photo-top')){window.scrollTo({top:0,behavior:'instant'});updatePhotoTop();}
     else if(b.dataset.filter){state.filter=b.dataset.filter;render();}
     else if(b.dataset.preview)previewScore(b.dataset.preview);
-    else if(b.dataset.add)addToCart(b.dataset.add);
+    else if(b.dataset.add)addToCart(b.dataset.add,b);
     else if(b.dataset.audio)playSource(b.dataset.audio);
     else if(b.dataset.video)openVideo(b.dataset.video);
     else if(b.dataset.track!==undefined)selectTrack(Number(b.dataset.track));
@@ -256,6 +283,6 @@
   });
   window.addEventListener('popstate',()=>{audio.pause();if(dialog.open)closeModal();render();});
   document.addEventListener('languagechange',e=>{state.lang=e.detail;render();if(dialog.open){if(dialog.dataset.kind==='cart')showCart();else closeModal();}});
-  window.addEventListener('storage',e=>{if(e.key==='budnik-cart-v3'){try{const saved=JSON.parse(e.newValue||'[]');cart=Array.isArray(saved)?[...new Set(saved)].filter(getScore):[];}catch{cart=[];}cartCount();}});
+  window.addEventListener('storage',e=>{if(e.key==='budnik-cart-v3'){try{const saved=JSON.parse(e.newValue||'[]');cart=Array.isArray(saved)?[...new Set(saved)].filter(getScore):[];}catch{cart=[];}cartCount();syncCartButtons();syncCartButtons();}});
   render();
 })();

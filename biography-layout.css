@@ -5,12 +5,12 @@
  flex:none;overflow:hidden;margin:0;padding:0;background:var(--page-background);
 }
 .page-biography .biography-portrait img{
- display:block;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center top;margin:0;
+ display:block;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:center top;margin:0;
 }
 .page-biography .biography-copy{
  width:100%;margin:0;min-width:0;padding:28px clamp(22px,5vw,60px) 60px;
 }
-@media(min-width:960px) and (orientation:landscape){
+@media(min-width:600px) and (orientation:landscape), (min-width:520px) and (max-width:600px) and (orientation:portrait){
  .page-biography .biography-main{min-height:calc(100svh - var(--header-height))}
  .page-biography .biography-portrait{
   position:fixed;left:0;top:var(--header-height);bottom:auto;width:50%;
@@ -18,3 +18,5 @@
  }
  .page-biography .biography-copy{width:50%;margin-left:50%;padding:36px clamp(28px,3vw,60px) 60px}
 }
+
+@media(min-width:520px) and (max-width:760px){.page-biography .biography-copy{padding:24px 20px 48px}.page-biography .biography-copy p{font-size:17px;line-height:1.5}.page-biography .biography-title{font-size:30px}}

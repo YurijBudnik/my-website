@@ -317,3 +317,12 @@ body.photo-open { overflow:hidden; }
   justify-self: start;
   text-align: left;
 }
+
+/* Прибрати підсвітку збільшеної обкладинки */
+.media-redesign .album-dismiss,
+.media-redesign .album-dismiss:focus,
+.media-redesign .album-dismiss:focus-visible {
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}

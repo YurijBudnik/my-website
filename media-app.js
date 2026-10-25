@@ -205,8 +205,34 @@
       const total=$('.total-time',player);if(total)total.textContent=time(duration||data.tracks[state.track].duration);
     });
   }
-  ['play','pause','timeupdate','loadedmetadata','error'].forEach(event=>audio.addEventListener(event,syncAudio));
-  audio.addEventListener('ended',()=>{if(state.view==='music')selectTrack(state.track+1);});
+  // Іконки оновлюємо лише при зміні стану.
+  ['play', 'pause', 'loadedmetadata', 'error'].forEach(event => {
+    audio.addEventListener(event, syncAudio);
+  });
+  
+  // Під час відтворення оновлюємо тільки час і повзунок.
+  audio.addEventListener('timeupdate', () => {
+    $$('[data-player-src]').forEach(player => {
+      if (player.dataset.playerSrc !== state.source) return;
+  
+      const elapsed = audio.currentTime;
+      const duration = Number.isFinite(audio.duration)
+        ? audio.duration
+        : 0;
+  
+      const seek = $('.audio-progress', player);
+      if (seek) {
+        seek.value = duration ? elapsed / duration * 1000 : 0;
+      }
+  
+      const stamp =
+        $('.compact-time', player) || $('.elapsed', player);
+  
+      if (stamp) {
+        stamp.textContent = time(elapsed);
+      }
+    });
+  });
   function showTrackLinks(i){
     const track=data.tracks[i];const score=data.scores.find(s=>s.audio===track.src)||getScore(track.scoreId);
     const video=track.youtubeUrl||score?.video;

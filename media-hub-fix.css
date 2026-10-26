@@ -26,3 +26,15 @@
  .page-media-hub .media-card-copy span{font-size:22px;}
 }
 @media(max-width:380px){.page-media-hub .media-card-copy h2{font-size:34px;}.page-media-hub .media-card-copy span{font-size:19px;}}
+
+/* Wider Music panel, original text size preserved. This final override also
+   prevents older global media rules from changing the grid after load. */
+@media(min-width:701px){
+  body.page-media-hub .media-hub-grid{grid-template-columns:minmax(0,.92fr) minmax(0,.92fr) minmax(0,1.28fr) minmax(0,.92fr)!important;}
+  body.page-media-hub .media-hub-card{min-width:0!important;min-height:0!important;height:auto!important;max-height:none!important;aspect-ratio:910/2276!important;}
+  body.page-media-hub .media-hub-card--music .media-card-copy h2{white-space:nowrap;}
+}
+@media(max-width:700px){
+  body.page-media-hub .media-hub-grid{grid-template-columns:minmax(0,1fr)!important;}
+  body.page-media-hub .media-hub-card{height:auto!important;min-height:0!important;aspect-ratio:1250/500!important;}
+}

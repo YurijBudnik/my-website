@@ -9,10 +9,13 @@
     button.setAttribute('aria-pressed','false');
     button.setAttribute('aria-label',`Відтворити ${button.dataset.title}`);
     button.innerHTML=playSVG;
+    track.querySelector('.bn-track-art-button')?.setAttribute('aria-label',`Відтворити ${button.dataset.title}`);
   }
   tracks.forEach(track => {
     const audio=track.querySelector('audio');
     const button=track.querySelector('.bn-play');
+    const artButton=track.querySelector('.bn-track-art-button');
+    if(artButton){artButton.setAttribute('aria-label',`Відтворити ${button.dataset.title}`);artButton.addEventListener('click',()=>button.click());}
     const time=track.querySelector('.bn-track-time');
     audio.addEventListener('loadedmetadata',()=>{const duration=format(audio.duration);if(duration)time.textContent=duration;});
     audio.addEventListener('play',()=>{
@@ -20,6 +23,7 @@
       button.setAttribute('aria-pressed','true');
       button.setAttribute('aria-label',`Пауза ${button.dataset.title}`);
       button.innerHTML=pauseSVG;
+      track.querySelector('.bn-track-art-button')?.setAttribute('aria-label',`Пауза ${button.dataset.title}`);
     });
     audio.addEventListener('pause',()=>stopDisplay(track));
     audio.addEventListener('ended',()=>{audio.currentTime=0;stopDisplay(track);});

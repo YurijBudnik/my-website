@@ -78,3 +78,13 @@
  .bn-footer{padding:45px 0}.bn-footer-grid{grid-template-columns:1fr 1fr;gap:31px}.bn-footer-brand{grid-column:1/-1}.bn-footer-nav{grid-column:1/-1;max-width:400px;gap:17px 24px}.bn-footer-social{grid-column:1/-1;margin-top:0}.bn-footer-brand p{margin-top:10px}
 }
 @media(max-width:380px){.bn-track{grid-template-columns:15px 52px minmax(0,1fr) 54px;gap:8px}.bn-track-art{width:52px;height:57px}.bn-track-info h3{font-size:21px}.bn-composer{font-size:13px}.bn-track-controls{gap:2px}}
+
+/* Small interactive enhancements. */
+.bn-home .bn-philosophy-image,.bn-home .bn-philosophy-image img{border-radius:16px;overflow:hidden;}
+.bn-home .bn-track-art-button{border:0;background:none;padding:0;display:block;width:86px;height:86px;cursor:pointer;border-radius:3px;overflow:hidden;}
+.bn-home .bn-track-art-button:focus-visible,.bn-home .bn-score-image:focus-visible{outline:2px solid #61735f;outline-offset:4px;}
+.bn-home .bn-track-art-button .bn-track-art{transition:transform .2s ease;}
+@media(hover:hover){.bn-home .bn-track-art-button:hover .bn-track-art{transform:scale(1.05);}}
+.bn-home .bn-score-image{display:block;text-decoration:none;cursor:pointer;}
+@media(max-width:1000px){.bn-home .bn-track-art-button{width:74px;height:74px;}}
+@media(max-width:700px){.bn-home .bn-track-art-button{width:62px;height:62px;}}

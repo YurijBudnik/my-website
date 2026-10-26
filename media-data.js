@@ -2,9 +2,25 @@
 window.MEDIA_DATA = {
   "tracks": [
     {
-      "title": "Adios Nonino",
-      "src": "assets/audio/track-01.mp3",
-      "duration": 66,
+      "title": "Chopin, Prelude No. 4",
+      "src": "assets/audio/chopin-prelude-4.mp3",
+      "duration": 178,
+      "youtubeUrl": "",
+      "soundcloudUrl": "",
+      "instagramUrl": ""
+    },
+    {
+      "title": "Birds of a Feather",
+      "src": "assets/audio/track-06.mp3",
+      "duration": 47,
+      "youtubeUrl": "",
+      "soundcloudUrl": "",
+      "instagramUrl": ""
+    },
+    {
+      "title": "The World We Know",
+      "src": "assets/audio/the-world-we-know.mp3",
+      "duration": 194,
       "youtubeUrl": "",
       "soundcloudUrl": "",
       "instagramUrl": ""
@@ -18,22 +34,6 @@ window.MEDIA_DATA = {
       "instagramUrl": ""
     },
     {
-      "title": "Noctilune",
-      "src": "assets/audio/track-03.mp3",
-      "duration": 28,
-      "youtubeUrl": "",
-      "soundcloudUrl": "",
-      "instagramUrl": ""
-    },
-    {
-      "title": "Rouet",
-      "src": "assets/audio/track-04.mp3",
-      "duration": 26,
-      "youtubeUrl": "",
-      "soundcloudUrl": "",
-      "instagramUrl": ""
-    },
-    {
       "title": "Take Off",
       "src": "assets/audio/track-05.mp3",
       "duration": 21,
@@ -42,9 +42,9 @@ window.MEDIA_DATA = {
       "instagramUrl": ""
     },
     {
-      "title": "Birds of a Feather",
-      "src": "assets/audio/track-06.mp3",
-      "duration": 47,
+      "title": "As It Was",
+      "src": "assets/audio/track-10.mp3",
+      "duration": 28,
       "youtubeUrl": "",
       "soundcloudUrl": "",
       "instagramUrl": ""
@@ -74,9 +74,9 @@ window.MEDIA_DATA = {
       "instagramUrl": ""
     },
     {
-      "title": "As It Was",
-      "src": "assets/audio/track-10.mp3",
-      "duration": 28,
+      "title": "Adios Nonino",
+      "src": "assets/audio/track-01.mp3",
+      "duration": 66,
       "youtubeUrl": "",
       "soundcloudUrl": "",
       "instagramUrl": ""

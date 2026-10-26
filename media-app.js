@@ -11,7 +11,7 @@
   const dialog = $('#overlay');
   const modal = $('#overlay-content');
   const labels = {media:['Медіа','Media'], music:['Музика','Music'], videos:['Відео','Video'], photos:['Фото','Photos'], scores:['Ноти','Scores']};
-  const photos = Array.from({length:18}, (_,i) => `images/media/${i+1}.jpg`);
+  const photos = Array.from({length:21}, (_,i) => `images/media/${i+1}.jpg`);
   const state = {lang:document.documentElement.lang==='en'?'en':'ua', track:0, photo:0, video:0, filter:'all', source:'', view:'media', score:null};
   const svg = (body, name) => `<svg viewBox="0 0 24 24" aria-hidden="true" class="icon icon-${name}" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
   const icons = {

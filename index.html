@@ -8,11 +8,10 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&amp;display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css?v=6">
+ <link rel="stylesheet" href="style.css?v=7">
  <script src="site.js?v=5" defer></script>
  <link rel="stylesheet" href="home-album.css?v=glow4">
  <script src="home-album.js?v=c3ba5c4796" defer></script>
- 
 </head>
 <body class="page-index">
 <header class="site-header">
@@ -25,8 +24,8 @@
    <nav id="desktop-nav" aria-label="Основне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="./news.html" class="nav-link" data-en="News" data-ua="Новини"><span class="nav-label">Новини</span><span class="nav-size" aria-hidden="true">News</span><span class="nav-size" aria-hidden="true">Новини</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="./contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
+<a href="news.html" class="nav-link" data-en="News" data-ua="Новини"><span class="nav-label">Новини</span><span class="nav-size" aria-hidden="true">News</span><span class="nav-size" aria-hidden="true">Новини</span><span class="nav-underline" aria-hidden="true"></span></a>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a><div class="language-switch"><button type="button" id="desk-btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="desk-btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></nav>
   </div>
   <button type="button" id="mobile-menu-btn" aria-label="Меню" aria-controls="mobile-menu" aria-expanded="false">
    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path id="line-top" d="M4 6h16"/><path id="line-mid" d="M4 12h16"/><path id="line-bot" d="M4 18h16"/></svg>
@@ -37,61 +36,151 @@
    <div class="mobile-menu-inner"><nav aria-label="Мобільне меню"><a href="biography.html" class="nav-link" data-en="Biography" data-ua="Біографія"><span class="nav-label">Біографія</span><span class="nav-size" aria-hidden="true">Biography</span><span class="nav-size" aria-hidden="true">Біографія</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="concerts.html" class="nav-link" data-en="Concerts" data-ua="Концерти"><span class="nav-label">Концерти</span><span class="nav-size" aria-hidden="true">Concerts</span><span class="nav-size" aria-hidden="true">Концерти</span><span class="nav-underline" aria-hidden="true"></span></a>
 <a href="media.html" class="nav-link" data-en="Media" data-ua="Медіа"><span class="nav-label">Медіа</span><span class="nav-size" aria-hidden="true">Media</span><span class="nav-size" aria-hidden="true">Медіа</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="./news.html" class="nav-link" data-en="News" data-ua="Новини"><span class="nav-label">Новини</span><span class="nav-size" aria-hidden="true">News</span><span class="nav-size" aria-hidden="true">Новини</span><span class="nav-underline" aria-hidden="true"></span></a>
-<a href="./contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
+<a href="news.html" class="nav-link" data-en="News" data-ua="Новини"><span class="nav-label">Новини</span><span class="nav-size" aria-hidden="true">News</span><span class="nav-size" aria-hidden="true">Новини</span><span class="nav-underline" aria-hidden="true"></span></a>
+<a href="contact.html" class="nav-link" data-en="Contact" data-ua="Контакти"><span class="nav-label">Контакти</span><span class="nav-size" aria-hidden="true">Contact</span><span class="nav-size" aria-hidden="true">Контакти</span><span class="nav-underline" aria-hidden="true"></span></a></nav><div class="language-switch"><button type="button" id="btn-ua" onclick="setLang(event,'ua')" aria-pressed="true">UA</button><span aria-hidden="true">|</span><button type="button" id="btn-en" onclick="setLang(event,'en')" aria-pressed="false">EN</button></div></div>
   </div>
  </div>
 </header>
 <main id="mainContent">
-    <section 
-      id="hero"
-      class="relative w-full bg-cover bg-center bg-no-repeat"
-      style="
-        height: calc(100dvh - var(--header-height));
-        min-height: 500px;
-        background-image: url('hero.jpg');
-      ">
-      <a class="hero-album" href="music.html" aria-label="Музика — Beyond Accordion">
-        <video src="assets/album-cover.mp4" poster="assets/album-cover.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
-      </a>
-     </section>
+  <section id="hero" class="relative w-full bg-cover bg-center bg-no-repeat" style="height: calc(100dvh - var(--header-height)); min-height: 500px; background-image: url('hero.jpg');">
+    <a class="hero-album" href="music.html" aria-label="Музика — BayaNova">
+      <video src="assets/album-cover.mp4" poster="assets/album-cover.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"></video>
+    </a>
+  </section>
 
-                        <!-- Анімована стрілочка на Tailwind: завжди видима на екрані, при скролі зупиняється внизу фото -->
-      <div class="sticky bottom-4 z-20 -mt-16 sm:-mt-20 flex justify-center pointer-events-none">
-        <a href="#news" class="pointer-events-auto flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer" aria-label="Scroll down to news">
-          <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 animate-bounce stroke-current drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </a>
+  <div class="sticky bottom-4 z-20 -mt-16 sm:-mt-20 flex justify-center pointer-events-none">
+    <a href="#philosophy" class="pointer-events-auto flex flex-col items-center text-white opacity-80 hover:opacity-100 transition-opacity duration-300 cursor-pointer" aria-label="Scroll down">
+      <svg class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 animate-bounce stroke-current drop-shadow-md" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+      </svg>
+    </a>
+  </div>
+
+  <section id="philosophy" class="home-section home-philosophy">
+    <div class="home-shell split-layout">
+      <div class="home-copy">
+        <p class="home-kicker" data-en="Philosophy" data-ua="Філософія">Філософія</p>
+        <h2 class="home-title" data-en="The accordion is more than tradition." data-ua="Баян — це більше, ніж традиція.">Баян — це більше, ніж традиція.</h2>
+        <p class="home-title home-title-accent" data-en="It is a living contemporary sound." data-ua="Це живе сучасне звучання.">Це живе сучасне звучання.</p>
+        <p class="home-text" data-en="BayaNova is a personal view of the accordion: classical depth, modern pulse, pop lyricism and a new way of hearing the instrument." data-ua="BayaNova — це мій погляд на баян: класична глибина, сучасний пульс, естрадна лірика і нове звучання інструмента.">BayaNova — це мій погляд на баян: класична глибина, сучасний пульс, естрадна лірика і нове звучання інструмента.</p>
       </div>
+      <div class="home-visual framed-image">
+        <img src="assets/home/philosophy-bayanova.png" alt="BayaNova">
+      </div>
+    </div>
+  </section>
 
-      <section id="news" class="home-news">
- <h2 class="news-title" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
- <div class="section-rule" aria-hidden="true"></div>
-<div class="news-list">
-<article class="news-item">
-            <p class="news-date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
-            <p class="news-headline" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
-            <p class="news-source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
-          </article>
-  
-          
-<article class="news-item">
-            <p class="news-date" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
-            <p class="news-headline" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
-            <p class="news-source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
-          </article>
-  
-          
-<article class="news-item">
-            <p class="news-date" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
-            <p class="news-headline" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
-            <p class="news-source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
-          </article>
-        
-</div>
-<div class="all-news-action"><a href="./news.html" class="all-news-link"><span data-en="View all news" data-ua="Усі новини">Усі новини</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-</section>
-  </main>
+  <section class="home-section home-music-preview">
+    <div class="home-shell">
+      <div class="section-heading-row">
+        <div>
+          <p class="home-kicker" data-en="Music" data-ua="Музика">Музика</p>
+          <h2 class="home-title" data-en="Three directions. One instrument." data-ua="Три напрямки. Один інструмент.">Три напрямки. Один інструмент.</h2>
+          <p class="home-text" data-en="Three examples of my sound: classical, contemporary pop and romantic evergreen repertoire." data-ua="Три приклади мого звучання: класика, сучасна попмузика та романтичні шлягери.">Три приклади мого звучання: класика, сучасна попмузика та романтичні шлягери.</p>
+        </div>
+        <a class="home-link" href="music.html"><span data-en="All tracks" data-ua="Уся музика">Уся музика</span></a>
+      </div>
+      <div class="track-grid">
+        <article class="track-card">
+          <span class="track-tag" data-en="Classic sound" data-ua="Класичне звучання">Класичне звучання</span>
+          <h3>Chopin, Prelude No. 4</h3>
+          <p class="track-note" data-en="Delicate and inward-looking." data-ua="Делікатне, зосереджене звучання.">Делікатне, зосереджене звучання.</p>
+          <audio controls preload="none" src="assets/audio/chopin-prelude-4.mp3"></audio>
+        </article>
+        <article class="track-card">
+          <span class="track-tag" data-en="Pop sound" data-ua="Естрадне звучання">Естрадне звучання</span>
+          <h3>Birds of a Feather</h3>
+          <p class="track-note" data-en="Modern phrasing and soft groove." data-ua="Сучасна подача й м’який грув.">Сучасна подача й м’який грув.</p>
+          <audio controls preload="none" src="assets/audio/track-06.mp3"></audio>
+        </article>
+        <article class="track-card">
+          <span class="track-tag" data-en="60s–70s evergreens" data-ua="Шлягери 60–70-х">Шлягери 60–70-х</span>
+          <h3>The World We Know</h3>
+          <p class="track-note" data-en="Romantic tone and warm melody." data-ua="Романтичний настрій і тепла мелодія.">Романтичний настрій і тепла мелодія.</p>
+          <audio controls preload="none" src="assets/audio/the-world-we-know.mp3"></audio>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section home-video-preview">
+    <div class="home-shell split-layout reverse-desktop">
+      <div class="home-visual video-frame">
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/lIz_NiETifc?controls=1&playsinline=1&rel=0&start=10" title="Yurij Budnik video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="home-copy">
+        <p class="home-kicker" data-en="Video" data-ua="Відео">Відео</p>
+        <h2 class="home-title" data-en="Live energy and stage character" data-ua="Жива енергія і сценічний характер">Жива енергія і сценічний характер</h2>
+        <p class="home-text" data-en="Concert fragments, live atmosphere and different stage images — from камерний performance to bright show moments." data-ua="Концертні фрагменти, жива атмосфера та різні сценічні образи — від камерного виконання до яскравих шоу-моментів.">Концертні фрагменти, жива атмосфера та різні сценічні образи — від камерного виконання до яскравих шоу-моментів.</p>
+        <a class="home-button" href="videos.html"><span data-en="Watch videos" data-ua="Перейти до відео">Перейти до відео</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section home-scores-preview">
+    <div class="home-shell split-layout">
+      <div class="home-copy">
+        <p class="home-kicker" data-en="Sheet music" data-ua="Ноти">Ноти</p>
+        <h2 class="home-title" data-en="Original arrangements for bayan / accordion" data-ua="Авторські обробки для баяна">Авторські обробки для баяна</h2>
+        <p class="home-text" data-en="Arrangements of popular pieces and concert repertoire for performers who want to sound modern on accordion." data-ua="Обробки популярних творів і концертного репертуару для виконавців, які хочуть сучасного звучання на баяні.">Обробки популярних творів і концертного репертуару для виконавців, які хочуть сучасного звучання на баяні.</p>
+        <a class="home-button" href="scores.html"><span data-en="Open sheet music" data-ua="Перейти до нот">Перейти до нот</span></a>
+      </div>
+      <div class="home-visual framed-image framed-image--soft">
+        <img src="assets/media-panels/scores-desktop.jpg" alt="Sheet music">
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section home-collab">
+    <div class="home-shell collab-box">
+      <div>
+        <p class="home-kicker" data-en="Collaboration" data-ua="Співпраця">Співпраця</p>
+        <h2 class="home-title" data-en="Concerts, events, creative projects" data-ua="Концерти, події, творчі проєкти">Концерти, події, творчі проєкти</h2>
+        <p class="home-text" data-en="Open to festival invitations, private events, concert appearances and collaborative artistic projects." data-ua="Відкритий до фестивальних запрошень, приватних подій, концертних виступів і спільних творчих проєктів.">Відкритий до фестивальних запрошень, приватних подій, концертних виступів і спільних творчих проєктів.</p>
+      </div>
+      <a class="home-button" href="contact.html"><span data-en="Contact me" data-ua="Зв’язатися">Зв’язатися</span></a>
+    </div>
+  </section>
+
+  <section id="news" class="home-news">
+    <h2 class="news-title" data-en="Latest News" data-ua="Останні новини">Останні новини</h2>
+    <div class="section-rule" aria-hidden="true"></div>
+    <div class="news-list">
+      <article class="news-item">
+        <p class="news-date" data-en="April 18, 2026" data-ua="18 Квітня, 2026">18 Квітня, 2026</p>
+        <p class="news-headline" data-en='"The Chopin winning pianist had me under his spell"' data-ua='"Піаніст-переможець конкурсу Шопена заворожив мене"'>"Піаніст-переможець конкурсу Шопена заворожив мене"</p>
+        <p class="news-source" data-en="The Times, London Barbican Centre" data-ua="The Times, Лондонський центр Барбікан">The Times, Лондонський центр Барбікан</p>
+      </article>
+      <article class="news-item">
+        <p class="news-date" data-en="June 5, 2026" data-ua="5 Червня, 2026">5 Червня, 2026</p>
+        <p class="news-headline" data-en="Klavier Festival Ruhr" data-ua="Фортепіанний фестиваль Рур">Фортепіанний фестиваль Рур</p>
+        <p class="news-source" data-en='"Poet am Klavier"' data-ua='"Поет за фортепіано"'>"Поет за фортепіано"</p>
+      </article>
+      <article class="news-item">
+        <p class="news-date" data-en="May 20, 2026" data-ua="20 Травня, 2026">20 Травня, 2026</p>
+        <p class="news-headline" data-en="Liederhalle Stuttgart" data-ua="Ліндерхалле Штутгарт">Ліндерхалле Штутгарт</p>
+        <p class="news-source" data-en='"First-rate debut"' data-ua='"Першокласний дебют"'>"Першокласний дебют"</p>
+      </article>
+    </div>
+    <div class="all-news-action"><a href="news.html" class="all-news-link"><span data-en="View all news" data-ua="Усі новини">Усі новини</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </section>
+</main>
+<footer class="home-footer">
+  <div class="home-shell footer-inner">
+    <div>
+      <a class="footer-brand" href="index.html">Yurij Budnik</a>
+      <p class="footer-sub" data-en="Accordionist" data-ua="Акордеоніст">Акордеоніст</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="music.html" data-en="Music" data-ua="Музика">Музика</a>
+      <a href="videos.html" data-en="Video" data-ua="Відео">Відео</a>
+      <a href="scores.html" data-en="Sheet music" data-ua="Ноти">Ноти</a>
+      <a href="media.html" data-en="Media" data-ua="Медіа">Медіа</a>
+      <a href="contact.html" data-en="Contact" data-ua="Контакти">Контакти</a>
+    </nav>
+  </div>
+</footer>
 </body>
 </html>

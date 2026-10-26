@@ -253,3 +253,91 @@ main[data-view=videos] #view-content>.carousel-wrap,main[data-view=photos] #view
 .media-redesign .quick-add{position:absolute;right:7px;bottom:7px;z-index:2;display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid #fff9;border-radius:50%;background:#fffaf0df;color:#635444;box-shadow:0 2px 9px #0002;backdrop-filter:blur(7px);transition:background .2s,transform .2s}
 .quick-add .icon{width:21px;height:21px}.media-redesign .quick-add:hover{background:#fffaf0;transform:scale(1.06)}.media-redesign .quick-add.in-cart{background:#e8ddc9;color:#493b2f}
 .cart-flight{position:fixed;z-index:1000;pointer-events:none;object-fit:contain;transform-origin:center;border-radius:3px;filter:drop-shadow(0 6px 9px #0002)}
+
+/* v8: clear audio/video actions, frame-free video overlay and prominent media navigation.
+   Scoped to the media application; the original site header is unchanged. */
+.media-redesign .media-navigation nav{gap:7px;}
+.media-redesign .media-navigation a{
+  border:1px solid #d2c6b6;border-radius:20px;background:#faf6ef;
+  color:#5d5144;min-width:0;line-height:1.1;text-align:center;
+  padding:9px 10px;font-weight:500;transition:background .2s,color .2s,border-color .2s;
+}
+.media-redesign .media-navigation a:hover{background:#eee5d8;border-color:#ac9b86;color:#362f28;}
+.media-redesign .media-navigation a[aria-current="page"]{
+  background:#e0d5c4;border-color:#ac9d88;color:#29231d;
+}
+.media-redesign .media-navigation a::after{display:none;}
+
+.media-redesign .score-media-actions{display:flex;align-items:center;gap:5px;min-width:0;}
+.media-redesign .score-action{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  background:#fffaf3;border:1px solid #ded3c3;border-radius:7px;color:#705d4d;
+  padding:6px 7px;min-height:37px;height:auto;width:auto;line-height:1.1;cursor:pointer;
+  font:400 12px/1.2 Arial,sans-serif;white-space:nowrap;transition:background .18s,border-color .18s;
+}
+.media-redesign .score-action:hover{background:#f2e8da;border-color:#bfa993;color:#453629;}
+.media-redesign .score-action[aria-pressed="true"]{background:#e6dbc8;border-color:#af977e;}
+.media-redesign .score-action .score-icon{display:inline-flex;align-items:center;justify-content:center;}
+.media-redesign .score-action .icon{width:20px;height:20px;fill:none;stroke-width:1.6;}
+.media-redesign .score-action--video .icon{width:21px;height:21px;}
+.media-redesign .card-actions{display:flex;align-items:center;justify-content:space-between;gap:7px;}
+.media-redesign .card-actions>.score-media-actions{display:flex;gap:5px;}
+.media-redesign .card-actions>.score-media-actions button[data-audio],
+.media-redesign .card-actions>.score-media-actions button[data-video]{width:auto;height:auto;min-height:37px;border:1px solid #ded3c3;border-radius:7px;}
+.media-redesign .card-actions .score-action .icon,
+.media-redesign .card-actions>.score-media-actions button[data-audio] .icon,
+.media-redesign .card-actions>.score-media-actions button[data-video] .icon{width:20px;height:20px;}
+.media-redesign .card-actions>a{font-size:16px;white-space:nowrap;}
+
+/* Desktop: sheet-music cover and its purchase control share a horizontal row. */
+.media-redesign main[data-detail="true"] .detail{
+  grid-template-columns:minmax(220px,34%) minmax(0,1fr);
+  grid-template-areas:"cover info";align-items:stretch;gap:36px;
+}
+.media-redesign .detail-info{min-width:0;display:flex;flex-direction:column;}
+.media-redesign .detail-media-tools{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:8px 0 13px;}
+.media-redesign .detail-media-tools .compact-player{display:flex;align-items:center;gap:9px;flex:1 1 250px;min-width:0;max-width:none;margin:0;}
+.media-redesign .detail-media-tools .compact-player .audio-progress{min-width:45px;flex:1;}
+.media-redesign .detail-media-tools .compact-time{font-size:14px;}
+.media-redesign .detail-media-tools>.score-action{flex-shrink:0;}
+.media-redesign .detail-purchase{grid-area:auto;margin-top:auto;padding-top:16px;}
+.media-redesign .detail-purchase .buy-row{gap:16px;}
+
+/* Video is the ONLY visible content of its modal: no cream box or white frame. */
+.media-redesign dialog[data-kind="video"]{width:min(940px,calc(100vw - 32px));max-width:none;
+  height:auto;max-height:calc(100dvh - 32px);padding:0;margin:auto;
+  border:0;border-radius:13px;background:transparent;color:white;
+  box-shadow:none;overflow:visible;}
+.media-redesign dialog[data-kind="video"]::backdrop{background:rgba(10,11,12,.87);}
+.media-redesign dialog[data-kind="video"] #overlay-content{width:100%;margin:0;padding:0;}
+.media-redesign dialog[data-kind="video"] .video-modal-frame{display:block;aspect-ratio:16/9;
+  width:100%;border-radius:13px;overflow:hidden;background:#101010;}
+.media-redesign dialog[data-kind="video"] iframe.stage{display:block;width:100%;height:100%!important;
+  aspect-ratio:16/9;max-height:none!important;border:0;border-radius:0;background:#111;}
+.media-redesign dialog[data-kind="video"] .close-dialog{position:absolute;top:10px;right:10px;
+  z-index:5;width:39px;height:39px;border-radius:50%;background:rgba(14,15,16,.67)!important;
+  color:#fff!important;border:1px solid rgba(255,255,255,.55)!important;backdrop-filter:blur(5px);
+  text-decoration:none;}
+.media-redesign dialog[data-kind="video"] .close-dialog:hover{background:rgba(14,15,16,.88)!important;}
+
+@media(max-width:760px){
+  .media-redesign .media-navigation nav{gap:5px;}
+  .media-redesign .media-navigation a{font-size:clamp(14px,4.1vw,18px);padding:8px 3px;}
+  .media-redesign .score-action{padding:5px 6px;font-size:11px;min-height:35px;}
+  .media-redesign .score-action .icon{width:18px;height:18px;}
+  .media-redesign .card-actions{flex-wrap:wrap;}
+  .media-redesign .card-actions>a{font-size:15px;}
+  .media-redesign main[data-detail="true"] .detail{grid-template-columns:42% minmax(0,1fr);gap:16px;}
+  .media-redesign .detail-media-tools{display:flex;gap:8px;align-items:flex-start;}
+  .media-redesign .detail-media-tools .compact-player{flex:1 1 100%;width:100%;flex-wrap:wrap;gap:5px;}
+  .media-redesign .detail-media-tools .compact-player .audio-progress{flex:1 1 30%;}
+  .media-redesign .detail-purchase{margin-top:15px;padding-top:0;}
+  .media-redesign .detail-purchase .buy-row{flex-wrap:wrap;gap:7px;}
+  .media-redesign .detail-purchase .primary{font-size:15px;padding:9px;}
+}
+@media(max-width:430px){
+  .media-redesign .card-actions>a{font-size:14px;}
+  .media-redesign .score-action{font-size:11px;gap:3px;padding:4px;}
+  .media-redesign .score-action .icon{width:17px;height:17px;}
+  .media-redesign .card-actions>.score-media-actions button[data-audio],
+  .media-redesign .card-actions>.score-media-actions button[data-video]{min-height:33px;}
+}

@@ -80,7 +80,7 @@
 @media(max-width:380px){.bn-track{grid-template-columns:15px 52px minmax(0,1fr) 54px;gap:8px}.bn-track-art{width:52px;height:57px}.bn-track-info h3{font-size:21px}.bn-composer{font-size:13px}.bn-track-controls{gap:2px}}
 
 /* Small interactive enhancements. */
-.bn-home .bn-philosophy-image,.bn-home .bn-philosophy-image img{border-radius:16px;overflow:hidden;}
+.bn-home .bn-philosophy-image,.bn-home .bn-philosophy-image img{border-radius:7px;overflow:hidden;}
 .bn-home .bn-track-art-button{border:0;background:none;padding:0;display:block;width:86px;height:86px;cursor:pointer;border-radius:3px;overflow:hidden;}
 .bn-home .bn-track-art-button:focus-visible,.bn-home .bn-score-image:focus-visible{outline:2px solid #61735f;outline-offset:4px;}
 .bn-home .bn-track-art-button .bn-track-art{transition:transform .2s ease;}

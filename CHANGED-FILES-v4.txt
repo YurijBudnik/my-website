@@ -1,0 +1,19 @@
+BayaNova — files to update
+home-redesign.css
+index.html
+media-app.js
+media-design.css
+media-hub-fix.css
+media.html
+music.html
+photos.html
+score-amar-pelos-dois.html
+score-as-it-was.html
+score-birds.html
+score-le-jouet.html
+score-lujon.html
+score-pirates.html
+score-take-off.html
+score.html
+scores.html
+videos.html

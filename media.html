@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=7">
   <script src="site.js?v=5" defer></script>
+  <link rel="stylesheet" href="media-hub-fix.css?v=20261026">
+  <script src="media-hub-video.js?v=20261026" defer></script>
 </head>
 <body class="page-media-hub">
 <header class="site-header">
@@ -37,6 +39,7 @@
       <h1 class="media-hub-title" data-en="Media" data-ua="Медіа">Медіа</h1>
       <div class="media-hub-grid">
         <a class="media-hub-card media-hub-card--video" href="videos.html">
+          <video class="media-hub-video" autoplay muted loop playsinline preload="metadata" poster="assets/media-panels/video-desktop.jpg" aria-hidden="true"><source src="assets/media-panels/video-mobile.mp4" type="video/mp4" media="(max-width: 700px)"><source src="assets/media-panels/video-desktop.mp4" type="video/mp4"></video>
           <div class="media-card-overlay"></div>
           <div class="media-card-copy">
             <h2 data-en="Video" data-ua="Відео">Відео</h2>

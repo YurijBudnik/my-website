@@ -9,16 +9,17 @@
 
 :root {
   color-scheme: dark; /* темні скролбари, аудіоплеєр, select, поля вводу */
-  --d-bg:      #151412; /* фон сторінки */
-  --d-bg2:     #1b1a17; /* чергові секції, підвал */
-  --d-surface: #201e1b; /* картки, діалоги */
-  --d-surface2:#2a2723; /* наведення, активні елементи */
-  --d-line:    #37332c; /* лінії та рамки */
-  --d-text:    #ece7dd; /* основний текст */
-  --d-text2:   #cbc4b7; /* другорядний текст */
-  --d-muted:   #a0998c; /* приглушений текст */
-  --d-faint:   #8c867a; /* найтихіший текст */
-  --d-accent:  #e0957a; /* акцент: посилання, цифри */
+  --d-header:  #0e0a07; /* шапка і підвал: чорно-коричневий */
+  --d-bg:      #221912; /* фон сторінки: теплий темно-коричневий */
+  --d-bg2:     #2a1f17; /* чергові секції */
+  --d-surface: #30241b; /* картки, діалоги */
+  --d-surface2:#3b2d22; /* наведення, активні елементи */
+  --d-line:    #4a3a2c; /* лінії та рамки */
+  --d-text:    #f0e7db; /* основний текст */
+  --d-text2:   #d6c9b8; /* другорядний текст */
+  --d-muted:   #ae9f8c; /* приглушений текст */
+  --d-faint:   #998b78; /* найтихіший текст */
+  --d-accent:  #e8a07f; /* акцент: посилання, цифри */
   --d-accent-bg:#b25c40; /* акцент як фон кнопки (білий текст читається) */
   --page-background: var(--d-bg);
 }
@@ -26,7 +27,7 @@
 /* ---------- Загальне: тіло, шапка, меню ---------- */
 body[class*="page-"] { color: var(--d-text); background: var(--d-bg); }
 body main, body #news { background: var(--d-bg); }
-.site-header { background: var(--d-bg2); }
+.site-header { background: var(--d-header); }
 .logo-container { color: var(--d-text); }
 .responsive-sub-text { color: var(--d-text2); }
 .site-header .nav-link { color: var(--d-text2); }
@@ -64,7 +65,7 @@ body .text-gray-700 { color: var(--d-text2); }
 body .text-gray-600 { color: var(--d-muted); }
 body .text-gray-500 { color: var(--d-muted); }
 body .border-gray-100, body .border-gray-200 { border-color: var(--d-line); }
-body .border-gray-300 { border-color: #4a453c; }
+body .border-gray-300 { border-color: #5a4838; }
 .page-biography .biography-portrait { background: var(--d-bg); }
 
 /* ---------- Концерти ---------- */
@@ -85,7 +86,7 @@ body.page-concerts footer { border-color: var(--d-line); color: var(--d-muted); 
 .bn-number { color: var(--d-faint); }
 .bn-headline em { color: #a9bb9f; }
 .bn-paragraph { color: var(--d-text2); }
-.bn-small-link { border-bottom-color: #4a453c; color: var(--d-text); }
+.bn-small-link { border-bottom-color: #5a4838; color: var(--d-text); }
 .bn-small-link:hover { color: #a9bb9f; }
 .bn-playlist { border-top-color: var(--d-line); }
 .bn-track { border-bottom-color: var(--d-line); }
@@ -94,20 +95,20 @@ body.page-concerts footer { border-color: var(--d-line); color: var(--d-muted); 
 .bn-composer { color: var(--d-muted); }
 .bn-track-description { color: var(--d-muted); }
 .bn-play { border-color: #4f5a4a; color: #b7c8ad; }
-.bn-play:hover { background: #262a23; }
+.bn-play:hover { background: #3b2d22; }
 .bn-track-time { color: var(--d-muted); }
 .bn-outline { border-color: #4a5144; color: var(--d-text); }
-.bn-outline:hover { background: #24261f; }
+.bn-outline:hover { background: #3b2d22; }
 .bn-home .bn-track-art-button:focus-visible,
 .bn-home .bn-score-image:focus-visible { outline-color: #a9bb9f; }
 .bn-score-image img { filter: brightness(.88); } /* білий папір нот не засліплює */
-.bn-footer { background: #11100e; border-top-color: var(--d-line); color: var(--d-text2); }
+.bn-footer { background: var(--d-header); border-top-color: var(--d-line); color: var(--d-text2); }
 .bn-footer-mark { color: var(--d-text); }
 .bn-footer-brand p { color: var(--d-muted); }
 .bn-footer-nav a { color: var(--d-text2); }
 .bn-footer-nav a:hover { color: #fff; }
-.bn-footer-social a { border-color: #4a453c; color: #b7c8ad; }
-.bn-footer-social a:hover { background: #24261f; }
+.bn-footer-social a { border-color: #5a4838; color: #b7c8ad; }
+.bn-footer-social a:hover { background: #3b2d22; }
 
 /* ---------- Сторінка новин (news.css) ---------- */
 .page-news { background: var(--d-bg); color: var(--d-text); }
@@ -125,15 +126,15 @@ body.page-concerts footer { border-color: var(--d-line); color: var(--d-muted); 
 .year-heading { border-bottom-color: var(--d-line); }
 .year-heading > span { color: var(--d-faint); }
 .story-image { background: var(--d-surface); }
-.image-action { background: rgba(21,20,18,.82); }
+.image-action { background: rgba(34,25,18,.82); }
 .story-text-image { background: var(--d-surface); color: #8f9a85 !important; }
 .story-meta { color: var(--d-faint); }
 .story-caption, .event-label { color: var(--d-muted); }
 .archive-footnote { border-top-color: var(--d-line); color: var(--d-faint); }
 #news-dialog { background: var(--d-surface); color: var(--d-text); }
-#news-dialog::backdrop { background: rgba(8,9,7,.92); }
-.dialog-close { background: rgba(32,30,27,.9); color: var(--d-text2); }
-.dialog-image { background: #181714; }
+#news-dialog::backdrop { background: rgba(10,6,3,.92); }
+.dialog-close { background: rgba(48,36,27,.9); color: var(--d-text2); }
+.dialog-image { background: #1a130d; }
 .source-note { color: var(--d-muted); }
 .source-list a { border-top-color: var(--d-line); color: #b7c8ad; }
 .source-list a:hover { color: #d9b98a; }
@@ -148,51 +149,51 @@ body.media-redesign {
   background: var(--d-bg);
 }
 .media-redesign main { background: var(--d-bg); }
-.media-redesign .site-header { background: var(--d-bg2); }
+.media-redesign .site-header { background: var(--d-header); }
 .backlinks a:hover { color: var(--d-accent); }
 /* кнопки з акцентним фоном: темніший акцент, щоб білий текст читався */
 .compact-player button, .media-redesign .primary, .transport #toggle-track { background: var(--d-accent-bg); color: #fff; }
-.cover-button > span { background: rgba(32,30,27,.85); box-shadow: 0 1px 8px #0006; }
+.cover-button > span { background: rgba(48,36,27,.85); box-shadow: 0 1px 8px #0006; }
 .score-card img { filter: brightness(.9); }
 .photo-stage { background: var(--d-surface); }
-.photo-stage > button { background: rgba(32,30,27,.7); color: var(--d-text); }
+.photo-stage > button { background: rgba(48,36,27,.7); color: var(--d-text); }
 .track.active { background: var(--d-surface2); }
 .player {
-  background: rgba(32,30,27,.88);
+  background: rgba(48,36,27,.88);
   border: 1px solid var(--d-line);
   box-shadow: 0 6px 30px #0008;
 }
 .media-redesign dialog:not([data-kind=photo]):not([data-kind=album]):not([data-kind=video]) {
   background: var(--d-surface); color: var(--d-text);
 }
-.media-redesign dialog::backdrop { background: rgba(8,8,12,.88); }
+.media-redesign dialog::backdrop { background: rgba(10,6,3,.88); }
 .track-links [aria-disabled=true] { color: var(--d-faint); }
 #video-stage .video-description { color: var(--d-muted); }
-.carousel-wrap:before { background: linear-gradient(90deg, rgba(21,20,18,.75), rgba(21,20,18,0)); }
-.carousel-wrap:after  { background: linear-gradient(-90deg, rgba(21,20,18,.75), rgba(21,20,18,0)); }
+.carousel-wrap:before { background: linear-gradient(90deg, rgba(34,25,18,.75), rgba(34,25,18,0)); }
+.carousel-wrap:after  { background: linear-gradient(-90deg, rgba(34,25,18,.75), rgba(34,25,18,0)); }
 .media-redesign .carousel-wrap .edge {
-  background: rgba(42,39,35,.78) !important; color: var(--d-text2) !important; box-shadow: 0 1px 8px #0006;
+  background: rgba(59,45,34,.78) !important; color: var(--d-text2) !important; box-shadow: 0 1px 8px #0006;
 }
 .media-redesign .carousel-wrap .edge.flash { background: var(--d-surface2) !important; }
 .media-redesign .photo-top {
-  border-color: rgba(255,255,255,.18); background: rgba(42,39,35,.8); color: var(--d-text2); box-shadow: 0 2px 12px #0006;
+  border-color: rgba(255,255,255,.18); background: rgba(59,45,34,.8); color: var(--d-text2); box-shadow: 0 2px 12px #0006;
 }
 .media-redesign .quick-add {
-  border-color: rgba(255,255,255,.2); background: rgba(42,39,35,.88); color: var(--d-text2); box-shadow: 0 2px 9px #0006;
+  border-color: rgba(255,255,255,.2); background: rgba(59,45,34,.88); color: var(--d-text2); box-shadow: 0 2px 9px #0006;
 }
 .media-redesign .quick-add:hover { background: var(--d-surface2); }
-.media-redesign .quick-add.in-cart { background: #4a3a2e; color: #f0dcc4; }
+.media-redesign .quick-add.in-cart { background: #5a4331; color: #f0dcc4; }
 .media-redesign .media-navigation a { border-color: var(--d-line); background: var(--d-surface); color: var(--d-text2); }
-.media-redesign .media-navigation a:hover { background: var(--d-surface2); border-color: #5a5348; color: #fff; }
-.media-redesign .media-navigation a[aria-current="page"] { background: #332f29; border-color: #6a6254; color: #fff; }
+.media-redesign .media-navigation a:hover { background: var(--d-surface2); border-color: #6b5842; color: #fff; }
+.media-redesign .media-navigation a[aria-current="page"] { background: #43342a; border-color: #7d6850; color: #fff; }
 .media-redesign .score-action { background: var(--d-surface); border-color: var(--d-line); color: var(--d-text2); }
-.media-redesign .score-action:hover { background: var(--d-surface2); border-color: #5a5348; color: #fff; }
-.media-redesign .score-action[aria-pressed="true"] { background: #3a342c; border-color: #7a705e; }
+.media-redesign .score-action:hover { background: var(--d-surface2); border-color: #6b5842; color: #fff; }
+.media-redesign .score-action[aria-pressed="true"] { background: #4a3a2c; border-color: #8a7459; }
 .media-redesign .card-actions > .score-media-actions button[data-audio],
 .media-redesign .card-actions > .score-me { border-color: var(--d-line); }
 
 /* ---------- Невеликі поправки ---------- */
 .hero-album::before { opacity: .6; } /* сяйво навколо обкладинки трохи м'якше на темному */
-::selection { background: #5a3a2c; color: #fff; }
+::selection { background: #6b4430; color: #fff; }
 
 }

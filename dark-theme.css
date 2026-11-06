@@ -71,9 +71,11 @@ body .border-gray-300 { border-color: #5a4838; }
 /* ---------- Концерти ---------- */
 body .concert-card { background: var(--d-surface); border-color: var(--d-line); box-shadow: none; }
 body .concert-card:hover { background: var(--d-surface2); }
-body .concert-date { background: #232a38; } /* синя панель дати, трохи світліша за фон */
-body .concert-tickets { background: #2f3a50; color: #fff; }
-body .concert-tickets:hover { background: #3d4b68; }
+body .concert-date { background: var(--d-header); } /* панель дати: чорно-коричнева, як шапка */
+body .concert-date .text-gray-400 { color: #b3a48f; }
+body .concert-date .text-gray-300 { color: var(--d-text2); }
+body .concert-tickets { background: #8a4a33; color: #fff; }
+body .concert-tickets:hover { background: #a05a40; }
 body.page-concerts .concerts-subtitle { color: var(--d-text2); }
 body.page-concerts footer { border-color: var(--d-line); color: var(--d-muted); }
 

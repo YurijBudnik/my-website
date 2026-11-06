@@ -1,0 +1,198 @@
+/* ==========================================================================
+   base.css — статична заміна скрипта cdn.tailwindcss.com.
+   Містить скидання стилів (аналог Tailwind preflight v3) і лише ті утиліти,
+   які реально використовуються на сторінках: головна, біографія, концерти,
+   контакти, новини. Підключається ПІСЛЯ style.css, як і раніше робив CDN.
+   Якщо в HTML додасте новий Tailwind-клас, його треба дописати сюди.
+   ========================================================================== */
+
+/* ---------- Скидання стилів (preflight) ---------- */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}
+body{margin:0;line-height:inherit}
+hr{height:0;color:inherit;border-top-width:1px}
+abbr:where([title]){text-decoration:underline dotted}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+b,strong{font-weight:bolder}
+code,kbd,samp,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+table{text-indent:0;border-color:inherit;border-collapse:collapse}
+button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}
+button,select{text-transform:none}
+button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}
+:-moz-focusring{outline:auto}
+:-moz-ui-invalid{box-shadow:none}
+progress{vertical-align:baseline}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+summary{display:list-item}
+blockquote,dl,dd,h1,h2,h3,h4,h5,h6,hr,figure,p,pre{margin:0}
+fieldset{margin:0;padding:0}
+legend{padding:0}
+ol,ul,menu{list-style:none;margin:0;padding:0}
+dialog{padding:0}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+button,[role=button]{cursor:pointer}
+:disabled{cursor:default}
+img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+[hidden]{display:none}
+
+/* ---------- Утиліти (базові) ---------- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+.pointer-events-none{pointer-events:none}
+.pointer-events-auto{pointer-events:auto}
+.relative{position:relative}
+.sticky{position:sticky}
+.bottom-4{bottom:1rem}
+.z-20{z-index:20}
+.mx-auto{margin-left:auto;margin-right:auto}
+.my-1{margin-top:.25rem;margin-bottom:.25rem}
+.-mt-16{margin-top:-4rem}
+.mb-0\.5{margin-bottom:.125rem}
+.mb-6{margin-bottom:1.5rem}
+.mb-12{margin-bottom:3rem}
+.mt-0\.5{margin-top:.125rem}
+.mt-1{margin-top:.25rem}
+.mt-2{margin-top:.5rem}
+.mt-12{margin-top:3rem}
+.flex{display:flex}
+.h-7{height:1.75rem}
+.h-\[50vh\]{height:50vh}
+.h-full{height:100%}
+.w-7{width:1.75rem}
+.w-full{width:100%}
+.min-w-\[110px\]{min-width:110px}
+.max-w-5xl{max-width:64rem}
+.flex-shrink-0{flex-shrink:0}
+.flex-grow{flex-grow:1}
+.animate-bounce{animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,.2,1)}}
+.cursor-pointer{cursor:pointer}
+.flex-row{flex-direction:row}
+.flex-col{flex-direction:column}
+.items-start{align-items:flex-start}
+.items-center{align-items:center}
+.items-stretch{align-items:stretch}
+.justify-start{justify-content:flex-start}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.gap-4{gap:1rem}
+.space-y-2>:not([hidden])~:not([hidden]){margin-top:.5rem;margin-bottom:0}
+.space-y-5>:not([hidden])~:not([hidden]){margin-top:1.25rem;margin-bottom:0}
+.space-y-6>:not([hidden])~:not([hidden]){margin-top:1.5rem;margin-bottom:0}
+.space-y-8>:not([hidden])~:not([hidden]){margin-top:2rem;margin-bottom:0}
+.overflow-hidden{overflow:hidden}
+.rounded{border-radius:.25rem}
+.rounded-lg{border-radius:.5rem}
+.border{border-width:1px}
+.border-l-2{border-left-width:2px}
+.border-t{border-top-width:1px}
+.border-gray-100{border-color:#f3f4f6}
+.border-gray-200{border-color:#e5e7eb}
+.border-gray-300{border-color:#d1d5db}
+.bg-white{background-color:#fff}
+.bg-\[\#181e28\]{background-color:#181e28}
+.bg-center{background-position:center}
+.bg-cover{background-size:cover}
+.bg-no-repeat{background-repeat:no-repeat}
+.object-cover{object-fit:cover}
+.object-center{object-position:center}
+.stroke-current{stroke:currentColor}
+.p-5{padding:1.25rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.px-6{padding-left:1.5rem;padding-right:1.5rem}
+.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}
+.py-5{padding-top:1.25rem;padding-bottom:1.25rem}
+.py-6{padding-top:1.5rem;padding-bottom:1.5rem}
+.py-12{padding-top:3rem;padding-bottom:3rem}
+.pb-16{padding-bottom:4rem}
+.pl-4{padding-left:1rem}
+.pt-8{padding-top:2rem}
+.text-center{text-align:center}
+.font-sans{font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}
+.font-serif{font-family:ui-serif,Georgia,Cambria,"Times New Roman",Times,serif}
+.text-xs{font-size:.75rem;line-height:1rem}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-base{font-size:1rem;line-height:1.5rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
+.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.text-\[11px\]{font-size:11px}
+.font-light{font-weight:300}
+.font-medium{font-weight:500}
+.font-semibold{font-weight:600}
+.font-bold{font-weight:700}
+.uppercase{text-transform:uppercase}
+.italic{font-style:italic}
+.leading-none{line-height:1}
+.leading-snug{line-height:1.375}
+.leading-relaxed{line-height:1.625}
+.tracking-normal{letter-spacing:0}
+.tracking-wide{letter-spacing:.025em}
+.tracking-widest{letter-spacing:.1em}
+.text-white{color:#fff}
+.text-gray-300{color:#d1d5db}
+.text-gray-400{color:#9ca3af}
+.text-gray-500{color:#6b7280}
+.text-gray-600{color:#4b5563}
+.text-gray-700{color:#374151}
+.text-gray-800{color:#1f2937}
+.text-gray-900{color:#111827}
+.opacity-80{opacity:.8}
+.shadow-sm{box-shadow:0 1px 2px 0 rgba(0,0,0,.05)}
+.drop-shadow-md{filter:drop-shadow(0 4px 3px rgba(0,0,0,.07)) drop-shadow(0 2px 2px rgba(0,0,0,.06))}
+.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
+.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
+.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}
+.duration-300{transition-duration:.3s}
+.scroll-smooth{scroll-behavior:smooth}
+
+/* ---------- Стани наведення ---------- */
+.hover\:bg-black:hover{background-color:#000}
+.hover\:opacity-100:hover{opacity:1}
+.hover\:shadow-md:hover{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}
+
+/* ---------- ≥640px (sm) ---------- */
+@media (min-width:640px){
+.sm\:-mt-20{margin-top:-5rem}
+.sm\:mb-16{margin-bottom:4rem}
+.sm\:h-8{height:2rem}
+.sm\:w-8{width:2rem}
+.sm\:w-auto{width:auto}
+.sm\:flex-row{flex-direction:row}
+.sm\:items-center{align-items:center}
+.sm\:p-6{padding:1.5rem}
+.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+.sm\:px-10{padding-left:2.5rem;padding-right:2.5rem}
+.sm\:py-16{padding-top:4rem;padding-bottom:4rem}
+.sm\:pl-6{padding-left:1.5rem}
+.sm\:text-sm{font-size:.875rem;line-height:1.25rem}
+.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}
+.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}
+}
+
+/* ---------- ≥768px (md) ---------- */
+@media (min-width:768px){
+.md\:h-10{height:2.5rem}
+.md\:w-10{width:2.5rem}
+.md\:w-1\/2{width:50%}
+.md\:flex-row{flex-direction:row}
+.md\:pt-12{padding-top:3rem}
+.md\:pb-20{padding-bottom:5rem}
+.md\:pl-10{padding-left:2.5rem}
+.md\:pr-8{padding-right:2rem}
+}
+
+/* ---------- ≥1024px (lg) ---------- */
+@media (min-width:1024px){
+.lg\:px-8{padding-left:2rem;padding-right:2rem}
+.lg\:pr-14{padding-right:3.5rem}
+.lg\:text-xl{font-size:1.25rem;line-height:1.75rem}
+}
